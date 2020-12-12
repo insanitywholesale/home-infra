@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs
+spec:
+  capacity:
+    storage: 79Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: truenas.hell
+    path: "/mnt/tank-z1/k8nfs"

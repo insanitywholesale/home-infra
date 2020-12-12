@@ -1,0 +1,20 @@
+# gitea settings
+UUID=1040
+UGID=1000
+
+DBNAME=gitea
+DBUSER=gitea
+DBPASSWD=gitea
+
+# gitea postgres
+PSTGRSUSR=gitea
+PSTGRSPASSWD=gitea
+PSTGRSDB=gitea
+
+# docker-related settings
+PUID=1000
+PGID=998
+TZ="Europe/Athens"
+MYSQL_ROOT_PASSWORD="Th1s1s_A_verySecurePassword_123"
+DOCKDIR=/opt/user/docker
+DOMAINNAME=dok.test

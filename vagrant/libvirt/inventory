@@ -1,0 +1,14 @@
+[app]
+192.168.121.13
+192.168.121.14
+
+[db]
+192.168.121.15
+
+[multi:children]
+app
+db
+
+[multi:vars]
+ansible_user=vagrant
+ansible_private_key_file=~/.vagrant.d/insecure_private_key

@@ -1,0 +1,24 @@
+[debbies]
+192.168.1.171
+192.168.1.172
+192.168.1.173
+192.168.1.174
+
+[kates_main]
+192.168.2.33
+
+[kates_task]
+192.168.2.31
+192.168.2.32
+
+[kates:children]
+kates_main
+kates_task
+
+[kates:vars]
+ansible_private_key=~/.ssh/id_rsa.pub
+ansible_python_interpreter='/usr/bin/env python'
+
+[debbies:vars]
+ansible_private_key=~/.ssh/id_rsa.pub
+ansible_python_interpreter='/usr/bin/env python'

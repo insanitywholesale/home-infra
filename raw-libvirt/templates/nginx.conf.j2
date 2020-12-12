@@ -1,0 +1,37 @@
+user  www-data;
+
+load_module /usr/lib/nginx/modules/ngx_stream_module.so;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /run/nginx.pid;
+
+worker_processes  "4";
+
+events {
+    worker_connections 2048;
+}
+
+stream {
+    upstream rancher_servers_http {
+        least_conn;
+		{% for ip in groups['kates'] %}
+        server {{ ip }}:80 max_fails=3 fail_timeout=5s;
+		{% endfor %}
+    }
+    server {
+        listen 80;
+        proxy_pass rancher_servers_http;
+    }
+
+    upstream rancher_servers_https {
+        least_conn;
+		{% for ip in groups['kates'] %}
+        server {{ ip }}:443 max_fails=3 fail_timeout=5s;
+		{% endfor %}
+    }
+    server {
+        listen     443;
+        proxy_pass rancher_servers_https;
+    }
+
+}

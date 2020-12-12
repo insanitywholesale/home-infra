@@ -1,0 +1,9 @@
+mysql_databases:
+  - name: k3s
+    encoding: utf8
+    collation: utf8_general_ci
+mysql_users:
+  - name: k3s
+    host: "%"
+    password: flagrant
+    priv: "k3s.*:ALL"
