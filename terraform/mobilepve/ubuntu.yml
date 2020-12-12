@@ -1,0 +1,35 @@
+---
+
+- name: fix ubu boiz quicc
+  hosts: dock #ubu_lxc
+  become: true
+
+  tasks:
+    - name: upd8 every m8
+      apt:
+        upgrade: full
+        update_cache: yes
+
+    - name: INSTALL good packages
+      apt:
+        name:
+          - vim
+          - tmux
+          - htop
+          - stterm
+          - qemu-guest-agent
+          - python
+          - python-apt
+          - python3
+          - python3-apt
+        state:
+          present
+
+    - name: DELET this
+      apt:
+        name:
+          - nano
+        state:
+          absent
+
+...

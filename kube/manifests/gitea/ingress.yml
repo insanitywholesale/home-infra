@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gitea
+spec:
+  rules:
+  - host: gitea.kates.test
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gitea-service
+          servicePort: 3000

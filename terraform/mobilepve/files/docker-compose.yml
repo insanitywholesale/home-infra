@@ -1,0 +1,71 @@
+version: "3"
+
+services:
+
+  gitea:
+    image: gitea/gitea
+    restart: unless-stopped
+    environment:
+      - USER_UID=$UUID
+      - USER_GID=$UGID
+      - DB_TYPE=postgres
+      - DB_HOST=db:5432
+      - DB_NAME=$DBNAME
+      - DB_USER=$DBUSER
+      - DB_PASSWD=$DBPASSWD
+    networks:
+      #- gitea
+      - traefik_proxy
+    volumes:
+      - ${DOCKDIR}/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    labels:
+      - "traefik.backend=gitea"
+      - "traefik.frontend.rule=Host:gitea.$DOMAINNAME"
+      - "traefik.port=80"
+      - "traefik.protocol=http"
+
+    depends_on:
+      - gitea_db
+
+  gitea_db:
+    image: postgres:12
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=$PSTGRSUSR
+      - POSTGRES_PASSWORD=$PSTGRSPASSWD
+      - POSTGRES_DB=$PSTGRSDB
+    #networks:
+    #  - gitea
+    volumes:
+      - ${DOCKDIR}/postgres:/var/lib/postgresql/data
+
+
+  traefik:
+    image: traefik:1.7-alpine
+    restart: unless-stopped
+    networks:
+      - default
+      - traefik_proxy
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${DOCKDIR}/traefik:/etc/traefik
+    labels:
+      - "traefik.backend=traefik"
+      - "traefik.frontend.rule=Host:traefik.$DOMAINNAME"
+      - "traefik.port=8080"
+      - "traefik.protocol=http"
+
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  #gitea:
+  #  external: false
+  default:
+    driver: bridge

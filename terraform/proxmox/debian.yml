@@ -1,0 +1,55 @@
+---
+
+- name: get dem debby boiz done up
+  hosts:
+    - swarm
+    - kates
+    #- rancher
+    #- keycloak
+    #- sentry
+  become: true
+
+  tasks:
+    - name: upd8 every m8
+      apt:
+        upgrade: full
+        update_cache: yes
+
+    - name: INSTALL good packages
+      apt:
+        name:
+          - vim
+          - tmux
+          - htop
+          - stterm
+          - qemu-guest-agent
+          - python
+          - python-apt
+          - python3
+          - python3-apt
+          - nfs-common
+          - nfs4-acl-tools
+        state:
+          present
+
+    - name: DELET this
+      apt:
+        name:
+          - nano
+        state:
+          absent
+
+    - name: Copy /etc/network/interfaces config
+      copy:
+        src: debinterfaces
+        dest: /etc/network/interfaces
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: rebooty the debooty
+      reboot:
+        reboot_timeout: 200
+
+
+...
