@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 3000
         volumeMounts:
-        - mountPath: /data
+        - mountPath: "/var/lib/gitea"
           name: gitea-data
       volumes:
         - name: gitea-data
