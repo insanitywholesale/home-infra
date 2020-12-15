@@ -1,0 +1,21 @@
+# I tried using this with the non-rootless container
+# because serverfault told me to
+# source: https://serverfault.com/questions/906083/how-to-mount-volume-with-specific-uid-in-kubernetes-pod
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: gitea
+#  labels:
+#    app: gitea
+#spec:
+#  securityContext:
+#    fsGroup: 1000
+#  volumes:
+#  - name: gitea-pvc
+#    emptyDir: {}
+#  containers:
+#  - name: gitea
+#    image: gitea/gitea:latest
+#    volumeMounts:
+#    - name: gitea-pvc
+#      mountPath: /data
