@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: gitea-pvc
+  name: gitea-data-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    #- ReadWriteOnce
+    - ReadWriteMany
   storageClassName: nfs-client
   resources:
     requests:
-      storage: 2Gi
+      storage: 5Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -16,8 +17,9 @@ metadata:
   name: gitea-etc-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    #- ReadWriteOnce
+    - ReadWriteMany
   storageClassName: nfs-client
   resources:
     requests:
-      storage: 5Mi
+      storage: 1Gi

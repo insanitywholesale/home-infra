@@ -49,7 +49,7 @@
 
     - name: rebooty the debooty
       reboot:
-        reboot_timeout: 200
+        reboot_timeout: 300
 
 
 ...

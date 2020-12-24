@@ -22,7 +22,12 @@ spec:
         volumeMounts:
         - mountPath: "/var/lib/gitea"
           name: gitea-data
+        - mountPath: "/etc/gitea"
+          name: gitea-etc
       volumes:
         - name: gitea-data
           persistentVolumeClaim:
-            claimName: gitea-pvc
+            claimName: gitea-data-pvc
+        - name: gitea-etc
+          persistentVolumeClaim:
+            claimName: gitea-etc-pvc
