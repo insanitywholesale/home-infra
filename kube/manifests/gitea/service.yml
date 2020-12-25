@@ -7,4 +7,9 @@ spec:
     app: gitea
   ports:
     - protocol: TCP
+      name: web
       port: 3000
+    - protocol: TCP
+      name: ssh
+      port: 2222
+      targetPort: 22

@@ -11,3 +11,10 @@ spec:
         backend:
           serviceName: gitea-service
           servicePort: 3000
+  - host: ssh.gitea.kates.test
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gitea-service
+          servicePort: 2222
