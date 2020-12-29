@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gitea
+  name: todo
 spec:
   rules:
-  - host: gitea.kates.test
+  - host: todo.kates.test
     http:
       paths:
       - path: /
         backend:
-          serviceName: gitea-service
-          servicePort: 3000
+          serviceName: todo-svc
+          servicePort: 8080

@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: gitea-service
+  name: todo-svc
 spec:
   selector:
-    app: gitea
+    app: todo
   ports:
     - protocol: TCP
       name: web
-      port: 3000
-      targetPort: 3000
+      port: 8080
