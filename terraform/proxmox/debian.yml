@@ -29,6 +29,7 @@
           - python3-apt
           - nfs-common
           - nfs4-acl-tools
+          - glusterfs-server
         state:
           present
 
