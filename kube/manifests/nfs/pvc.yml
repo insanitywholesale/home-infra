@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: test-claim
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: diynfs
+  resources:
+    requests:
+      storage: 1Mi

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: todo
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: todo
@@ -16,6 +16,13 @@ spec:
     spec:
       containers:
       - name: todo
-        image: inherently/usrvtodo:0.4
+        image: inherently/usrvtodo:0.6
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - mountPath: "/data"
+          name: todo-data
+      volumes:
+        - name: todo-data
+          persistentVolumeClaim:
+            claimName: todo-data-pvc

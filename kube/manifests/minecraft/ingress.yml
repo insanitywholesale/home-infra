@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: fabric-suzuhara-ingress
+spec:
+  rules:
+  - host: mc.kates.test
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: fabric-suzuhara-service
+          servicePort: 25565

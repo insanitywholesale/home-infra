@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fabric-suzuhara-deployment
+  labels:
+    app: fabric-suzuhara
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fabric-suzuhara
+  template:
+    metadata:
+      labels:
+        app: fabric-suzuhara
+    spec:
+      containers:
+      - name: fabric-suzuhara
+        image: chinodesuuu/suzuhara-mc:master
+        ports:
+        - containerPort: 25565
+        volumeMounts:
+        - mountPath: "/world"
+          name: world-pvc
+        - mountPath: "/minecraft/server.properties"
+          name: mc-config
+          subPath: "server.properties"
+      volumes:
+      - name: world-pvc
+        persistentVolumeClaim:
+          claimName: world-pvc
+      - name: mc-config
+        configMap:
+          name: fabric-suzuhara-config
