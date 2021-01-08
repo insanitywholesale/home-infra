@@ -16,7 +16,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	cores = 2
 	sockets = "1"
 	cpu = "host"
-	memory = 3072
+	memory = 2560
 	scsihw = "virtio-scsi-pci"
 	bootdisk = "virtio0"
 	agent = 1
