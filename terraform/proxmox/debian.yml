@@ -30,6 +30,11 @@
           - nfs-common
           - nfs4-acl-tools
           - glusterfs-server
+          - open-iscsi
+          - multipath-tools
+          - lsscsi
+          - sg3-utils
+          - scsitools
         state:
           present
 
@@ -48,9 +53,28 @@
         group: root
         mode: '0644'
 
+    - name: Copy /etc/multipath.conf config
+      copy:
+        src: multipath.conf
+        dest: /etc/multipath.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Enable and start multipath-tools
+      systemd:
+       name: multipath-tools
+       state: started
+       enabled: yes
+
+    - name: Enable and start open-iscsi
+      systemd:
+       name: open-iscsi
+       state: started
+       enabled: yes
+
     - name: rebooty the debooty
       reboot:
         reboot_timeout: 300
-
 
 ...
