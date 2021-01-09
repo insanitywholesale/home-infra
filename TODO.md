@@ -1,1 +1,5 @@
 - fix `Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress`
+- style drone manifests like all other manifetsts
+- add persistence for drone's postgres statefulset
+- set up gitea ssh
+- probably find a way to codeify creating namespaces and deploying manifests there
