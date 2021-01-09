@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: drone-server
+spec:
+  rules:
+  - host: drone.kates.test
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: droneserver
+          servicePort: 80

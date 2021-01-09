@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: minecraft-ingress
+spec:
+  rules:
+  - host: mcvan.kates.test
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: minecraft-service
+          servicePort: 25565
