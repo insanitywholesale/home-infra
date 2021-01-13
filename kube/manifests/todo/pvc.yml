@@ -4,8 +4,8 @@ metadata:
   name: todo-data-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: freenas-isci-csi
+    - ReadWriteMany
+  storageClassName: freenas-nfs-csi
   resources:
     requests:
       storage: 1Gi
