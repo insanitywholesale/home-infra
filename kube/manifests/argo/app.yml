@@ -6,14 +6,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://gitlab.com/insanitywholesale/infra
+    repoURL: https://gitlab.com/insanitywholesale/infra.git
     targetRevision: HEAD
     path: kube/manifests/todo
     directory:
       recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: todo
+    namespace: default
   syncPolicy:
     automated:
       prune: true
