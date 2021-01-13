@@ -5,8 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-    #- ReadWriteMany
-  storageClassName: nfs-client
+  storageClassName: freenas-isci-csi
   resources:
     requests:
       storage: 1Gi
