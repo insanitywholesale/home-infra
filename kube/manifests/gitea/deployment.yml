@@ -5,7 +5,7 @@ metadata:
   labels:
     app: gitea
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: gitea
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gitea
-        image: gitea/gitea:latest-rootless
+        image: gitea/gitea:linux-amd64-rootless
         ports:
         - containerPort: 3000
         volumeMounts:
