@@ -7,17 +7,25 @@ spec:
   selector:
     matchLabels:
       app: postgres
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
         app: postgres
     spec:
       containers:
-        - name: postgres
-          image: postgres:12
-          ports:
-            - containerPort: 5432
-          envFrom:
-            - configMapRef:
-                name: postgres-config
+      - name: postgres
+        image: postgres:12
+        ports:
+        - containerPort: 5432
+        envFrom:
+        - configMapRef:
+            name: postgres-config
+        volumeMounts:
+        - name: drone-server-data
+          mountPath: "/var/lib/postgresql/data"
+          subPath: "postgres"
+      volumes:
+        - name: drone-server-data
+          persistentVolumeClaim:
+            claimName: postgres-drone-data-pvc

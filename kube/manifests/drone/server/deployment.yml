@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: drone-server
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
