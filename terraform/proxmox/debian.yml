@@ -2,7 +2,7 @@
 
 - name: get dem debby boiz done up
   hosts:
-    - swarm
+    #- swarm
     - kates
     #- rancher
     #- keycloak

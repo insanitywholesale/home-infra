@@ -14,9 +14,6 @@ spec:
       labels:
         app: minecraft
     spec:
-      securityContext:
-        runAsUser: 0
-        runAsGroup: 0
       containers:
       - name: minecraft
         image: itzg/minecraft-server
@@ -27,10 +24,10 @@ spec:
           value: "1.16.4"
         - name: ONLINE_MODE
           value: "FALSE"
-        - name: UID
-          value: "0"
-        - name: GID
-          value: "0"
+        #- name: UID
+        #  value: "0"
+        #- name: GID
+        #  value: "0"
         securityContext:
           runAsUser: 0
           runAsGroup: 0

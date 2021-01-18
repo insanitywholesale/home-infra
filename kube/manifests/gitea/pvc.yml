@@ -6,10 +6,9 @@ spec:
   accessModes:
     #- ReadWriteOnce
     - ReadWriteMany
-  storageClassName: freenas-nfs-csi
   resources:
     requests:
-      storage: 22Gi
+      storage: 20Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -19,7 +18,6 @@ spec:
   accessModes:
     #- ReadWriteOnce
     - ReadWriteMany
-  storageClassName: freenas-nfs-csi
   resources:
     requests:
-      storage: 3Gi
+      storage: 1Gi

@@ -4,9 +4,8 @@ metadata:
   name: mc-data-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-    #- ReadWriteMany
-  storageClassName: nfs-client
+    #- ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 15Gi
