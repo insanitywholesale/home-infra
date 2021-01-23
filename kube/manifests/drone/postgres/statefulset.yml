@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: postgres
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -28,4 +28,4 @@ spec:
       volumes:
         - name: drone-server-data
           persistentVolumeClaim:
-            claimName: postgres-drone-data-pvc
+            claimName: postgres-drone-pvc

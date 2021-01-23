@@ -22,11 +22,11 @@ spec:
         - containerPort: 3000
         env:
         - name: DRONE_NAMESPACE_DEFAULT
-          value: drone
+          value: default
         - name: DRONE_SERVICE_ACCOUNT_DEFAULT
           value: drone-runner
         - name: DRONE_RPC_HOST
-          value: droneserver.drone
+          value: droneserver.default
         - name: DRONE_RPC_PROTO
           value: http
         - name: DRONE_RPC_SECRET 
