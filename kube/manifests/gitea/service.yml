@@ -7,6 +7,4 @@ spec:
     app: gitea
   ports:
     - protocol: TCP
-      name: web
       port: 3000
-      targetPort: 3000
