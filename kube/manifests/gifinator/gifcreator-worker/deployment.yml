@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gifcreator-worker-deployment
+  labels:
+    app: gifcreator-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gifcreator-worker
+  template:
+    metadata:
+      labels:
+        app: gifcreator-worker
+    spec:
+      containers:
+      - name: gifcreator-worker
+        image: #TODO: fill in
+        #add environment
+        ports:
+        - containerPort: 8082

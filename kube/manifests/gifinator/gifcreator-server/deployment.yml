@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gifcreator-server-deployment
+  labels:
+    app: gifcreator-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gifcreator-server
+  template:
+    metadata:
+      labels:
+        app: gifcreator-server
+    spec:
+      containers:
+      - name: gifcreator-server
+        image: #TODO: fill in
+        #add environment
+        ports:
+        - containerPort: 8081

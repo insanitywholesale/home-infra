@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: todo
+spec:
+  rules:
+  - host: gif.kates.test
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gifinator-frontend-service
+          servicePort: 8090
