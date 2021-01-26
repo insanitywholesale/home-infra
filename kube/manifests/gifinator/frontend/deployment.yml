@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gifinator-frontend-deployment
+  labels:
+    app: gifinator-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gifinator-frontend
+  template:
+    metadata:
+      labels:
+        app: gifinator-frontend
+    spec:
+      containers:
+      - name: gifinator-frontend
+        image: #TODO: fill in
+        ports:
+        - containerPort: 8090

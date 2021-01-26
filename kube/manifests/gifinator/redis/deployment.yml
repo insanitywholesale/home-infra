@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gifinator-redis-deployment
+  labels:
+    app: gifinator-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gifinator-redis
+  template:
+    metadata:
+      labels:
+        app: gifinator-redis
+    spec:
+      containers:
+      - name: gifinator-redis
+        image: redis:5
+        ports:
+        - containerPort: 6379
+        volumeMounts:
+        - mountPath: "/var/lib/redis"
+          name: gifinator-redis-data
+      volumes:
+        - name: gifinator-redis-data
+          persistentVolumeClaim:
+            claimName: gifinator-redis-data-pvc

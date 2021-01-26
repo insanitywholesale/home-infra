@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: render
+  labels:
+    app: render
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: render
+  template:
+    metadata:
+      labels:
+        app: render
+    spec:
+      containers:
+      - name: render
+        image: #TODO: fill in
+        ports:
+        - containerPort: 8080
