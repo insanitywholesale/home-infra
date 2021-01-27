@@ -17,6 +17,13 @@ spec:
       containers:
       - name: gifcreator-server
         image: #TODO: fill in
-        #add environment
+        command: ["/go/bin/gifcreator"]
+        env:
+        - name: REDIS_NAME
+          value: redis
+        - name: REDIS_PORT
+          value: 6379
+        - name: GIFCREATOR_PORT
+          value: 8082
         ports:
         - containerPort: 8081

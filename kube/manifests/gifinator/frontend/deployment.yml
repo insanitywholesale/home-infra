@@ -17,5 +17,16 @@ spec:
       containers:
       - name: gifinator-frontend
         image: #TODO: fill in
+        env:
+        - name: FRONTEND_TEMPLATES_DIR
+          value: /templates
+        - name: FRONTEND_STATIC_DIR
+          value: /static
+        - name: FRONTEND_PORT
+          value: 8090
+        - name: GIFCREATOR_NAME
+          value: gifcreator-server
+        - name: GIFCREATOR_PORT
+          value: 8082
         ports:
         - containerPort: 8090

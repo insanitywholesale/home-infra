@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gifinator-minio-deployment
+  labels:
+    app: gifinator-minio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gifinator-minio
+  template:
+    metadata:
+      labels:
+        app: gifinator-minio
+    spec:
+      containers:
+      - name: gifinator-minio
+        image: minio/minio
+        ports:
+        - containerPort: 9000
+        command: ["server", "/data"]
+        env:
+        - name: MINIO_ACCESS_KEY
+          value: minioaccesskeyid
+        - name: MINIO_SECRET_KEY
+          value: miniosecretaccesskey
+        volumeMounts:
+        - mountPath: "/data"
+          name: gifinator-minio-data
+      volumes:
+        - name: gifinator-minio-data
+          persistentVolumeClaim:
+            claimName: gifinator-minio-data-pvc
