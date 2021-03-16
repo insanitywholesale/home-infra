@@ -1,0 +1,30 @@
+upstream app {
+	127.0.0.1:{{port}} fail_timeout=0;
+}
+
+server {
+	server_name {{ domain }};
+	location / {
+		proxy_pass http://app;
+		{{ additional_arguments | default('', true) }}
+	}
+
+	# prob remove ssl at some point
+	listen [::]:443 ssl;
+	listen 443 ssl;
+	ssl_certificate /etc/app.crt;
+	ssl_certificate_key /etc/app.pem;
+	ssl_dhparam /etc/app-dhparam.pem;
+}
+
+server {
+	if ($host = {{domain}}) {
+		return 301 https://$host$request_uri;
+	}
+
+	listen 80;
+	listen [::]:80;
+
+	server_name {{domain}};
+	return 404;
+}

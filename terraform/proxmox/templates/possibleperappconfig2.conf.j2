@@ -1,0 +1,26 @@
+server {
+	server_name {{ domain }};
+	location / {
+		proxy_pass {{ backend_address }}
+		{{ additional_arguments | default('', true) }}
+	}
+
+	# prob remove ssl at some point
+	listen [::]:443 ssl;
+	listen 443 ssl;
+	ssl_certificate /etc/letsencrypt/live/{{domain}}/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/{{domain}}/privkey.pem;
+	ssl_dhparam /etc/dhparam-re.pem;
+}
+
+server {
+	if ($host = {{domain}}) {
+		return 301 https://$host$request_uri;
+	}
+
+	listen 80;
+	listen [::]:80;
+
+	server_name {{domain}};
+	return 404;
+}
