@@ -1,4 +1,11 @@
-# info
+# general info
+this holds all the manifests for the k3s cluster deployed by terraform and ansible on proxmox using [this](https://gitlab.com/insanitywholesale/infra/-/tree/master/terraform/proxmox).
+- secrets are not handled properly (private cluster so no biggie yet)
+- connection and use of ceph is WIP and not actually used
+- minecraft is used as a testing for storage stuff, not to be deployed (yet)
+- minio from gifinator is there for testing purposes, instance on truenas is to be used in prod
+- nfs dir is archived (no workie with >=1.20 and [democratic-csi](https://github.com/democratic-csi/democratic-csi) is used instead)
+- helm stuff is archived too
 
 ## commands to install democratic-csi
 need helm installed (k3s has it by default)
