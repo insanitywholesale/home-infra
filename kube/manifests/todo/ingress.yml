@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: todo
+  namespace: todo
 spec:
   rules:
   - host: todo.kates.test
