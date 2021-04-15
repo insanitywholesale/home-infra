@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: drone-server
+  namespace: drone
 spec:
   rules:
   - host: drone.kates.test
