@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gifcreator-server-deployment
+  namespace: gifinator
   labels:
     app: gifcreator-server
 spec:
