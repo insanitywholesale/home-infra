@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: render
-        image: #TODO: fill in
+        image: inherently/gifinator:0.0.3
         ports:
         - containerPort: 8080

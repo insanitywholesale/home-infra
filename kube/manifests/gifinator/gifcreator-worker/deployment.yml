@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gifcreator-worker
-        image: #TODO: fill in
+        image: inherently/gifinator:0.0.3
         command: ["/go/bin/gifcreator", "-worker"]
         env:
         - name: REDIS_NAME

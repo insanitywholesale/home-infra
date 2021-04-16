@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gifinator-frontend
-        image: #TODO: fill in
+        image: inherently/gifinator:0.0.3
         env:
         - name: FRONTEND_TEMPLATES_DIR
           value: /templates
