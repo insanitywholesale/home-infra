@@ -18,7 +18,7 @@ spec:
       containers:
       - name: gifcreator-server
         image: inherently/gifinator:0.0.3
-        command: ["/go/bin/gifcreator"]
+        command: ["/gifcreator"]
         env:
         - name: REDIS_NAME
           value: redis
@@ -26,5 +26,7 @@ spec:
           value: "6379"
         - name: GIFCREATOR_PORT
           value: "8082"
+        - name: MINIO_NAME
+          value: "gifinator-minio"
         ports:
         - containerPort: 8081

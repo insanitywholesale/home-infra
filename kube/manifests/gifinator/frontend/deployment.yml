@@ -18,11 +18,12 @@ spec:
       containers:
       - name: gifinator-frontend
         image: inherently/gifinator:0.0.3
+        command: ["/frontend"]
         env:
         - name: FRONTEND_TEMPLATES_DIR
-          value: /templates
+          value: "/templates"
         - name: FRONTEND_STATIC_DIR
-          value: /static
+          value: "/static"
         - name: FRONTEND_PORT
           value: "8090"
         - name: GIFCREATOR_NAME
