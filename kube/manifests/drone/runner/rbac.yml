@@ -29,11 +29,11 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: drone-runner
-  namespace: default
+  namespace: drone
 subjects:
 - kind: ServiceAccount
   name: drone-runner
-  namespace: default
+  namespace: drone
 roleRef:
   kind: Role
   name: drone-runner
