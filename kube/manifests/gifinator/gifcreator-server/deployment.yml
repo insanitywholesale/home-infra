@@ -21,7 +21,7 @@ spec:
         command: ["/gifcreator"]
         env:
         - name: REDIS_NAME
-          value: redis
+          value: "gifinator-redis"
         - name: REDIS_PORT
           value: "6379"
         - name: GIFCREATOR_PORT
