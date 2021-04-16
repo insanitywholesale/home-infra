@@ -24,10 +24,10 @@ spec:
         - name: FRONTEND_STATIC_DIR
           value: /static
         - name: FRONTEND_PORT
-          value: 8090
+          value: "8090"
         - name: GIFCREATOR_NAME
           value: gifcreator-server
         - name: GIFCREATOR_PORT
-          value: 8082
+          value: "8082"
         ports:
-        - containerPort: 8090
+        - containerPort: "8090"

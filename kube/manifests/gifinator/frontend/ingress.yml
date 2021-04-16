@@ -11,4 +11,4 @@ spec:
       - path: /
         backend:
           serviceName: gifinator-frontend-service
-          servicePort: 8090
+          servicePort: "8090"

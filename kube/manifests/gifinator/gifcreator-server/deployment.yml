@@ -23,8 +23,8 @@ spec:
         - name: REDIS_NAME
           value: redis
         - name: REDIS_PORT
-          value: 6379
+          value: "6379"
         - name: GIFCREATOR_PORT
-          value: 8082
+          value: "8082"
         ports:
-        - containerPort: 8081
+        - containerPort: "8081"
