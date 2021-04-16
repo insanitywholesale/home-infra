@@ -19,4 +19,4 @@ spec:
       - name: render
         image: inherently/gifinator:0.0.3
         ports:
-        - containerPort: 8080
+        - containerPort: "8080"

@@ -8,4 +8,4 @@ spec:
     app: minio
   ports:
     - protocol: TCP
-      port: 9000
+      port: "9000"
