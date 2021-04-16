@@ -8,4 +8,4 @@ spec:
     app: redis
   ports:
     - protocol: TCP
-      port: "6379"
+      port: 6379

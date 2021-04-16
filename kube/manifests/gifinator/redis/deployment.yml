@@ -19,7 +19,7 @@ spec:
       - name: gifinator-redis
         image: redis:5
         ports:
-        - containerPort: "6379"
+        - containerPort: 6379
         volumeMounts:
         - mountPath: "/var/lib/redis"
           name: gifinator-redis-data
