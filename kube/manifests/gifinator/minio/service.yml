@@ -5,7 +5,7 @@ metadata:
   namespace: gifinator
 spec:
   selector:
-    app: minio
+    app: gifinator-minio
   ports:
     - protocol: TCP
       port: 9000
