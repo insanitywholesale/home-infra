@@ -37,5 +37,4 @@ subjects:
 roleRef:
   kind: Role
   name: drone-runner
-  namespace: drone
   apiGroup: rbac.authorization.k8s.io
