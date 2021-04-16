@@ -17,15 +17,15 @@ spec:
     spec:
       containers:
       - name: gifinator-minio
-        image: minio/minio
+        image: minio/minio:latest
         ports:
         - containerPort: 9000
         command: ["server", "/data"]
         env:
         - name: MINIO_ACCESS_KEY
-          value: minioaccesskeyid
+          value: "minioaccesskeyid"
         - name: MINIO_SECRET_KEY
-          value: miniosecretaccesskey
+          value: "miniosecretaccesskey"
         volumeMounts:
         - mountPath: "/data"
           name: gifinator-minio-data

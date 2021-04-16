@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gifinator-redis
-        image: redis:5
+        image: redis:latest
         ports:
         - containerPort: 6379
         volumeMounts:
