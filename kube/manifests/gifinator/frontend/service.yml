@@ -8,4 +8,4 @@ spec:
     app: gifinator-frontend
   ports:
     - protocol: TCP
-      port: "8090"
+      port: 8090

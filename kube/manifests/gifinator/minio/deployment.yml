@@ -19,7 +19,7 @@ spec:
       - name: gifinator-minio
         image: minio/minio
         ports:
-        - containerPort: "9000"
+        - containerPort: 9000
         command: ["server", "/data"]
         env:
         - name: MINIO_ACCESS_KEY

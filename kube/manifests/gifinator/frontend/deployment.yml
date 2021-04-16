@@ -30,4 +30,4 @@ spec:
         - name: GIFCREATOR_PORT
           value: "8082"
         ports:
-        - containerPort: "8090"
+        - containerPort: 8090
