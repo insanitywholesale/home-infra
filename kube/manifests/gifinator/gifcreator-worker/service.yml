@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: gifcreator-server-service
+  name: gifcreator-worker-service
   namespace: gifinator
 spec:
   selector:
-    app: gifcreator-server
+    app: gifcreator-worker
   ports:
     - protocol: TCP
       port: 8081
