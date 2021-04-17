@@ -22,12 +22,12 @@ spec:
         env:
         - name: RENDER_NAME
           value: "render-service"
+        - name: RENDER_PORT
+          value: "8080"
         - name: REDIS_NAME
           value: "gifinator-redis"
         - name: REDIS_PORT
           value: "6379"
-        - name: RENDER_PORT
-          value: "8080"
         - name: GIFCREATOR_PORT
           value: "8081"
         - name: MINIO_NAME
