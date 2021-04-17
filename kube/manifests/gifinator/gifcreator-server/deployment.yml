@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gifcreator-server-deployment
+  name: gifcreator-server
   namespace: gifinator
   labels:
     app: gifcreator-server
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gifcreator-server
-        image: inherently/gifinator:0.0.3
+        image: inherently/gifinator:0.0.4
         command: ["/gifcreator"]
         env:
         - name: RENDER_NAME
@@ -25,12 +25,12 @@ spec:
         - name: RENDER_PORT
           value: "8080"
         - name: REDIS_NAME
-          value: "gifinator-redis"
+          value: "redis-service"
         - name: REDIS_PORT
           value: "6379"
         - name: GIFCREATOR_PORT
           value: "8082"
         - name: MINIO_NAME
-          value: "gifinator-minio"
+          value: "minio-service"
         ports:
         - containerPort: 8081

@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gifinator-frontend-deployment
+  name: frontend
   namespace: gifinator
   labels:
-    app: gifinator-frontend
+    app: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gifinator-frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: gifinator-frontend
+        app: frontend
     spec:
       containers:
-      - name: gifinator-frontend
-        image: inherently/gifinator:0.0.3
+      - name: frontend
+        image: inherently/gifinator:0.0.4
         command: ["/frontend"]
         env:
         - name: FRONTEND_TEMPLATES_DIR
@@ -27,7 +27,7 @@ spec:
         - name: FRONTEND_PORT
           value: "8090"
         - name: GIFCREATOR_NAME
-          value: "gifcreator-server-service"
+          value: "gifcreator-service"
         - name: GIFCREATOR_PORT
           value: "8082"
         ports:

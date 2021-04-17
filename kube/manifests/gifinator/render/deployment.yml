@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
       - name: render
-        image: inherently/gifinator:0.0.3
+        image: inherently/gifinator:0.0.4
         command: ["/render"]
         env:
         - name: MINIO_NAME
-          value: "gifinator-minio"
+          value: "minio-service"
         ports:
         - containerPort: 8080

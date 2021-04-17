@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gifinator-minio-deployment
+  name: minio
   namespace: gifinator
   labels:
-    app: gifinator-minio
+    app: minio
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gifinator-minio
+      app: minio
   template:
     metadata:
       labels:
-        app: gifinator-minio
+        app: minio
     spec:
       containers:
-      - name: gifinator-minio
+      - name: minio
         image: minio/minio:latest
         command: ["minio", "server", "/data"]
         ports:
