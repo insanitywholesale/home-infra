@@ -22,6 +22,8 @@ spec:
         env:
         - name: RENDER_NAME
           value: "render-service"
+        - name: RENDER_PORT
+          value: "8080"
         - name: REDIS_NAME
           value: "gifinator-redis"
         - name: REDIS_PORT
