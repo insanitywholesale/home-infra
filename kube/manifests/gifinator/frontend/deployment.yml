@@ -27,7 +27,7 @@ spec:
         - name: FRONTEND_PORT
           value: "8090"
         - name: GIFCREATOR_NAME
-          value: gifcreator-server
+          value: "gifcreator-server"
         - name: GIFCREATOR_PORT
           value: "8082"
         ports:
