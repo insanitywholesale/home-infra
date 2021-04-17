@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gifinator-redis
+  name: redis
   namespace: gifinator
   labels:
-    app: gifinator-redis
+    app: redis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gifinator-redis
+      app: redis
   template:
     metadata:
       labels:
-        app: gifinator-redis
+        app: redis
     spec:
       containers:
-      - name: gifinator-redis
-        image: redis:latest
+      - name: redis
+        image: redis:6
         ports:
         - containerPort: 6379
         volumeMounts:

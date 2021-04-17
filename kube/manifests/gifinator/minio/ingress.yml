@@ -10,5 +10,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: gifinator-minio
+          serviceName: minio-service
           servicePort: 9000

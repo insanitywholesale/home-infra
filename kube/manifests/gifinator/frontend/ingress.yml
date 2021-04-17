@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gifinator-frontend-ingress
+  name: frontend-ingress
   namespace: gifinator
 spec:
   rules:
@@ -10,5 +10,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: gifinator-frontend-service
+          serviceName: frontend-service
           servicePort: 8090
