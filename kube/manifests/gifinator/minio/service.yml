@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: minio-service
+  name: gifinator-minio
   namespace: gifinator
 spec:
   selector:

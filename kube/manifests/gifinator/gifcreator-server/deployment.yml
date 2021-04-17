@@ -20,6 +20,8 @@ spec:
         image: inherently/gifinator:0.0.3
         command: ["/gifcreator"]
         env:
+        - name: RENDER_NAME
+          value: "render-service"
         - name: REDIS_NAME
           value: "gifinator-redis"
         - name: REDIS_PORT
