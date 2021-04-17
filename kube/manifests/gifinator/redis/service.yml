@@ -5,7 +5,7 @@ metadata:
   namespace: gifinator
 spec:
   selector:
-    app: redis
+    app: gifinator-redis
   ports:
     - protocol: TCP
       port: 6379
