@@ -23,7 +23,7 @@ spec:
         - name: RENDER_NAME
           value: "render-service"
         - name: RENDER_PORT
-          value: "8080"
+          value: "8085"
         - name: REDIS_NAME
           value: "redis-service"
         - name: REDIS_PORT
@@ -35,4 +35,4 @@ spec:
         - name: SCENE_PATH
           value: "/tmp/scene"
         ports:
-        - containerPort: 8081
+        - containerPort: 8082
