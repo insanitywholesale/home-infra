@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gifcreator-server
-        image: inherently/gifinator:0.0.4
+        image: inherently/gifinator:0.0.5
         command: ["/gifcreator"]
         env:
         - name: RENDER_NAME
@@ -32,5 +32,7 @@ spec:
           value: "8082"
         - name: MINIO_NAME
           value: "minio-service"
+        - name: SCENE_PATH
+          value: "/tmp/scene"
         ports:
         - containerPort: 8081

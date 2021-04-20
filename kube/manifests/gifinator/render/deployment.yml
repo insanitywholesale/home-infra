@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: render
-        image: inherently/gifinator:0.0.4
+        image: inherently/gifinator:0.0.5
         command: ["/render"]
         env:
         - name: MINIO_NAME
