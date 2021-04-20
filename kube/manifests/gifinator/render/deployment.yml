@@ -20,8 +20,11 @@ spec:
         image: inherently/gifinator:0.0.5
         command: ["/render"]
         env:
+        - name: MINIO_PORT
+          value: "80"
         - name: MINIO_NAME
-          value: "minio-service"
+          #value: "minio-service"
+          value: "minio.kates.test"
         - name: RENDER_PORT
           value: "8085"
         ports:

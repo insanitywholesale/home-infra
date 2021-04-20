@@ -30,8 +30,11 @@ spec:
           value: "6379"
         - name: GIFCREATOR_PORT
           value: "8081"
+        - name: MINIO_PORT
+          value: "80"
         - name: MINIO_NAME
-          value: "minio-service"
+          #value: "minio-service"
+          value: "minio.kates.test"
         - name: SCENE_PATH
           value: "/tmp/scene"
         ports:
