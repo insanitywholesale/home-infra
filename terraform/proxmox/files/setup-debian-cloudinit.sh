@@ -20,7 +20,6 @@ if [ "$VMEXISTS" ]
 then
 	echo "VM with ${VMID} already exists"
 else
-	wget http://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2
 	qm create "${VMID}" -name "${VMNAME}" -memory 1024 -net0 virtio,bridge=vmbr0 -cores 1 -sockets 1 -cpu cputype=kvm64 -description "debbie image" -kvm 1 -numa 1
 	qm importdisk "${VMID}" debian-10-openstack-amd64.qcow2 local-zfs
 	qm set "${VMID}" -scsihw virtio-scsi-pci -virtio0 local-zfs:vm-"${VMID}"-disk-0
