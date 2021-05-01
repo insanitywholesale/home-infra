@@ -22,6 +22,7 @@
       get_url:
         url: http://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2
         dest: /root/debian-10-openstack-amd64.qcow2
+        checksum: sha256:e07b6cd614518b018d95c375d67681d3b079d930b47e4095741b13d4678ea96e
         mode: '0644'
         owner: root
         group: root
@@ -37,4 +38,5 @@
 
     - name: run templ vm scriptoid
       shell:
+        chdir: /root/
         cmd: /root/setup-debian-template.sh
