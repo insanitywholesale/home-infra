@@ -73,11 +73,11 @@
        state: started
        enabled: yes
 
-    - name: restart networking
-      systemd:
-        name: networking
-        state: restarted
-        daemon_reload: yes
+    #- name: restart networking
+    #  systemd:
+    #    name: networking
+    #    state: restarted
+    #    daemon_reload: yes
 
     - name: rebooty the debooty
       reboot:
