@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: lister
+  namespace: lister
+spec:
+  rules:
+  - host: lister.kates.test
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: lister-svc
+          servicePort: 9392
