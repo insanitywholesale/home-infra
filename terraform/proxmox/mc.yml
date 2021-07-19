@@ -1,0 +1,13 @@
+---
+
+- name: get mc deps
+  hosts:
+    - mc
+  become: true
+
+  tasks:
+
+    - name: get java runtime
+      apt:
+        name:
+          - default-jre-headless
