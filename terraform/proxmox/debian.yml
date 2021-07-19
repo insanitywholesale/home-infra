@@ -3,10 +3,7 @@
 - name: get dem debby boiz done up
   hosts:
     - kates
-    #- swarm
-    #- rancher
-    #- keycloak
-    #- sentry
+    - mc
   become: true
 
   tasks:
@@ -29,7 +26,6 @@
           - python3-apt
           - nfs-common
           - nfs4-acl-tools
-          - glusterfs-server
           - open-iscsi
           - multipath-tools
           - lsscsi
