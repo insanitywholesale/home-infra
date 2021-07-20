@@ -16,7 +16,7 @@ provider "proxmox" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 
-	count = 3
+	count = 4
 	name = "deb-k3s2-${count.index + 1}"
 	target_node = "pve1"
 
@@ -57,6 +57,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	}
 }
 
+/*
 resource "proxmox_vm_qemu" "proxmox_vm_mc" {
 
 	count = 1
@@ -99,6 +100,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_mc" {
 		]
 	}
 }
+*/
 
 /*
 output "rancher_ips" {
