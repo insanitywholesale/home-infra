@@ -6,4 +6,4 @@
   vars_files:
     - ./vars-mysql.yml
   roles:
-    - role: ./ansible-role-mysql
+    - geerlingguy.nginx
