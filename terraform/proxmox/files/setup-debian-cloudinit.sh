@@ -14,7 +14,7 @@ else
 	VMNAME="$2"
 fi
 
-VMEXISTS="$(qm list | grep 9001)"
+VMEXISTS="$(qm list | grep $VMID)"
 
 if [ "$VMEXISTS" ]
 then
