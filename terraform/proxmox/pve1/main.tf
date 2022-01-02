@@ -9,7 +9,7 @@ terraform {
 
 provider "proxmox" {
 	pm_tls_insecure = true
-	pm_api_url = "https://192.168.5.55:8006/api2/json"
+	pm_api_url = "https://192.168.70.2:8006/api2/json"
 	pm_password = "failfail"
 	pm_user = "root@pam"
 }
@@ -28,8 +28,10 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s2" {
 	memory = 3084
 	scsihw = "virtio-scsi-pci"
 	bootdisk = "virtio0"
-	agent = 1
+	agent = 0
+	/*
 	guest_agent_ready_timeout = 120
+	*/
 	onboot = false
 
 	disk {
@@ -100,8 +102,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_mc" {
 		]
 	}
 }
-*/
 
 output "rancher_ips" {
 	value = proxmox_vm_qemu.proxmox_kvm_k3s2.*.ipconfig0
 }
+*/
