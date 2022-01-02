@@ -37,7 +37,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s2" {
 	disk {
 		size = "33G"
 		type = "virtio"
-		storage = "local-zfs"
+		storage = "nfsprox"
 		iothread = 1
 	}
 
