@@ -35,7 +35,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	disk {
 		size = "33G"
 		type = "virtio"
-		storage = "local-zfs"
+		storage = "nfsprox"
 	}
 
 	network {
