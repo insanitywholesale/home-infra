@@ -32,7 +32,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s2" {
 	/*
 	guest_agent_ready_timeout = 120
 	*/
-	onboot = false
+	onboot = true
 
 	disk {
 		size = "33G"

@@ -29,8 +29,10 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	scsihw = "virtio-scsi-pci"
 	bootdisk = "virtio0"
 	agent = 1
+	/*
 	guest_agent_ready_timeout = 120
-	onboot = false
+	*/
+	onboot = true
 
 	disk {
 		size = "33G"
