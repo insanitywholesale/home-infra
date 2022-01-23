@@ -2,14 +2,14 @@
 
 if [ -z "$1" ]
 then
-	VMID=9001
+	VMID=9002
 else
 	VMID="$1"
 fi
 
 if [ -z "$2" ]
 then
-	VMNAME=debian-templ
+	VMNAME="debian-templ"
 else
 	VMNAME="$2"
 fi

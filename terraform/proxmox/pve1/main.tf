@@ -20,7 +20,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s2" {
 	name = "deb-k3s2-${count.index + 1}"
 	target_node = "pve1"
 
-	clone = "debian-templ"
+	/* change to debian-templ for 11 */
+	clone = "debian-tmpl"
 	os_type = "cloud-init"
 	cores = 2
 	sockets = "1"
