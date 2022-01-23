@@ -9,7 +9,7 @@ terraform {
 
 provider "proxmox" {
     pm_tls_insecure = true
-    pm_api_url = "https://192.168.7.77:8006/api2/json"
+    pm_api_url = "https://192.168.70.1:8006/api2/json"
     pm_password = "failfail"
     pm_user = "root@pam"
 }
@@ -20,7 +20,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	name = "deb-k3s-${count.index + 1}"
 	target_node = "pve0"
 
-	clone = "debian-templ"
+	clone = "debian-tmpl"
 	os_type = "cloud-init"
 	cores = 2
 	sockets = "1"
@@ -29,13 +29,10 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	scsihw = "virtio-scsi-pci"
 	bootdisk = "virtio0"
 	agent = 1
-	/*
-	guest_agent_ready_timeout = 120
-	*/
 	onboot = true
 
 	disk {
-		size = "33G"
+		size = "30G"
 		type = "virtio"
 		storage = "nfsprox"
 	}
@@ -58,65 +55,126 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	}
 }
 
-/*
-resource "proxmox_lxc" "ubuntu_mysql_lxc" {
+resource "proxmox_vm_qemu" "reverse-proxy-ngx" {
 
 	count = 1
+	name = "deb-nginx-${count.index + 1}"
+	target_node = "pve0"
 
-    features {
-        nesting = true
-    }
+	clone = "debian-tmpl"
+	os_type = "cloud-init"
+	cores = 2
+	sockets = "1"
+	cpu = "host"
+	memory = 1536
+	scsihw = "virtio-scsi-pci"
+	bootdisk = "virtio0"
+	agent = 1
+	onboot = false
 
-	start = true
+	disk {
+		size = "20G"
+		type = "virtio"
+		storage = "local-zfs"
+	}
 
-	memory = 768
+	network {
+		model = "virtio"
+		bridge = "vmbr0"
+	}
 
-    hostname = "ubuntu-mysql-${count.index}"
+	ipconfig0 = "ip=192.168.9.10/16,gw=192.168.0.1"
 
-    network {
-        name = "eth0"
-        bridge = "vmbr0"
-        ip = "192.168.20.36/16,gw=192.168.0.1"
-    }
+	sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
 
-	ssh_public_keys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
-
-    ostemplate = "local:vztmpl/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz"
-    password = "failfail"
-    storage = "local-zfs"
-    target_node = "pve-0"
-    unprivileged = true
+	lifecycle {
+		ignore_changes = [
+			cipassword,
+			network,
+			desc,
+		]
+	}
 }
 
-resource "proxmox_lxc" "ubuntu_nginx_lxc" {
+resource "proxmox_vm_qemu" "reverse-proxy-hap" {
 
 	count = 1
+	name = "deb-haproxy-${count.index + 1}"
+	target_node = "pve0"
 
-    features {
-        nesting = true
-    }
+	clone = "debian-tmpl"
+	os_type = "cloud-init"
+	cores = 2
+	sockets = "1"
+	cpu = "host"
+	memory = 1536
+	scsihw = "virtio-scsi-pci"
+	bootdisk = "virtio0"
+	agent = 1
+	onboot = false
 
-	start = true
+	disk {
+		size = "20G"
+		type = "virtio"
+		storage = "local-zfs"
+	}
 
-    hostname = "ubuntu-nginx-${count.index}"
+	network {
+		model = "virtio"
+		bridge = "vmbr0"
+	}
 
-    network {
-        name = "eth0"
-        bridge = "vmbr0"
-        ip = "192.168.20.80/16,gw=192.168.0.1"
-    }
+	ipconfig0 = "ip=192.168.9.11/16,gw=192.168.0.1"
 
-	ssh_public_keys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
+	sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
 
-    ostemplate = "local:vztmpl/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz"
-    password = "failfail"
-    storage = "local-zfs"
-    target_node = "pve-0"
-    unprivileged = true
-
+	lifecycle {
+		ignore_changes = [
+			cipassword,
+			network,
+			desc,
+		]
+	}
 }
-*/
 
-output "rancher_ips" {
-	value = proxmox_vm_qemu.proxmox_vm_k3s.*.ipconfig0
+resource "proxmox_vm_qemu" "bare_hosting_vm" {
+
+	count = 3
+	name = "deb-host-${count.index + 1}"
+	target_node = "pve0"
+
+	clone = "debian-tmpl"
+	os_type = "cloud-init"
+	cores = 2
+	sockets = "1"
+	cpu = "host"
+	memory = 2048
+	scsihw = "virtio-scsi-pci"
+	bootdisk = "virtio0"
+	agent = 1
+	onboot = false
+	guest_agent_ready_timeout = 180
+
+	disk {
+		size = "30G"
+		type = "virtio"
+		storage = "local-zfs"
+	}
+
+	network {
+		model = "virtio"
+		bridge = "vmbr0"
+	}
+
+	ipconfig0 = "ip=192.168.9.2${count.index + 1}/16,gw=192.168.0.1"
+
+	sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
+
+	lifecycle {
+		ignore_changes = [
+			cipassword,
+			network,
+			desc,
+		]
+	}
 }
