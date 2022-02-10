@@ -1,5 +1,6 @@
 - fix `Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress`
-- style drone manifests like all other manifetsts
-- add persistence for drone's postgres statefulset
-- set up gitea ssh
 - probably find a way to codeify creating namespaces and deploying manifests there
+- update k3s version
+- use templated inventory.ini for dynamic ansible inventory
+- use terraform local executor to run ansible playbook after vm provisioning
+- figure out if there is a debian image with qemu-guest-agent preinstalled
