@@ -21,7 +21,7 @@ then
 	echo "VM with ${VMID} already exists"
 else
 	qm create "${VMID}" -name "${VMNAME}" -memory 1024 -net0 virtio,bridge=vmbr0 -cores 1 -sockets 1 -cpu cputype=kvm64 -description "debbie image" -kvm 1 -numa 1
-	qm importdisk "${VMID}" debian-11-openstack-amd64.qcow2 local-zfs
+	qm importdisk "${VMID}" debian-10-openstack-amd64.qcow2 local-zfs
 	qm set "${VMID}" -scsihw virtio-scsi-pci -virtio0 local-zfs:vm-"${VMID}"-disk-0
 	qm set "${VMID}" -serial0 socket
 	qm set "${VMID}" -boot c -bootdisk virtio0
