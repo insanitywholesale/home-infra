@@ -35,11 +35,10 @@
         owner: root
         group: root
 
-
     - name: get templ vm scriptoid
       copy:
-        src: setup-debian-cloudinit.sh
-        dest: /root/setup-debian-template.sh
+        src: setup-debian-10-cloudinit.sh
+        dest: /root/setup-debian-10-template.sh
         mode: '0755'
         owner: root
         group: root
@@ -47,4 +46,17 @@
     - name: run templ vm scriptoid
       shell:
         chdir: /root/
-        cmd: /root/setup-debian-template.sh
+        cmd: /root/setup-debian-10-template.sh
+
+    - name: get templ vm scriptoid
+      copy:
+        src: setup-debian-11-cloudinit.sh
+        dest: /root/setup-debian-11-template.sh
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: run templ vm scriptoid
+      shell:
+        chdir: /root/
+        cmd: /root/setup-debian-11-template.sh
