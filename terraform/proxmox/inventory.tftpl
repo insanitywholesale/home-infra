@@ -1,13 +1,16 @@
-[kates]
-# on pve0
-192.168.14.51
-192.168.14.52
-192.168.14.53
-# on pve1
-192.168.15.51
-192.168.15.52
-192.168.15.53
-192.168.15.54
+[k3s]
+%{ for host in k3s_hosts ~}
+${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
+%{ endfor ~}
+
+[k3s2]
+%{ for host in k3s2_hosts ~}
+${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
+%{ endfor ~}
+
+[kates:children]
+k3s
+k3s2
 
 [kates:vars]
 ansible_private_key_file=/home/angle/.ssh/id_rsa
