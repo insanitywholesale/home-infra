@@ -20,17 +20,18 @@
 
     - name: get older debbie could image
       get_url:
-        url: http://cdimage.debian.org/cdimage/openstack/current-10/debian-10-openstack-amd64.qcow2
+        url: https://cloud.debian.org/images/cloud/buster/20211011-792/debian-10-generic-amd64-20211011-792.qcow2
         dest: /root/debian-10-openstack-amd64.qcow2
+        checksum: sha512:f3dac13104b4e28eb62c46cbbb1e30fc9c792834500f9101d477c19c258c31ff04850933ee0b3e63236eca38c854447d95a0ab45163c4a3fccf05f9dd95601a5
         mode: '0644'
         owner: root
         group: root
 
     - name: get debbie could image
       get_url:
-        url: https://cdimage.debian.org/images/cloud/bullseye/20210814-734/debian-11-generic-amd64-20210814-734.qcow2
+        url: https://cloud.debian.org/images/cloud/bullseye/20220121-894/debian-11-generic-amd64-20220121-894.qcow2
         dest: /root/debian-11-openstack-amd64.qcow2
-        checksum: sha512:ed680265ce925e3e02336b052bb476883e2d3b023f7b7d39d064d58ba5f1856869f75dca637c27c0303b731d082ff23a7e45ea2e3f9bcb8f3c4ce0c24332885d
+        checksum: sha512:0948dc56b4834a7755e4eae7d5532e138b90484a949161ffe9fc6894c7a14b1bd32ebf96fa3f3d03d498fe7ee125f8014f31bfab5825915a93de9330df814f7b
         mode: '0644'
         owner: root
         group: root
