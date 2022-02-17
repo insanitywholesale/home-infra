@@ -25,7 +25,7 @@ else
 	qm set "${VMID}" -scsihw virtio-scsi-pci -virtio0 local-zfs:vm-"${VMID}"-disk-0
 	qm set "${VMID}" -serial0 socket
 	qm set "${VMID}" -boot c -bootdisk virtio0
-	qm set "${VMID}" -agent 1
+#	qm set "${VMID}" -agent 1
 	qm set "${VMID}" -hotplug disk,network,usb,memory,cpu
 	qm set "${VMID}" -vcpus 1
 	qm set "${VMID}" -vga qxl
