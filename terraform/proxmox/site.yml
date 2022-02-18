@@ -1,0 +1,37 @@
+---
+
+#- hosts: k3s
+#  gather_facts: yes
+#  become: yes
+#  roles:
+#    - role: k3s_roles/prereq
+#    - role: k3s_roles/download
+#    - role: k3s_roles/raspberrypi
+#
+#- hosts: "{{ hostvars[groups['k3s'][0]]['ansible_host'] | default(groups['k3s'][0]) }}"
+#  become: yes
+#  roles:
+#    - role: k3s_roles/k3s/master
+#
+#- hosts: "{{ hostvars[groups['k3s'][1:]]['ansible_host'] | default(groups['k3s'][1:]) }}"
+#  become: yes
+#  roles:
+#    - role: k3s_roles/k3s/node
+
+- hosts: k3s2
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: k3s2_roles/prereq
+    - role: k3s2_roles/download
+    - role: k3s2_roles/raspberrypi
+
+- hosts: "{{ hostvars[groups['k3s2'][0]]['ansible_host'] | default(groups['k3s2'][0]) }}"
+  become: yes
+  roles:
+    - role: k3s2_roles/k3s/master
+
+- hosts: "{{ hostvars[groups['k3s2'][1:]]['ansible_host'] | default(groups['k3s2'][1:]) }}"
+  become: yes
+  roles:
+    - role: k3s2_roles/k3s/node
