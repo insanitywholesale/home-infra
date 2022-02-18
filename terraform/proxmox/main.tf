@@ -67,7 +67,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 
 resource "proxmox_vm_qemu" "reverse-proxy-ngx" {
 	provider = proxmox.pve0
-	count = 0
+	count = 1
 	name = "deb-nginx-${count.index + 1}"
 	target_node = "pve0"
 
@@ -94,7 +94,7 @@ resource "proxmox_vm_qemu" "reverse-proxy-ngx" {
 		bridge = "vmbr0"
 	}
 
-	ipconfig0 = "ip=192.168.9.10/16,gw=192.168.0.1"
+	ipconfig0 = "ip=192.168.9.8/16,gw=192.168.0.1"
 
 	sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
 
@@ -109,7 +109,7 @@ resource "proxmox_vm_qemu" "reverse-proxy-ngx" {
 
 resource "proxmox_vm_qemu" "reverse-proxy-hap" {
 	provider = proxmox.pve0
-	count = 0
+	count = 1
 	name = "deb-haproxy-${count.index + 1}"
 	target_node = "pve0"
 
@@ -136,7 +136,7 @@ resource "proxmox_vm_qemu" "reverse-proxy-hap" {
 		bridge = "vmbr0"
 	}
 
-	ipconfig0 = "ip=192.168.9.11/16,gw=192.168.0.1"
+	ipconfig0 = "ip=192.168.9.9/16,gw=192.168.0.1"
 
 	sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
 
@@ -151,7 +151,7 @@ resource "proxmox_vm_qemu" "reverse-proxy-hap" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s2" {
 	provider = proxmox.pve1
-	count = 2
+	count = 5
 	name = "deb-k3s2-${count.index + 1}"
 	target_node = "pve1"
 
@@ -191,6 +191,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s2" {
 	}
 }
 
+/* this is also interesting https://github.com/NatiSayada/k3s-proxmox-terraform-ansible/blob/main/terraform/main.tf */
 resource "local_file" "hosts_cfg_k3s" {
 	content = templatefile(
 		"${path.module}/inventory.tftpl",
