@@ -2,8 +2,7 @@
 
 - name: get dem debby boiz done up
   hosts:
-    - kates
-    - mc
+    - debvm
   become: true
 
   tasks:
