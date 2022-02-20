@@ -9,6 +9,9 @@ spec:
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: lister-svc
-          servicePort: 9392
+          service:
+            name: lister-svc
+            port:
+              number: 9392
