@@ -12,3 +12,10 @@ spec:
         backend:
           serviceName: minio-service
           servicePort: 9000
+  - host: console.minio.kates.test
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: minio-service
+          servicePort: 9001

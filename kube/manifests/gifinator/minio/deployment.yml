@@ -18,13 +18,14 @@ spec:
       containers:
       - name: minio
         image: minio/minio:latest
-        command: ["minio", "server", "/data"]
+        command: ["minio", "server", "--console-address", "':9001'", "/data"]
         ports:
         - containerPort: 9000
+        - containerPort: 9001
         env:
-        - name: MINIO_ACCESS_KEY
+        - name: MINIO_ROOT_USER
           value: "minioaccesskeyid"
-        - name: MINIO_SECRET_KEY
+        - name: MINIO_ROOT_PASSWORD
           value: "miniosecretaccesskey"
         volumeMounts:
         - mountPath: "/data"
