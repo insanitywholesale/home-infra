@@ -9,13 +9,19 @@ spec:
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: minio-service
-          servicePort: 9000
+          service:
+            name: minio-service
+            port:
+              number: 9000
   - host: console.minio.kates.test
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: minio-service
-          servicePort: 9001
+          service:
+            name: minio-service
+            port:
+              number: 9001
