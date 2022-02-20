@@ -9,6 +9,9 @@ spec:
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: frontend-service
-          servicePort: 8090
+          service:
+            name: frontend-service
+            port:
+              number: 8090
