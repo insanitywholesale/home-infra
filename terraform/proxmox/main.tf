@@ -201,6 +201,6 @@ resource "local_file" "hosts_cfg_k3s" {
 			k3s2_hosts = proxmox_vm_qemu.proxmox_vm_k3s2.*,
 		}
 	)
-	filename = "inventory"
+	filename = "inventory.ini"
 	file_permission = "0644"
 }
