@@ -1,2 +1,7 @@
 - use terraform local executor to run ansible playbook after vm provisioning
 - figure out if there is a debian image with qemu-guest-agent preinstalled
+- fix template vm scripts to not run if templates exist
+- make `kates.yml` reboot only the first time AKA only when required
+- add popup removal thing to `proxmox.yml`
+- move from [democratic-csi](https://github.com/democratic-csi/democratic-csi) to [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner)
+- create second cluster in [fleet-infra](https://github.com/insanitywholesale/fleet-infra)
