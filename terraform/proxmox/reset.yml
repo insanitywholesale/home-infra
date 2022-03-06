@@ -1,10 +1,10 @@
 ---
 
-#- hosts: k3s
-#  gather_facts: yes
-#  become: yes
-#  roles:
-#    - role: k3s_roles/reset
+- hosts: k3s
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: k3s_roles/reset
 
 - hosts: k3s2
   gather_facts: yes
