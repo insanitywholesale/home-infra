@@ -109,7 +109,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s2" {
 
 resource "proxmox_vm_qemu" "reverse-proxy-ngx" {
 	provider = proxmox.pve0
-	count = 1
+	count = 0
 	name = "deb-nginx-${count.index + 1}"
 	target_node = "pve0"
 
@@ -151,7 +151,7 @@ resource "proxmox_vm_qemu" "reverse-proxy-ngx" {
 
 resource "proxmox_vm_qemu" "reverse-proxy-hap" {
 	provider = proxmox.pve0
-	count = 1
+	count = 0
 	name = "deb-haproxy-${count.index + 1}"
 	target_node = "pve0"
 
