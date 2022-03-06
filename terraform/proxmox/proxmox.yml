@@ -18,7 +18,7 @@
         owner: root
         group: root
 
-    - name: get older debbie could image
+    - name: get deb-10 could image
       get_url:
         url: https://cloud.debian.org/images/cloud/buster/20211011-792/debian-10-generic-amd64-20211011-792.qcow2
         dest: /root/debian-10-openstack-amd64.qcow2
@@ -27,7 +27,7 @@
         owner: root
         group: root
 
-    - name: get debbie could image
+    - name: get deb-11 could image
       get_url:
         url: https://cloud.debian.org/images/cloud/bullseye/20220121-894/debian-11-generic-amd64-20220121-894.qcow2
         dest: /root/debian-11-openstack-amd64.qcow2
@@ -36,7 +36,7 @@
         owner: root
         group: root
 
-    - name: get templ vm scriptoid
+    - name: get deb-10 template vm scriptoid
       copy:
         src: setup-debian-10-cloudinit.sh
         dest: /root/setup-debian-10-template.sh
@@ -44,12 +44,12 @@
         owner: root
         group: root
 
-    - name: run templ vm scriptoid
+    - name: run deb-10 template vm scriptoid
       shell:
         chdir: /root/
         cmd: /root/setup-debian-10-template.sh
 
-    - name: get templ vm scriptoid
+    - name: get deb-11 template vm scriptoid
       copy:
         src: setup-debian-11-cloudinit.sh
         dest: /root/setup-debian-11-template.sh
@@ -57,7 +57,7 @@
         owner: root
         group: root
 
-    - name: run templ vm scriptoid
+    - name: run deb-11 template vm scriptoid
       shell:
         chdir: /root/
         cmd: /root/setup-debian-11-template.sh
