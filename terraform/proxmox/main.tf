@@ -25,7 +25,7 @@ provider "proxmox" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	provider = proxmox.pve0
-	count = 2
+	count = 3
 	name = "deb-k3s-${count.index + 1}"
 	target_node = "pve0"
 
