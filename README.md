@@ -1,8 +1,8 @@
-# boxen
+# infra
 
-infra-related things I'm testing/working on
+infrastructure-related things I'm testing/working on including automating my homelab
 
-# licenses
+# License-related stuff
 
  plz don't sue me
 
