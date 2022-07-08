@@ -1,10 +1,30 @@
 ---
+# NOTE: proxmox is only for containers, proxmox_kvm is only for VMs
+#
 # TODO: create ansible_pve user
+#
 # TODO: give following permissions to ansible_pve user:
 #   path: /storage/local PVEDatastoreAdmin
 #   path: /storage/local-zfs PVEDatastoreAdmin
 #   path: /vms PVEVMAdmin
+#
 # TODO: automate download of container templates
+#
+# TODO: automate creation of template VMs
+
+# NOTE: good role for some of the above: https://github.com/lae/ansible-role-proxmox#user-and-acl-management
+
+# Clone VM with only source VM name
+#- proxmox_kvm:
+#    api_host    : 192.168.70.1
+#    api_user    : ansible_pve@pve
+#    api_password: oomfie1234
+#    clone       : deb-tmpl   # The VM source
+#    name        : homeassistant  # The target VM name
+#    node        : pve0
+#    storage     : nfsprox
+#    format      : raw
+#    timeout     : 600  # The task can take a while, adjust accordingly
 
 - name: Create and Start LXC container(s)
   hosts: pve0
