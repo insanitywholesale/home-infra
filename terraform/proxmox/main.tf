@@ -13,6 +13,7 @@ provider "proxmox" {
     pm_api_url = "https://192.168.70.1:8006/api2/json"
     pm_password = "failfail"
     pm_user = "root@pam"
+	pm_timeout = 900
 }
 
 provider "proxmox" {
@@ -21,6 +22,7 @@ provider "proxmox" {
 	pm_api_url = "https://192.168.70.2:8006/api2/json"
 	pm_password = "failfail"
 	pm_user = "root@pam"
+	pm_timeout = 900
 }
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
