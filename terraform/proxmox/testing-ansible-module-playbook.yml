@@ -27,26 +27,16 @@
   hosts: pve1
 
   tasks:
-
-#  - name: Remove test VM 1
+#  - name: Remove test VMs
 #    proxmox_kvm:
 #      api_host    : 192.168.70.2
 #      api_user    : root@pam
 #      api_password: failfail
-#      name        : deb-test-1  # The target VM name
+#      name        : "deb-test-{{ item }}"  # The target VM name
 #      node        : pve1
 #      state       : absent
-#      timeout     : 300  # The task can take a while, adjust accordingly
-#
-#  - name: Remove test VM 2
-#    proxmox_kvm:
-#      api_host    : 192.168.70.2
-#      api_user    : root@pam
-#      api_password: failfail
-#      name        : deb-test-2  # The target VM name
-#      node        : pve1
-#      state       : absent
-#      timeout     : 300  # The task can take a while, adjust accordingly
+#      timeout     : 400  # The task can take a while, adjust accordingly
+#    with_sequence: start=1 end=4
 
   - name: Create test VM from debian 10 template
     proxmox_kvm:
@@ -55,19 +45,19 @@
       api_password: failfail
       clone       : debian-tmpl  # The VM source
       vmid        : 9001  # source VM id
-      name        : deb-test-1  # The target VM name
-      newid       : 301  # target VM id
+      name        : "deb-test-{{ item }}"  # The target VM name
       node        : pve1
       storage     : local-zfs
       format      : raw
       timeout     : 300  # The task can take a while, adjust accordingly
+    with_sequence: start=1 end=5
 
   - name: Start test VM 1
     proxmox_kvm:
       api_host    : 192.168.70.2
       api_user    : root@pam
       api_password: failfail
-      vmid        : 301  # target VM id
+      name        : deb-test-1  # The target VM name
       node        : pve1
       state       : started
       timeout     : 300  # The task can take a while, adjust accordingly
@@ -77,14 +67,14 @@
       api_host    : 192.168.70.2
       api_user    : root@pam
       api_password: failfail
-      vmid        : 301  # The target VM name
+      name        : deb-test-1  # The target VM name
       node        : pve1
       state       : stopped
       force       : yes
       timeout     : 300  # The task can take a while, adjust accordingly
 
 
-  - name: Create test VM from debian 11 template
+  - name: Create test VMs from debian 11 template
     proxmox_kvm:
       api_host    : 192.168.70.2
       api_user    : root@pam
