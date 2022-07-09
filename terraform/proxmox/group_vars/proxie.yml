@@ -1,0 +1,38 @@
+---
+pve_groups: proxie
+pve_ssh_port: 22
+pve_groups:
+  - name: Admins
+    comment: Administrators of this PVE cluster
+  - name: api_users
+    comment: Users that represent automation tools
+pve_users:
+  - name: ansible@pve
+    password: "oomfie1234"
+    groups:
+      - api_users
+  - name: terraform@pve
+    password: "oomfie1234"
+    groups:
+      - api_users
+pve_roles:
+  - name: Monitoring
+    privileges:
+      - "Sys.Modify"
+      - "Sys.Audit"
+      - "Datastore.Audit"
+      - "VM.Monitor"
+      - "VM.Audit"
+pve_acls:
+  - path: /storage/local
+    roles: [ "PVEDatastoreAdmin" ]
+    groups:
+      - api_users
+  - path: /storage/local-zfs
+    roles: [ "PVEDatastoreAdmin" ]
+    groups:
+      - api_users
+  - path: /vms
+    roles: [ "PVEVMAdmin" ]
+    groups:
+      - api_users
