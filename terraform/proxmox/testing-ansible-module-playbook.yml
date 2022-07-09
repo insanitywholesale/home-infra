@@ -33,57 +33,57 @@
   roles:
     - role: lae.proxmox
 
-- name: Create and Start LXC container(s)
-  hosts: pve1
-
-  tasks:
-  - name: Create test container
-    proxmox:
-      api_host: 192.168.70.2
-      api_user: ansible@pve
-      api_password: oomfie1234
-      node: pve1
-      vmid: 100
-      hostname: testdeb
-      ostemplate: local:vztmpl/debian-11-standard_11.3-1_amd64.tar.zst
-      cpus: 1
-      cpuunits: 500
-      memory: 128
-      disk: 'local-zfs:8'
-      netif: '{"net0":"name=eth0,gw=192.168.0.1,ip=192.168.25.100/24,bridge=vmbr0"}'
-      onboot: yes
-      unprivileged: yes
-      pubkey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle'
-      state: present
-
-  - name: Start test container
-    proxmox:
-      api_host: 192.168.70.2
-      api_user: ansible@pve
-      api_password: oomfie1234
-      node: pve1
-      vmid: 100
-      state: started
-
-- name: Stop and Delete LXC container(s)
-  hosts: pve1
-
-  tasks:
-  - name: Stop test container
-    proxmox:
-      api_host: 192.168.70.2
-      api_user: ansible@pve
-      api_password: oomfie1234
-      node: pve1
-      vmid: 100
-      state: stopped
-
-  - name: Delete test container
-    proxmox:
-      api_host: 192.168.70.2
-      api_user: ansible@pve
-      api_password: oomfie1234
-      node: pve1
-      vmid: 100
-      state: absent
-
+#- name: Create and Start LXC container(s)
+#  hosts: pve1
+#
+#  tasks:
+#  - name: Create test container
+#    proxmox:
+#      api_host: 192.168.70.2
+#      api_user: ansible@pve
+#      api_password: oomfie1234
+#      node: pve1
+#      vmid: 100
+#      hostname: testdeb
+#      ostemplate: local:vztmpl/debian-11-standard_11.3-1_amd64.tar.zst
+#      cpus: 1
+#      cpuunits: 500
+#      memory: 128
+#      disk: 'local-zfs:8'
+#      netif: '{"net0":"name=eth0,gw=192.168.0.1,ip=192.168.25.100/24,bridge=vmbr0"}'
+#      onboot: yes
+#      unprivileged: yes
+#      pubkey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle'
+#      state: present
+#
+#  - name: Start test container
+#    proxmox:
+#      api_host: 192.168.70.2
+#      api_user: ansible@pve
+#      api_password: oomfie1234
+#      node: pve1
+#      vmid: 100
+#      state: started
+#
+#- name: Stop and Delete LXC container(s)
+#  hosts: pve1
+#
+#  tasks:
+#  - name: Stop test container
+#    proxmox:
+#      api_host: 192.168.70.2
+#      api_user: ansible@pve
+#      api_password: oomfie1234
+#      node: pve1
+#      vmid: 100
+#      state: stopped
+#
+#  - name: Delete test container
+#    proxmox:
+#      api_host: 192.168.70.2
+#      api_user: ansible@pve
+#      api_password: oomfie1234
+#      node: pve1
+#      vmid: 100
+#      state: absent
+#
