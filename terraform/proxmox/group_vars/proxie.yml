@@ -1,5 +1,5 @@
 ---
-pve_groups: proxie
+pve_group: proxie
 pve_ssh_port: 22
 pve_groups:
   - name: Admins
