@@ -11,7 +11,9 @@
 # TODO: automate download of container templates
 #
 # TODO: automate creation of template VMs
-
+#
+# TODO: automate addition of NFS using https://github.com/lae/ansible-role-proxmox#storage-management
+#
 # NOTE: good role for some of the above: https://github.com/lae/ansible-role-proxmox#user-and-acl-management
 
 # Clone VM with only source VM name
@@ -26,16 +28,21 @@
 #    format      : raw
 #    timeout     : 600  # The task can take a while, adjust accordingly
 
+- hosts: proxie #pve0 is commented out
+  become: True
+  roles:
+    - role: lae.proxmox
+
 - name: Create and Start LXC container(s)
-  hosts: pve0
+  hosts: pve1
 
   tasks:
   - name: Create test container
     proxmox:
-      api_host: 192.168.70.1
-      api_user: ansible_pve@pve
+      api_host: 192.168.70.2
+      api_user: ansible@pve
       api_password: oomfie1234
-      node: pve0
+      node: pve1
       vmid: 100
       hostname: testdeb
       ostemplate: local:vztmpl/debian-11-standard_11.3-1_amd64.tar.zst
@@ -51,32 +58,32 @@
 
   - name: Start test container
     proxmox:
-      api_host: 192.168.70.1
-      api_user: ansible_pve@pve
+      api_host: 192.168.70.2
+      api_user: ansible@pve
       api_password: oomfie1234
-      node: pve0
+      node: pve1
       vmid: 100
       state: started
 
 - name: Stop and Delete LXC container(s)
-  hosts: pve0
+  hosts: pve1
 
   tasks:
   - name: Stop test container
     proxmox:
-      api_host: 192.168.70.1
-      api_user: ansible_pve@pve
+      api_host: 192.168.70.2
+      api_user: ansible@pve
       api_password: oomfie1234
-      node: pve0
+      node: pve1
       vmid: 100
       state: stopped
 
   - name: Delete test container
     proxmox:
-      api_host: 192.168.70.1
-      api_user: ansible_pve@pve
+      api_host: 192.168.70.2
+      api_user: ansible@pve
       api_password: oomfie1234
-      node: pve0
+      node: pve1
       vmid: 100
       state: absent
 
