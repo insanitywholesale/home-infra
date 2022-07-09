@@ -15,27 +15,110 @@
 # TODO: automate addition of NFS using https://github.com/lae/ansible-role-proxmox#storage-management
 #
 # NOTE: good role for some of the above: https://github.com/lae/ansible-role-proxmox#user-and-acl-management
+#
+# NOTE: removing VMs with proxmox_kvm seems to do nothing the first time but works the second time
 
-# Clone VM with only source VM name
-#- proxmox_kvm:
-#    api_host    : 192.168.70.1
-#    api_user    : ansible_pve@pve
-#    api_password: oomfie1234
-#    clone       : deb-tmpl   # The VM source
-#    name        : homeassistant  # The target VM name
-#    node        : pve0
-#    storage     : nfsprox
-#    format      : raw
-#    timeout     : 600  # The task can take a while, adjust accordingly
-
-- hosts: proxie #pve0 is commented out
+- hosts: proxie
   become: True
   roles:
     - role: lae.proxmox
 
-#- name: Create and Start LXC container(s)
-#  hosts: pve1
+- name: Create and Start VM(s)
+  hosts: pve1
+
+  tasks:
+
+#  - name: Remove test VM 1
+#    proxmox_kvm:
+#      api_host    : 192.168.70.2
+#      api_user    : root@pam
+#      api_password: failfail
+#      name        : deb-test-1  # The target VM name
+#      node        : pve1
+#      state       : absent
+#      timeout     : 300  # The task can take a while, adjust accordingly
 #
+#  - name: Remove test VM 2
+#    proxmox_kvm:
+#      api_host    : 192.168.70.2
+#      api_user    : root@pam
+#      api_password: failfail
+#      name        : deb-test-2  # The target VM name
+#      node        : pve1
+#      state       : absent
+#      timeout     : 300  # The task can take a while, adjust accordingly
+
+  - name: Create test VM from debian 10 template
+    proxmox_kvm:
+      api_host    : 192.168.70.2
+      api_user    : root@pam
+      api_password: failfail
+      clone       : debian-tmpl  # The VM source
+      vmid        : 9001  # source VM id
+      name        : deb-test-1  # The target VM name
+      newid       : 301  # target VM id
+      node        : pve1
+      storage     : local-zfs
+      format      : raw
+      timeout     : 300  # The task can take a while, adjust accordingly
+
+  - name: Start test VM 1
+    proxmox_kvm:
+      api_host    : 192.168.70.2
+      api_user    : root@pam
+      api_password: failfail
+      vmid        : 301  # target VM id
+      node        : pve1
+      state       : started
+      timeout     : 300  # The task can take a while, adjust accordingly
+
+  - name: Stop test VM 1
+    proxmox_kvm:
+      api_host    : 192.168.70.2
+      api_user    : root@pam
+      api_password: failfail
+      vmid        : 301  # The target VM name
+      node        : pve1
+      state       : stopped
+      force       : yes
+      timeout     : 300  # The task can take a while, adjust accordingly
+
+
+  - name: Create test VM from debian 11 template
+    proxmox_kvm:
+      api_host    : 192.168.70.2
+      api_user    : root@pam
+      api_password: failfail
+      clone       : debian-templ  # The VM source
+      vmid        : 9002  # source VM id
+      name        : deb-test-2  # The target VM name
+      newid       : 302  # target VM id
+      node        : pve1
+      storage     : local-zfs
+      format      : raw
+      timeout     : 300  # The task can take a while, adjust accordingly
+
+  - name: Start test VM 2
+    proxmox_kvm:
+      api_host    : 192.168.70.2
+      api_user    : root@pam
+      api_password: failfail
+      name        : deb-test-2  # The target VM name
+      node        : pve1
+      state       : started
+      timeout     : 300  # The task can take a while, adjust accordingly
+
+  - name: Stop test VM 2
+    proxmox_kvm:
+      api_host    : 192.168.70.2
+      api_user    : root@pam
+      api_password: failfail
+      name        : deb-test-2  # The target VM name
+      node        : pve1
+      state       : stopped
+      force       : yes
+      timeout     : 300  # The task can take a while, adjust accordingly
+
 #  tasks:
 #  - name: Create test container
 #    proxmox:
