@@ -10,6 +10,8 @@
         path: /etc/apt/sources.list.d/pve-enterprise.list
         state: absent
 
+    # NOTE: might not be required in the future
+    # since it can be handled by lae.proxmox
     - name: no-sub squad gang
       copy:
         src: pve-no-sub.list
