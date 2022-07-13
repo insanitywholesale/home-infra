@@ -45,11 +45,11 @@
       api_password: failfail
       clone       : debian-tmpl  # The VM source
       vmid        : 9001  # source VM id
-      name        : "deb-test-{{ item }}"  # The target VM name
+      name        : "deb10-test-{{ item }}"  # The target VM name
       node        : pve1
       storage     : local-zfs
       format      : raw
-      timeout     : 300  # The task can take a while, adjust accordingly
+      timeout     : 600  # The task can take a while, adjust accordingly
     with_sequence: start=1 end=5
 
   - name: Start test VM 1
@@ -57,7 +57,7 @@
       api_host    : 192.168.70.2
       api_user    : root@pam
       api_password: failfail
-      name        : deb-test-1  # The target VM name
+      name        : deb10-test-1  # The target VM name
       node        : pve1
       state       : started
       timeout     : 300  # The task can take a while, adjust accordingly
@@ -67,12 +67,11 @@
       api_host    : 192.168.70.2
       api_user    : root@pam
       api_password: failfail
-      name        : deb-test-1  # The target VM name
+      name        : deb10-test-1  # The target VM name
       node        : pve1
       state       : stopped
       force       : yes
       timeout     : 300  # The task can take a while, adjust accordingly
-
 
   - name: Create test VMs from debian 11 template
     proxmox_kvm:
@@ -81,19 +80,19 @@
       api_password: failfail
       clone       : debian-templ  # The VM source
       vmid        : 9002  # source VM id
-      name        : deb-test-2  # The target VM name
-      newid       : 302  # target VM id
+      name        : "deb11-test-{{ item }}"  # The target VM name
       node        : pve1
       storage     : local-zfs
       format      : raw
-      timeout     : 300  # The task can take a while, adjust accordingly
+      timeout     : 600  # The task can take a while, adjust accordingly
+    with_sequence: start=1 end=5
 
   - name: Start test VM 2
     proxmox_kvm:
       api_host    : 192.168.70.2
       api_user    : root@pam
       api_password: failfail
-      name        : deb-test-2  # The target VM name
+      name        : deb11-test-2  # The target VM name
       node        : pve1
       state       : started
       timeout     : 300  # The task can take a while, adjust accordingly
@@ -103,7 +102,7 @@
       api_host    : 192.168.70.2
       api_user    : root@pam
       api_password: failfail
-      name        : deb-test-2  # The target VM name
+      name        : deb11-test-2  # The target VM name
       node        : pve1
       state       : stopped
       force       : yes
