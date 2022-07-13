@@ -27,16 +27,27 @@
   hosts: pve1
   tasks:
 
-#  - name: Remove test VMs
-#    proxmox_kvm:
-#      api_host    : 192.168.70.2
-#      api_user    : root@pam
-#      api_password: failfail
-#      name        : "deb-test-{{ item }}"  # The target VM name
-#      node        : pve1
-#      state       : absent
-#      timeout     : 400  # The task can take a while, adjust accordingly
-#    with_sequence: start=1 end=5
+  - name: Remove debian 10 test VMs
+    proxmox_kvm:
+      api_host    : 192.168.70.2
+      api_user    : root@pam
+      api_password: failfail
+      name        : "deb10-test-{{ item }}"  # The target VM name
+      node        : pve1
+      state       : absent
+      timeout     : 400  # The task can take a while, adjust accordingly
+    with_sequence: start=1 end=5
+
+  - name: Remove debian 11 test VMs
+    proxmox_kvm:
+      api_host    : 192.168.70.2
+      api_user    : root@pam
+      api_password: failfail
+      name        : "deb11-test-{{ item }}"  # The target VM name
+      node        : pve1
+      state       : absent
+      timeout     : 400  # The task can take a while, adjust accordingly
+    with_sequence: start=1 end=5
 
   - name: Create test VM from debian 10 template
     proxmox_kvm:
