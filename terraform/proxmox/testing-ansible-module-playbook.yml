@@ -1,22 +1,13 @@
 ---
 # NOTE: proxmox is only for containers, proxmox_kvm is only for VMs
 #
-# TODO: create ansible_pve user
-#
-# TODO: give following permissions to ansible_pve user:
-#   path: /storage/local PVEDatastoreAdmin
-#   path: /storage/local-zfs PVEDatastoreAdmin
-#   path: /vms PVEVMAdmin
-#
 # TODO: automate download of container templates
 #
 # TODO: automate creation of template VMs
 #
 # TODO: automate addition of NFS using https://github.com/lae/ansible-role-proxmox#storage-management
 #
-# NOTE: good role for some of the above: https://github.com/lae/ansible-role-proxmox#user-and-acl-management
-#
-# NOTE: removing VMs with proxmox_kvm seems to do nothing the first time but works the second time
+# NOTE: removing VMs with proxmox_kvm seems to do nothing the first time but works the second time (might need update: true)
 
 - hosts: proxie
   become: True
