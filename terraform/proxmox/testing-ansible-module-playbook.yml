@@ -27,6 +27,18 @@
   hosts: pve1
   tasks:
 
+#  - name: Convert VM to template
+#    proxmox_kvm:
+#      api_host    : 192.168.70.2
+#      api_user    : root@pam
+#      api_password: failfail
+#      node        : pve1
+#      name        : "debtmpl-test-1"  # The target VM name
+#      template    : true
+#      update      : yes
+#      timeout     : 600  # The task can take a while, adjust accordingly
+#      state       : present
+
   - name: Remove debian 10 test VMs
     proxmox_kvm:
       api_host    : 192.168.70.2
