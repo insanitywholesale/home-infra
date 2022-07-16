@@ -1,6 +1,7 @@
 *.plan
 terraform.tfstate
 terraform.tfstate.backup
+.terraform.tfstate.lock.info
 .terraform
 inventory
 inventory.ini
