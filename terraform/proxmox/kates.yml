@@ -43,7 +43,11 @@
 
     # TODO: switch this to shut down instead of reboot, run add-qga-k3s-vms.plan and then boot
     - name: rebooty the debooty
-      reboot:
+      ansible.builtin.reboot:
         reboot_timeout: 300
+
+      #NOTE: shutdown command
+      #community.general.shutdown:
+
 
 ...
