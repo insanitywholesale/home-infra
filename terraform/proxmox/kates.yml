@@ -41,6 +41,7 @@
         group: root
         mode: '0644'
 
+    # TODO: switch this to shut down instead of reboot, run add-qga-k3s-vms.plan and then boot
     - name: rebooty the debooty
       reboot:
         reboot_timeout: 300
