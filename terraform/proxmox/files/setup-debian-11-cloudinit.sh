@@ -18,7 +18,8 @@ VMEXISTS="$(qm list | grep $VMID)"
 
 if [ "$VMEXISTS" ]
 then
-	echo "VM with ${VMID} already exists"
+	echo "VM with ${VMID} already exists; exiting gracefully"
+	exit 0
 else
 	qm create "${VMID}" -name "${VMNAME}" -memory 1024 -net0 virtio,bridge=vmbr0 -cores 1 -sockets 1 -cpu cputype=kvm64 -description "debbie image" -kvm 1 -numa 1
 	qm importdisk "${VMID}" debian-11-openstack-amd64.qcow2 local-zfs
