@@ -1,5 +1,6 @@
 #NOTE: config so that all stuff is configured from files instead of docker labels
 #NOTE: the traefik stuff might need to be moved to traefik.yml, haven't tested
+#link: https://tech.aufomm.com/traefik-2-request-multiple-domain-and-wildcard-ssl-certificates/
 http:
 
 # routers
