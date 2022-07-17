@@ -35,7 +35,8 @@ services:
       - "traefik.http.routers.traefik-secure.tls=true"
       - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
       - "traefik.http.routers.traefik-secure.tls.domains[0].main=$DOMAIN"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.$DOMAIN"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.$DOMAIN" # For wildcard cert, pick this or the one below
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=pve0.$DOMAIN,pve1.$DOMAIN,truenas.$DOMAIN" # For multiple explicit sub-domains
       - "traefik.http.routers.traefik-secure.service=api@internal"
 
 networks:
