@@ -85,3 +85,8 @@
       shell:
         chdir: /root/
         cmd: /root/setup-arch-template.sh
+
+    - name: install dark theme
+      shell:
+        chdir: /tmp/
+        cmd: 'bash <(curl -s https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/PVEDiscordDark.sh ) install'
