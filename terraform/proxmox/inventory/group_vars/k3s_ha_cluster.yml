@@ -17,8 +17,14 @@ apiserver_endpoint: "10.0.50.50"
 # this token should be alpha numeric only
 k3s_token: "some-SUPER-DEDEUPER-secret-password"
 
-# change these to your liking, the only required one is--no-deploy servicelb
-extra_server_args: "--no-deploy servicelb --no-deploy traefik"
+# Server arguments
+#extra_server_args: "--no-deploy servicelb --no-deploy traefik --no-deploy local-storage --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg default-unreachable-toleration-seconds=30 --kube-controller-arg node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s"
+#extra_server_args: "--no-deploy servicelb"
+#extra_server_args: "--no-deploy servicelb --no-deploy traefik"
+extra_server_args: "--no-deploy local-storage --no-deploy servicelb --disable traefik"
+
+# Agent arguments
+#extra_agent_args: "--kubelet-arg node-status-update-frequency=5s"
 extra_agent_args: ""
 
 # image tag for kube-vip
