@@ -1,0 +1,19 @@
+---
+
+- hosts: k3s_ha_cluster
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: ./roles/k3s_ha_roles/prereq
+    - role: ./roles/k3s_ha_roles/download
+    - role: ./roles/k3s_ha_roles/raspberrypi
+
+- hosts: master
+  become: yes
+  roles:
+    - role: ./roles/k3s_ha_roles/k3s/master
+
+- hosts: node
+  become: yes
+  roles:
+    - role: ./roles/k3s_ha_roles/k3s/node
