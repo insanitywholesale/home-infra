@@ -3,14 +3,23 @@
 ${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
 %{ endfor ~}
 
-[k3s2]
-%{ for host in k3s2_hosts ~}
+[master]
+%{ for host in k3s_masters ~}
 ${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
 %{ endfor ~}
 
+[node]
+%{ for host in k3s_workers ~}
+${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
+%{ endfor ~}
+
+[k3s_ha_cluster:children]
+master
+node
+
 [kates:children]
 k3s
-k3s2
+k3s_ha_cluster
 
 [kates:vars]
 ansible_private_key_file=/home/angle/.ssh/id_rsa
