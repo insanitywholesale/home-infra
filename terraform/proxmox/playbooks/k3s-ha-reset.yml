@@ -1,0 +1,7 @@
+---
+
+- hosts: k3s_ha_cluster
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: ./roles/k3s_ha_roles/reset
