@@ -35,7 +35,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	clone = "debian-tmpl"
 	os_type = "cloud-init"
 	cores = 2
-	sockets = "1"
+	sockets = 1
 	cpu = "host"
 	memory = 2560
 	scsihw = "virtio-scsi-pci"
@@ -77,7 +77,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s2" {
 	clone = "debian-tmpl"
 	os_type = "cloud-init"
 	cores = 2
-	sockets = "1"
+	sockets = 1
 	cpu = "host"
 	memory = 3084
 	scsihw = "virtio-scsi-pci"
@@ -119,7 +119,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_arch" {
 	clone = "arch-tmpl"
 	os_type = "cloud-init"
 	cores = 2
-	sockets = "1"
+	sockets = 1
 	cpu = "host"
 	memory = 1024
 	scsihw = "virtio-scsi-pci"
