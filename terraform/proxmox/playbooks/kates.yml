@@ -6,6 +6,9 @@
   become: true
 
   tasks:
+    - name: Wait for hosts to become reachable
+      ansible.builtin.wait_for_connection:
+
     - name: upd8 every m8
       apt:
         upgrade: full
@@ -48,6 +51,11 @@
 
       #NOTE: shutdown command
       #community.general.shutdown:
+
+    - name: Wait for debooty to wake up
+      ansible.builtin.wait_for_connection:
+        delay: 15
+        timeout: 300
 
 
 ...
