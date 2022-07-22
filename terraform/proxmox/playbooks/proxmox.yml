@@ -20,23 +20,54 @@
         owner: root
         group: root
 
+    - name: update proxies
+      apt:
+        upgrade: full
+        update_cache: yes
+
+    - name: install essentials
+      apt:
+        name:
+          - vim
+          - tmux
+          - htop
+          - stterm
+          - qemu-guest-agent
+          - python3
+          - python3-apt
+          - nfs-common
+          - nfs4-acl-tools
+          - libguestfs-tools
+        state:
+          present
+
     - name: get deb-10 could image
       get_url:
-        url: https://cloud.debian.org/images/cloud/buster/20211011-792/debian-10-generic-amd64-20211011-792.qcow2
-        dest: /root/debian-10-openstack-amd64.qcow2
-        checksum: sha512:f3dac13104b4e28eb62c46cbbb1e30fc9c792834500f9101d477c19c258c31ff04850933ee0b3e63236eca38c854447d95a0ab45163c4a3fccf05f9dd95601a5
+        url: https://cloud.debian.org/images/cloud/buster/20220328-962/debian-10-genericcloud-amd64-20220328-962.qcow2
+        dest: /root/debian-10-amd64.qcow2
+        checksum: sha512:b4090fd5ba8c3182b5ef38d1b57a42662aa2cd1379ed29063a7f0a4a4e9528bf371873b08a065d6bddd2dde85d81b845a5014d927d284c014ba12a871ea44e29
         mode: '0644'
         owner: root
         group: root
 
+    - name: add qemu-guest-agent to deb-10
+      shell:
+        chdir: /root/
+        cmd: virt-customize -a ./debian-10-amd64.qcow2 --install qemu-guest-agent
+
     - name: get deb-11 could image
       get_url:
-        url: https://cloud.debian.org/images/cloud/bullseye/20220121-894/debian-11-generic-amd64-20220121-894.qcow2
-        dest: /root/debian-11-openstack-amd64.qcow2
-        checksum: sha512:0948dc56b4834a7755e4eae7d5532e138b90484a949161ffe9fc6894c7a14b1bd32ebf96fa3f3d03d498fe7ee125f8014f31bfab5825915a93de9330df814f7b
+        url: https://cloud.debian.org/images/cloud/bullseye/20220711-1073/debian-11-genericcloud-amd64-20220711-1073.qcow2
+        dest: /root/debian-11-amd64.qcow2
+        checksum: sha512:41de913d74b3aeded43e1440d52e4f55188e37859f769405b5e737feedae552506230fba06806e3436fa3570381bd04eb439bfbfece1a2bac1d4a677b4117c22
         mode: '0644'
         owner: root
         group: root
+
+    - name: add qemu-guest-agent to deb-11
+      shell:
+        chdir: /root/
+        cmd: virt-customize -a ./debian-11-amd64.qcow2 --install qemu-guest-agent
 
     - name: get deb-10 template vm scriptoid
       copy:
@@ -86,7 +117,15 @@
         chdir: /root/
         cmd: /root/setup-arch-template.sh
 
+    - name: get dark theme installation script
+      get_url:
+        url: https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/PVEDiscordDark.sh
+        dest: /root/PVEDiscordDark.sh
+        mode: '0755'
+        owner: root
+        group: root
+
     - name: install dark theme
       shell:
-        chdir: /tmp/
-        cmd: 'bash <(curl -s https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/PVEDiscordDark.sh ) install'
+        chdir: /root/
+        cmd: ./PVEDiscordDark.sh
