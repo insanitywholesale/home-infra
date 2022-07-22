@@ -52,7 +52,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 
 	network {
 		model = "virtio"
-		bridge = "vmbr0"
+		bridge = "vmbr1"
 		tag = 50
 	}
 
