@@ -27,12 +27,13 @@ provider "proxmox" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	provider = proxmox.pve0
-	count = 0
+	count = 4
 	name = "deb-k3s-${count.index + 1}"
+	desc = "non-HA k3s cluster host ${count.index + 1}"
 	target_node = "pve0"
 
 	/* change to debian-templ for 11 */
-	clone = "debian-tmpl"
+	clone = "debian-templ"
 	os_type = "cloud-init"
 	cores = 2
 	sockets = 1
@@ -40,7 +41,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	memory = 2560
 	scsihw = "virtio-scsi-pci"
 	bootdisk = "virtio0"
-	agent = 1
+	agent = 0
 	onboot = true
 
 	disk {
@@ -52,9 +53,10 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	network {
 		model = "virtio"
 		bridge = "vmbr0"
+		tag = 50
 	}
 
-	ipconfig0 = "ip=192.168.14.5${count.index + 1}/16,gw=192.168.0.1"
+	ipconfig0 = "ip=10.0.50.4${count.index + 1}/16,gw=10.0.50.254"
 
 	sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
 
@@ -71,6 +73,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 	provider = proxmox.pve1
 	count = 3
 	name = "deb-k3s-m-${count.index + 1}"
+	desc = "HA k3s cluster master host ${count.index + 1}"
 	target_node = "pve1"
 
 	/* change to debian-templ for 11 */
@@ -114,6 +117,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
 	provider = proxmox.pve1
 	count = 3
 	name = "deb-k3s-w-${count.index + 1}"
+	desc = "HA k3s cluster worker host ${count.index + 1}"
 	target_node = "pve1"
 
 	/* change to debian-templ for 11 */
