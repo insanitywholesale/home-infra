@@ -32,8 +32,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	desc = "non-HA k3s cluster host ${count.index + 1}"
 	target_node = "pve0"
 
-	/* change to debian-templ for 11 */
-	clone = "debian-templ"
+	clone = "debian-10-template"
 	os_type = "cloud-init"
 	cores = 2
 	sockets = 1
@@ -41,7 +40,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 	memory = 2560
 	scsihw = "virtio-scsi-pci"
 	bootdisk = "virtio0"
-	agent = 0
+	agent = 1
 	onboot = true
 
 	disk {
@@ -76,8 +75,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 	desc = "HA k3s cluster master host ${count.index + 1}"
 	target_node = "pve1"
 
-	/* change to debian-templ for 11 */
-	clone = "debian-tmpl"
+	clone = "debian-11-template"
 	os_type = "cloud-init"
 	cores = 2
 	sockets = 1
@@ -85,7 +83,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 	memory = 3084
 	scsihw = "virtio-scsi-pci"
 	bootdisk = "virtio0"
-	agent = 0
+	agent = 1
 	onboot = true
 
 	disk {
@@ -120,8 +118,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
 	desc = "HA k3s cluster worker host ${count.index + 1}"
 	target_node = "pve1"
 
-	/* change to debian-templ for 11 */
-	clone = "debian-tmpl"
+	clone = "debian-11-template"
 	os_type = "cloud-init"
 	cores = 2
 	sockets = 1
@@ -129,7 +126,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
 	memory = 3084
 	scsihw = "virtio-scsi-pci"
 	bootdisk = "virtio0"
-	agent = 0
+	agent = 1
 	onboot = true
 
 	disk {
