@@ -1,4 +1,5 @@
 - use terraform local executor to run ansible playbook after vm provisioning
 - put pihole in an LXC container instead of a VM
+- structure terraform better with help from [this article](https://12ft.io/proxy?q=https%3A%2F%2Fmedium.com%2Fcodex%2Fterraform-best-practices-limit-resources-in-your-project-a3f3275f7bbf)
 - make `kates.yml` reboot only the first time AKA only when required
 - move from [democratic-csi](https://github.com/democratic-csi/democratic-csi) to [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner)
