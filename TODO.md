@@ -1,4 +1,3 @@
 - use terraform local executor to run ansible playbook after vm provisioning
-- fix template vm scripts to not run if templates exist
 - make `kates.yml` reboot only the first time AKA only when required
 - move from [democratic-csi](https://github.com/democratic-csi/democratic-csi) to [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner)
