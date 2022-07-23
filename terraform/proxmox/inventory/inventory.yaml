@@ -1,0 +1,227 @@
+all:
+  children:
+    kates:
+      children:
+        k3s:
+          hosts:
+            10.0.50.41:
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              extra_agent_args: ''
+              extra_server_args: --disable local-storage
+              k3s_version: v1.23.8+k3s2
+              systemd_dir: /etc/systemd/system
+            10.0.50.42:
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              extra_agent_args: ''
+              extra_server_args: --disable local-storage
+              k3s_version: v1.23.8+k3s2
+              systemd_dir: /etc/systemd/system
+            10.0.50.43:
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              extra_agent_args: ''
+              extra_server_args: --disable local-storage
+              k3s_version: v1.23.8+k3s2
+              systemd_dir: /etc/systemd/system
+            10.0.50.44:
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              extra_agent_args: ''
+              extra_server_args: --disable local-storage
+              k3s_version: v1.23.8+k3s2
+              systemd_dir: /etc/systemd/system
+        k3s_ha_cluster:
+          children:
+            master:
+              hosts:
+                10.0.50.51:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  apiserver_endpoint: 10.0.50.50
+                  extra_agent_args: ''
+                  extra_server_args: --disable local-storage --disable servicelb --disable
+                    traefik
+                  flannel_iface: eth0
+                  k3s_token: some-SUPER-DEDEUPER-secret-password
+                  k3s_version: v1.23.4+k3s1
+                  kube_vip_tag_version: v0.4.4
+                  metal_lb_controller_tag_version: v0.12.1
+                  metal_lb_ip_range: 10.0.50.100-10.0.50.200
+                  metal_lb_speaker_tag_version: v0.12.1
+                  system_timezone: Europe/Athens
+                  systemd_dir: /etc/systemd/system
+                10.0.50.52:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  apiserver_endpoint: 10.0.50.50
+                  extra_agent_args: ''
+                  extra_server_args: --disable local-storage --disable servicelb --disable
+                    traefik
+                  flannel_iface: eth0
+                  k3s_token: some-SUPER-DEDEUPER-secret-password
+                  k3s_version: v1.23.4+k3s1
+                  kube_vip_tag_version: v0.4.4
+                  metal_lb_controller_tag_version: v0.12.1
+                  metal_lb_ip_range: 10.0.50.100-10.0.50.200
+                  metal_lb_speaker_tag_version: v0.12.1
+                  system_timezone: Europe/Athens
+                  systemd_dir: /etc/systemd/system
+                10.0.50.53:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  apiserver_endpoint: 10.0.50.50
+                  extra_agent_args: ''
+                  extra_server_args: --disable local-storage --disable servicelb --disable
+                    traefik
+                  flannel_iface: eth0
+                  k3s_token: some-SUPER-DEDEUPER-secret-password
+                  k3s_version: v1.23.4+k3s1
+                  kube_vip_tag_version: v0.4.4
+                  metal_lb_controller_tag_version: v0.12.1
+                  metal_lb_ip_range: 10.0.50.100-10.0.50.200
+                  metal_lb_speaker_tag_version: v0.12.1
+                  system_timezone: Europe/Athens
+                  systemd_dir: /etc/systemd/system
+            node:
+              hosts:
+                10.0.50.61:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  apiserver_endpoint: 10.0.50.50
+                  extra_agent_args: ''
+                  extra_server_args: --disable local-storage --disable servicelb --disable
+                    traefik
+                  flannel_iface: eth0
+                  k3s_token: some-SUPER-DEDEUPER-secret-password
+                  k3s_version: v1.23.4+k3s1
+                  kube_vip_tag_version: v0.4.4
+                  metal_lb_controller_tag_version: v0.12.1
+                  metal_lb_ip_range: 10.0.50.100-10.0.50.200
+                  metal_lb_speaker_tag_version: v0.12.1
+                  system_timezone: Europe/Athens
+                  systemd_dir: /etc/systemd/system
+                10.0.50.62:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  apiserver_endpoint: 10.0.50.50
+                  extra_agent_args: ''
+                  extra_server_args: --disable local-storage --disable servicelb --disable
+                    traefik
+                  flannel_iface: eth0
+                  k3s_token: some-SUPER-DEDEUPER-secret-password
+                  k3s_version: v1.23.4+k3s1
+                  kube_vip_tag_version: v0.4.4
+                  metal_lb_controller_tag_version: v0.12.1
+                  metal_lb_ip_range: 10.0.50.100-10.0.50.200
+                  metal_lb_speaker_tag_version: v0.12.1
+                  system_timezone: Europe/Athens
+                  systemd_dir: /etc/systemd/system
+                10.0.50.63:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  apiserver_endpoint: 10.0.50.50
+                  extra_agent_args: ''
+                  extra_server_args: --disable local-storage --disable servicelb --disable
+                    traefik
+                  flannel_iface: eth0
+                  k3s_token: some-SUPER-DEDEUPER-secret-password
+                  k3s_version: v1.23.4+k3s1
+                  kube_vip_tag_version: v0.4.4
+                  metal_lb_controller_tag_version: v0.12.1
+                  metal_lb_ip_range: 10.0.50.100-10.0.50.200
+                  metal_lb_speaker_tag_version: v0.12.1
+                  system_timezone: Europe/Athens
+                  systemd_dir: /etc/systemd/system
+    piholes:
+      hosts:
+        10.0.50.2:
+          ansible_private_key_file: /home/angle/.ssh/id_rsa
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
+    proxie:
+      children:
+        prox0:
+          hosts:
+            pve0:
+              ansible_host: 192.168.70.1
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: root
+              pve_acls: &id001
+              - groups:
+                - api_users
+                path: /storage/local
+                roles:
+                - PVEDatastoreAdmin
+              - groups:
+                - api_users
+                path: /storage/local-zfs
+                roles:
+                - PVEDatastoreAdmin
+              - groups:
+                - api_users
+                path: /vms
+                roles:
+                - PVEVMAdmin
+              pve_group: proxie
+              pve_groups: &id002
+              - comment: Administrators of this PVE cluster
+                name: Admins
+              - comment: Users that represent automation tools
+                name: api_users
+              pve_repository_line: deb http://download.proxmox.com/debian/pve bullseye
+                pve-no-subscription
+              pve_roles: &id003
+              - name: Monitoring
+                privileges:
+                - Sys.Modify
+                - Sys.Audit
+                - Datastore.Audit
+                - VM.Monitor
+                - VM.Audit
+              pve_ssh_port: 22
+              pve_users: &id004
+              - groups:
+                - api_users
+                name: ansible@pve
+                password: oomfie1234
+              - groups:
+                - api_users
+                name: terraform@pve
+                password: oomfie1234
+              - groups:
+                - api_users
+                name: ansible_pve@pve
+                password: oomfie1234
+              - groups:
+                - api_users
+                name: terraform_pve@pve
+                password: oomfie1234
+        prox1:
+          hosts:
+            pve1:
+              ansible_host: 192.168.70.2
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: root
+              pve_acls: *id001
+              pve_group: proxie
+              pve_groups: *id002
+              pve_repository_line: deb http://download.proxmox.com/debian/pve bullseye
+                pve-no-subscription
+              pve_roles: *id003
+              pve_ssh_port: 22
+              pve_users: *id004
+    ungrouped: {}
