@@ -3,6 +3,7 @@
 - name: get dem debby boiz done up
   hosts:
     - kates
+    - piholes
   become: true
 
   tasks:
