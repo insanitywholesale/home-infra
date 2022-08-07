@@ -128,4 +128,4 @@
     - name: install dark theme
       shell:
         chdir: /root/
-        cmd: ./PVEDiscordDark.sh
+        cmd: ./PVEDiscordDark.sh install
