@@ -50,7 +50,7 @@ all:
                     traefik
                   flannel_iface: eth0
                   k3s_token: some-SUPER-DEDEUPER-secret-password
-                  k3s_version: v1.23.4+k3s1
+                  k3s_version: v1.23.8+k3s2
                   kube_vip_tag_version: v0.4.4
                   metal_lb_controller_tag_version: v0.12.1
                   metal_lb_ip_range: 10.0.50.100-10.0.50.200
@@ -67,7 +67,7 @@ all:
                     traefik
                   flannel_iface: eth0
                   k3s_token: some-SUPER-DEDEUPER-secret-password
-                  k3s_version: v1.23.4+k3s1
+                  k3s_version: v1.23.8+k3s2
                   kube_vip_tag_version: v0.4.4
                   metal_lb_controller_tag_version: v0.12.1
                   metal_lb_ip_range: 10.0.50.100-10.0.50.200
@@ -84,7 +84,7 @@ all:
                     traefik
                   flannel_iface: eth0
                   k3s_token: some-SUPER-DEDEUPER-secret-password
-                  k3s_version: v1.23.4+k3s1
+                  k3s_version: v1.23.8+k3s2
                   kube_vip_tag_version: v0.4.4
                   metal_lb_controller_tag_version: v0.12.1
                   metal_lb_ip_range: 10.0.50.100-10.0.50.200
@@ -103,7 +103,7 @@ all:
                     traefik
                   flannel_iface: eth0
                   k3s_token: some-SUPER-DEDEUPER-secret-password
-                  k3s_version: v1.23.4+k3s1
+                  k3s_version: v1.23.8+k3s2
                   kube_vip_tag_version: v0.4.4
                   metal_lb_controller_tag_version: v0.12.1
                   metal_lb_ip_range: 10.0.50.100-10.0.50.200
@@ -120,7 +120,7 @@ all:
                     traefik
                   flannel_iface: eth0
                   k3s_token: some-SUPER-DEDEUPER-secret-password
-                  k3s_version: v1.23.4+k3s1
+                  k3s_version: v1.23.8+k3s2
                   kube_vip_tag_version: v0.4.4
                   metal_lb_controller_tag_version: v0.12.1
                   metal_lb_ip_range: 10.0.50.100-10.0.50.200
@@ -137,7 +137,7 @@ all:
                     traefik
                   flannel_iface: eth0
                   k3s_token: some-SUPER-DEDEUPER-secret-password
-                  k3s_version: v1.23.4+k3s1
+                  k3s_version: v1.23.8+k3s2
                   kube_vip_tag_version: v0.4.4
                   metal_lb_controller_tag_version: v0.12.1
                   metal_lb_ip_range: 10.0.50.100-10.0.50.200
@@ -155,7 +155,7 @@ all:
         prox0:
           hosts:
             pve0:
-              ansible_host: 192.168.70.1
+              ansible_host: 10.99.50.70
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: root
@@ -212,7 +212,7 @@ all:
         prox1:
           hosts:
             pve1:
-              ansible_host: 192.168.70.2
+              ansible_host: 10.99.50.71
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: root
@@ -224,4 +224,12 @@ all:
               pve_roles: *id003
               pve_ssh_port: 22
               pve_users: *id004
+    pxe:
+      children:
+        fog:
+          hosts:
+            10.0.50.26:
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
     ungrouped: {}
