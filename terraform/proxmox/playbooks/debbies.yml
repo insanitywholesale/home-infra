@@ -4,6 +4,7 @@
   hosts:
     - kates
     - piholes
+    - pxe
   become: true
 
   tasks:
