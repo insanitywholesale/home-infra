@@ -32,12 +32,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
   desc        = "non-HA k3s cluster host ${count.index + 1}"
   target_node = "pve0"
 
-  clone    = "debian-10-template"
+  clone    = "debian-11-template"
   os_type  = "cloud-init"
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 2560
+  memory   = 3072
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
@@ -69,7 +69,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
   provider    = proxmox.pve1
-  count       = 3
+  count       = 0
   name        = "deb-k3s-m-${count.index + 1}"
   desc        = "HA k3s cluster master host ${count.index + 1}"
   target_node = "pve1"
@@ -111,7 +111,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   provider    = proxmox.pve1
-  count       = 3
+  count       = 0
   name        = "deb-k3s-w-${count.index + 1}"
   desc        = "HA k3s cluster worker host ${count.index + 1}"
   target_node = "pve1"
@@ -153,7 +153,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_fog" {
   provider    = proxmox.pve1
-  count       = 1
+  count       = 0
   name        = "deb-fog-1"
   desc        = "fog PXE server"
   target_node = "pve1"
