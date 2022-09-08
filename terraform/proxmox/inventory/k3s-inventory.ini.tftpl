@@ -1,8 +1,3 @@
-[k3s]
-%{ for host in k3s_hosts ~}
-${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
-%{ endfor ~}
-
 [master]
 %{ for host in k3s_masters ~}
 ${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
