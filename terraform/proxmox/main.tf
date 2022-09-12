@@ -18,7 +18,7 @@ provider "proxmox" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
   provider    = proxmox.pve1
-  count       = 0
+  count       = 1
   name        = "deb-k3s-m-${count.index + 1}"
   desc        = "HA k3s cluster master host ${count.index + 1}"
   target_node = "pve1"
@@ -28,7 +28,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 3084
+  memory   = 5120
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
@@ -60,7 +60,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   provider    = proxmox.pve1
-  count       = 0
+  count       = 3
   name        = "deb-k3s-w-${count.index + 1}"
   desc        = "HA k3s cluster worker host ${count.index + 1}"
   target_node = "pve1"
@@ -70,7 +70,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 3084
+  memory   = 4096
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1

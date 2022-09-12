@@ -8,13 +8,12 @@ ${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
 ${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
 %{ endfor ~}
 
-[k3s_ha_cluster:children]
+[k3s:children]
 master
 node
 
 [kates:children]
 k3s
-k3s_ha_cluster
 
 [kates:vars]
 ansible_private_key_file=/home/angle/.ssh/id_rsa
