@@ -32,20 +32,18 @@ all:
                   extra_server_args: --disable local-storage
                   k3s_version: v1.23.8+k3s2
                   systemd_dir: /etc/systemd/system
-                10.0.50.63:
-                  ansible_private_key_file: /home/angle/.ssh/id_rsa
-                  ansible_python_interpreter: /usr/bin/env python3
-                  ansible_user: debian
-                  extra_agent_args: ''
-                  extra_server_args: --disable local-storage
-                  k3s_version: v1.23.8+k3s2
-                  systemd_dir: /etc/systemd/system
-    piholes:
+    mc:
       hosts:
-        10.0.50.2:
+        10.0.50.85:
           ansible_private_key_file: /home/angle/.ssh/id_rsa
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
+    piholes:
+      hosts:
+        10.0.50.14:
+          ansible_private_key_file: /home/angle/.ssh/id_rsa
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: root
     proxie:
       children:
         prox0:
