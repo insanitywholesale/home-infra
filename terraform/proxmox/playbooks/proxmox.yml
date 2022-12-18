@@ -95,27 +95,27 @@
         chdir: /root/
         cmd: /root/setup-debian-11-template.sh
 
-    - name: get arch could image
-      get_url:
-        url: https://geo.mirror.pkgbuild.com/images/v20220715.68480/Arch-Linux-x86_64-cloudimg-20220715.68480.qcow2
-        dest: /root/arch-openstack-amd64.qcow2
-        checksum: sha256:59c15b0c624bd9301e2b85f775dd14f634f8e2bc1ea99065d3f2609e5b6f9916
-        mode: '0644'
-        owner: root
-        group: root
+    #- name: get arch could image
+    #  get_url:
+    #    url: https://geo.mirror.pkgbuild.com/images/v20220715.68480/Arch-Linux-x86_64-cloudimg-20220715.68480.qcow2
+    #    dest: /root/arch-openstack-amd64.qcow2
+    #    checksum: sha256:59c15b0c624bd9301e2b85f775dd14f634f8e2bc1ea99065d3f2609e5b6f9916
+    #    mode: '0644'
+    #    owner: root
+    #    group: root
 
-    - name: get arch template vm scriptoid
-      copy:
-        src: setup-arch-cloudinit.sh
-        dest: /root/setup-arch-template.sh
-        mode: '0755'
-        owner: root
-        group: root
+    #- name: get arch template vm scriptoid
+    #  copy:
+    #    src: setup-arch-cloudinit.sh
+    #    dest: /root/setup-arch-template.sh
+    #    mode: '0755'
+    #    owner: root
+    #    group: root
 
-    - name: run arch template vm scriptoid
-      shell:
-        chdir: /root/
-        cmd: /root/setup-arch-template.sh
+    #- name: run arch template vm scriptoid
+    #  shell:
+    #    chdir: /root/
+    #    cmd: /root/setup-arch-template.sh
 
     - name: get dark theme installation script
       get_url:
