@@ -49,7 +49,7 @@ all:
         prox0:
           hosts:
             pve0:
-              ansible_host: 10.99.50.70
+              ansible_host: 10.0.50.70
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: root
@@ -106,7 +106,7 @@ all:
         prox1:
           hosts:
             pve1:
-              ansible_host: 10.99.50.71
+              ansible_host: 10.0.50.71
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: root
