@@ -10,7 +10,7 @@ terraform {
 provider "proxmox" {
   alias           = "pve1"
   pm_tls_insecure = true
-  pm_api_url      = "https://10.99.50.71:8006/api2/json"
+  pm_api_url      = "https://10.0.50.71:8006/api2/json"
   pm_password     = "failfail"
   pm_user         = "root@pam"
   pm_timeout      = 900
@@ -42,7 +42,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr1"
+    bridge = "vmbr0"
   }
 
   ipconfig0 = "ip=10.0.50.${count.index + 51}/24,gw=10.0.50.254"
@@ -84,7 +84,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr1"
+    bridge = "vmbr0"
   }
 
   ipconfig0 = "ip=10.0.50.${count.index + 61}/24,gw=10.0.50.254"
@@ -126,7 +126,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_fog" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr1"
+    bridge = "vmbr0"
   }
 
   ipconfig0 = "ip=10.0.50.26/24,gw=10.0.50.254"
@@ -168,7 +168,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_mc" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr1"
+    bridge = "vmbr0"
   }
 
   ipconfig0 = "ip=10.0.50.85/24,gw=10.0.50.254"
