@@ -60,7 +60,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   provider    = proxmox.pve1
-  count       = 2
+  count       = 3
   name        = "deb-k3s-w-${count.index + 1}"
   desc        = "HA k3s cluster worker host ${count.index + 1}"
   target_node = "pve1"

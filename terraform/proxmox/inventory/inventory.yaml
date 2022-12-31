@@ -11,8 +11,9 @@ all:
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: ''
-                  extra_server_args: --disable local-storage
-                  k3s_version: v1.23.8+k3s2
+                  extra_server_args: --disable local-storage --disable traefik --disable
+                    servicelb
+                  k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
             node:
               hosts:
@@ -21,23 +22,29 @@ all:
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: ''
-                  extra_server_args: --disable local-storage
-                  k3s_version: v1.23.8+k3s2
+                  extra_server_args: --disable local-storage --disable traefik --disable
+                    servicelb
+                  k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
                 10.0.50.62:
                   ansible_private_key_file: /home/angle/.ssh/id_rsa
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: ''
-                  extra_server_args: --disable local-storage
-                  k3s_version: v1.23.8+k3s2
+                  extra_server_args: --disable local-storage --disable traefik --disable
+                    servicelb
+                  k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
-    mc:
-      hosts:
-        10.0.50.85:
-          ansible_private_key_file: /home/angle/.ssh/id_rsa
-          ansible_python_interpreter: /usr/bin/env python3
-          ansible_user: debian
+                10.0.50.63:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  extra_agent_args: ''
+                  extra_server_args: --disable local-storage --disable traefik --disable
+                    servicelb
+                  k3s_version: v1.23.14+k3s1
+                  systemd_dir: /etc/systemd/system
+    mc: {}
     piholes:
       hosts:
         10.0.50.14:
