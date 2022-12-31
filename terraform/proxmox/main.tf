@@ -144,7 +144,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_fog" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_mc" {
   provider    = proxmox.pve1
-  count       = 1
+  count       = 0
   name        = "deb-mc-1"
   desc        = "emma stoners minecraft"
   target_node = "pve1"
