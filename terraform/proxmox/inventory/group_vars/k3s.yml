@@ -1,10 +1,7 @@
 ---
-#k3s_version: v1.17.5+k3s1
 k3s_version:  v1.23.14+k3s1
-#ansible_user: debian
 systemd_dir: /etc/systemd/system
 #master_ip: "{{ hostvars[groups['k3s'][0]]['ansible_host'] | default(groups['k3s'][0]) }}"
 #extra_server_args: "--datastore-endpoint 'mysql://k3s:flagrant@tcp(192.168.6.5:3306)/k3s'"
-#extra_server_args: "--no-deploy servicelb --no-deploy traefik --no-deploy local-storage"
-extra_server_args: "--disable local-storage --disable traefik --disable servicelb"
-extra_agent_args: ""
+extra_server_args: "--disable local-storage --disable traefik --disable servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg default-unreachable-toleration-seconds=30 --kube-controller-arg node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s"
+extra_agent_args: "--kubelet-arg node-status-update-frequency=5s"
