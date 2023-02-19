@@ -1,5 +1,11 @@
 all:
   children:
+    gendebs:
+      hosts:
+        10.0.50.170:
+          ansible_private_key_file: /home/angle/.ssh/id_rsa
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
     kates:
       children:
         k3s:
@@ -10,9 +16,12 @@ all:
                   ansible_private_key_file: /home/angle/.ssh/id_rsa
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
-                  extra_agent_args: ''
+                  extra_agent_args: --kubelet-arg node-status-update-frequency=5s
                   extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb
+                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
+                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
+                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
+                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
             node:
@@ -21,27 +30,36 @@ all:
                   ansible_private_key_file: /home/angle/.ssh/id_rsa
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
-                  extra_agent_args: ''
+                  extra_agent_args: --kubelet-arg node-status-update-frequency=5s
                   extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb
+                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
+                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
+                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
+                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
                 10.0.50.62:
                   ansible_private_key_file: /home/angle/.ssh/id_rsa
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
-                  extra_agent_args: ''
+                  extra_agent_args: --kubelet-arg node-status-update-frequency=5s
                   extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb
+                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
+                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
+                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
+                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
                 10.0.50.63:
                   ansible_private_key_file: /home/angle/.ssh/id_rsa
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
-                  extra_agent_args: ''
+                  extra_agent_args: --kubelet-arg node-status-update-frequency=5s
                   extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb
+                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
+                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
+                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
+                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
     mc: {}
@@ -114,6 +132,21 @@ all:
           hosts:
             pve1:
               ansible_host: 10.0.50.71
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: root
+              pve_acls: *id001
+              pve_group: proxie
+              pve_groups: *id002
+              pve_repository_line: deb http://download.proxmox.com/debian/pve bullseye
+                pve-no-subscription
+              pve_roles: *id003
+              pve_ssh_port: 22
+              pve_users: *id004
+        prox2:
+          hosts:
+            pve2:
+              ansible_host: 10.0.50.72
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: root
