@@ -108,7 +108,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: podinfo.local
+    - host: podinfo.home.inherently.xyz
       paths:
         - path: /
           pathType: ImplementationSpecific
