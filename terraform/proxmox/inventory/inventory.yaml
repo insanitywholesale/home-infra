@@ -1,18 +1,36 @@
 all:
   children:
-    gendebs:
-      hosts:
-        10.0.50.170:
-          ansible_private_key_file: /home/angle/.ssh/id_rsa
-          ansible_python_interpreter: /usr/bin/env python3
-          ansible_user: debian
     kates:
       children:
         k3s:
           children:
             master:
               hosts:
-                10.0.50.51:
+                10.0.50.52:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  extra_agent_args: --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --disable local-storage --disable traefik --disable
+                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
+                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
+                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
+                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  k3s_version: v1.23.14+k3s1
+                  systemd_dir: /etc/systemd/system
+                10.0.50.53:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  extra_agent_args: --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --disable local-storage --disable traefik --disable
+                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
+                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
+                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
+                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  k3s_version: v1.23.14+k3s1
+                  systemd_dir: /etc/systemd/system
+                10.0.50.54:
                   ansible_private_key_file: /home/angle/.ssh/id_rsa
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
@@ -26,18 +44,6 @@ all:
                   systemd_dir: /etc/systemd/system
             node:
               hosts:
-                10.0.50.61:
-                  ansible_private_key_file: /home/angle/.ssh/id_rsa
-                  ansible_python_interpreter: /usr/bin/env python3
-                  ansible_user: debian
-                  extra_agent_args: --kubelet-arg node-status-update-frequency=5s
-                  extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
-                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
-                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
-                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
-                  k3s_version: v1.23.14+k3s1
-                  systemd_dir: /etc/systemd/system
                 10.0.50.62:
                   ansible_private_key_file: /home/angle/.ssh/id_rsa
                   ansible_python_interpreter: /usr/bin/env python3
@@ -51,6 +57,18 @@ all:
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
                 10.0.50.63:
+                  ansible_private_key_file: /home/angle/.ssh/id_rsa
+                  ansible_python_interpreter: /usr/bin/env python3
+                  ansible_user: debian
+                  extra_agent_args: --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --disable local-storage --disable traefik --disable
+                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
+                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
+                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
+                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  k3s_version: v1.23.14+k3s1
+                  systemd_dir: /etc/systemd/system
+                10.0.50.64:
                   ansible_private_key_file: /home/angle/.ssh/id_rsa
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
