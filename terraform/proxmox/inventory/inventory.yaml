@@ -11,11 +11,12 @@ all:
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: --kubelet-arg node-status-update-frequency=5s
-                  extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
-                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
-                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
-                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --flannel-backend=none --disable-network-policy
+                    --disable local-storage --disable traefik --disable servicelb
+                    --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg
+                    default-unreachable-toleration-seconds=30 --kube-controller-arg
+                    node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s
+                    --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
                 10.0.50.53:
@@ -23,11 +24,12 @@ all:
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: --kubelet-arg node-status-update-frequency=5s
-                  extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
-                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
-                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
-                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --flannel-backend=none --disable-network-policy
+                    --disable local-storage --disable traefik --disable servicelb
+                    --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg
+                    default-unreachable-toleration-seconds=30 --kube-controller-arg
+                    node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s
+                    --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
                 10.0.50.54:
@@ -35,11 +37,12 @@ all:
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: --kubelet-arg node-status-update-frequency=5s
-                  extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
-                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
-                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
-                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --flannel-backend=none --disable-network-policy
+                    --disable local-storage --disable traefik --disable servicelb
+                    --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg
+                    default-unreachable-toleration-seconds=30 --kube-controller-arg
+                    node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s
+                    --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
             node:
@@ -49,11 +52,12 @@ all:
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: --kubelet-arg node-status-update-frequency=5s
-                  extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
-                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
-                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
-                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --flannel-backend=none --disable-network-policy
+                    --disable local-storage --disable traefik --disable servicelb
+                    --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg
+                    default-unreachable-toleration-seconds=30 --kube-controller-arg
+                    node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s
+                    --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
                 10.0.50.63:
@@ -61,11 +65,12 @@ all:
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: --kubelet-arg node-status-update-frequency=5s
-                  extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
-                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
-                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
-                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --flannel-backend=none --disable-network-policy
+                    --disable local-storage --disable traefik --disable servicelb
+                    --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg
+                    default-unreachable-toleration-seconds=30 --kube-controller-arg
+                    node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s
+                    --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
                 10.0.50.64:
@@ -73,11 +78,12 @@ all:
                   ansible_python_interpreter: /usr/bin/env python3
                   ansible_user: debian
                   extra_agent_args: --kubelet-arg node-status-update-frequency=5s
-                  extra_server_args: --disable local-storage --disable traefik --disable
-                    servicelb  --kube-apiserver-arg default-not-ready-toleration-seconds=30
-                    --kube-apiserver-arg default-unreachable-toleration-seconds=30
-                    --kube-controller-arg node-monitor-period=20s --kube-controller-arg
-                    node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s
+                  extra_server_args: --flannel-backend=none --disable-network-policy
+                    --disable local-storage --disable traefik --disable servicelb
+                    --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg
+                    default-unreachable-toleration-seconds=30 --kube-controller-arg
+                    node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s
+                    --kubelet-arg node-status-update-frequency=5s
                   k3s_version: v1.23.14+k3s1
                   systemd_dir: /etc/systemd/system
     mc: {}
