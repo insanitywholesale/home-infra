@@ -1,11 +1,6 @@
 #/bin/bash
 
-if [ -z "$1" ]
-then
-	VMID=9010
-else
-	VMID="$1"
-fi
+VMID="$((9000 + $(shuf -i 12-900 -n 1)))"
 
 if [ -z "$2" ]
 then

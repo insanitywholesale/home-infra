@@ -77,7 +77,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
 }
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
-  provider    = proxmox.pve1
+  provider    = proxmox.pve0
   count       = 1
   name        = "deb-k3s-m-${(count.index * 2) + 2}"
   desc        = "HA k3s cluster master host"
@@ -118,7 +118,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
   }
 }
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve0
   count       = 1
   name        = "deb-k3s-m-${(count.index * 2) + 3}"
   desc        = "HA k3s cluster master host"
@@ -202,7 +202,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
 }
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
-  provider    = proxmox.pve1
+  provider    = proxmox.pve0
   count       = 1
   name        = "deb-k3s-w-${(count.index * 2) + 2}"
   desc        = "HA k3s cluster worker host"
@@ -244,7 +244,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
 }
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve0
   count       = 1
   name        = "deb-k3s-w-${(count.index * 2) + 3}"
   desc        = "HA k3s cluster worker host"
