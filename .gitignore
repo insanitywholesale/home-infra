@@ -5,3 +5,4 @@ terraform.tfstate.backup
 .terraform
 k3s-inventory.ini
 lae.proxmox
+terraform/proxmox/roles/ansible-role-k3s/k3s_venv
