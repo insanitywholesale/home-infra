@@ -1,0 +1,2 @@
+minor_changes:
+  - fusion_info - rename storageclass to storage_classes in response for consistency

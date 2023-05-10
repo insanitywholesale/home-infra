@@ -1,0 +1,200 @@
+{{ ansible_managed | comment }}
+# This is a configuration file for Zabbix Proxy process
+# To get more information about Zabbix, visit http://www.zabbix.com
+
+# This configuration file is "minimalized", which means all the original comments 
+# are removed. The full documentation for your Zabbix Proxy can be found here:
+# https://www.zabbix.com/documentation/{{ zabbix_version }}/en/manual/appendix/config/zabbix_proxy
+
+ProxyMode={{ zabbix_proxy_mode }}
+Server={{ zabbix_proxy_server }}
+{% if zabbix_version is version('6.0', '<') %}
+ServerPort={{ zabbix_proxy_serverport }}
+{% endif %}
+{% if zabbix_proxy_hostname is defined and zabbix_proxy_hostname %}
+Hostname={{ zabbix_proxy_hostname  }}
+{% endif %}
+{% if zabbix_proxy_hostnameitem is defined and zabbix_proxy_hostnameitem %}
+HostnameItem={{ zabbix_proxy_hostnameitem }}
+{% endif %}
+ListenPort={{ zabbix_proxy_listenport }}
+{% if zabbix_proxy_sourceip is defined and zabbix_proxy_sourceip %}
+SourceIP={{ zabbix_proxy_sourceip }}
+{% endif %}
+{% if zabbix_version is version('6.0', '>=') %}
+LogType={{ zabbix_proxy_logtype }}
+{% endif %}
+LogFile={{ zabbix_proxy_logfile }}
+LogFileSize={{ zabbix_proxy_logfilesize }}
+EnableRemoteCommands={{ zabbix_proxy_enableremotecommands }}
+DebugLevel={{ zabbix_proxy_debuglevel }}
+PidFile={{ zabbix_proxy_pidfile }}
+{% if zabbix_version is version('3.2', '>') %}
+SocketDir={{ zabbix_proxy_socketdir }}
+{% endif %}
+DBHost={{ zabbix_proxy_dbhost }}
+DBName={{ zabbix_proxy_dbname }}
+{% if zabbix_proxy_dbschema is defined and zabbix_proxy_dbschema %}
+DBSchema={{ zabbix_proxy_dbschema }}
+{% endif %}
+DBUser={{ zabbix_proxy_dbuser }}
+DBPassword={{ zabbix_proxy_dbpassword }}
+DBPort={{ zabbix_proxy_dbport }}
+{% if zabbix_version is version('6.0', '>=') %}
+AllowUnsupportedDBVersions={{ zabbix_proxy_allowunsupporteddbversions }}
+{% endif %}
+ProxyLocalBuffer={{ zabbix_proxy_proxylocalbuffer }}
+ProxyOfflineBuffer={{ zabbix_proxy_proxyofflinebuffer }}
+{% if zabbix_version is version('6.4', '<') %}
+HeartbeatFrequency={{ zabbix_proxy_heartbeatfrequency }}
+{% endif %}
+{% if zabbix_proxy_configfrequency is defined and zabbix_proxy_configfrequency is not none %}
+{% if zabbix_version is version('6.4', '<') %}
+ConfigFrequency={{ zabbix_proxy_configfrequency }}
+{% else %}
+ProxyConfigFrequency={{ zabbix_proxy_configfrequency }}
+{% endif %}
+{% else %}
+{% if zabbix_version is version('6.2', '<') %}
+ConfigFrequency=3600
+{% elif zabbix_version is version('6.4', '<')  %}
+ConfigFrequency=300
+{% else %}
+ProxyConfigFrequency=10
+{% endif %}
+{% endif %}
+DataSenderFrequency={{ zabbix_proxy_datasenderfrequency }}
+StartPollers={{ zabbix_proxy_startpollers }}
+StartIPMIPollers={{ zabbix_proxy_startipmipollers }}
+{% if zabbix_version is version('4.2', '>=') %}
+StartPreprocessors={{ zabbix_proxy_startpreprocessors }}
+{% endif %}
+StartPollersUnreachable={{ zabbix_proxy_startpollersunreachable }}
+StartTrappers={{ zabbix_proxy_starttrappers }}
+StartPingers={{ zabbix_proxy_startpingers }}
+StartDiscoverers={{ zabbix_proxy_startdiscoverers }}
+StartHTTPPollers={{ zabbix_proxy_starthttppollers }}
+{% if zabbix_proxy_javagateway is defined and zabbix_proxy_javagateway %}
+JavaGateway={{ zabbix_proxy_javagateway }}
+JavaGatewayPort={{ zabbix_proxy_javagatewayport }}
+StartJavaPollers={{ zabbix_proxy_startjavapollers }}
+{% endif %}
+{% if zabbix_version is version_compare('2.4', '>=') %}
+StartVMwareCollectors={{ zabbix_proxy_startvmwarecollector }}
+VMwareFrequency={{ zabbix_proxy_vmwarefrequency }}
+VMwareCacheSize={{ zabbix_proxy_vmwarecachesize -}}M
+{% endif %}
+SNMPTrapperFile={{ zabbix_proxy_snmptrapperfile }}
+StartSNMPTrapper={{ zabbix_proxy_snmptrapper }}
+{% if zabbix_proxy_listenip is defined and zabbix_proxy_listenip %}
+ListenIP={{ zabbix_proxy_listenip }}
+{% endif %}
+HousekeepingFrequency={{ zabbix_proxy_housekeepingfrequency }}
+CacheSize={{ zabbix_proxy_cachesize -}}M
+StartDBSyncers={{ zabbix_proxy_startdbsyncers }}
+HistoryCacheSize={{ zabbix_proxy_historycachesize -}}M
+{% if zabbix_version is version_compare('3.2', '>=') %}
+HistoryIndexCacheSize={{ zabbix_proxy_historyindexcachesize -}}M
+{% endif %}
+{% if zabbix_version is version_compare('2.4', '<') %}
+HistoryTextCacheSize={{ zabbix_proxy_historytextcachesize -}}M
+{% endif %}
+Timeout={{ zabbix_proxy_timeout }}
+TrapperTimeout={{ zabbix_proxy_trappertimeout }}
+UnreachablePeriod={{ zabbix_proxy_unreachableperiod }}
+UnavailableDelay={{ zabbix_proxy_unavaliabledelay }}
+UnreachableDelay={{ zabbix_proxy_unreachabedelay }}
+{% if zabbix_version is version_compare('6.2', '>=') %}
+StartODBCPollers={{ zabbix_proxy_startodbcpollers }}
+{% endif %}
+ExternalScripts={{ zabbix_proxy_externalscripts }}
+FpingLocation={{ zabbix_proxy_fpinglocation }}
+Fping6Location={{ zabbix_proxy_fping6location }}
+{% if zabbix_proxy_sshkeylocation is defined and zabbix_proxy_sshkeylocation %}
+SSHKeyLocation={{ zabbix_proxy_sshkeylocation }}
+{% endif %}
+LogSlowQueries={{ zabbix_proxy_loglowqueries }}
+TmpDir={{ zabbix_proxy_tmpdir }}
+{% if zabbix_version is version_compare('2.4', '<') %}
+AllowRoot={{ zabbix_proxy_allowroot }}
+{% endif %}
+Include={{ zabbix_proxy_include }}
+{% if zabbix_version is version_compare('3.0', '<') %}
+LoadModulePath={{ zabbix_proxy_loadmodulepath }}
+{% endif %}
+{% if zabbix_proxy_loadmodule is defined and zabbix_proxy_loadmodule %}
+LoadModule={{ zabbix_proxy_loadmodule }}
+{% endif %}
+{% if zabbix_version is version_compare('4.0', '>=') %}
+StatsAllowedIP={{ zabbix_proxy_statsallowedip }}
+{% endif %}
+{% if zabbix_version is version_compare('3.0', '>=') %}
+{% if zabbix_proxy_tlsconnect is defined and zabbix_proxy_tlsconnect %}
+TLSConnect={{ zabbix_proxy_tlsconnect }}
+{% endif %}
+{% if zabbix_proxy_tlsaccept is defined and zabbix_proxy_tlsaccept %}
+TLSAccept={{ zabbix_proxy_tlsaccept }}
+{% endif %}
+{% if zabbix_proxy_tlscafile is defined and zabbix_proxy_tlscafile %}
+TLSCAFile={{ zabbix_proxy_tlscafile }}
+{% endif %}
+{% if zabbix_proxy_tlscrlfile is defined and zabbix_proxy_tlscrlfile %}
+TLSCRLFile={{ zabbix_proxy_tlscrlfile }}
+{% endif %}
+{% if zabbix_proxy_tlsservercertissuer is defined and zabbix_proxy_tlsservercertissuer %}
+TLSServerCertIssuer={{ zabbix_proxy_tlsservercertissuer }}
+{% endif %}
+{% if zabbix_proxy_tlsservercertsubject is defined and zabbix_proxy_tlsservercertsubject %}
+TLSServerCertSubject={{ zabbix_proxy_tlsservercertsubject }}
+{% endif %}
+{% if zabbix_proxy_tlscertfile is defined and zabbix_proxy_tlscertfile %}
+TLSCertFile={{ zabbix_proxy_tlscertfile }}
+{% endif %}
+{% if zabbix_proxy_tlskeyfile is defined and zabbix_proxy_tlskeyfile %}
+TLSKeyFile={{ zabbix_proxy_tlskeyfile }}
+{% endif %}
+{% if zabbix_proxy_tlspskidentity is defined and zabbix_proxy_tlspskidentity %}
+TLSPSKIdentity={{ zabbix_proxy_tlspskidentity }}
+{% endif %}
+{% if zabbix_proxy_tlspskfile is defined and zabbix_proxy_tlspskfile %}
+TLSPSKFile={{ zabbix_proxy_tlspskfile }}
+{% endif %}
+{% endif %}
+{% if zabbix_proxy_dbtlsconnect is defined and zabbix_proxy_dbtlsconnect is not none %}
+DBTLSConnect={{ zabbix_proxy_dbtlsconnect }}
+{% endif %}
+{% if zabbix_proxy_dbtlscafile is defined and zabbix_proxy_dbtlscafile is not none %}
+DBTLSCAFile={{ zabbix_proxy_dbtlscafile }}
+{% endif %}
+{% if zabbix_proxy_dbtlscertfile is defined and zabbix_proxy_dbtlscertfile is not none %}
+DBTLSCertFile={{ zabbix_proxy_dbtlscertfile }}
+{% endif %}
+{% if zabbix_proxy_dbtlskeyfile is defined and zabbix_proxy_dbtlskeyfile is not none %}
+DBTLSKeyFile={{ zabbix_proxy_dbtlskeyfile }}
+{% endif %}
+{% if zabbix_proxy_dbtlscipher is defined and zabbix_proxy_dbtlscipher is not none %}
+DBTLSCipher={{ zabbix_proxy_dbtlscipher }}
+{% endif %}
+{% if zabbix_proxy_dbtlscipher13 is defined and zabbix_proxy_dbtlscipher13 is not none %}
+DBTLSCipher13={{ zabbix_proxy_dbtlscipher13 }}
+{% endif %}
+{% if zabbix_version is version('6.0', '>=') %}
+{% if zabbix_proxy_vaulttoken is defined and zabbix_proxy_vaulttoken is not none %}
+VaultToken={{ zabbix_proxy_vaulttoken }}
+{% endif %}
+{% if zabbix_proxy_vaulturl is defined and zabbix_proxy_vaulturl is not none %}
+VaultURL={{ zabbix_proxy_vaulturl }}
+{% endif %}
+{% if zabbix_proxy_vaultdbpath is defined and zabbix_proxy_vaultdbpath is not none %}
+VaultDBPath={{ zabbix_proxy_vaultdbpath }}
+{% endif %}
+{% if zabbix_proxy_vaulttlscertfile is defined and zabbix_proxy_vaulttlscertfile is not none %}
+VaultTLSKeyFile={{ zabbix_proxy_vaulttlscertfile }}
+{% endif %}
+{% if zabbix_proxy_vaulttlskeyfile is defined and zabbix_proxy_vaulttlskeyfile is not none %}
+VaultTLSCertFile={{ zabbix_proxy_vaulttlskeyfile }}
+{% endif %}
+{% if zabbix_proxy_listenbacklog is defined and zabbix_proxy_listenbacklog is not none %}
+ListenBacklog={{ zabbix_proxy_listenbacklog }}
+{% endif %}
+{% endif %}

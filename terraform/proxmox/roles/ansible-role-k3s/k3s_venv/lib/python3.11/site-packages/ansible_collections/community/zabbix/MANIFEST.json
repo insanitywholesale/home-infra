@@ -1,0 +1,40 @@
+{
+ "collection_info": {
+  "namespace": "community",
+  "name": "zabbix",
+  "version": "1.9.3",
+  "authors": [
+   "Dusan Matejka (@D3DeFi)",
+   "sky-joker (@sky-joker)",
+   "Werner Dijkerman (@dj-wasabi)"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "monitoring",
+   "zabbix"
+  ],
+  "description": "Collection allowing to configure resources in Zabbix monitoring system",
+  "license": [],
+  "license_file": "LICENSE",
+  "dependencies": {
+   "ansible.windows": "*",
+   "ansible.netcommon": "*",
+   "ansible.posix": "*",
+   "community.general": "*",
+   "community.mysql": "*",
+   "community.postgresql": "*"
+  },
+  "repository": "https://github.com/ansible-collections/community.zabbix.git",
+  "documentation": "https://github.com/ansible-collections/community.zabbix.git",
+  "homepage": "https://github.com/ansible-collections/community.zabbix",
+  "issues": "https://github.com/ansible-collections/community.zabbix/issues"
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "e476cd027a2477b8d6417c251a409f4c2b040c9ee9a78ce6facf099912452868",
+  "format": 1
+ },
+ "format": 1
+}

@@ -1,0 +1,6 @@
+purestorage
+py-pure-client
+netaddr
+requests
+pycountry
+packaging

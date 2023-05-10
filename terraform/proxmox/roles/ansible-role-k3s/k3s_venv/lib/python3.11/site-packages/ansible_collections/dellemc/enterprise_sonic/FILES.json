@@ -1,0 +1,4702 @@
+{
+ "files": [
+  {
+   "name": ".",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/test.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "47a1db3b7c5d49f80307023f42c78c5efdf5efa0b1f507f1106b96179b64dc4c",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/hosts",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "22f4ec1024a7ff0f9d471735392d71eac3378f5c7ddc7cf1e0c42a958def8e78",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "33ef239ff7b87fa17a8e41edd5cfcba01913ed7f29ae9220d1fcd294f7b231d7",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e0709445b8b0c43b7436aae58dd21ece6fc1f5c1b63346e4cf7f663382278c97",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/tasks/action_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "119fd02d958cb737e829d957a02c45b92e19dd44150723f75a9b77bdd098acb4",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d898a4d581cee3c6dfdf32cb63c0e4d0a553e7bf894ea821faca6cb6f5b533fd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5984f513be79d50fcd8ee692355ea36cde13ff8a0261bb8ec9a4d80099310514",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/defaults/main copy.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "8d53284cc72caddd5bc84a507bb7330af983d44c35427ac7fbe623a29aa7d47f",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6b8363d6259e43af603abde938ed159d1a3a083cbef49fa37095bdc779133921",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "40edc63e0538af91144b80f5a699aaaa241151458d0f4a556953b240d97ef068",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cf32b77246c5b9050e568364312b5b812eefbb1e4123dd527381614b7620e2f6",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d4dac61e6125e688485a484cc6e62a60ca1350ca656f448a6d3064be98c74c2b",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7198a5cabb43600d45494873192676174231f617e4bd15e13ba4e8f10b6944dc",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_lag_interfaces/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5116cc9727de8d455b371ae1876ebb2e874b3bae27e31aa18e29b53aed41f535",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/test_get.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b2f3508fde7b2945a3bf1465952903d3e75c3aa05aabe36cef40c1cd4b360ff6",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/test_delete.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7bc736ed91ef8290a3c45dfe9b8d350a01996eff4b103c1d4e90852b23a80095",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/test_post.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7d11c6cb5b64a6b2a4b3edd715092a67e28597ded5da11073ff1ec47db284a6b",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/test_patch.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d7c5c4dab020223f06f75446e5939d0a4c486d9884e961f564b839483f713327",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "eac1646289012eda25f0d8bca465f95a23a0850f8a1d091097ccb072f4085b0c",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/test_put.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "261a7ba9a567b95b01df14b7e871846c2c3225bea9c04bdd946f16f3edbb017e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/invalid.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0ee03a07e59693b9e1d817500caadabf8a4aec1e6c738d37d161510072e6cade",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a246f4c1b1644f52f5904f83b028181aef1a2cce126f245f4f5b9befa8924e55",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/tasks/patch.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4c419a4942f8ef3b29bdd307b3ac95c2e516285c7a63e7fdb02bf41937f13aa1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3bca81357e79e2b9e2ecb820a7f32d0f1da5266e69ef6f5d729d8dbb023eedb1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_api/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a9c25024f5d908d307a288172699971c215b190bda0d6092793202822eed1fe6",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "57d68154ace90d7cdf438b926ac4ff8d4197f1865019473d3078c2a48555b103",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c28676c6385f511e2875acca9d5f3ffc05418b4fc6220838fd8c7588272d93d2",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "19a1f1cb2ed8eeea3d1e48936ac12afcd8a8e3f2c50318a99cc4fb0167a26416",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cf66c8d3e6ab8abfe99759ba204cf9bc33e8108248489ad13dfcbc8b6e8b1484",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_af/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9d9e4c73c7952f36475c79fbf88ed2e5866588bafe4acec029dfc50071b75e5a",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "54286b592a5d524eae86898f55b0d50583409bad0022ab7c1a136b98664ae714",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e40faf23f810bdd4ac7c98dc1c7004625abf54db17a9799898d35be0092b6a22",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5e3c20b43609a7a0a867ef1f51dd5b891e6e8b891f5f07d04aada1883d1b6c96",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_interfaces/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/templates/cli_test_case_01.cfg",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "99b3e8c1065b4d95c39957ea69fe09994c59af516a58101ac68b931bd788a98e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a84c7d4404bbb768b0634e9321d7a083bc962efb448821d56e10703c582e8bef",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2abb0cea9c4eb807effba8647f512ff4e4fdd2cd5252b5d60fae4f6ffc9e060c",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "31c383fa30c2abeca617c48be2fc75db4d060cbc9236e883367dd2ca2304e009",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/tasks/tasks_template_del.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e752456ebc7460997bb44a41ea07ebc6a3fedadbb2982d04df82456d0cb8e1f2",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f2800620b593938fecb1b8a7354c680bcc3f1fcbb59381ca25889d2424b82198",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_tacacs_server/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b16570e34d6f129bbec985a4ed0852051e0bb2a4007e8a9a73120f9a1d3ae876",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/test_local.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "34965a77f9bac6ffd2653154ed6557afe435b6c6d0ad6756eb7aed5628c7d6f5",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/bad_operator.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3373786cbc0c28195672a291d5b1d6a2448a3bef439403a1379ccc0ea89db16e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/output.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "eedd0d5419877e550dc7c78533a383b251a37355cacc754fe6f718a0e8bc17cf",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/timeout.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d800cc09a8f6d98aae25410d7238fabe1cd7a8e0785dbae6fa83a8d9096b6f54",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/contains.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2cdc7492975a756c71eb807b856492e6880b93ed4c9b39a5e05b7fc3019e371c",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/cli_command.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "542bb18b9c65a5368b080c2784cc4f16ab167609dd661cf9d33588c62f90b2a5",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/invalid.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "74b8fc35c0e680a8624044c863392393c8aa353d93f3a4a5c17e2b125c72e1bd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "770573da53e590ea699b0b226a5a91dcc1457b192b5759490033fb86c71ad2e0",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/tasks/prompt.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "366447b1b94627afdbcf11ad0a6e23ed74a4b6ef3f75b34ceb33d1d0645b571f",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/defaults/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c5b387bd0d09356a40ee76b1d0a90106ad3766c7e8692c81cac72d55e183e31f",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_command/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a5cbf2e2e7af16e77a326ef68a4978c1c765ed72d750e58f9f70ed732ef43669",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3f2c19cc1d5d88c8ab54c56bac91d31ca61f168a9b2c9cc5e92701f1c0c51937",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e40faf23f810bdd4ac7c98dc1c7004625abf54db17a9799898d35be0092b6a22",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9f72f840292265f4c4a9d96c0ec18aec1f73302bcd870b4b351ed319286eddd3",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_as_paths/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b7bf6d628ad50843b81ac4b8221bd23398c18a2bcbe92c98e8c7da7d24eec798",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f9acb095a9607444ec0702ae6a45672173b6cacec6e0a417bdbcfe9fd604ffb6",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c07e16779a411ed03160eec075e1e68ffafa845a1fb7ee61395279df34e0f868",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9f64b5c536fe544240ce9c38f0cb6cd324c5759d627a5c290bf0347fd2740512",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vlans/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9f0bff3d9b88e7d50ba7d3b8cc320b341d90fe84aedef4a841c2bfd08ea07ee8",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d5eef5b94c6fc079ac62361205017ccae7ff45227fd22ab16599376c9834c27b",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d77cf2a8aac0500bc814f27970125522820fe871b8dac2779a2318a126ccdb6e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "fc014f65407813d0e13ee7f4f778ee7e2f79bf26e4089c21a332a425395637ec",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "04127c5fbb729e1e955d2aeaadb9ec67d2df28afaa7cd9918a836942fbdaed9a",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_prefix_lists/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b16570e34d6f129bbec985a4ed0852051e0bb2a4007e8a9a73120f9a1d3ae876",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/templates/task_template.j2",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "37b12abf0655a42fd64fdea6887fde54768b767bd7462c7012f380a31f88e9a2",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/templates/task_template1.j2",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2f4cef7b0dc8762cbfa1d9de0ce48d24aedaf0154866fcdcb674e57d337a2d41",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/tasks/single.run.facts.report.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "51afd3cab10d587776002beedfc327d9856842d346fb3b958639c5e18a9c56c9",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/tasks/cli.contains.test.facts.report.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "091ee6abaef30f2c589fc21284a35cf328bcb7de1e363ed764efce289f1143d9",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/tasks/idempotent.facts.report.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f228e22999e5b13f192bb7e5064c46e4f8b8dcd817bccb6e1a1d4bf33368c30c",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/tasks/cli.test.facts.report.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ef3d5981a08ff0adb1ca89e06e6741c7b8c284b4c1a93eca38758c2984a51047",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/tasks/cli_tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2dff2da6f27a91052f22a4f0eeacd562333b1feb240dbce16b0ba03913f029e9",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/tasks/action.facts.report.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2d51ee6515850e5d44140d451c2027d0037dc9b294fd0b5e16986f8fda94803e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3f82f73da84954bb7f19f2dceb7105bb98e34f83943514a99533dcde30707c6c",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/common/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "bcdccb453965a51bf1740643f331108bfd38f1dabd58e303847ea0a616a2d72e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b85a04c09ea8cfe7fecc4f16df9e0b176a60912f0e10763ebe9670abf28526cd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e58c61f59e06878c38a38d9496c6ed895cd2abeda2af54f0c0443f21ca77fba1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c3adf9189fd52548ab34379294ae73202e3736016a8cfb7985be05668b0d19b1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6d975800ac27a2a441997aa994bba5a04f0fb1794d252bb282eeb8302b018547",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f86c7979a8ba1918a426d3a04d8eea9ca1d1f0bb0e9470e9be5a1a426b0e1aa4",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_ntp/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/templates/cli_test_case_01.cfg",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5a96aabcabc3d254e8325892587b996901af87114287fef39cdd36185e46e6af",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "09c098dc215af4b393250ae3d4c505193e70a2852d8032f2fbc62be6d74582a3",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0b4579fd763f8f7516ebebf80381c0f526b5d107994da1047ba96329973424dc",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "93bbfc9186c081b624cc9e5e1f5d891046c2e93638e08ade2bf9bca970b3b5a0",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/tasks/tasks_template_del.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9a4e4f54ba5b2c1a99608e0e4c42da660ec2e7bcb0cc1000b4510ca803410108",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5f4b8ef73168fc7cdbf0582a176198e4034c0c8301120a9e65a170c7e394bde6",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_radius_server/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b16570e34d6f129bbec985a4ed0852051e0bb2a4007e8a9a73120f9a1d3ae876",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/templates/cli_test_case_01.cfg",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "27f81e38d26fecf36640fe5ce73aaf390bb9ad9fc98e5b10149c44148c5bc444",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f63bf8a1f623c7626ccc7131205a93e63d1850f705e8b939c6fbd33edf6d0f8f",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d3ac0c1d087259eefbdb96467fc90f40d9e326094623648ecd845c4945967e97",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9505adb80d90b058a0afa8e2ac8bae2e4e8f18b6d5fb8141d1a5350ed6fe7c73",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "181074d3ddf903f23c2065bbee708f2c5dfb575af70c0061685cb359b9f2cc2b",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ebd7db1ebfdb114eb0280e5ff41adaffff92caa2df2f74cc7dc98a33214d36ad",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vxlan/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f16453f6d7fd07d75a5ff1909a51efdd02316b84331c30780dee2258cb462540",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "429e9498f56bd56705727f4b34b5b77c457220a51f7f2c43ff74f86b5e54eddf",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "59f11ea9543380e101f9d2d9bd11d47f0ec0225aac74b706647b7bb6babad758",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/tasks/tasks_template_del.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6dbf73cf30a5e17226e7ef3ae721b8f04642195ab7139cb66c0c95e7c8c49b43",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "1a3fdc2249981d95b911544645bc81439e0bab922c06eb72d9a53457122539ca",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_mclag/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "af0aad24caea6100f1eaf28dd660a9deb60f86870295a92c77ba0dc0ee9b92b1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/templates/cli_test_case_01.cfg",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d4729194e8b87f49e0b444373c1b3b2ad2a0b50a0f0ebd894c8abaec1075d706",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/tasks/single_run_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a04afddc08a265c6589fdce4d84bf70aebe36072ef0475503e65b70af97c8137",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "aa927e1b108c8b0f9744cfc79244782d7e0cef0518db83faab3a34373ffbed04",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6ee0b650f4b18b6530df7383f4bf2168d8ee13ca49946f3f37e415dce05aff37",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/tasks/cli_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "37f946b76a42a134a1e8bd8bd337760512e44038b418be2d3943a2c05459f6f2",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "895f8900d570fdfc3c187e09c688ceefb21cd13bcd8af8b78beb2dc7b59c5a4b",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "29e2bb2399e1576c889e4d1a2c915773ca57c3b0befa939be5c1f30bd422f6c1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_users/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b16570e34d6f129bbec985a4ed0852051e0bb2a4007e8a9a73120f9a1d3ae876",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/templates/cli_test_case_01.cfg",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "8e05b1c592caa3ffa0aef7d93d7f1e12d42c1eb98ce4f6b5b8736ac698ebd351",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a0a4218ce9437e1a54f2edc499296591ffdf35f861f5d12eee0f53b76292032f",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c4f683f060d44c641f18b803daa9e74f8d6eba27f2831b3fd56768c2679e3334",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a640983377723baab16e6b9a3fd9b5f68fd947abd94282237c8591a396fefc94",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f27630400987fa257da883e08c8fc908510f51e2dea4bbba00219d329fe3eae4",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "31e02192de52bb9e3299115d5392687e7baf808d0224e168e426bf1fd98a6048",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_vrfs/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "63fc9c716055d7d4f82e422447281cc8abb5a04246d72f2c39d9263005be9df8",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ce433fedccb55543967ac45623afcdbff87204bd9644ba9837455656014869e5",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ce1db9efc87c607d309aa70caf435631ddcab6ac40ad5c7011f2e95346a021e9",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "88c9dd3878632528a559747ecfb71bcf3e0664de2a5da122e016d4ec013c610d",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/tasks/tasks_template_del.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "351f58c0c80bb45715a3bb406182187784093bc9e3611d08142cc290309d7d92",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5d09922e1001ecaedc3e5326bd7f1c4e9133357ba2eba8df4c8fe8e9ffb9eb4b",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_system/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "af0aad24caea6100f1eaf28dd660a9deb60f86870295a92c77ba0dc0ee9b92b1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/templates/src.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f34c81b433f45db921128f31abcd6b7292fe74b83b00e6afea2248d04180ae3f",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/templates/snmp.j2",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6266bb7ac15be37fb065fafa521e12a666b9804d4518a395119fa8036b0cbf29",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a007378ceca161a4eb1db9203784be6954e3f461c5fd78b888ffab8704c9fb02",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/tasks/replace_tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2e7ab0a5a93310cfbee8b1af86f2f0762fb2bef823e7db61c0a46582f0f93744",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "83bff7c7bea4a71d7f170f2d9b1986bd0c7599a93734900e8f33aae7c2c58188",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/tasks/prompt.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5d6c986e2e9e1cd87f431968150a20f814a98571d907184d6d52be627ca7cab3",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e1da61c5de56ece70ce75e17370d095c770e7d38e405130f2d2630f5667e312c",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/tasks/match_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e8f50c7e79553dc6c817ad9877d33a1f81b2263d33dd2f41357e482b7aad9cd9",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/tasks/backup.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6d5b51e2b07f37b5b249f996f8a96eac0fa5d039b61878f955a713e87d0a62b5",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2730670a3b92845afba70ef5f44310c2f0d2e00786e5b31cb5fc7232f10f13dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_config/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e524bd719ff9f90f29484d75dac7524b7cc1be6ee3cbb968c4e7b1a6c5794d3b",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9ec3be9a9befda131f6bb0f763bd36fb5e42fc826611408f8e9a0b9428a0b558",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "05c972841c89a97abfeffe3ea0ce4df26d90a7ea0e4b12a43e94391dc8f4a8a1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/tasks/tasks_template_del.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "162e1ee53ad29b43871e3319c81a8a897c3fa5e431c3adfa11225c39819c1b68",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2df5842ca274f91f4c478ebfa10e895039cffe8e44eff6eb846a0206feb04192",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_static_routes/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b16570e34d6f129bbec985a4ed0852051e0bb2a4007e8a9a73120f9a1d3ae876",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports/templates/regression_html_report.j2",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ba914f5e928e8d590b975bc1392def64bf9724d0a405a17e20c2a40ff297ff34",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2c2f62bacde14dae48a0123e1512b5e1b99b3f1fd4163698e67c8e3fd77b471e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/test_reports/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "bcdccb453965a51bf1740643f331108bfd38f1dabd58e303847ea0a616a2d72e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3d9027febd06263adb0f67629fb7b0527fc899eb65e5f6a9f51975014f6e7cf8",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d61e40a8240f2b86ff932423f91581a859ec4dcdaa8f9cdf827fbe50220d23b5",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e94c4316918dfed7d0c87b5b4571e9a12b8d788a630915ba3b284fbb91144a53",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c9d8034be99bc0d49696016feafc04a35c2e1d57c78507fe48b7a970e08b59b0",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "8c74c59e8e666909f5dc072cafbfb243973612317c3a2aef51c9474ddb84c505",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_neighbors_af/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e61f468a3341e060c6f5022a306918865c7b844316956ecaca28d57a5daab261",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9cf66706c721d3eea2222ebb0aba2c6fe1b4cdba36cd8bbdbffb39882f551d51",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e40faf23f810bdd4ac7c98dc1c7004625abf54db17a9799898d35be0092b6a22",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e8ded0a1e8c9fa73380e115371f1cfc30a59fbe4520fddf1fec4c09f8317ad4d",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l3_interfaces/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "94eb56dccb6322b64d45eec3612397a2a008682177606216e39491da17cd53ee",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "dc7a2c3172e30fa52832d171c90691a412bbb3c73ca1909580e99aa4a30200ee",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7d0de7954ee326560a6ae01bfe2109c8ed1ce0fcb4e62167d00f3ff642f61151",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/tasks/tasks_template_del.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7de7b7896a20012c48a078b7a6d98d3921017dac84e73a7f444723221879f615",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "696ae45b0e5d370c8b2330355a266ecb910da3d29073a6892ca3f756c18af4c8",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_aaa/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "af0aad24caea6100f1eaf28dd660a9deb60f86870295a92c77ba0dc0ee9b92b1",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "073811d763dcb3be1f2c0d57104df45f46beeab9bb3536bbc2e2f30aefa4ef73",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cad38a766eec3a35af5750b608e7fd59d8ab450b489b0ff9018ba4c9979c1a78",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c07e16779a411ed03160eec075e1e68ffafa845a1fb7ee61395279df34e0f868",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f9f8c4a3db4f35e73942f4a63a109181a274470176e955ab0b9a4403446f743f",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_l2_interfaces/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2a37d04c718145cde6606600895ad433696a4dc3b6b310b04ab2e9f58edebf30",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "dae166d577c0cd9eba123111b44403e2144b64f1b5d3cdc99019855ae47c60f4",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "bace46482617b72b8d31da031c3196edd8baba912e5314d8453d073897a25189",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "af2a290eb466df24bdb922fea12f682d747f282f863e490f20c5e52b04257c87",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_ext_communities/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/templates/cli_test_case_01.cfg",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7d4f4ca7215bfc805c826f3d98811131a6b0d2a4edd3e7e7ebb98ecac9fbf9ac",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7fa4dc0183d6c8a679bc13428976c0398b8a87bec0d1032fc6b9d29dc2e4a72a",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ee8893139926d4625752da4613cdf0615613a69ad298a5adbf58641af1249f1e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "487f3c966b63215abc807841742b426ee59657562296a0dfbeab298bf8cd8c7f",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "547f1a09ce0a20c3f9e1ad4b189618dfc6f260b23ddd9c19d29228d08409f228",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e9ba4af225692807f8176182acc8f195d083e9be5c9efa46b6dcba30c8e21f04",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_port_breakout/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b16570e34d6f129bbec985a4ed0852051e0bb2a4007e8a9a73120f9a1d3ae876",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "96df216263dfc8ce5cd25ba67e58fd506f99536d0b72ea98f2bf08dd07a787f4",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "516ce145037ca601b5913a25a07e14e9b3a7d46692ec81bf1e38274e0ff70734",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5ba3b2a9e01ac02e139d1bd1a178e4ec3056645044c3358e8ef7ed9ecb525022",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "dc406ecec44fdd088a078456ed4385c7df08875bbc1b12bc216a8ce5b88da5c5",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp_communities/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/templates/cli_test_case_01.cfg",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "aa7d7ab0948506ca0f3bf4deba39bc70898dc04b0374a4cce76c8683b4017c53",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/tasks/cleanup_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "8e2e15fed3ac641fa8ba9f1e38738208075baeea21eb1aa10b0841fb41f41e45",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/tasks/tasks_template.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b1b65fd3d5bdec60096b7d91bd758d977b2eed46c249b4df10265401e8dfe6a2",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/tasks/preparation_tests.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "16512a75dbf2fc6cfa66cb442290d1547bc3642a7c045205178b96081b25c75e",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/tasks/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a0496cb1c3516588ee23d24020b55400241530bfa142471bcc79d25a07064f11",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/defaults/main.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ba7db7bb0225c59771f2c8809ba3de33ec974de3821518f70faea65cc24cdfd5",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/regression/roles/sonic_bgp/meta/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4780e46505dc61639a5541c0108b65dadd794ba515d4d102a4b5a791e5f857dd",
+   "format": 1
+  },
+  {
+   "name": "tests/regression/image-upgrade.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "84e1170d9f27767c3a0d2e7b907d96bb10d74f57f1bb2248236f6a49dc755ce7",
+   "format": 1
+  },
+  {
+   "name": "tests/sanity",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/sanity/ignore-2.13.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0fcb36eb462773c00b14c9e9f4db400f752ceed07d6ceb2a34833393f0b01134",
+   "format": 1
+  },
+  {
+   "name": "tests/sanity/ignore-2.12.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0fcb36eb462773c00b14c9e9f4db400f752ceed07d6ceb2a34833393f0b01134",
+   "format": 1
+  },
+  {
+   "name": "tests/sanity/ignore-2.14.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0fcb36eb462773c00b14c9e9f4db400f752ceed07d6ceb2a34833393f0b01134",
+   "format": 1
+  },
+  {
+   "name": "tests/sanity/ignore-2.10.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0fcb36eb462773c00b14c9e9f4db400f752ceed07d6ceb2a34833393f0b01134",
+   "format": 1
+  },
+  {
+   "name": "tests/sanity/ignore-2.9.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0fcb36eb462773c00b14c9e9f4db400f752ceed07d6ceb2a34833393f0b01134",
+   "format": 1
+  },
+  {
+   "name": "tests/sanity/ignore-2.11.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0fcb36eb462773c00b14c9e9f4db400f752ceed07d6ceb2a34833393f0b01134",
+   "format": 1
+  },
+  {
+   "name": "tests/unit",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_08_list_diff_with_key_name.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "53df5bef4ac87a55b8cd11579629df0e6e4ee57792a5d58f59244b66cbb92658",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_06_dict_diff_left_only_with_none.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "577edce2fe3f5b3573baca8e1598d03472d94f13022312a9889856d97f76374e",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_16_complex_list_with_dict_diff.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c2a792a7e39c57489071ab25856b424634aeac2af43667aa4fd3ab7cb13c7d40",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_14_list_diff_skeleton_only.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "dcddcdb3e97ce114fa86f7f962d696168cf148edcbf0cddc8d36df9641ad379b",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_07_dict_diff_skeleton_only.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9760ac5089e77476a52ee1efbd4232f38e177b62885ee2e9631f1076272d276c",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_15_list_of_list_diff.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "98fe9982ace3f968b67242e35f064d8d9f9a25f73b63f694657b2808275990bf",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_09_list_diff_with_multi_keys.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0c884c6143486c1ee318eac464482e1b6ec8a025f6baab4c55223714d2cc1d13",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_01_dict_diff_with_key_name.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5f11925fd9829a7a35c04d3e20c65f0b11d430085ea17dc723abfae4ac4c7793",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_03_dict_diff_without_key.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3bffd27e737421b22c04880d10937e46f090a9689258c62a00795aeaf5346dec",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_12_list_diff_with_left_only.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "95311358af54019d9a50561343234568ffe3efb0bedc7a494777364bde5811cb",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/run_test_cases.sh",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ef4f165634c7ea1bf73582720f09afb8bd36b659634d87cecb32106f489ee228",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_13_list_diff_with_left_only_with_none.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c612be85eaa3e52fd91fea15165a1dd59b099150388454c5860b88963760e84d",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_11_list_diff_with_similar_list.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9c7344834b8311f648c471bc75751cce4dbccc694d0ad3ee305fea43b48c4445",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_05_dict_diff_left_only.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9479c46d12e27f6034cb554d54d7ff56fcb87c73379a8e66812b845e9aa178e9",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_10_list_diff_with_key_other.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "85209545034d4a4cc26b1d77ee75501d604ea0f7c5184284ef8384f275e22555",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_02_dict_diff_with_key_other.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6acd991d85424f67810eef7c4be94d87645937b2914b229089372e25de8c8214",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_04_dict_diff_with_similar_dict.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cb4977c361463a2502b6d4b6a62e97ca29aafa7771fb7bb3fd78c7665ec3bab0",
+   "format": 1
+  },
+  {
+   "name": "tests/unit/utils/test_diff_util.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d11c8e7447e4b27ec23d8b524c08edb2e57939c46231644e0999f9a542bf5fab",
+   "format": 1
+  },
+  {
+   "name": "README.md",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e9e65f5f05a2180c6335355f0497ff6ec97bc6fe7b58a8e3bd9c3442899cbf8e",
+   "format": 1
+  },
+  {
+   "name": "changelogs",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "changelogs/.plugin-cache.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b0c306452265a20c55ab0327c7a69da747859d5073f753fc2be7d3eaa675348f",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/67-bgp_neighbors-auth_pwd-and-neighbor_description.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "dac2cd591c6738698dee9a0e587493d0a4c61ee79d2f6fe64c60333f8ae73f88",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/88-port_breakout-and-execution-environment.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d742b197a152cc147e3bd6477a11a747deef7fd516eda9c7f3c2e4d9000fe991",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/101-bgp-prefix_lists.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f26b66c8066853c84fe32450518d9760adcce95ad683df715a833af6fea111b6",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/63-bgp_af-route_advertise_list.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "40e2227d2e3667f49f14757ba091aeb1379c914eea2063f7259191cf4491f3fa",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/105-vxlan-regression-test-fix.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "87de2069e628fda750dea1586bd5e9f40276a526935e6d01f78773ac13b70c56",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/62-bgp-vxlan-primary-ip.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ad15905abe1a87c8bb5fe6c34ead669762f069a3171d17bab816e35a7046244f",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/100-prefix_lists-resource-module.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "309e213c2a3687e8dc57a65fbf7cacf2f032418766122b0192886aa1d17627ea",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/98-vlans-description.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f25fc69f892ccdc4eb886e11181fe3ab2ceaea79e5be5cfd035b0da61e4643ab",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/81-add-bgp-peer-group-attributes.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "537e421e4799a214763280bfd3a4802a5857347a77f462fba03022066ad2dc2d",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/102-playbook-example-updates.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "43c855cff9a6bd74b6f1f0bab83f700a82b3e4626319362915f44158ee5863db",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/60-bgp-regression-test_fixes.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6dbdf5dbece77482ae924fe1388c60e66438d707f880b7646fc692a3eeb25a75",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/76-CLI-command-prompt-answer-fix.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "21aebb22452bbef55d94d81657cfabaa27c42b1145d73e36329a9c44f63dbd89",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/99-ntp-resource-module.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ab72a4cbd13109b6ddc4cc36db329291c06434d8d6d5d9928d7a29d49dccffe2",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/53-oc-yang-compliance.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "656920f3c577cb86e2fd9f95a80ac4edf1713f7738513cd44fbb676576b196fd",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/90-aaa-and-users-bugfix.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "36925781ddb1e95d03ab80af6ab298cf103ef5acc7c6fe2be4cc9e3b6b03fe98",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/85-regression-test-fixes.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "bae305ef61589f0d470b25fb76346f12bacf39dfb1a0ecd75448e30a289626de",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/72-bgp_neighbors-add-attributes.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "611ec7ba89300979ad81cae95fc64100fcf4d58ae917b103aca26b69c3924dfb",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/103-standard-interface-naming-and-other-bugfixes.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "16cc77693ecc9ea440d549c006c6a85c6c738ef8277ffe58e0d17f2c525c1a31",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/58-vxlan-primary-ip.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ee968bb88126aaf9166905b000beca43714c32c4594e1cd5e828df00940bfb40",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/2.0.0.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "fbf43f6b1763d2c3987a38732f999753bb8733d1ad3f78e06cf1515ef77497b2",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/78-aaa-regression-fix.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2a6a225719cda02382197d27da9b4ce375d10f08572dadca5c6094a4cc995b01",
+   "format": 1
+  },
+  {
+   "name": "changelogs/archive_fragments/2.0.0/82-static_routes.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b86f183d989887e885b0292789df77ed4d789d0fec1f9a97436032c82466a6f2",
+   "format": 1
+  },
+  {
+   "name": "changelogs/CHANGELOG.rst",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5c07bc10602bb49ad903484c5c58ecd1bedf2197a6f320da391592823b891cfd",
+   "format": 1
+  },
+  {
+   "name": "changelogs/config.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "85862c6553f33777c8fd2f7fe3cfbe2d840deafc202b404052c6c829fb64495e",
+   "format": 1
+  },
+  {
+   "name": "changelogs/changelog.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2ad2a65538878b7704f2cae149e38beebaf5bc92d3ff7d245b6dbd9ef4762877",
+   "format": 1
+  },
+  {
+   "name": ".github",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": ".github/workflows",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": ".github/workflows/ansible-test.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0dc2fd66d9bb583a726caf8281f456be2130992b6f93d3155a7bc1a711b855fc",
+   "format": 1
+  },
+  {
+   "name": ".yamllint",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5f8b92f9b2c5645d9086cdb2d96378b445156e01d5ebeab075f0ac76da82e7c1",
+   "format": 1
+  },
+  {
+   "name": "playbooks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric/group_vars",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric/group_vars/leaf.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "60eef68dd51d94525aa1cea56aa6dbaae87a46a3d5fc4efe7879b3b5e79655f2",
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric/group_vars/all.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0a6c90571d07e82c8a66b09d45260ced0939a233d550f69e7f68dd48dc641ac8",
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric/group_vars/spine.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "44381e20e833f6a7604b513f0ffc0cc6af6f36a30b1f7a4033c5695971da6201",
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric/inventory.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f2e9dd7b920b95fac532f8c8ac27bb8faf3c673c95d9195b1f0cb304c4b20339",
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric/clos-fabric.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3ab1475beffd968cc128f78d5c3c1f2a6a0cfc4af57c360844c50d70e7b33949",
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric/templates",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "playbooks/bgp_l3_fabric/templates/clos_fabric_cfg.j2",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e43955991fc5aa4ed6e3eb8d6f754950ae86d73085dd609e00b575f438f14863",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_config.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3cc666ac7573cda9a7fb31ec0f6c9522e4b519df6e90b19708ec3d09e676ac04",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_bgp_communities.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cf0f646176e380267d83130d1ddff118a8f02a5b3deb72734b0036a119d99f87",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/interface_naming.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "1c50115b3792373e596572f74850d719d9ff19cc6cdf0f6487786f1dd39c8d4c",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_vxlans_config.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6ee295aca02d2b75dfc9e0f9c45ffdf00303290b5bcd8f694fb003762598830c",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_system.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "73cb798413beaf4faef806b166154564e2f519d72d1d7caecbca4c5564f8725f",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_facts.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9cf5193bd7b653e8a023070bf4f3c5cd6f1bb12d703345c36250c8a6500739ab",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/src.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "689fd13743ca803cec2985835752fb0d32b2edeacd10b987c74764da29e02a18",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_command.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0ae21487112d3a6ac66d0cd917ac689fb53d8743a8d09571e3337a8b5dc4e25b",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_interfaces_config.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c108d1f66b3f6eb47bebd4c547725d8446c61fc2b335ae4b0ae0751c532d2b63",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/hosts",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "475f5c931add33d3a98320a72d77f626fac1bcb7c1ed0dccb2e0076f82271002",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_bgp.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "1203ff6b38fc784f480b0cc61c12e0f61a035ae5143f1cdc344c30f16e7ab5eb",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_api.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3881bace49d2a88accf2297d8c01675617ee1b17517322a3d837f2b002a1c4bb",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/sonic_aaa.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4ea8077dce4c37d517434b92715be316de2b23c4e3b783dd881a841a6e86eabe",
+   "format": 1
+  },
+  {
+   "name": "playbooks/common_examples/patch.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "bdce7dfd3911b2d741667a57e3cb96e51a78cced38dd0a5f52a0bf37409f498a",
+   "format": 1
+  },
+  {
+   "name": "plugins",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/vxlans",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/vxlans/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/vxlans/vxlans.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4c0ce8d53537f8d62d93cb6eab94f613269a9abb3fd6089a251344f29ace1581",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/l3_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/l3_interfaces/l3_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "175568e94084854f2f4338d76b8fe62871258d200dd422db6b77998a1b534c6b",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/l3_interfaces/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/facts.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "1ce8bd508d419b7a1c80302d56ca3b23b30f0dfaaca99fb5af06b27369077f6d",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/users",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/users/users.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "aa4a5a009e2bd6b77a97c254e0f7f462fe556d08028902740e9707f8804bbd13",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/aaa",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/aaa/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/aaa/aaa.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ef4b054752c855757ba2727a9838b5aa61cf88699765c9b842eecc9727048ff5",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/static_routes",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/static_routes/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/static_routes/static_routes.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "78d654467abcbf68095d79cb59c29ba6470ca4e5ac426a9595b7e3f37fc931ae",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/port_breakout",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/port_breakout/port_breakout.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "494bdf331a5806f341f0125b6ba46ff888a935c4aff4d5b896f405764fc59a8d",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/vrfs",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/vrfs/vrfs.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7ed445c1fa06bfb70ed56605171012c5b5fd9c13b1f0cd3fb81af6214ddc3ae0",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/interfaces/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/interfaces/interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d2eccbe6d74967f1198f8d1b5858a259a09850226ecc4d940d016be5e44b6e81",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_communities",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_communities/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_communities/bgp_communities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "41c01d93815ca5cbb62cd6ac2918041e5a67b792d11dfe291932f0f64b2ce4e1",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_ext_communities",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_ext_communities/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_ext_communities/bgp_ext_communities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6322ce72c60c1098c7b04ba2c05dc2be5c70ff1760373f131005369995efa440",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/lag_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/lag_interfaces/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/lag_interfaces/lag_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "abc6c91a997dd3a42dcac331eb3d7b9b8ffc91fd2d80dc389752ef8e5d7e9d37",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/prefix_lists",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/prefix_lists/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/prefix_lists/prefix_lists.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "76cef8ee665598ede7762fb8c87be50b1b189c52818a25e233da7504f24273e5",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp/bgp.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "48d0915a4d169eb7accb4d921fa2956c2019e7e757fd4747bea093d2c6637b4f",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_neighbors",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_neighbors/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_neighbors/bgp_neighbors.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d7daff29f60266f474a5ecb39569367146eee672c8bc7b5882cedd713d7c32ef",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/ntp",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/ntp/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/ntp/ntp.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c8142bfefd6b7392123b7785a0c90ed43e6bf24ad4881fbd6d1df42c0c43fa27",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/system",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/system/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/system/system.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7716880b9ab1847ad3a9a4c5f70fdfd7176c33853d4ee9b4711d94bcbf51cc29",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_as_paths",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_as_paths/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_as_paths/bgp_as_paths.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7f2c4b27f8142c32eaa6219d00b261145ba5990b73ee96f2113ce3b8714b44c2",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/vlans",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/vlans/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/vlans/vlans.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "571ecaf2bef5d15c91f39a0b22922282757d9b32305d4221e9967815bc195a39",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/tacacs_server",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/tacacs_server/tacacs_server.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f8c0dc71948a994b45b2ab55601891f26665cc538b23a01e55f8f947afc859bd",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/mclag",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/mclag/mclag.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cd027811ad981ae9b946f7247b648baccab1cbc9b877784ddc9cdb578fe68cc3",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_af",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_af/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_af/bgp_af.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "58292688b6f354c7e19bfc59bdcc91f76fc68cdf7ce4e0968c36ba0fde3e7334",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/l2_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/l2_interfaces/l2_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "58fb25ed857a13d6af43a2609b90f09ac135694ce44997fd428242815e145b5f",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/radius_server",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/radius_server/radius_server.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a3f05a591387d9c24cb7dc066621ac75229b9fb5f871e165546daea9fa2d6a87",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_neighbors_af",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_neighbors_af/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/facts/bgp_neighbors_af/bgp_neighbors_af.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "35667a83682027b3b6051ab7729a43847de0092318b8645a4910b9b2ac003d39",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/facts",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/facts/facts.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a4e95f45024b8de1d0898d87a33fa01311168b82f0de6ec7efa012b927f3fe08",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/facts/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/vxlans",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/vxlans/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/vxlans/vxlans.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "de5a9c713994b11f97572c67af335fef9ef883c5ae28bbe8b3d29509f1479708",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/l3_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/l3_interfaces/l3_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ea892c0cb638d806819a81b730c8bf272d1d22f5a785feab6bb7899d5d8290f5",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/l3_interfaces/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/users",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/users/users.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e7016795dc961f47c1363b62c733419ed2f45bb51083b8c13a9cdcdc78393b80",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/aaa",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/aaa/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/aaa/aaa.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "099cb25564ace85aff3f9b665f0e8291cf30cc566393aa73fe7fd7495adb75b5",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/static_routes",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/static_routes/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/static_routes/static_routes.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "664fa1bfe5e35df445395c8d97c3664d61b3616e46a1e566dfae8dffe5d3cd51",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/port_breakout",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/port_breakout/port_breakout.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ed14043c2d3655852bddd40ee00d07bb3731e109d738a8df15cdfe8c859dfcc3",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/vrfs",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/vrfs/vrfs.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "ac08fa8db8afd66c4a6856700ca38615bcf8b8fba6d712981493f5452ea61c62",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/interfaces/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/interfaces/interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "9858adae2a8083270cc1d513b77fce9fe93c9789c5968c8e843b843ed940bfab",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_communities",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_communities/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_communities/bgp_communities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "64e16da1a2cc3af929d265a73536e9ce637861ecd8723c0043bc7536ca9acbba",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_ext_communities",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_ext_communities/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_ext_communities/bgp_ext_communities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "880c709b98414d38453eadce51b2771ed5d6c8bdd3fb6cbde45b60191e4568f9",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/lag_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/lag_interfaces/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/lag_interfaces/lag_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "980ce16a72689da30138007e45e755e9f32b020769e884b8b856505acf8d9863",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/prefix_lists",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/prefix_lists/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/prefix_lists/prefix_lists.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3047173ed7946102928cd2b23bfd7117ad4574d86f2a6330bb5a74ffaccd6368",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp/bgp.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "28692ff70358779f277a4bb9f5c2dc2b9b53ab4288b2102e01ae5394c4a12cc9",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_neighbors",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_neighbors/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_neighbors/bgp_neighbors.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "94a1aaed1dd4bd1ed6965983a5a40e33f68a9af96d4610fed1ff318effa0724c",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/ntp",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/ntp/ntp.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "027ba50a79f0347df9702030f8849258711e516df33da4b8949b51cad88d3c86",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/system",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/system/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/system/system.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "53707e1f9e6d035be3514ea21d61a0fec4a0dd75ebeb4e44a803f63a3020be7d",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_as_paths",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_as_paths/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_as_paths/bgp_as_paths.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d9ccf45561ffa483c765a8c0ce00a2818e271c43134f9c46b3dfb3aee80f12c7",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/vlans",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/vlans/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/vlans/vlans.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c0f599c09eaf915361ca18d5898de652abea87835ababe1ac726f8367a6fabd5",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/tacacs_server",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/tacacs_server/tacacs_server.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4dcd58e947b120be713fa3f571f6c5485cab6bdfe7efc75a4e90cec626a46a71",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/mclag",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/mclag/mclag.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "df57beee6331242c7c1cced8fea388ec78291d8ce2b32c20c5e0e50738bfb9f2",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_af",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_af/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_af/bgp_af.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cb90a1d43f0acc3ab981e9579533505e4c23fc7d5c045b3266e13ad41b4606fa",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/l2_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/l2_interfaces/l2_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3762f248b6f01066931467b74ffbe37b8d8c535fc97fe571f6d01acb1669f74c",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/radius_server",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/radius_server/radius_server.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "00a2640dd2eacd73a6ee61c7f00f913964e9a3072f0550682f6d4732ff119c58",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_neighbors_af",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_neighbors_af/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/argspec/bgp_neighbors_af/bgp_neighbors_af.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5c4ef73270de54df0b340f4fefb1ba3ec2b7668fd5260a8013a9efc9cead738e",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/utils",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/utils/bgp_utils.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "efbf8c72fe520e860020fceef08d8e3a9c3aaa10fb3601999d96d604aceb09a7",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/utils/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/utils/interfaces_util.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "356468c4f1fdb40153c2b220ddb2c5441feecd4a177067aef748edc824feaa1a",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/utils/utils.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6b6f8897c68aaff47fd0bc497e5d99bbf71d5a78837c000f2b0d4ae719c44300",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/sonic.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2852d2baa75d3b3a9260f156c500738eb2d37ef2861a6d63e20290c93bc7c8c1",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/vxlans",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/vxlans/vxlans.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "751480b64c2188fb97cc3eabde60a7d328fc780bb82dac9dbb215ce75da58b3e",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/l3_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/l3_interfaces/l3_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "79d2b8680dc3f023e536ab624ad00c3b36c2d592a22f9cde98ffa66bc95fa2c8",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/users",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/users/users.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "45344f3b1a07ad06af3e0cda474f78bebde079b4a929d27a9e99a888aa3231fc",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/aaa",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/aaa/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/aaa/aaa.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "eed3f6afdc941372f55212449b300bdfc5fa0150eb5068dd98848133ae8eb7ff",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/static_routes",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/static_routes/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/static_routes/static_routes.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "146d536b99180f3f99e0c0e9c0d0b97487b2e1d6b736c85e448bb17b6dbe96f5",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/port_breakout",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/port_breakout/port_breakout.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "1b925177c3c5e66b32066d1c16d45c73878da5e19f7f14d309aeabebe90ef8c8",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/vrfs",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/vrfs/vrfs.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "121221ad6e55fffad0b00ca0a5e7cd58b35a4e7a575481dfd074c6b41411ad31",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/interfaces/interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e4289ea78fef1e900174cf355a7093f5ea144573abdf7bcab63879430d8a1d3d",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_communities",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_communities/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_communities/bgp_communities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "873dc9442732042397ac3346598dbfc8040eff5b388a6a6c5462d156ea6c999e",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_ext_communities",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_ext_communities/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_ext_communities/bgp_ext_communities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a66f6fa13607ce0aae48f7ec944cc7410fd2443efa696fc59d254803402aea99",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/lag_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/lag_interfaces/lag_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "42ea3ce2e2c15ec958f3072986def9bb6bbeee7e523a54e0cde7923ab7e855cb",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/prefix_lists",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/prefix_lists/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/prefix_lists/prefix_lists.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "fad647ed365fd0991abcb3f70efb94c443dc8ab0fe19751690cfb5b529467763",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp/bgp.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "294427bd5c538c82eca5212bcfb57967230aa64892c5e2073ad12bf889381a97",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_neighbors",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_neighbors/bgp_neighbors.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f94c033887e9c1065c0a8155bb7e6f36888e2e66c7e475d86400dc87660a6489",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/ntp",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/ntp/ntp.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a19fdad43d518a26619fc9fb39a2d6ef3362cd1cc89252d74f69dc760ed815b3",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/system",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/system/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/system/system.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4a59efae25b1106a79087ecdfcb268fe2c6566ea61af795cce9d806fbe9f89e8",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_as_paths",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_as_paths/bgp_as_paths.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "7fff98321324ac64feb8edc5f8042f16bd4fa145c36781d53e86978d6edd9637",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/vlans",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/vlans/vlans.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0f26c8eeb4cd0b4de7fd058ef2a7d1e7f728cd5d4acb0f78f19d5ea729569255",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/tacacs_server",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/tacacs_server/tacacs_server.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6019047cfa54495d68c7ddca3b1b39bdb90d0e8854dd7835d8a0ad31fe55226a",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/mclag",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/mclag/mclag.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "8cb43549024ce183291b1dbfd8512ee25d9401a9413e631457cdc1852dbdf98e",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_af",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_af/bgp_af.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "bd007d97137f9f87e82a2e3b3e545cdc811908ff7bf3ae142d304b0732ddc8db",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/l2_interfaces",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/l2_interfaces/l2_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cbb277af89e7ebe04824f8c6c31cbfba3882f67a084861507153a2ef3c50c01c",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/radius_server",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/radius_server/radius_server.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "76ad9bce200ded760e69515a4694b1dbbd32347a2257f5b2841cd64644d48724",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_neighbors_af",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/sonic/config/bgp_neighbors_af/bgp_neighbors_af.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b34c814844873084b563d07af9334c6ee2d5cb11ae805a05c4a039c08c1d03dc",
+   "format": 1
+  },
+  {
+   "name": "plugins/module_utils/network/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/action",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/action/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/action/sonic.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2e65e39c5bbe05db761122a44c5c3adb7941e0ee0a4500d9c4948ade1ef7602b",
+   "format": 1
+  },
+  {
+   "name": "plugins/httpapi",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/httpapi/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/httpapi/sonic.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5b2a6e27212e4bffa10e60b4f6b72df823ad8a84445a1039f75efe5296e0941e",
+   "format": 1
+  },
+  {
+   "name": "plugins/cliconf",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/cliconf/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/cliconf/sonic.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4fbeb05a4a01583778cad49752c4fa8f3562926b4f7cbb399700aa0f59b1168b",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_command.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a6b8f8a44ea5ba6c0e6d4369a94cc35b856243595383b24a2c79d8b09dc0fa33",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_vrfs.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f65a8f6e26c21af62aca63db39f12c28226e173706e2475a336f5774c9d0fd6e",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_api.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "754a4198b765e73a9bb40f297a304e8c7c94d4e83839ee07b4a5602c0b9164a7",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_tacacs_server.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a610ddc06cd5a8088ed2eae495f4e99f2adbbf3242aac9503b82317ee7dc1212",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_radius_server.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a64fe7ce6837f85d5ebdc5772ab8649ff4e07ee79c2ff56bf29dec4286cc260a",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_vlans.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0820305b7619cfc6080ec69893ea8093bef0224f7078833a9da4ee139e901257",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_aaa.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c2a2be0a9b65b42e19f099adf045b875961c5876d7ef17457828bf1c7ffd2833",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_l2_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d1ee00011322c29a0936114c42775a91932c6b46605109a0c7f53911018f3e85",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_ntp.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "92cfdb9b5e31bddf0ef61f01b255e1f4754c2fe6a1ce47571202ef3155b69d51",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_mclag.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e55c254e12c77ea06035f9cdd87a4248e89f7cd9d0df068266e7226c78d5fd20",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_bgp.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "5e531d9a1f281831911dba58b4e5568bea27ae13b5a46119fd0a50c234d80a4f",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_l3_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b9c8607ca719658fa1a5f4bf20e1bf0b71f06618664b56aa3f3f771c0416d535",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_system.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "daf0edd6622a20743c5c9f51d4c4a7732389719390f512885cd3af012e65ad92",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_users.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "1104943f68ff99954e8481b915fefb206af930a9c6d6edc79f43aee233ea1db5",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_bgp_neighbors.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "417b1a3e3b325ffbef1b84db13dedef88c9e935d441d3b2f1cd8ed79eaa933bd",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_bgp_af.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "869e043591404007ed592618bcb282ed59c64c88e02e77b8fca083323bce30dd",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_port_breakout.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "1896147e09a083d1fbce1900b21c29572b6dd992884947c2ffb4fb9379148e2f",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_bgp_ext_communities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "a0949a6e579a7eaef3d4b355ecaf328c8357c8b4d1ca7f8cf5624ed95582b81e",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_lag_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "77d851e7f2915eb77407dccabfb7e9a84a02c740e3bde4067ae22ddd11932088",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_bgp_as_paths.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e2c98cdd58166716bd27b7c658dd75849959877c0f987a1ad5f189d33762ee8e",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_config.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2f596c49a79cc793a11a9f045602ae9dc226dd49b0e6ed5ebebb901814db2c3a",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_facts.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "66e57eab9be3a92fabd25d58d4b50ad4989b5ed82930b9fa26005a778d004aaa",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_bgp_communities.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3053900903a2b5998e14d9a055cd0c907e9d4a1fcbcc76aff3efb616977ce038",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_bgp_neighbors_af.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "06e2639cc7ce2b03bd29e3909bf26525cefbd47035d9cb28927a96ccb91a16ad",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_prefix_lists.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "b7226bb99d6699bf1f974bafb6659d23949b94afb80cac714c374a2ffb126ad7",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_static_routes.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d0a90d0134fdcbb81da9195eadbd91821ba400199c32c6f8750c549a6653b58a",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_interfaces.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3d602d47c8e1bc50ba18d8929117ba98da1dade7d01b4099f7ddec558eeafba0",
+   "format": 1
+  },
+  {
+   "name": "plugins/modules/sonic_vxlans.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3c10ca81fd5969960f897c93b2159f6ac6c9ecd05084272433da32ab156f176a",
+   "format": 1
+  },
+  {
+   "name": "plugins/terminal",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "plugins/terminal/__init__.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "format": 1
+  },
+  {
+   "name": "plugins/terminal/sonic.py",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "f2f1d5a838f3d51c0921f6d0cd260d83a81e045fba2f0d1ce0d23648b829a5d3",
+   "format": 1
+  },
+  {
+   "name": ".gitignore",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "258e4be3cfda40797fe734b375b6f94c110c9a9bebce196fedce319a457ce720",
+   "format": 1
+  },
+  {
+   "name": "requirements.txt",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "c6d28b94b5c9ff4aaf737e91c092a668381c47c05904b61b1f6f240d74b565a2",
+   "format": 1
+  },
+  {
+   "name": "LICENSE",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+   "format": 1
+  },
+  {
+   "name": "rebuild.sh",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "6dd5b9c7962049017eb8e32db7111774b055979517146675d91a3b389c77bf9c",
+   "format": 1
+  },
+  {
+   "name": "meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "meta/runtime.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "d6e301db0d0e6b8d8df2dac7fe249f0d21f5deadb47edb23f31fc25a87ea704f",
+   "format": 1
+  },
+  {
+   "name": "meta/execution-environment.yml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0e30f905b015d1d8a17d3a540cb8892b479fcbf9cb873ac2ff0665fe499f318e",
+   "format": 1
+  }
+ ],
+ "format": 1
+}

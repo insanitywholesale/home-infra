@@ -1,0 +1,2 @@
+minor_changes:
+  - fusion_pp - duration parsing improved. Supports combination of time units (E.g 5H5M)
