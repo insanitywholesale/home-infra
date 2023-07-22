@@ -1,5 +1,0 @@
----
-- hosts: proxie
-  become: True
-  roles:
-    - role: lae.proxmox
