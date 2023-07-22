@@ -141,3 +141,99 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
     ]
   }
 }
+
+resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
+  provider    = proxmox.pve0
+  count       = 1
+  name        = "k3s-m-${(count.index) + 1}"
+  desc        = "k3s cluster control plane node"
+  target_node = "pve0"
+
+  clone    = "debian-11-template"
+  os_type  = "cloud-init"
+  cores    = 2
+  sockets  = 1
+  cpu      = "host"
+  memory   = 4096
+  scsihw   = "virtio-scsi-pci"
+  bootdisk = "virtio0"
+  agent    = 1
+  onboot   = true
+
+  disk {
+    size    = "40G"
+    type    = "virtio"
+    storage = "local-lvm"
+  }
+
+  network {
+    model  = "virtio"
+    bridge = "vmbr0"
+  }
+
+  ipconfig0 = "ip=10.0.50.${(count.index) + 51}/24,gw=10.0.50.254"
+
+  sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
+
+  lifecycle {
+    ignore_changes = [
+      cipassword,
+      network,
+      desc,
+    ]
+  }
+}
+
+resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
+  provider    = proxmox.pve0
+  count       = 3
+  name        = "k3s-w-${(count.index) + 1}"
+  desc        = "k3s cluster worker node"
+  target_node = "pve0"
+
+  clone    = "debian-11-template"
+  os_type  = "cloud-init"
+  cores    = 2
+  sockets  = 1
+  cpu      = "host"
+  memory   = 2560
+  scsihw   = "virtio-scsi-pci"
+  bootdisk = "virtio0"
+  agent    = 1
+  onboot   = true
+
+  disk {
+    size    = "50G"
+    type    = "virtio"
+    storage = "local-lvm"
+  }
+
+  network {
+    model  = "virtio"
+    bridge = "vmbr0"
+  }
+
+  ipconfig0 = "ip=10.0.50.${(count.index) + 61}/24,gw=10.0.50.254"
+
+  sshkeys = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5jzKi37jm3517bqThbw+7LR/GXm3qC6Az5F+ZUa36vYM7Ygk2K5bWcFIL2YUCrkL5jfSsvoowONjCAxyuoyxtW4MJxnQLyq4u4yDsRC7YvBPAKZUYaHwnbkCfDs5a75dEFOoDxCA0DY2GrhqzBndaTcCfl0fZ4vN+9LcKOb1dSKiHeHvsh35YNtwntbL21meo+hiycUEgGwNe9/4kxKpdGTr7HvbeX2Fjm/UZBZIJKVcGop/3gCHXYnKH+OY5zc8cmt9Jg4CIwEqrSKeOX0bE8LSPRpVRXH4v8OcMaMei/HQejlH8NBwybEdJ4mhl8vHaFEjDbIWoOujmiRQF2263 angle@puddle"
+
+  lifecycle {
+    ignore_changes = [
+      cipassword,
+      network,
+      desc,
+    ]
+  }
+}
+
+resource "local_file" "hosts_cfg_k3s" {
+  content = templatefile(
+    "${path.module}/inventory/k3s-inventory.ini.tftpl",
+    {
+      k3s_masters = concat(proxmox_vm_qemu.proxmox_vm_k3s_ha_master.*),
+      k3s_workers = concat(proxmox_vm_qemu.proxmox_vm_k3s_ha_workers.*),
+    }
+  )
+  filename        = "inventory/k3s-inventory.ini"
+  file_permission = "0644"
+}
