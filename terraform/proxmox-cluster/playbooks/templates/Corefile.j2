@@ -1,0 +1,38 @@
+# more expanded config here: https://github.com/onedr0p/home-ops/blob/6c1ed4497c2a10097104aabe830353b1d068c848/ansible/router/roles/coredns.router/templates/Corefile.j2
+(common) {
+  errors
+  log
+  reload
+  loadbalance
+  cache
+  loop
+  local
+}
+
+(localhostz) {
+  # dnsmasq is only enabled for setting hostnames in Opnsense
+  hosts /etc/hosts {
+    ttl 1
+    reload 5s
+    fallthrough
+  }
+}
+
+(k8s_gatewayz) {
+  forward . {{ dns_forward }}:53
+}
+
+. {
+  import common
+  import localhostz
+  forward . {{ dns_forward }}:53
+  health {
+    lameduck 3s
+  }
+}
+
+{{ k8s_domain }} {
+  import common
+  import localhostz
+  import k8s_gatewayz
+}

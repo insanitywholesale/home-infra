@@ -1,0 +1,35 @@
+---
+
+- name: configure pihole
+  hosts: piholes
+  become: true
+
+  tasks:
+    - name: install unbound
+      apt:
+        name:
+          - unbound
+        state:
+          present
+
+    - name: download root hints
+      get_url:
+        url: https://www.internic.net/domain/named.root
+        dest: /var/lib/unbound/root.hints
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: copy dnsmasq edns-related config to pihole
+      copy:
+        src: 99-edns.conf
+        dest: /etc/dnsmasq.d/99-edns.conf
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: restart unbound service
+      ansible.builtin.service:
+        name: unbound
+        enabled: yes
+        state: restarted

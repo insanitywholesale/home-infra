@@ -1,0 +1,24 @@
+---
+
+- name: set up foggy
+  hosts: fog
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - name: get fog tarball
+      get_url:
+        #url: https://github.com/FOGProject/fogproject/archive/1.5.9.tar.gz
+        #checksum: sha1:17f259fcc3e3d5d863c097c2d399432d0f6aeba7
+        #the above doesn't work with debian 10 or 11 so we use the dev version
+        url: https://github.com/FOGProject/fogproject/archive/refs/heads/dev-branch.tar.gz
+        dest: /opt/fog-dev.tar.gz
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: unarchive fog tarball
+      ansible.builtin.unarchive:
+        src: /opt/fog-dev.tar.gz
+        dest: /opt/
+        remote_src: yes

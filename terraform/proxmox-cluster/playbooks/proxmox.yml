@@ -1,0 +1,82 @@
+---
+
+- name: get proxie moxie dressed right
+  hosts: proxie
+  become: true
+
+  tasks:
+    - name: remove garbo enterprise repo
+      file:
+        path: /etc/apt/sources.list.d/pve-enterprise.list
+        state: absent
+
+    # NOTE: might not be required in the future
+    # since it can be handled by lae.proxmox
+    - name: no-sub squad gang
+      copy:
+        src: pve-no-sub.list
+        dest: /etc/apt/sources.list.d/pve-no-subscription.list
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: update proxies
+      apt:
+        upgrade: full
+        update_cache: yes
+
+    - name: install essentials
+      apt:
+        name:
+          - vim
+          - tmux
+          - htop
+          - stterm
+          - qemu-guest-agent
+          - python3
+          - python3-apt
+          - nfs-common
+          - nfs4-acl-tools
+          - libguestfs-tools
+        state:
+          present
+
+    - name: get deb-11 could image
+      get_url:
+        url: https://cloud.debian.org/images/cloud/bullseye/20220711-1073/debian-11-genericcloud-amd64-20220711-1073.qcow2
+        dest: /root/debian-11-amd64.qcow2
+        checksum: sha512:41de913d74b3aeded43e1440d52e4f55188e37859f769405b5e737feedae552506230fba06806e3436fa3570381bd04eb439bfbfece1a2bac1d4a677b4117c22
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: add qemu-guest-agent to deb-11
+      shell:
+        chdir: /root/
+        cmd: virt-customize -a ./debian-11-amd64.qcow2 --install qemu-guest-agent --uninstall unattended-upgrades
+
+    - name: get deb-11 template vm scriptoid
+      copy:
+        src: setup-debian-11-cloudinit.sh
+        dest: /root/setup-debian-11-template.sh
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: run deb-11 template vm scriptoid
+      shell:
+        chdir: /root/
+        cmd: /root/setup-debian-11-template.sh
+
+    - name: get dark theme installation script
+      get_url:
+        url: https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/PVEDiscordDark.sh
+        dest: /root/PVEDiscordDark.sh
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: install dark theme
+      shell:
+        chdir: /root/
+        cmd: ./PVEDiscordDark.sh install
