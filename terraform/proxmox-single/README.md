@@ -2,128 +2,149 @@
 Services I run and want to run.
 Only the ones will the IPs fully written out are up and running right now.
 
-## NTP
+## Fundamentals
+NTP, DNS, PXE, FTP and package cache.
+
+### NTP
 .1
 
-## Pi-hole
+### Pi-hole
 10.0.50.2
 
-## LANcache
+### LANcache
 .3
 
-## Bind9 (external-dns RFC2136 provider)
+### Bind9 (external-dns RFC2136 provider)
 .4
 
-## PowerDNS (external-dns pdns provider)
+### PowerDNS (external-dns pdns provider)
 .5
 
-## CoreDNS (`k8s_gateway` plugin)
+### CoreDNS (`k8s_gateway` plugin)
 .6
 
-## FOG
+### FOG
 .7
 
-## Tinkerbell
+### Tinkerbell
 .8
 
-## apt-cacher-ng
+### apt-cacher-ng
 .9
 
-## FTP
+### FTP
 .10
 
-## FreeIPA
+## Identity, Secrets and Passwords
+System and app auth, passwords for people and secrets for apps.
+
+### FreeIPA
 .11 (might go for a 3-node cluster up to .13)
 
-## Keycloak
+### Keycloak
 .14
 
-## Vaultwarden
+### Vaultwarden
 .15
 
-## Vault
+### Vault
 .16
 
-## PostgreSQL
+## Databases and Message Queues
+Databases and message queues for applications.
+
+### PostgreSQL
 10.0.50.20
 
-## MySQL
+### MySQL
 10.0.50.21
 
-## MongoDB
+### MongoDB
 .23
 
-## Redis
+### Redis
 .24
 
-## RabbitMQ
+### RabbitMQ
 .25
 
-## Kafka
+### Kafka
 .26
 
-## OpenSearch
+### OpenSearch
 .27
 
-## TimescaleDB
+### TimescaleDB
 .28
 
-## InfluxDB
+### InfluxDB
 .29
 
-## syslog
+## Monitoring
+Tools for monitoring, logging, tracing and data visualization.
+
+### syslog
 .30
 
-## Prometheus + Grafana + Loki
+### Prometheus + Grafana + Loki
 .31
 
-## Observium or LibreNMS
+### Observium or LibreNMS
 .32
 
-## Zabbix
+### Zabbix
 .33
 
-## Graylog
+### Graylog
 .34
 
-## NetBox
+### NetBox
 .35
 
-## ntfy
+### ntfy
 .36
 
-## Gatus or Uptime Kuma
+### Gatus or Uptime Kuma
 .37
 
-## Sentry
+### Sentry
 .38
 
-## Jaeger Clickhouse
+### Jaeger Clickhouse
 .39
 
-## Hydras.io or Rudderstack
+### Hydras.io or Rudderstack
 .40
 
-## Sonarqube or Deepsource
+## Code-related infrastrucutre
+Code analysis and git hosting plus container registry and helm repo.
+
+### Sonarqube or Deepsource
 .43
 
-## Codecov
+### Codecov
 .44
 
-## GitLab
+### GitLab
 .45
 
-## Harbor
+### Harbor
 .48
 
-## Chartmuseum
+### Chartmuseum
 .49
 
-## k3s control plane nodes
+## Kubernetes
+Kubernetes nodes
+
+### k3s control plane nodes
 .50-59
 
-## k3s worker nodes
+### k3s worker nodes
 .60-69
+
+## Physical servers
+Bare-metal machines where most things run on
 
 ## Proxmox
 10.0.50.70-73 (leave space for up to .75)
@@ -133,6 +154,9 @@ Only the ones will the IPs fully written out are up and running right now.
 
 ## Backup
 .101
+
+## Non-clusterful applications
+Can't or don't want to run these on kubernetes.
 
 ## HomeAssistant
 .102
