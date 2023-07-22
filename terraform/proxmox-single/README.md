@@ -50,10 +50,17 @@ Only the ones will the IPs fully written out are up and running right now.
 ## MySQL
 10.0.50.23
 
-## MongoDB
+## MongoDB RW
 .24
 
-## Redis
+## MongoDB RO
+.25
+
+## Redis RW
+.26
+
+## Redis RO
+.27
 
 ## InfluxDB
 .29
@@ -69,3 +76,12 @@ Only the ones will the IPs fully written out are up and running right now.
 
 ## Observium
 .33
+
+## LibreNMS
+.34
+
+## Zabbix
+.35
+
+## NetBox
+.36
