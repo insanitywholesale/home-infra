@@ -45,22 +45,22 @@ Only the ones will the IPs fully written out are up and running right now.
 .16
 
 ## PostgreSQL
-10.0.50.20 (might add 2 more VMs for a cluster)
+10.0.50.20
 
 ## MySQL
-10.0.50.23
+10.0.50.21
 
-## MongoDB RW
+## MongoDB
+.23
+
+## Redis
 .24
 
-## MongoDB RO
-.25
-
-## Redis RW
-.26
-
-## Redis RO
+## OpenSearch
 .27
+
+## TimescaleDB
+.28
 
 ## InfluxDB
 .29
@@ -68,20 +68,47 @@ Only the ones will the IPs fully written out are up and running right now.
 ## syslog
 .30
 
-## Prometheus
+## Prometheus + Grafana + Loki
 .31
 
-## Grafana
+## Observium or LibreNMS
 .32
 
-## Observium
+## Zabbix
 .33
 
-## LibreNMS
+## Graylog
 .34
 
-## Zabbix
+## NetBox
 .35
 
-## NetBox
+## ntfy
 .36
+
+## Gatus or Uptime Kuma
+.37
+
+## Sentry
+.38
+
+## Jaeger Clickhouse
+.39
+
+## HomeAssistant
+.41
+
+## GitLab
+.45
+
+## k3s control plane nodes
+.50-59
+
+## k3s worker nodes
+.60-69
+
+## Proxmox
+10.0.50.70-73 (leave space for up to .75)
+
+## TrueNAS
+.80
