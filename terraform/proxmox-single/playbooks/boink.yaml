@@ -10,3 +10,19 @@
           - 1.opnsense.pool.ntp.org
           - 2.opnsense.pool.ntp.org
           - 3.debian.pool.ntp.org
+
+- hosts: postgres
+  become: True
+  roles:
+    - role: geerlingguy.postgresql
+      vars:
+        postgresql_python_library: python3-psycopg2
+        postgresql_locales:
+          - 'en_US.UTF-8'
+
+- hosts: mysql
+  become: True
+  roles:
+    - role: geerlingguy.mysql
+      vars:
+        mysql_root_password: mysqladmin123
