@@ -56,6 +56,12 @@ Only the ones will the IPs fully written out are up and running right now.
 ## Redis
 .24
 
+## RabbitMQ
+.25
+
+## Kafka
+.26
+
 ## OpenSearch
 .27
 
@@ -95,11 +101,23 @@ Only the ones will the IPs fully written out are up and running right now.
 ## Jaeger Clickhouse
 .39
 
-## HomeAssistant
-.41
+## Hydras.io or Rudderstack
+.40
+
+## Sonarqube or Deepsource
+.43
+
+## Codecov
+.44
 
 ## GitLab
 .45
+
+## Harbor
+.48
+
+## Chartmuseum
+.49
 
 ## k3s control plane nodes
 .50-59
@@ -111,4 +129,13 @@ Only the ones will the IPs fully written out are up and running right now.
 10.0.50.70-73 (leave space for up to .75)
 
 ## TrueNAS
-.80
+.100
+
+## Backup
+.101
+
+## HomeAssistant
+.102
+
+## Jellyfin
+.105
