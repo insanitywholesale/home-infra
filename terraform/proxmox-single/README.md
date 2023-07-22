@@ -1,4 +1,6 @@
 # Services
+Services I run and want to run.
+Only the ones will the IPs fully written out are up and running right now.
 
 ## NTP
 .1
@@ -18,14 +20,17 @@
 ## CoreDNS (`k8s_gateway` plugin)
 .6
 
-## syslog
+## FOG
 .7
 
-## PXE
+## Tinkerbell
 .8
 
 ## apt-cacher-ng
 .9
+
+## FTP
+.10
 
 ## FreeIPA
 .11 (might go for a 3-node cluster up to .13)
@@ -52,6 +57,9 @@
 
 ## InfluxDB
 .29
+
+## syslog
+.30
 
 ## Prometheus
 .31
