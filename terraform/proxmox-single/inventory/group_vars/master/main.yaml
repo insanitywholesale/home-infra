@@ -10,7 +10,7 @@ k3s_server:
     #- flannel
     #- local-storage
     #- metrics-server
-    #- servicelb
+    - servicelb
     - traefik
   #flannel-backend: "none"
   #disable-network-policy: true
