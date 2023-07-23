@@ -66,6 +66,9 @@ Databases and message queues for applications.
 10.0.50.21
 
 ### MongoDB
+.22
+
+### CouchDB
 .23
 
 ### Redis
