@@ -9,11 +9,17 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
+              k3s_become: true
               k3s_control_node: true
+              k3s_debug: false
+              k3s_etcd_datastore: true
+              k3s_install_hard_links: true
+              k3s_release_version: v1.27.3+k3s1
               k3s_server:
-                cluster-cidr: 10.30.0.0/16
+                cluster-cidr: 172.13.0.0/16
+                disable:
+                - traefik
                 disable-cloud-controller: true
-                disable-network-policy: true
                 docker: false
                 etcd-expose-metrics: true
                 kube-apiserver-arg:
@@ -25,25 +31,57 @@ all:
                 kube-scheduler-arg:
                 - bind-address=0.0.0.0
                 node-ip: '{{ ansible_host }}'
-                service-cidr: 10.40.0.0/16
+                service-cidr: 192.168.8.0/22
+                tls-san:
+                - '{{ ansible_host }}'
                 write-kubeconfig-mode: '644'
-        node:
+              k3s_use_experimental: true
+              k3s_use_unsupported_config: true
+        worker:
           hosts:
             10.0.50.61:
               ansible_host: 10.0.50.61
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
+              k3s_agent: &id001
+                node-ip: '{{ ansible_host }}'
+              k3s_become: true
+              k3s_control_node: false
+              k3s_debug: false
+              k3s_etcd_datastore: true
+              k3s_install_hard_links: true
+              k3s_release_version: v1.27.3+k3s1
+              k3s_use_experimental: true
+              k3s_use_unsupported_config: true
             10.0.50.62:
               ansible_host: 10.0.50.62
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
+              k3s_agent: *id001
+              k3s_become: true
+              k3s_control_node: false
+              k3s_debug: false
+              k3s_etcd_datastore: true
+              k3s_install_hard_links: true
+              k3s_release_version: v1.27.3+k3s1
+              k3s_use_experimental: true
+              k3s_use_unsupported_config: true
             10.0.50.63:
               ansible_host: 10.0.50.63
               ansible_private_key_file: /home/angle/.ssh/id_rsa
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
+              k3s_agent: *id001
+              k3s_become: true
+              k3s_control_node: false
+              k3s_debug: false
+              k3s_etcd_datastore: true
+              k3s_install_hard_links: true
+              k3s_release_version: v1.27.3+k3s1
+              k3s_use_experimental: true
+              k3s_use_unsupported_config: true
     mysql:
       hosts:
         10.0.50.23:

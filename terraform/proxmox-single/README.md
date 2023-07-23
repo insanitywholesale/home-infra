@@ -38,8 +38,14 @@ NTP, DNS, PXE, FTP and package cache.
 ## Identity, Secrets and Passwords
 System and app auth, passwords for people and secrets for apps.
 
-### FreeIPA
-.11 (might go for a 3-node cluster up to .13)
+### FreeIPA main
+.11
+
+### FreeIPA backup
+.12
+
+### FreeRADIUS
+.13
 
 ### Keycloak
 .14
