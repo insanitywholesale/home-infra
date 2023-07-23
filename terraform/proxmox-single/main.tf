@@ -150,7 +150,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
   provider    = proxmox.pve0
-  count       = 0
+  count       = 1
   name        = "k3s-m-${(count.index) + 1}"
   desc        = "k3s cluster control plane node"
   target_node = "pve0"
@@ -194,7 +194,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   provider    = proxmox.pve0
-  count       = 0
+  count       = 3
   name        = "k3s-w-${(count.index) + 1}"
   desc        = "k3s cluster worker node"
   target_node = "pve0"
