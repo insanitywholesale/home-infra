@@ -1,8 +1,7 @@
-*.plan
 terraform.tfstate
 terraform.tfstate.backup
 .terraform.tfstate.lock.info
 .terraform
 k3s-inventory.ini
 lae.proxmox
-terraform/proxmox/roles/ansible-role-k3s/k3s_venv
+terraform/proxmox*/roles/ansible-role-k3s/k3s_venv
