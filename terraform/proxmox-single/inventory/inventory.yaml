@@ -1,5 +1,49 @@
 all:
   children:
+    k3s_cluster:
+      children:
+        master:
+          hosts:
+            10.0.50.51:
+              ansible_host: 10.0.50.51
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              k3s_control_node: true
+              k3s_server:
+                cluster-cidr: 10.30.0.0/16
+                disable-cloud-controller: true
+                disable-network-policy: true
+                docker: false
+                etcd-expose-metrics: true
+                kube-apiserver-arg:
+                - anonymous-auth=true
+                kube-controller-manager-arg:
+                - bind-address=0.0.0.0
+                kube-proxy-arg:
+                - metrics-bind-address=0.0.0.0
+                kube-scheduler-arg:
+                - bind-address=0.0.0.0
+                node-ip: '{{ ansible_host }}'
+                service-cidr: 10.40.0.0/16
+                write-kubeconfig-mode: '644'
+        node:
+          hosts:
+            10.0.50.61:
+              ansible_host: 10.0.50.61
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+            10.0.50.62:
+              ansible_host: 10.0.50.62
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+            10.0.50.63:
+              ansible_host: 10.0.50.63
+              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
     mysql:
       hosts:
         10.0.50.23:

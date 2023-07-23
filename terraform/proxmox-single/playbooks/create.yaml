@@ -1,4 +1,5 @@
-- hosts: all
+- name: Install and configure NTP
+  hosts: all
   become: True
   roles:
     - role: geerlingguy.ntp
@@ -11,7 +12,8 @@
           - 2.opnsense.pool.ntp.org
           - 3.debian.pool.ntp.org
 
-- hosts: postgres
+- name: Install and slightly configure PostgreSQL
+  hosts: postgres
   become: True
   roles:
     - role: geerlingguy.postgresql
@@ -20,9 +22,17 @@
         postgresql_locales:
           - 'en_US.UTF-8'
 
-- hosts: mysql
+- name: Install and slightly configure MySQL
+  hosts: mysql
   become: True
   roles:
     - role: geerlingguy.mysql
       vars:
         mysql_root_password: mysqladmin123
+
+- name: Build a k3s cluster with a single control node
+  hosts: k3s_cluster
+  vars:
+    k3s_become: true
+  roles:
+    - role: xanmanning.k3s
