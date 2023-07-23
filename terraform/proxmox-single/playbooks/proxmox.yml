@@ -1,0 +1,6 @@
+- name: Install and configure ProxMox
+  hosts: pve
+  become: True
+  roles:
+    - role: geerlingguy.ntp
+    - role: lae.proxmox
