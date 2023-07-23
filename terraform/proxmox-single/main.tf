@@ -25,6 +25,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
 
   clone    = "debian-11-template"
   os_type  = "cloud-init"
+  qemu_os  = "l26"
+  vcpus    = 0
   cores    = 1
   sockets  = 1
   cpu      = "host"
@@ -67,6 +69,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
 
   clone    = "debian-11-template"
   os_type  = "cloud-init"
+  qemu_os  = "l26"
+  vcpus    = 0
   cores    = 2
   sockets  = 1
   cpu      = "host"
@@ -109,6 +113,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
 
   clone    = "debian-11-template"
   os_type  = "cloud-init"
+  qemu_os  = "l26"
+  vcpus    = 0
   cores    = 2
   sockets  = 1
   cpu      = "host"
@@ -144,13 +150,15 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
   provider    = proxmox.pve0
-  count       = 1
+  count       = 0
   name        = "k3s-m-${(count.index) + 1}"
   desc        = "k3s cluster control plane node"
   target_node = "pve0"
 
   clone    = "debian-11-template"
   os_type  = "cloud-init"
+  qemu_os  = "l26"
+  vcpus    = 0
   cores    = 2
   sockets  = 1
   cpu      = "host"
@@ -186,13 +194,15 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   provider    = proxmox.pve0
-  count       = 3
+  count       = 0
   name        = "k3s-w-${(count.index) + 1}"
   desc        = "k3s cluster worker node"
   target_node = "pve0"
 
   clone    = "debian-11-template"
   os_type  = "cloud-init"
+  qemu_os  = "l26"
+  vcpus    = 0
   cores    = 2
   sockets  = 1
   cpu      = "host"
