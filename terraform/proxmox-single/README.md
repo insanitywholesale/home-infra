@@ -32,9 +32,6 @@ NTP, DNS, PXE, FTP and package cache.
 ### apt-cacher-ng
 .9
 
-### FTP
-.10
-
 ## Identity, Secrets and Passwords
 System and app auth, passwords for people and secrets for apps.
 
