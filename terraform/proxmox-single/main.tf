@@ -152,7 +152,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
   provider    = proxmox.pve0
   count       = 1
   name        = "k3s-m-${(count.index) + 1}"
-  desc        = "k3s cluster control plane node"
+  desc        = "k3s cluster control plane node number ${(count.index) + 1}"
   target_node = "pve0"
 
   clone    = "debian-11-template"
@@ -196,7 +196,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   provider    = proxmox.pve0
   count       = 3
   name        = "k3s-w-${(count.index) + 1}"
-  desc        = "k3s cluster worker node"
+  desc        = "k3s cluster worker node number ${(count.index) + 1}"
   target_node = "pve0"
 
   clone    = "debian-11-template"
