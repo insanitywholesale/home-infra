@@ -11,8 +11,26 @@
     - role: geerlingguy.postgresql
       vars:
         postgresql_python_library: python3-psycopg2
+        postgresql_service_state: started
+        postgresql_service_enabled: true
         postgresql_locales:
           - 'en_US.UTF-8'
+        #TODO: Check if the following works
+        #postgresql_databases:
+        #  - name: testpostgresdb
+        #    login_host: # defaults to 'localhost'
+        #    login_password: # defaults to not set
+        #    login_user: # defaults to 'postgresql_user'
+        #    owner: testpostgresuser
+        #postgresql_users:
+        #  - name: testpostgresuser
+        #    password: testpostgresuserpassword123
+        #    priv: # defaults to not set
+        #    role_attr_flags: # defaults to not set
+        #    db: testpostgresdb
+        #    login_host: # defaults to 'localhost'
+        #    login_password: # defaults to not set
+        #    login_user: # defaults to '{{ postgresql_user }}'
 
 - name: Install and slightly configure MySQL
   hosts: mysql
@@ -20,11 +38,22 @@
   roles:
     - role: geerlingguy.mysql
       vars:
+        mysql_root_password_update: true
         mysql_root_password: mysqladmin123
+        #TODO: Check if the following works
+        #mysql_databases:
+        #  - name: testmysqldb
+        #mysql_users:
+        #  - name: "{{ mysql_root_user }}"
+        #    password: "{{ mysql_root_password }}"
+        #  - name: testmysqluser
+        #    host: "%"
+        #    password: testmysqluserpassword123
+        #    priv: "testmysqldb.*:ALL"
 
-- name: Build a k3s cluster with a single control node
-  hosts: k3s_cluster
-  vars:
-    k3s_become: true
-  roles:
-    - role: xanmanning.k3s
+#- name: Build a k3s cluster with a single control node
+#  hosts: k3s_cluster
+#  vars:
+#    k3s_become: true
+#  roles:
+#    - role: xanmanning.k3s
