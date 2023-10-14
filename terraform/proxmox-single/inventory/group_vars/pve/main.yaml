@@ -1,5 +1,6 @@
 ---
 
+ntp_timezone: Europe/Athens
 pve_group: optiplex
 pve_ssh_port: 22
 interfaces_template: ""
@@ -13,6 +14,6 @@ pve_groups:
 pve_storages:
   - name: proxmox-nfs
     type: nfs
-    content: [ "images", "iso" ]
+    content: [ "images", "iso", "backup" ]
     server: 10.0.50.142
     export: /mnt/tank-z1/nfs-proxmox 
