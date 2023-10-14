@@ -18,6 +18,7 @@ provider "proxmox" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
   provider    = proxmox.pve0
+  vmid        = 102
   count       = 1
   name        = "pihole-${(count.index) + 1}"
   desc        = "pihole! in a VM!! number ${(count.index) + 1} of its kind"
@@ -62,6 +63,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
   provider    = proxmox.pve0
+  vmid        = 120
   count       = 1
   name        = "postgres-${count.index}"
   desc        = "postgres instance index ${count.index}"
@@ -106,6 +108,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
   provider    = proxmox.pve0
+  vmid        = 121
   count       = 1
   name        = "mysql-${count.index}"
   desc        = "mysql instance index ${count.index}"
@@ -150,6 +153,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
   provider    = proxmox.pve0
+  vmid        = (count.index) + 151
   count       = 1
   name        = "k3s-m-${(count.index) + 1}"
   desc        = "k3s cluster control plane node number ${(count.index) + 1}"
@@ -194,6 +198,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   provider    = proxmox.pve0
+  vmid        = (count.index) + 161
   count       = 3
   name        = "k3s-w-${(count.index) + 1}"
   desc        = "k3s cluster worker node number ${(count.index) + 1}"
