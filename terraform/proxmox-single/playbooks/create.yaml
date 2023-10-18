@@ -51,9 +51,9 @@
         #    password: testmysqluserpassword123
         #    priv: "testmysqldb.*:ALL"
 
-#- name: Build a k3s cluster with a single control node
-#  hosts: k3s_cluster
-#  vars:
-#    k3s_become: true
-#  roles:
-#    - role: xanmanning.k3s
+- name: Build a k3s cluster with a single control node
+  hosts: k3s_single
+  vars:
+    k3s_become: true
+  roles:
+    - role: xanmanning.k3s
