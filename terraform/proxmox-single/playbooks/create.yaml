@@ -53,7 +53,7 @@
 
 - name: Build a k3s cluster with a single control node
   hosts: k3s_single
-  vars:
-    k3s_become: true
+  #vars:
+  #  k3s_state: uninstalled
   roles:
     - role: xanmanning.k3s
