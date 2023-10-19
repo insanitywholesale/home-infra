@@ -4,6 +4,8 @@ metadata:
   name: todo-data-pvc
   namespace: todo
 spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: todo-pv
   accessModes:
     - ReadWriteOnce
   resources:

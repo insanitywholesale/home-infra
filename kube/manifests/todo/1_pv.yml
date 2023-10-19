@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: todo-pv
+spec:
+  storageClassName: ""
+  claimRef:
+    name: todo-data-pvc
+    namespace: todo
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 10.0.50.100
+    path: "/mnt/tank-z1/k8/todo"
+  mountOptions:
+    - nfsvers=4
