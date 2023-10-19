@@ -8,5 +8,5 @@ k3s_etcd_datastore: true
 k3s_use_unsupported_config: true
 k3s_use_experimental: true
 k3s_server_manifests_urls:
-  - url: https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
+  - url: https://raw.githubusercontent.com/metallb/metallb/v0.13.11/config/manifests/metallb-native.yaml
     filename: metallb-native.yaml
