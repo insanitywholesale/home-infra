@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: drone-runner
-  namespace: drone
-  labels:
-    app.kubernetes.io/name: drone-runner
