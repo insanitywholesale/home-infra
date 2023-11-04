@@ -16,13 +16,21 @@ spec:
         app: todo
     spec:
       containers:
-      - name: todo
-        image: inherently/usrvtodo:0.7
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - mountPath: "/data"
-          name: todo-data
+        - name: todo
+          image: inherently/usrvtodo:0.7
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_PATH
+              value: "/data/todo.db"
+          volumeMounts:
+            - mountPath: "/data"
+              name: todo-data
+      securityContext:
+        runAsUser: 5000
+        runAsGroup: 5000
+        fsGroup: 5000
+        fsGroupChangePolicy: "OnRootMismatch"
       volumes:
         - name: todo-data
           persistentVolumeClaim:
