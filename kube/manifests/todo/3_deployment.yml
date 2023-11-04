@@ -35,3 +35,4 @@ spec:
         - name: todo-data
           persistentVolumeClaim:
             claimName: todo-data-pvc
+            #claimName: todo-local-data-pvc
