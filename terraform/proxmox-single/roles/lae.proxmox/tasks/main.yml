@@ -115,11 +115,6 @@
     name: os-prober
     state: absent
 
-- name: CUSTOM Remove enterprise Proxmox repository
-  file:
-    path: /etc/apt/sources.list.d/pve-enterprise.list
-    state: absent
-
 - name: Add Proxmox repository
   apt_repository:
     repo: "{{ pve_repository_line }}"
