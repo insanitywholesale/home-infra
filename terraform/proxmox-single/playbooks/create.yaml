@@ -3,6 +3,7 @@
     - piholes
     - postgres
     - mysql
+    - observium
     - gitlab
     - k3s_cluster
     - k3s_single

@@ -132,7 +132,7 @@ Code analysis and git hosting plus container registry and helm repo.
 .44
 
 ### GitLab
-.45
+10.0.50.45
 
 ### Harbor
 .48
@@ -147,13 +147,16 @@ Kubernetes nodes
 .50-59
 
 ### k3s worker nodes
-.60-69
+.60-68
+
+### k3s single-node cluster
+10.0.50.69
 
 ## Physical servers
 Bare-metal machines where most things run on
 
 ## Proxmox
-10.0.50.70-73 (leave space for up to .75)
+10.0.50.70-72 (leave space for up to .75)
 
 ## TrueNAS
 .100
