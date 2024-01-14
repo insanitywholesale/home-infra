@@ -6,7 +6,7 @@ all:
           hosts:
             10.0.50.51:
               ansible_host: 10.0.50.51
-              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
               k3s_become: true
@@ -53,7 +53,7 @@ all:
           hosts:
             10.0.50.61:
               ansible_host: 10.0.50.61
-              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
               k3s_become: true
@@ -69,7 +69,7 @@ all:
               timezone: Europe/Athens
             10.0.50.62:
               ansible_host: 10.0.50.62
-              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
               k3s_become: true
@@ -85,7 +85,7 @@ all:
               timezone: Europe/Athens
             10.0.50.63:
               ansible_host: 10.0.50.63
-              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
               k3s_become: true
@@ -103,7 +103,7 @@ all:
       hosts:
         10.0.50.69:
           ansible_host: 10.0.50.69
-          ansible_private_key_file: /home/angle/.ssh/id_rsa
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           k3s_become: true
@@ -119,7 +119,7 @@ all:
     mysql:
       hosts:
         10.0.50.21:
-          ansible_private_key_file: /home/angle/.ssh/id_rsa
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           ntp_manage_config: true
@@ -128,7 +128,7 @@ all:
     piholes:
       hosts:
         10.0.50.2:
-          ansible_private_key_file: /home/angle/.ssh/id_rsa
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           ntp_manage_config: true
@@ -137,7 +137,7 @@ all:
     postgres:
       hosts:
         10.0.50.20:
-          ansible_private_key_file: /home/angle/.ssh/id_rsa
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           ntp_manage_config: true
@@ -148,7 +148,7 @@ all:
         pve0:
           hosts:
             10.0.50.70:
-              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: root
               interfaces_template: ''
@@ -177,7 +177,7 @@ all:
         pve1:
           hosts:
             10.0.50.71:
-              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: root
               interfaces_template: ''
@@ -192,7 +192,7 @@ all:
         pve2:
           hosts:
             10.0.50.72:
-              ansible_private_key_file: /home/angle/.ssh/id_rsa
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: root
               interfaces_template: ''
@@ -204,4 +204,3 @@ all:
               pve_ssh_port: 22
               pve_storages: *id004
               timezone: Europe/Athens
-    ungrouped: {}

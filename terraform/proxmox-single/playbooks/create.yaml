@@ -1,3 +1,60 @@
+- name: do basic setup for debian virtual machines
+  hosts:
+    - piholes
+    - postgres
+    - mysql
+    - k3s_single
+    - k3s_cluster
+  become: true
+
+  tasks:
+    - name: Wait for hosts to become reachable
+      ansible.builtin.wait_for_connection:
+
+    - name: update every debian virtual machine
+      apt:
+        upgrade: full
+        update_cache: yes
+
+    - name: INSTALL good packages
+      apt:
+        name:
+          - vim
+          - tmux
+          - htop
+          - stterm
+          - qemu-guest-agent
+          - python3
+          - python3-apt
+          - nfs-common
+          - nfs4-acl-tools
+        state:
+          present
+
+    - name: DELET this
+      apt:
+        name:
+          - nano
+        state:
+          absent
+
+    - name: Copy /etc/network/interfaces config
+      copy:
+        src: debinterfaces
+        dest: /etc/network/interfaces
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: reboot hosts
+      ansible.builtin.reboot:
+        reboot_timeout: 300
+
+    - name: wait for hosts to be up again
+      ansible.builtin.wait_for_connection:
+        delay: 15
+        timeout: 300
+
 - name: Install and configure NTP
   hosts: all
   become: True
@@ -51,8 +108,15 @@
         #    password: testmysqluserpassword123
         #    priv: "testmysqldb.*:ALL"
 
-- name: Build a k3s cluster with a single control node
+- name: Build single-node k3s cluster
   hosts: k3s_single
+  #vars:
+  #  k3s_state: uninstalled
+  roles:
+    - role: xanmanning.k3s
+
+- name: Build a k3s cluster with a single control node
+  hosts: k3s_cluster
   #vars:
   #  k3s_state: uninstalled
   roles:
