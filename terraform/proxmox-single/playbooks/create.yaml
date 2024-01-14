@@ -45,10 +45,12 @@
         owner: root
         group: root
         mode: '0644'
+      register: netconfig
 
     - name: reboot hosts
       ansible.builtin.reboot:
         reboot_timeout: 300
+      when: netconfig.changed
 
     - name: wait for hosts to be up again
       ansible.builtin.wait_for_connection:

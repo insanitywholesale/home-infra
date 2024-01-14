@@ -4,8 +4,9 @@ metadata:
   name: todo
   namespace: todo
 spec:
+  ingressClassName: nginx
   rules:
-  - host: todo.kates.test
+  - host: todo.home.inherently.xyz
     http:
       paths:
       - path: /
