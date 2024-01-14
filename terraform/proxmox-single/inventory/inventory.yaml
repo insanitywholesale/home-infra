@@ -1,5 +1,19 @@
 all:
   children:
+    gitlab:
+      hosts:
+        10.0.50.45:
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
+          ntp_manage_config: true
+          ntp_servers: &id001
+          - 10.0.50.254 iburst
+          - 0.debian.pool.ntp.org
+          - 1.opnsense.pool.ntp.org
+          - 2.opnsense.pool.ntp.org
+          - 3.debian.pool.ntp.org
+          timezone: Europe/Athens
     k3s_cluster:
       children:
         master:
@@ -36,18 +50,13 @@ all:
                 tls-san:
                 - '{{ ansible_host }}'
                 write-kubeconfig-mode: '644'
-              k3s_server_manifests_urls: &id001
+              k3s_server_manifests_urls: &id002
               - filename: metallb-native.yaml
                 url: https://raw.githubusercontent.com/metallb/metallb/v0.13.11/config/manifests/metallb-native.yaml
               k3s_use_experimental: true
               k3s_use_unsupported_config: true
               ntp_manage_config: true
-              ntp_servers: &id002
-              - 10.0.50.254 iburst
-              - 0.debian.pool.ntp.org
-              - 1.opnsense.pool.ntp.org
-              - 2.opnsense.pool.ntp.org
-              - 3.debian.pool.ntp.org
+              ntp_servers: *id001
               timezone: Europe/Athens
         node:
           hosts:
@@ -61,11 +70,11 @@ all:
               k3s_etcd_datastore: true
               k3s_install_hard_links: true
               k3s_release_version: v1.28.2+k3s1
-              k3s_server_manifests_urls: *id001
+              k3s_server_manifests_urls: *id002
               k3s_use_experimental: true
               k3s_use_unsupported_config: true
               ntp_manage_config: true
-              ntp_servers: *id002
+              ntp_servers: *id001
               timezone: Europe/Athens
             10.0.50.62:
               ansible_host: 10.0.50.62
@@ -77,11 +86,11 @@ all:
               k3s_etcd_datastore: true
               k3s_install_hard_links: true
               k3s_release_version: v1.28.2+k3s1
-              k3s_server_manifests_urls: *id001
+              k3s_server_manifests_urls: *id002
               k3s_use_experimental: true
               k3s_use_unsupported_config: true
               ntp_manage_config: true
-              ntp_servers: *id002
+              ntp_servers: *id001
               timezone: Europe/Athens
             10.0.50.63:
               ansible_host: 10.0.50.63
@@ -93,11 +102,11 @@ all:
               k3s_etcd_datastore: true
               k3s_install_hard_links: true
               k3s_release_version: v1.28.2+k3s1
-              k3s_server_manifests_urls: *id001
+              k3s_server_manifests_urls: *id002
               k3s_use_experimental: true
               k3s_use_unsupported_config: true
               ntp_manage_config: true
-              ntp_servers: *id002
+              ntp_servers: *id001
               timezone: Europe/Athens
     k3s_single:
       hosts:
@@ -114,7 +123,7 @@ all:
           - filename: metallb-native.yaml
             url: https://raw.githubusercontent.com/metallb/metallb/v0.13.11/config/manifests/metallb-native.yaml
           ntp_manage_config: true
-          ntp_servers: *id002
+          ntp_servers: *id001
           timezone: Europe/Athens
     mysql:
       hosts:
@@ -123,7 +132,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           ntp_manage_config: true
-          ntp_servers: *id002
+          ntp_servers: *id001
           timezone: Europe/Athens
     piholes:
       hosts:
@@ -132,7 +141,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           ntp_manage_config: true
-          ntp_servers: *id002
+          ntp_servers: *id001
           timezone: Europe/Athens
     postgres:
       hosts:
@@ -141,7 +150,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           ntp_manage_config: true
-          ntp_servers: *id002
+          ntp_servers: *id001
           timezone: Europe/Athens
     pve:
       children:
@@ -153,7 +162,7 @@ all:
               ansible_user: root
               interfaces_template: ''
               ntp_manage_config: true
-              ntp_servers: *id002
+              ntp_servers: *id001
               ntp_timezone: Europe/Athens
               pve_group: optiplex
               pve_groups: &id003
@@ -182,7 +191,7 @@ all:
               ansible_user: root
               interfaces_template: ''
               ntp_manage_config: true
-              ntp_servers: *id002
+              ntp_servers: *id001
               ntp_timezone: Europe/Athens
               pve_group: optiplex
               pve_groups: *id003
@@ -197,7 +206,7 @@ all:
               ansible_user: root
               interfaces_template: ''
               ntp_manage_config: true
-              ntp_servers: *id002
+              ntp_servers: *id001
               ntp_timezone: Europe/Athens
               pve_group: optiplex
               pve_groups: *id003

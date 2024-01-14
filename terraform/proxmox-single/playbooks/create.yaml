@@ -3,8 +3,9 @@
     - piholes
     - postgres
     - mysql
-    - k3s_single
+    - gitlab
     - k3s_cluster
+    - k3s_single
   become: true
 
   tasks:
@@ -110,15 +111,15 @@
         #    password: testmysqluserpassword123
         #    priv: "testmysqldb.*:ALL"
 
-- name: Build single-node k3s cluster
-  hosts: k3s_single
+- name: Build a k3s cluster with a single control node
+  hosts: k3s_cluster
   #vars:
   #  k3s_state: uninstalled
   roles:
     - role: xanmanning.k3s
 
-- name: Build a k3s cluster with a single control node
-  hosts: k3s_cluster
+- name: Build single-node k3s cluster
+  hosts: k3s_single
   #vars:
   #  k3s_state: uninstalled
   roles:

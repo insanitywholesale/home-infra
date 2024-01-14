@@ -169,6 +169,51 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
   }
 }
 
+resource "proxmox_vm_qemu" "proxmox_vm_gitlab" {
+  provider    = proxmox.pve2
+  vmid        = 145
+  count       = 1
+  name        = "gitlab-${count.index}"
+  desc        = "gitlab instance index ${count.index}"
+  target_node = "pve2"
+
+  clone    = "debian-11-template"
+  os_type  = "cloud-init"
+  qemu_os  = "l26"
+  vcpus    = 0
+  cores    = 4
+  sockets  = 1
+  cpu      = "host"
+  memory   = 6144
+  scsihw   = "virtio-scsi-pci"
+  bootdisk = "virtio0"
+  agent    = 1
+  onboot   = true
+
+  disk {
+    size    = "80G"
+    type    = "virtio"
+    storage = "local-lvm"
+  }
+
+  network {
+    model  = "virtio"
+    bridge = "vmbr0"
+  }
+
+  ipconfig0 = "ip=10.0.50.${(count.index) + 45}/24,gw=10.0.50.254"
+
+  sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
+
+  lifecycle {
+    ignore_changes = [
+      cipassword,
+      network,
+      desc,
+    ]
+  }
+}
+
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_master" {
   provider    = proxmox.pve0
   vmid        = (count.index) + 151
