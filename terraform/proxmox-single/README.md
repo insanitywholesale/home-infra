@@ -35,6 +35,9 @@ NTP, DNS, PXE, FTP and package cache.
 ## Identity, Secrets and Passwords
 System and app auth, passwords for people and secrets for apps.
 
+### Active Directory
+.10
+
 ### FreeIPA main
 .11
 
