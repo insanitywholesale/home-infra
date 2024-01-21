@@ -1,3 +1,8 @@
+# terraform providers
 .terraform
+# terraform init command from gitlab
+tf_init.sh
+# rendered inventory ini
 k3s-inventory.ini
+# python venv for pyratlabs k3s role
 terraform/proxmox*/roles/ansible-role-k3s/k3s_venv
