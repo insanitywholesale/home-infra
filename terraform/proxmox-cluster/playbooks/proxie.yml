@@ -1,6 +1,37 @@
 ---
-- hosts: proxie
+- name: Configure NTP
+  hosts: proxie
   become: True
   roles:
     - role: geerlingguy.ntp
+
+- name: Misc proxmox host configuration
+  hosts: proxie
+  become: true
+
+  tasks:
+    - name: remove garbo enterprise repo
+      file:
+        path: /etc/apt/sources.list.d/pve-enterprise.list
+        state: absent
+
+    - name: install essentials
+      apt:
+        name:
+          - vim
+          - tmux
+          - htop
+          - qemu-guest-agent
+          - python3
+          - python3-apt
+          - nfs-common
+          - nfs4-acl-tools
+          - libguestfs-tools
+        state:
+          present
+
+- name: Configure proxmox
+  hosts: proxie
+  become: True
+  roles:
     - role: lae.proxmox

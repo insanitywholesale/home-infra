@@ -47,14 +47,14 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 10240
+  memory   = 4096
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
   onboot   = true
 
   disk {
-    size    = "30G"
+    size    = "40G"
     type    = "virtio"
     storage = "local-lvm"
   }
@@ -89,14 +89,14 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 10240
+  memory   = 4096
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
   onboot   = true
 
   disk {
-    size    = "30G"
+    size    = "40G"
     type    = "virtio"
     storage = "local-lvm"
   }
@@ -130,14 +130,14 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 10240
+  memory   = 4096
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
   onboot   = true
 
   disk {
-    size    = "30G"
+    size    = "40G"
     type    = "virtio"
     storage = "local-lvm"
   }
@@ -172,7 +172,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 6144
+  memory   = 3072
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
@@ -214,7 +214,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 6144
+  memory   = 3072
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
@@ -256,7 +256,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
   cores    = 2
   sockets  = 1
   cpu      = "host"
-  memory   = 6144
+  memory   = 3072
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1

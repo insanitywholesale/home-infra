@@ -21,14 +21,6 @@ pve_users:
     password: "oomfie1234"
     groups:
       - api_users
-  - name: ansible_pve@pve
-    password: "oomfie1234"
-    groups:
-      - api_users
-  - name: terraform_pve@pve
-    password: "oomfie1234"
-    groups:
-      - api_users
 pve_roles:
   - name: Monitoring
     privileges:
@@ -50,3 +42,9 @@ pve_acls:
     roles: [ "PVEVMAdmin" ]
     groups:
       - api_users
+pve_storages:
+  - name: proxmox-nfs
+    type: nfs
+    content: [ "images", "iso", "backup" ]
+    server: 10.0.50.100
+    export: /mnt/tank-z1/nfs-proxmox

@@ -45,7 +45,16 @@ all:
                 - VM.Monitor
                 - VM.Audit
               pve_ssh_port: 22
-              pve_users: &id004
+              pve_storages: &id004
+              - content:
+                - images
+                - iso
+                - backup
+                export: /mnt/tank-z1/nfs-proxmox
+                name: proxmox-nfs
+                server: 10.0.50.100
+                type: nfs
+              pve_users: &id005
               - groups:
                 - api_users
                 name: ansible@pve
@@ -53,14 +62,6 @@ all:
               - groups:
                 - api_users
                 name: terraform@pve
-                password: oomfie1234
-              - groups:
-                - api_users
-                name: ansible_pve@pve
-                password: oomfie1234
-              - groups:
-                - api_users
-                name: terraform_pve@pve
                 password: oomfie1234
         prox1:
           hosts:
@@ -79,7 +80,8 @@ all:
               pve_remove_subscription_warning: true
               pve_roles: *id003
               pve_ssh_port: 22
-              pve_users: *id004
+              pve_storages: *id004
+              pve_users: *id005
         prox2:
           hosts:
             pve2:
@@ -97,7 +99,8 @@ all:
               pve_remove_subscription_warning: true
               pve_roles: *id003
               pve_ssh_port: 22
-              pve_users: *id004
+              pve_storages: *id004
+              pve_users: *id005
     pxe:
       children:
         fog:
