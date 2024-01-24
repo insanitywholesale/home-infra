@@ -2,4 +2,5 @@
 - hosts: proxie
   become: True
   roles:
+    - role: geerlingguy.ntp
     - role: lae.proxmox

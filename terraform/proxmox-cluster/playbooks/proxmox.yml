@@ -10,21 +10,6 @@
         path: /etc/apt/sources.list.d/pve-enterprise.list
         state: absent
 
-    # NOTE: might not be required in the future
-    # since it can be handled by lae.proxmox
-    - name: no-sub squad gang
-      copy:
-        src: pve-no-sub.list
-        dest: /etc/apt/sources.list.d/pve-no-subscription.list
-        mode: '0644'
-        owner: root
-        group: root
-
-    - name: update proxies
-      apt:
-        upgrade: full
-        update_cache: yes
-
     - name: install essentials
       apt:
         name:
@@ -67,16 +52,3 @@
       shell:
         chdir: /root/
         cmd: /root/setup-debian-11-template.sh
-
-    - name: get dark theme installation script
-      get_url:
-        url: https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/PVEDiscordDark.sh
-        dest: /root/PVEDiscordDark.sh
-        mode: '0755'
-        owner: root
-        group: root
-
-    - name: install dark theme
-      shell:
-        chdir: /root/
-        cmd: ./PVEDiscordDark.sh install

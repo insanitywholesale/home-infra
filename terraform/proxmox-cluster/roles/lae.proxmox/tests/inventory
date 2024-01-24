@@ -1,0 +1,5 @@
+[bustercluster]
+proxmox-6-[01:03].lxc
+
+[bullseyecluster]
+proxmox-7-[01:03].lxc
