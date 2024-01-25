@@ -9,6 +9,8 @@
   hosts: proxie
   become: true
 
+- name: Apply proxmox pre-config
+  hosts: proxie
   tasks:
     - name: remove garbo enterprise repo
       file:
@@ -35,3 +37,33 @@
   become: True
   roles:
     - role: lae.proxmox
+
+- name: Proxmox post-config
+  hosts: proxie
+  tasks:
+    - name: get deb-11 could image
+      get_url:
+        url: https://cloud.debian.org/images/cloud/bullseye/20220711-1073/debian-11-genericcloud-amd64-20220711-1073.qcow2
+        dest: /root/debian-11-amd64.qcow2
+        checksum: sha512:41de913d74b3aeded43e1440d52e4f55188e37859f769405b5e737feedae552506230fba06806e3436fa3570381bd04eb439bfbfece1a2bac1d4a677b4117c22
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: add qemu-guest-agent to deb-11
+      shell:
+        chdir: /root/
+        cmd: virt-customize -a ./debian-11-amd64.qcow2 --install qemu-guest-agent --uninstall unattended-upgrades
+
+    - name: get deb-11 template vm scriptoid
+      copy:
+        src: setup-debian-11-cloudinit.sh
+        dest: /root/setup-debian-11-template.sh
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: run deb-11 template vm scriptoid
+      shell:
+        chdir: /root/
+        cmd: /root/setup-debian-11-template.sh
