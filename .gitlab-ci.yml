@@ -43,7 +43,7 @@ deploy single:
     TF_ROOT: terraform/proxmox-single
   extends: .terraform:deploy
   dependencies:
-    - build
+    - build single
   environment:
     name: $TF_STATE_NAME
     action: start
@@ -77,7 +77,7 @@ deploy cluster:
     TF_ROOT: terraform/proxmox-cluster
   extends: .terraform:deploy
   dependencies:
-    - build
+    - build cluster
   environment:
     name: $TF_STATE_NAME
     action: start
