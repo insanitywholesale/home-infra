@@ -18,24 +18,28 @@ stages:
   - cleanup
 
 fmt single:
+  tags: [terraform]
   variables:
     TF_ROOT: terraform/proxmox-single
   extends: .terraform:fmt
   needs: []
 
 validate single:
+  tags: [terraform]
   variables:
     TF_ROOT: terraform/proxmox-single
   extends: .terraform:validate
   needs: []
 
 fmt cluster:
+  tags: [terraform]
   variables:
     TF_ROOT: terraform/proxmox-cluster
   extends: .terraform:fmt
   needs: []
 
 validate cluster:
+  tags: [terraform]
   variables:
     TF_ROOT: terraform/proxmox-cluster
   extends: .terraform:validate
