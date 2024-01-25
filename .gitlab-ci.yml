@@ -7,9 +7,6 @@ include:
   - template: Terraform/Base.latest.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
   - template: Jobs/SAST-IaC.latest.gitlab-ci.yml   # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Jobs/SAST-IaC.latest.gitlab-ci.yml
 
-variables:
-  TF_ROOT: terraform/proxmox-single
-
 stages:
   - validate
   - test
@@ -31,6 +28,26 @@ validate single:
   extends: .terraform:validate
   needs: []
 
+build single:
+  tags: [terraform]
+  variables:
+    TF_ROOT: terraform/proxmox-single
+  extends: .terraform:build
+  environment:
+    name: $TF_STATE_NAME
+    action: prepare
+
+deploy single:
+  tags: [terraform]
+  variables:
+    TF_ROOT: terraform/proxmox-single
+  extends: .terraform:deploy
+  dependencies:
+    - build
+  environment:
+    name: $TF_STATE_NAME
+    action: start
+
 fmt cluster:
   tags: [terraform]
   variables:
@@ -45,16 +62,22 @@ validate cluster:
   extends: .terraform:validate
   needs: []
 
-#build:
-#  extends: .terraform:build
-#  environment:
-#    name: $TF_STATE_NAME
-#    action: prepare
-#
-#deploy:
-#  extends: .terraform:deploy
-#  dependencies:
-#    - build
-#  environment:
-#    name: $TF_STATE_NAME
-#    action: start
+build cluster:
+  tags: [terraform]
+  variables:
+    TF_ROOT: terraform/proxmox-cluster
+  extends: .terraform:build
+  environment:
+    name: $TF_STATE_NAME
+    action: prepare
+
+deploy cluster:
+  tags: [terraform]
+  variables:
+    TF_ROOT: terraform/proxmox-cluster
+  extends: .terraform:deploy
+  dependencies:
+    - build
+  environment:
+    name: $TF_STATE_NAME
+    action: start
