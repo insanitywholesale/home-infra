@@ -1,21 +1,18 @@
-[master]
+[server]
 %{ for host in k3s_masters ~}
 ${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
 %{ endfor ~}
 
-[node]
+[agent]
 %{ for host in k3s_workers ~}
 ${ split("/", split("=", split(",", host.ipconfig0)[0])[1])[0] }
 %{ endfor ~}
 
-[k3s:children]
-master
-node
+[k3s_cluster:children]
+server
+agent
 
-[kates:children]
-k3s
-
-[kates:vars]
+[k3s_cluster:vars]
 ansible_private_key_file=/home/angle/.ssh/id_ed25519
 ansible_python_interpreter='/usr/bin/env python3'
 ansible_user=debian

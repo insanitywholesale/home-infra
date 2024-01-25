@@ -2,7 +2,7 @@
 
 - name: get dem debby boiz done up
   hosts:
-    - kates
+    - k3s_cluster
     - piholes
     - mc
     #- pxe

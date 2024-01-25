@@ -1,28 +1,21 @@
 ---
-
-- name: install k3s cluster
-  hosts: k3s
-  gather_facts: yes
-  become: yes
+- name: Cluster prep
+  hosts: k3s_cluster
+  gather_facts: true
+  become: true
   roles:
     - role: k3s_roles/prereq
-    - role: k3s_roles/download
+    - role: k3s_roles/airgap
     - role: k3s_roles/raspberrypi
-  vars:
-    master_ip: "{{ hostvars[groups['k3s'][0]]['ansible_host'] | default(groups['k3s'][0]) }}"
 
-- name: configure k3s cluster master
-  hosts: "{{ hostvars[groups['k3s'][0]]['ansible_host'] | default(groups['k3s'][0]) }}"
-  become: yes
+- name: Setup K3S server
+  hosts: server
+  become: true
   roles:
-    - role: k3s_roles/k3s/master
-  vars:
-    master_ip: "{{ hostvars[groups['k3s'][0]]['ansible_host'] | default(groups['k3s'][0]) }}"
+    - role: k3s_roles/k3s_server
 
-- name: configure k3s cluster workers
-  hosts: "{{ hostvars[groups['k3s'][1:]]['ansible_host'] | default(groups['k3s'][1:]) }}"
-  become: yes
+- name: Setup K3S agent
+  hosts: agent
+  become: true
   roles:
-    - role: k3s_roles/k3s/node
-  vars:
-    master_ip: "{{ hostvars[groups['k3s'][0]]['ansible_host'] | default(groups['k3s'][0]) }}"
+    - role: k3s_roles/k3s_agent
