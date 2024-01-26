@@ -3,9 +3,6 @@
 - name: get dem debby boiz done up
   hosts:
     - k3s_cluster
-    - piholes
-    - mc
-    #- pxe
   become: true
 
   tasks:
@@ -47,7 +44,6 @@
         group: root
         mode: '0644'
 
-    # TODO: switch this to shut down instead of reboot, run add-qga-k3s-vms.plan and then boot
     - name: rebooty the debooty
       ansible.builtin.reboot:
         reboot_timeout: 300
@@ -59,6 +55,5 @@
       ansible.builtin.wait_for_connection:
         delay: 15
         timeout: 300
-
 
 ...
