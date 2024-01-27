@@ -7,6 +7,10 @@ include:
   - template: Terraform/Base.latest.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
   - template: Jobs/SAST-IaC.latest.gitlab-ci.yml   # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Jobs/SAST-IaC.latest.gitlab-ci.yml
 
+variables:
+  TF_ROOT: terraform
+  TF_STATE_NAME: homelab-cluster
+
 stages:
   - validate
   - test
@@ -54,25 +58,16 @@ stages:
 
 fmt cluster:
   tags: [terraform]
-  variables:
-    TF_ROOT: terraform/proxmox-cluster
-    TF_STATE_NAME: homelab-cluster
   extends: .terraform:fmt
   needs: []
 
 validate cluster:
   tags: [terraform]
-  variables:
-    TF_ROOT: terraform/proxmox-cluster
-    TF_STATE_NAME: homelab-cluster
   extends: .terraform:validate
   needs: []
 
 build cluster:
   tags: [terraform]
-  variables:
-    TF_ROOT: terraform/proxmox-cluster
-    TF_STATE_NAME: homelab-cluster
   extends: .terraform:build
   environment:
     name: $TF_STATE_NAME
@@ -80,9 +75,6 @@ build cluster:
 
 deploy cluster:
   tags: [terraform]
-  variables:
-    TF_ROOT: terraform/proxmox-cluster
-    TF_STATE_NAME: homelab-cluster
   extends: .terraform:deploy
   dependencies:
     - build cluster
