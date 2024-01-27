@@ -39,7 +39,7 @@ terraform_apply:
   tags: [terraform]
   extends: .terraform:deploy
   dependencies:
-    - build cluster
+    - terraform_plan
   environment:
     name: $TF_STATE_NAME
     action: start
