@@ -38,9 +38,9 @@ provider "proxmox" {
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
   provider    = proxmox.pve0
   count       = 1
-  vmid        = 1000 + (count.index * 2) + 1 + 51
-  name        = "deb-k3s-m-${(count.index * 2) + 1}"
-  desc        = "HA k3s cluster master host"
+  vmid        = 1000 + (count.index * 2) + 51
+  name        = "k3sserver${(count.index * 2) + 1}vp"
+  desc        = "HA k3s cluster master ${(count.index * 2) + 1}"
   target_node = "pve0"
 
   clone    = "debian-11-template"
@@ -65,7 +65,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.${(count.index * 2) + 1 + 51}/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.${(count.index * 2) + 51}/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
@@ -81,9 +81,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
   provider    = proxmox.pve1
   count       = 1
-  vmid        = 1000 + (count.index * 2) + 2 + 51
-  name        = "deb-k3s-m-${(count.index * 2) + 2}"
-  desc        = "HA k3s cluster master host"
+  vmid        = 1000 + (count.index * 2) + 52
+  name        = "k3sserver${(count.index * 2) + 2}vp"
+  desc        = "HA k3s cluster master ${(count.index * 2) + 2}"
   target_node = "pve1"
 
   clone    = "debian-11-template"
@@ -108,7 +108,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.${(count.index * 2) + 2 + 51}/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.${(count.index * 2) + 52}/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
@@ -123,9 +123,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
   provider    = proxmox.pve2
   count       = 1
-  vmid        = 1000 + (count.index * 2) + 3 + 51
-  name        = "deb-k3s-m-${(count.index * 2) + 3}"
-  desc        = "HA k3s cluster master host"
+  vmid        = 1000 + (count.index * 2) + 53
+  name        = "k3sserver${(count.index * 2) + 3}vp"
+  desc        = "HA k3s cluster master ${(count.index * 2) + 3}"
   target_node = "pve2"
 
   clone    = "debian-11-template"
@@ -150,7 +150,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.${(count.index * 2) + 3 + 51}/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.${(count.index * 2) + 53}/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
