@@ -63,3 +63,136 @@ System and app auth, passwords for people and secrets for apps.
 .13
 
 ### FreeRADIUS
+.14
+
+### Vaultwarden
+.15
+
+### Vault
+.16
+
+### Keycloak
+.17
+
+### Authelia
+.18
+
+## Databases and Message Queues
+Databases and message queues for applications.
+
+### PostgreSQL
+10.0.50.20
+
+### MySQL
+10.0.50.21
+
+### MongoDB
+.22
+
+### CouchDB
+.23
+
+### Redis
+.24
+
+### RabbitMQ
+.25
+
+### Kafka
+.26
+
+### OpenSearch
+.27
+
+### TimescaleDB
+.28
+
+### InfluxDB
+.29
+
+## Monitoring
+Tools for monitoring, logging, tracing and data visualization.
+
+### syslog
+.30
+
+### Prometheus + Grafana + Loki
+.31
+
+### Observium or LibreNMS
+.32
+
+### Zabbix
+.33
+
+### Graylog
+.34
+
+### NetBox
+.35
+
+### ntfy
+.36
+
+### Gatus or Uptime Kuma
+.37
+
+### Sentry
+.38
+
+### Jaeger Clickhouse
+.39
+
+### Hydras.io or Rudderstack
+.40
+
+## Code-related infrastrucutre
+Code analysis and git hosting plus container registry and helm repo.
+
+### Sonarqube or Deepsource
+.43
+
+### Codecov
+.44
+
+### GitLab
+10.0.50.45
+
+### Harbor
+.48
+
+### Chartmuseum
+.49
+
+## Kubernetes
+Kubernetes nodes
+
+### k3s control plane nodes
+.50-59
+
+### k3s worker nodes
+.60-68
+
+### k3s single-node cluster
+10.0.50.69
+
+## Physical servers
+Bare-metal machines where most things run on
+
+## Proxmox
+10.0.50.70-72 (leave space for up to .75)
+
+## TrueNAS
+.100
+
+## Backup
+.101
+
+## Non-clusterful applications
+Can't or don't want to run these on kubernetes.
+
+## HomeAssistant
+.102
+
+## Jellyfin
+.105
