@@ -20,16 +20,15 @@
           - vim
           - tmux
           - htop
-          - qemu-guest-agent
           - python3
-          - python-is-python3
           - python3-apt
+          - python3-guestfs
           - python3-proxmoxer
+          - python-is-python3
           - nfs-common
           - nfs4-acl-tools
           - libguestfs-tools
-        state:
-          present
+        state: present
 
 - name: Configure proxmox
   hosts: proxie
@@ -42,22 +41,101 @@
   become: true
   tasks:
     #TODO: replace with proxmox downloading the image using a proxmox ansible module
-    #- name: get deb-11 could image
-    #  get_url:
-    #    url: https://cloud.debian.org/images/cloud/bullseye/20220711-1073/debian-11-genericcloud-amd64-20220711-1073.qcow2
-    #    dest: /root/debian-11-amd64.qcow2
-    #    checksum: sha512:41de913d74b3aeded43e1440d52e4f55188e37859f769405b5e737feedae552506230fba06806e3436fa3570381bd04eb439bfbfece1a2bac1d4a677b4117c22
-    #    mode: '0644'
-    #    owner: root
-    #    group: root
+    - name: get deb-11 could image
+      get_url:
+        url: https://cloud.debian.org/images/cloud/bullseye/20240104-1616/debian-11-genericcloud-amd64-20240104-1616.qcow2
+        dest: /tmp/debian-11-amd64.qcow2
+        checksum: sha512:01f1a9aa92f6257936193359642d7ff780ad3c721f4b731ed0a04684f015db66d7919a72b2b2a272a7dd3cf0e4e0314694c00684c333552a01bd149a535f2a09
+        mode: '0644'
+        owner: root
+        group: root
 
-    #- name: add qemu-guest-agent to deb-11
-    #  shell:
-    #    chdir: /root/
-    #    cmd: virt-customize -a ./debian-11-amd64.qcow2 --install qemu-guest-agent --uninstall unattended-upgrades
+    - name: Add qemu-guest-agent to the debian image
+      vkhitrin.libguestfs.guestfs_package:
+        image: /tmp/debian-11-amd64.qcow2
+        name: qemu-guest-agent
+        state: present
+
+    - name: Remove unattended-upgrades from the debian image
+      vkhitrin.libguestfs.guestfs_package:
+        image: /tmp/debian-11-amd64.qcow2
+        name: unattended-upgrades
+        state: absent
 
     #TODO: need to import debian image
-    - name: Create Debian 11 template virtual machine
+    - name: Create Debian 11 virtual machine
+      community.general.proxmox_kvm:
+        validate_certs: false
+        api_user: root@pam
+        api_password: failfail
+        api_host: "{{ ansible_host }}"
+        node: "{{ inventory_hostname }}"
+        vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
+        name: deb11-tmpl
+        description: debian 11 template
+        acpi: true
+        bios: seabios
+        cpu: cputype=kvm64
+        cores: 1
+        sockets: 1
+        memory: 1024
+        boot: order=virtio0
+        bootdisk: virtio0
+        scsihw: virtio-scsi-pci
+        ide:
+          ide2: local-lvm:cloudinit,format=raw
+        net:
+          net0: virtio,bridge=vmbr0
+        serial:
+          serial0: socket
+        vga: qxl
+        agent: enabled=1,fstrim_cloned_disks=1
+        hotplug: disk,network,usb,memory,cpu
+        state: present
+
+    - name: Add root disk imported from qcow2 image to Debian 11 virtual machine
+      community.general.proxmox_disk:
+        validate_certs: false #TODO: disable after figuring out LE certs
+        api_user: root@pam
+        api_password: failfail
+        api_host: "{{ ansible_host }}"
+        vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
+        name: deb11-tmpl
+        disk: virtio0
+        storage: local-lvm
+        size: 4
+        state: present
+
+    #- name: Configure Debian 11 virtual machine
+    #  community.general.proxmox_kvm:
+    #    validate_certs: false #TODO: disable after figuring out LE certs
+    #    api_user: root@pam
+    #    api_password: failfail
+    #    api_host: "{{ ansible_host }}"
+    #    node: "{{ inventory_hostname }}"
+    #    vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
+    #    name: deb11-tmpl
+    #    description: debian 11 template
+    #    acpi: true
+    #    bios: seabios
+    #    cpu: cputype=kvm64
+    #    cores: 1
+    #    sockets: 1
+    #    memory: 1024
+    #    boot: order=virtio0
+    #    bootdisk: virtio0
+    #    scsihw: virtio-scsi-pci
+    #    ide:
+    #      ide2: local-lvm:cloudinit,format=raw
+    #    net:
+    #      net0: virtio,bridge=vmbr0
+    #    serial:
+    #      serial0: socket
+    #    vga: qxl
+    #    agent: enabled=1,fstrim_cloned_disks=1
+    #    hotplug: disk,network,usb,memory,cpu
+
+    - name: Convert Debian 11 virtual machine to template
       community.general.proxmox_kvm:
         validate_certs: false #TODO: disable after figuring out LE certs
         api_user: root@pam
@@ -66,20 +144,5 @@
         node: "{{ inventory_hostname }}"
         vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
         name: deb11-tmpl
-        description: "debian 11 template"
-        state: "absent"
-        agent: "enabled=1,fstrim_cloned_disks=1"
-        bios: "seabios"
-        hotplug: "disk,network,usb,memory,cpu"
-        cpu: "cputype=kvm64"
-        cores: 1
-        sockets: 1
-        memory: 1024
-        scsihw: "virtio-scsi-pci"
-        serial:
-          serial0: "socket"
-        ide:
-          ide2: "local-lvm:cloudinit,format=raw"
-        net:
-          net0: "virtio,bridge=vmbr0"
-        vga: "qxl"
+        state: template
+...
