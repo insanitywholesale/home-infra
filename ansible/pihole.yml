@@ -1,6 +1,5 @@
 ---
-
-- name: configure pihole
+- name: Configure pihole
   hosts: piholes
   become: true
 
@@ -33,3 +32,4 @@
         name: unbound
         enabled: yes
         state: restarted
+...
