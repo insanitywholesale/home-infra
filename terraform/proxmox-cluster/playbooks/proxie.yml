@@ -62,7 +62,6 @@
         name: unattended-upgrades
         state: absent
 
-    #TODO: need to import debian image
     - name: Create Debian 11 virtual machine
       community.general.proxmox_kvm:
         validate_certs: false
@@ -74,12 +73,11 @@
         name: deb11-tmpl
         description: debian 11 template
         acpi: true
-        bios: seabios
         cpu: cputype=kvm64
         cores: 1
         sockets: 1
         memory: 1024
-        boot: order=virtio0
+        boot: c
         bootdisk: virtio0
         scsihw: virtio-scsi-pci
         ide:
@@ -103,37 +101,8 @@
         name: deb11-tmpl
         disk: virtio0
         storage: local-lvm
-        size: 4
+        import_from: /tmp/debian-11-amd64.qcow2
         state: present
-
-    #- name: Configure Debian 11 virtual machine
-    #  community.general.proxmox_kvm:
-    #    validate_certs: false #TODO: disable after figuring out LE certs
-    #    api_user: root@pam
-    #    api_password: failfail
-    #    api_host: "{{ ansible_host }}"
-    #    node: "{{ inventory_hostname }}"
-    #    vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
-    #    name: deb11-tmpl
-    #    description: debian 11 template
-    #    acpi: true
-    #    bios: seabios
-    #    cpu: cputype=kvm64
-    #    cores: 1
-    #    sockets: 1
-    #    memory: 1024
-    #    boot: order=virtio0
-    #    bootdisk: virtio0
-    #    scsihw: virtio-scsi-pci
-    #    ide:
-    #      ide2: local-lvm:cloudinit,format=raw
-    #    net:
-    #      net0: virtio,bridge=vmbr0
-    #    serial:
-    #      serial0: socket
-    #    vga: qxl
-    #    agent: enabled=1,fstrim_cloned_disks=1
-    #    hotplug: disk,network,usb,memory,cpu
 
     - name: Convert Debian 11 virtual machine to template
       community.general.proxmox_kvm:
