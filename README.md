@@ -1,30 +1,34 @@
 # infra
-
-infrastructure-related things I'm testing/working on including automating my homelab
+repository for my home infra using infrastructure as code
 
 ## things in here
-there are a few top-level directories here.
+explanation of main directories
+
 - the active ones:
 	* `kube` includes kubernetes yaml manifests as well as Helm values.yaml configs
-	* `terraform/proxmox` includes terraform configuration as well as ansible playbooks for k3s
+	* `terraform` includes terraform configuration to create virtual machines from templates
+	* `ansible` includes ansible automation being built for configuring the virtual machines created with terraform
+	
 - the archive ones:
 	* `unused/vagrant` has some basic examples for how to write a Vagrantfile
 	* `unused/raw-libvirt` is the older version of the terraform+proxmox setup but with libvirt instead of proxmox for virtualization
 	* `unused/kube` mirrors the layout of `kube` but has unused things stored as examples
 	* `unused/reverse-proxy-config/traefik` old unified single traefik VM instance
+	* `unused/terrafor` includes the `proxmox-single` subdirectory that includes ansible and terraform for a non-cluster proxmox setup
 
-# Services
-Services I run and want to run.
-Only the ones will the IPs fully written out are up and running right now.
+# services
+services I run and want to run
+
+the ones with the IPs fully written out are up and running right now
 
 ## Fundamentals
-NTP, DNS, PXE, FTP and package cache.
+NTP, DNS, PXE, FTP and APT cache.
 
 ### NTP
 .1
 
 ### Pi-hole
-10.0.50.2
+.2
 
 ### LANcache
 .3
@@ -81,10 +85,10 @@ System and app auth, passwords for people and secrets for apps.
 Databases and message queues for applications.
 
 ### PostgreSQL
-10.0.50.20
+.20
 
 ### MySQL
-10.0.50.21
+.21
 
 ### MongoDB
 .22
@@ -156,7 +160,7 @@ Code analysis and git hosting plus container registry and helm repo.
 .44
 
 ### GitLab
-10.0.50.45
+.45
 
 ### Harbor
 .48
@@ -167,14 +171,17 @@ Code analysis and git hosting plus container registry and helm repo.
 ## Kubernetes
 Kubernetes nodes
 
+### k3s ingress
+10.0.50.50
+
 ### k3s control plane nodes
-.50-59
+10.0.50.51-53
 
 ### k3s worker nodes
-.60-68
+10.0.50.61-64
 
 ### k3s single-node cluster
-10.0.50.69
+.69
 
 ## Physical servers
 Bare-metal machines where most things run on
@@ -183,7 +190,7 @@ Bare-metal machines where most things run on
 10.0.50.70-72 (leave space for up to .75)
 
 ## TrueNAS
-.100
+10.0.50.100
 
 ## Backup
 .101
