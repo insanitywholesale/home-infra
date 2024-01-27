@@ -43,7 +43,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
   desc        = "HA k3s cluster master ${(count.index * 2) + 1}"
   target_node = "pve0"
 
-  clone    = "debian-11-template"
+  clone    = "deb11-tmpl"
   os_type  = "cloud-init"
   cores    = 2
   sockets  = 1
@@ -86,7 +86,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
   desc        = "HA k3s cluster master ${(count.index * 2) + 2}"
   target_node = "pve1"
 
-  clone    = "debian-11-template"
+  clone    = "deb11-tmpl"
   os_type  = "cloud-init"
   cores    = 2
   sockets  = 1
@@ -128,7 +128,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
   desc        = "HA k3s cluster master ${(count.index * 2) + 3}"
   target_node = "pve2"
 
-  clone    = "debian-11-template"
+  clone    = "deb11-tmpl"
   os_type  = "cloud-init"
   cores    = 2
   sockets  = 1
@@ -171,7 +171,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
   desc        = "HA k3s cluster worker ${(count.index * 2) + 1}"
   target_node = "pve0"
 
-  clone    = "debian-11-template"
+  clone    = "deb11-tmpl"
   os_type  = "cloud-init"
   cores    = 2
   sockets  = 1
@@ -214,7 +214,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
   desc        = "HA k3s cluster worker ${(count.index * 2) + 2}"
   target_node = "pve1"
 
-  clone    = "debian-11-template"
+  clone    = "deb11-tmpl"
   os_type  = "cloud-init"
   cores    = 2
   sockets  = 1
@@ -257,7 +257,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
   desc        = "HA k3s cluster worker ${(count.index * 2) + 3}"
   target_node = "pve2"
 
-  clone    = "debian-11-template"
+  clone    = "deb11-tmpl"
   os_type  = "cloud-init"
   cores    = 2
   sockets  = 1
