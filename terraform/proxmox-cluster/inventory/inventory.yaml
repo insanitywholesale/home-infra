@@ -4,6 +4,16 @@ all:
       children:
         agent:
           hosts:
+            10.0.50.61:
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
+              extra_agent_args: ''
+              extra_server_args: ''
+              k3s_version: v1.28.5+k3s1
+              token: vregmenhpatataxwristyri
             10.0.50.62:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
@@ -36,6 +46,16 @@ all:
               token: vregmenhpatataxwristyri
         server:
           hosts:
+            10.0.50.51:
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
+              extra_agent_args: ''
+              extra_server_args: ''
+              k3s_version: v1.28.5+k3s1
+              token: vregmenhpatataxwristyri
             10.0.50.52:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
@@ -47,16 +67,6 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
             10.0.50.53:
-              ansible_private_key_file: /home/angle/.ssh/id_ed25519
-              ansible_python_interpreter: /usr/bin/env python3
-              ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
-              extra_agent_args: ''
-              extra_server_args: ''
-              k3s_version: v1.28.5+k3s1
-              token: vregmenhpatataxwristyri
-            10.0.50.54:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -127,6 +137,7 @@ all:
             - api_users
             name: terraform@pve
             password: oomfie1234
+          template_vmid: 9001
         pve1:
           ansible_host: 10.0.50.71
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
@@ -144,6 +155,7 @@ all:
           pve_ssh_port: 22
           pve_storages: *id004
           pve_users: *id005
+          template_vmid: 9002
         pve2:
           ansible_host: 10.0.50.72
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
@@ -161,6 +173,7 @@ all:
           pve_ssh_port: 22
           pve_storages: *id004
           pve_users: *id005
+          template_vmid: 9003
     pxe:
       children:
         fog:

@@ -291,16 +291,3 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
     ]
   }
 }
-
-/* this is also interesting https://github.com/NatiSayada/k3s-proxmox-terraform-ansible/blob/main/terraform/main.tf */
-resource "local_file" "hosts_cfg_k3s" {
-  content = templatefile(
-    "${path.module}/inventory/k3s-inventory.ini.tftpl",
-    {
-      k3s_masters = concat(proxmox_vm_qemu.proxmox_vm_k3s_ha_masters_0.*, proxmox_vm_qemu.proxmox_vm_k3s_ha_masters_1.*, proxmox_vm_qemu.proxmox_vm_k3s_ha_masters_2.*),
-      k3s_workers = concat(proxmox_vm_qemu.proxmox_vm_k3s_ha_workers_0.*, proxmox_vm_qemu.proxmox_vm_k3s_ha_workers_1.*, proxmox_vm_qemu.proxmox_vm_k3s_ha_workers_2.*),
-    }
-  )
-  filename        = "inventory/k3s-inventory.ini"
-  file_permission = "0644"
-}
