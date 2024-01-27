@@ -2,7 +2,7 @@
 .terraform
 # terraform init command from gitlab
 tf_init.sh
-# rendered inventory ini
-k3s-inventory.ini
 # python venv for pyratlabs k3s role
-terraform/proxmox*/roles/ansible-role-k3s/k3s_venv
+k3s_venv
+# python cache when running ansible-lint
+__pycache__
