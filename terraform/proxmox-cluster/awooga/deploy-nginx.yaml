@@ -379,7 +379,7 @@ spec:
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/name: ingress-nginx
   type: LoadBalancer
-  loadBalancerIP: 10.0.50.151
+  loadBalancerIP: 10.0.50.50
 ---
 apiVersion: v1
 kind: Service
