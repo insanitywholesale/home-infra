@@ -1,5 +1,4 @@
 ---
-
 # Servers should be restarted sequientally to avoid etcd learner issues
 # Agents have no such limitation
 - name: Upgrade K3s Servers
@@ -14,3 +13,4 @@
   become: true
   roles:
     - role: k3s_roles/k3s_upgrade
+...
