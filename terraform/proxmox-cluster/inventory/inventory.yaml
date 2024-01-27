@@ -67,106 +67,100 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
     proxie:
-      children:
-        prox0:
-          hosts:
-            pve0:
-              ansible_host: 10.0.50.70
-              ansible_private_key_file: /home/angle/.ssh/id_ed25519
-              ansible_python_interpreter: /usr/bin/env python3
-              ansible_user: root
-              ntp_timezone: Europe/Athens
-              pve_acls: &id001
-              - groups:
-                - api_users
-                path: /storage/local
-                roles:
-                - PVEDatastoreAdmin
-              - groups:
-                - api_users
-                path: /storage/local-lvm
-                roles:
-                - PVEDatastoreAdmin
-              - groups:
-                - api_users
-                path: /vms
-                roles:
-                - PVEVMAdmin
-              pve_cluster_clustername: '{{ pve_group }}'
-              pve_cluster_enabled: true
-              pve_group: proxie
-              pve_groups: &id002
-              - comment: Administrators of this PVE cluster
-                name: admins
-              - comment: Users that represent automation tools
-                name: api_users
-              pve_manage_hosts_enabled: true
-              pve_remove_subscription_warning: true
-              pve_roles: &id003
-              - name: Monitoring
-                privileges:
-                - Sys.Modify
-                - Sys.Audit
-                - Datastore.Audit
-                - VM.Monitor
-                - VM.Audit
-              pve_ssh_port: 22
-              pve_storages: &id004
-              - content:
-                - images
-                - iso
-                - backup
-                export: /mnt/tank-z1/nfs-proxmox
-                name: proxmox-nfs
-                server: 10.0.50.100
-                type: nfs
-              pve_users: &id005
-              - groups:
-                - api_users
-                name: ansible@pve
-                password: oomfie1234
-              - groups:
-                - api_users
-                name: terraform@pve
-                password: oomfie1234
-        prox1:
-          hosts:
-            pve1:
-              ansible_host: 10.0.50.71
-              ansible_private_key_file: /home/angle/.ssh/id_ed25519
-              ansible_python_interpreter: /usr/bin/env python3
-              ansible_user: root
-              ntp_timezone: Europe/Athens
-              pve_acls: *id001
-              pve_cluster_clustername: '{{ pve_group }}'
-              pve_cluster_enabled: true
-              pve_group: proxie
-              pve_groups: *id002
-              pve_manage_hosts_enabled: true
-              pve_remove_subscription_warning: true
-              pve_roles: *id003
-              pve_ssh_port: 22
-              pve_storages: *id004
-              pve_users: *id005
-        prox2:
-          hosts:
-            pve2:
-              ansible_host: 10.0.50.72
-              ansible_private_key_file: /home/angle/.ssh/id_ed25519
-              ansible_python_interpreter: /usr/bin/env python3
-              ansible_user: root
-              ntp_timezone: Europe/Athens
-              pve_acls: *id001
-              pve_cluster_clustername: '{{ pve_group }}'
-              pve_cluster_enabled: true
-              pve_group: proxie
-              pve_groups: *id002
-              pve_manage_hosts_enabled: true
-              pve_remove_subscription_warning: true
-              pve_roles: *id003
-              pve_ssh_port: 22
-              pve_storages: *id004
-              pve_users: *id005
+      hosts:
+        pve0:
+          ansible_host: 10.0.50.70
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: root
+          ntp_timezone: Europe/Athens
+          pve_acls: &id001
+          - groups:
+            - api_users
+            path: /storage/local
+            roles:
+            - PVEDatastoreAdmin
+          - groups:
+            - api_users
+            path: /storage/local-lvm
+            roles:
+            - PVEDatastoreAdmin
+          - groups:
+            - api_users
+            path: /vms
+            roles:
+            - PVEVMAdmin
+          pve_cluster_clustername: '{{ pve_group }}'
+          pve_cluster_enabled: true
+          pve_group: proxie
+          pve_groups: &id002
+          - comment: Administrators of this PVE cluster
+            name: admins
+          - comment: Users that represent automation tools
+            name: api_users
+          pve_manage_hosts_enabled: true
+          pve_remove_subscription_warning: true
+          pve_roles: &id003
+          - name: Monitoring
+            privileges:
+            - Sys.Modify
+            - Sys.Audit
+            - Datastore.Audit
+            - VM.Monitor
+            - VM.Audit
+          pve_ssh_port: 22
+          pve_storages: &id004
+          - content:
+            - images
+            - iso
+            - backup
+            export: /mnt/tank-z1/nfs-proxmox
+            name: proxmox-nfs
+            server: 10.0.50.100
+            type: nfs
+          pve_users: &id005
+          - groups:
+            - api_users
+            name: ansible@pve
+            password: oomfie1234
+          - groups:
+            - api_users
+            name: terraform@pve
+            password: oomfie1234
+        pve1:
+          ansible_host: 10.0.50.71
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: root
+          ntp_timezone: Europe/Athens
+          pve_acls: *id001
+          pve_cluster_clustername: '{{ pve_group }}'
+          pve_cluster_enabled: true
+          pve_group: proxie
+          pve_groups: *id002
+          pve_manage_hosts_enabled: true
+          pve_remove_subscription_warning: true
+          pve_roles: *id003
+          pve_ssh_port: 22
+          pve_storages: *id004
+          pve_users: *id005
+        pve2:
+          ansible_host: 10.0.50.72
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: root
+          ntp_timezone: Europe/Athens
+          pve_acls: *id001
+          pve_cluster_clustername: '{{ pve_group }}'
+          pve_cluster_enabled: true
+          pve_group: proxie
+          pve_groups: *id002
+          pve_manage_hosts_enabled: true
+          pve_remove_subscription_warning: true
+          pve_roles: *id003
+          pve_ssh_port: 22
+          pve_storages: *id004
+          pve_users: *id005
     pxe:
       children:
         fog:

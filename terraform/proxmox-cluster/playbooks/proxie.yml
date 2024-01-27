@@ -5,19 +5,16 @@
   roles:
     - role: geerlingguy.ntp
 
-- name: Misc proxmox host configuration
-  hosts: proxie
-  become: true
-
 - name: Apply proxmox pre-config
   hosts: proxie
+  become: true
   tasks:
-    - name: remove garbo enterprise repo
+    - name: Remove enterprise repo
       file:
         path: /etc/apt/sources.list.d/pve-enterprise.list
         state: absent
 
-    - name: install essentials
+    - name: Install essentials
       apt:
         name:
           - vim
@@ -25,7 +22,9 @@
           - htop
           - qemu-guest-agent
           - python3
+          - python-is-python3
           - python3-apt
+          - python3-proxmoxer
           - nfs-common
           - nfs4-acl-tools
           - libguestfs-tools
@@ -34,36 +33,53 @@
 
 - name: Configure proxmox
   hosts: proxie
-  become: True
+  become: true
   roles:
     - role: lae.proxmox
 
 - name: Proxmox post-config
   hosts: proxie
+  become: true
   tasks:
-    - name: get deb-11 could image
-      get_url:
-        url: https://cloud.debian.org/images/cloud/bullseye/20220711-1073/debian-11-genericcloud-amd64-20220711-1073.qcow2
-        dest: /root/debian-11-amd64.qcow2
-        checksum: sha512:41de913d74b3aeded43e1440d52e4f55188e37859f769405b5e737feedae552506230fba06806e3436fa3570381bd04eb439bfbfece1a2bac1d4a677b4117c22
-        mode: '0644'
-        owner: root
-        group: root
+    #TODO: replace with proxmox downloading the image using a proxmox ansible module
+    #- name: get deb-11 could image
+    #  get_url:
+    #    url: https://cloud.debian.org/images/cloud/bullseye/20220711-1073/debian-11-genericcloud-amd64-20220711-1073.qcow2
+    #    dest: /root/debian-11-amd64.qcow2
+    #    checksum: sha512:41de913d74b3aeded43e1440d52e4f55188e37859f769405b5e737feedae552506230fba06806e3436fa3570381bd04eb439bfbfece1a2bac1d4a677b4117c22
+    #    mode: '0644'
+    #    owner: root
+    #    group: root
 
-    - name: add qemu-guest-agent to deb-11
-      shell:
-        chdir: /root/
-        cmd: virt-customize -a ./debian-11-amd64.qcow2 --install qemu-guest-agent --uninstall unattended-upgrades
+    #- name: add qemu-guest-agent to deb-11
+    #  shell:
+    #    chdir: /root/
+    #    cmd: virt-customize -a ./debian-11-amd64.qcow2 --install qemu-guest-agent --uninstall unattended-upgrades
 
-    - name: get deb-11 template vm scriptoid
-      copy:
-        src: setup-debian-11-cloudinit.sh
-        dest: /root/setup-debian-11-template.sh
-        mode: '0755'
-        owner: root
-        group: root
-
-    - name: run deb-11 template vm scriptoid
-      shell:
-        chdir: /root/
-        cmd: /root/setup-debian-11-template.sh
+    #TODO: need to import debian image
+    - name: Create Debian 11 template virtual machine
+      community.general.proxmox_kvm:
+        validate_certs: false #TODO: disable after figuring out LE certs
+        api_user: root@pam
+        api_password: failfail
+        api_host: "{{ ansible_host }}"
+        node: "{{ inventory_hostname }}"
+        vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
+        name: deb11-tmpl
+        description: "debian 11 template"
+        state: "absent"
+        agent: "enabled=1,fstrim_cloned_disks=1"
+        bios: "seabios"
+        hotplug: "disk,network,usb,memory,cpu"
+        cpu: "cputype=kvm64"
+        cores: 1
+        sockets: 1
+        memory: 1024
+        scsihw: "virtio-scsi-pci"
+        serial:
+          serial0: "socket"
+        ide:
+          ide2: "local-lvm:cloudinit,format=raw"
+        net:
+          net0: "virtio,bridge=vmbr0"
+        vga: "qxl"
