@@ -14,43 +14,43 @@ stages:
   - deploy
   - cleanup
 
-fmt single:
-  tags: [terraform]
-  variables:
-    TF_ROOT: terraform/proxmox-single
-    TF_STATE_NAME: homelab-single
-  extends: .terraform:fmt
-  needs: []
-
-validate single:
-  tags: [terraform]
-  variables:
-    TF_ROOT: terraform/proxmox-single
-    TF_STATE_NAME: homelab-single
-  extends: .terraform:validate
-  needs: []
-
-build single:
-  tags: [terraform]
-  variables:
-    TF_ROOT: terraform/proxmox-single
-    TF_STATE_NAME: homelab-single
-  extends: .terraform:build
-  environment:
-    name: $TF_STATE_NAME
-    action: prepare
-
-deploy single:
-  tags: [terraform]
-  variables:
-    TF_ROOT: terraform/proxmox-single
-    TF_STATE_NAME: homelab-single
-  extends: .terraform:deploy
-  dependencies:
-    - build single
-  environment:
-    name: $TF_STATE_NAME
-    action: start
+#fmt single:
+#  tags: [terraform]
+#  variables:
+#    TF_ROOT: terraform/proxmox-single
+#    TF_STATE_NAME: homelab-single
+#  extends: .terraform:fmt
+#  needs: []
+#
+#validate single:
+#  tags: [terraform]
+#  variables:
+#    TF_ROOT: terraform/proxmox-single
+#    TF_STATE_NAME: homelab-single
+#  extends: .terraform:validate
+#  needs: []
+#
+#build single:
+#  tags: [terraform]
+#  variables:
+#    TF_ROOT: terraform/proxmox-single
+#    TF_STATE_NAME: homelab-single
+#  extends: .terraform:build
+#  environment:
+#    name: $TF_STATE_NAME
+#    action: prepare
+#
+#deploy single:
+#  tags: [terraform]
+#  variables:
+#    TF_ROOT: terraform/proxmox-single
+#    TF_STATE_NAME: homelab-single
+#  extends: .terraform:deploy
+#  dependencies:
+#    - build single
+#  environment:
+#    name: $TF_STATE_NAME
+#    action: start
 
 fmt cluster:
   tags: [terraform]
