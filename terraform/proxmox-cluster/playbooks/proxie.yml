@@ -69,11 +69,11 @@
         api_password: failfail
         api_host: "{{ ansible_host }}"
         node: "{{ inventory_hostname }}"
-        vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
+        vmid: "{{ template_vmid }}"
         name: deb11-tmpl
         description: debian 11 template
         acpi: true
-        cpu: cputype=kvm64
+        cpu: cputype=SandyBridge-IBRS
         cores: 1
         sockets: 1
         memory: 1024
@@ -97,7 +97,7 @@
         api_user: root@pam
         api_password: failfail
         api_host: "{{ ansible_host }}"
-        vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
+        vmid: "{{ template_vmid }}"
         name: deb11-tmpl
         disk: virtio0
         storage: local-lvm
@@ -111,7 +111,7 @@
         api_password: failfail
         api_host: "{{ ansible_host }}"
         node: "{{ inventory_hostname }}"
-        vmid: "{{ 9900 | random(9001, seed=inventory_hostname) }}"
+        vmid: "{{ template_vmid }}"
         name: deb11-tmpl
         state: template
 ...
