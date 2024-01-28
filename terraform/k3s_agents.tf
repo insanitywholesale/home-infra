@@ -2,8 +2,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
   provider    = proxmox.pve0
   count       = 1
   vmid        = 1000 + (count.index * 2) + 61
-  name        = "k3sagent${(count.index * 2) + 1}vp"
-  desc        = "HA k3s cluster worker ${(count.index * 2) + 1}"
+  name        = format("k3s-agent%02s-cluster%02svp", (count.index * 2) + 1, 1)
+  desc        = format("HA k3s cluster agent %02s for cluster %02s", (count.index * 2) + 1, 1)
   target_node = "pve0"
 
   clone    = "deb11-tmpl"
@@ -36,7 +36,6 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
     ignore_changes = [
       cipassword,
       network,
-      desc,
     ]
   }
 }
@@ -45,8 +44,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
   provider    = proxmox.pve1
   count       = 2
   vmid        = 1000 + (count.index * 2) + 62
-  name        = "k3sagent${(count.index * 2) + 2}vp"
-  desc        = "HA k3s cluster worker ${(count.index * 2) + 2}"
+  name        = format("k3s-agent%02s-cluster%02svp", (count.index * 2) + 2, 1)
+  desc        = format("HA k3s cluster agent %02s for cluster %02s", (count.index * 2) + 2, 1)
   target_node = "pve1"
 
   clone    = "deb11-tmpl"
@@ -79,7 +78,6 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
     ignore_changes = [
       cipassword,
       network,
-      desc,
     ]
   }
 }
@@ -88,8 +86,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
   provider    = proxmox.pve2
   count       = 1
   vmid        = 1000 + (count.index * 2) + 63
-  name        = "k3sagent${(count.index * 2) + 3}vp"
-  desc        = "HA k3s cluster worker ${(count.index * 2) + 3}"
+  name        = format("k3s-agent%02s-cluster%02svp", (count.index * 2) + 3, 1)
+  desc        = format("HA k3s cluster agent %02s for cluster %02s", (count.index * 2) + 3, 1)
   target_node = "pve2"
 
   clone    = "deb11-tmpl"
@@ -122,7 +120,6 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
     ignore_changes = [
       cipassword,
       network,
-      desc,
     ]
   }
 }

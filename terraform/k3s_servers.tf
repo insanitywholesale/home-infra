@@ -2,8 +2,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
   provider    = proxmox.pve0
   count       = 1
   vmid        = 1000 + (count.index * 2) + 51
-  name        = "k3sserver${(count.index * 2) + 1}vp"
-  desc        = "HA k3s cluster master ${(count.index * 2) + 1}"
+  name        = format("k3s-server%02s-cluster%02svp", (count.index * 2) + 1, 1)
+  desc        = format("HA k3s cluster server %02s for cluster %02s", (count.index * 2) + 1, 1)
   target_node = "pve0"
 
   clone    = "deb11-tmpl"
@@ -45,8 +45,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
   provider    = proxmox.pve1
   count       = 1
   vmid        = 1000 + (count.index * 2) + 52
-  name        = "k3sserver${(count.index * 2) + 2}vp"
-  desc        = "HA k3s cluster master ${(count.index * 2) + 2}"
+  name        = format("k3s-server%02s-cluster%02svp", (count.index * 2) + 2, 1)
+  desc        = format("HA k3s cluster server %02s for cluster %02s", (count.index * 2) + 2, 1)
   target_node = "pve1"
 
   clone    = "deb11-tmpl"
@@ -87,8 +87,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
   provider    = proxmox.pve2
   count       = 1
   vmid        = 1000 + (count.index * 2) + 53
-  name        = "k3sserver${(count.index * 2) + 3}vp"
-  desc        = "HA k3s cluster master ${(count.index * 2) + 3}"
+  name        = format("k3s-server%02s-cluster%02svp", (count.index * 2) + 3, 1)
+  desc        = format("HA k3s cluster server %02s for cluster %02s", (count.index * 2) + 3, 1)
   target_node = "pve2"
 
   clone    = "deb11-tmpl"
