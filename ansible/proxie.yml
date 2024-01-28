@@ -104,6 +104,7 @@
         vga: qxl
         agent: enabled=1,fstrim_cloned_disks=1
         hotplug: disk,network,usb,memory,cpu
+        tags: ["debian", "bullseye", "debian11", "template"]
         state: present
 
     - name: Add root disk imported from qcow2 image to Debian 11 virtual machine
