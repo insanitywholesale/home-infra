@@ -18,6 +18,9 @@ stages:
   - deploy
   - cleanup
 
+kics-iac-sast:
+  stage: validate
+
 terraform_fmt:
   tags: [terraform]
   extends: .terraform:fmt
@@ -47,5 +50,8 @@ terraform_apply:
 terraform_destroy:
   tags: [terraform]
   extends: .terraform:destroy
+  needs: []
+  dependencies:
+    - terraform_plan
   environment:
     name: $TF_STATE_NAME
