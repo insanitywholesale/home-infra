@@ -8,6 +8,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
+  cpu      = "SandyBridge-IBRS"
   cores    = 2
   sockets  = 1
   memory   = 4096
@@ -50,6 +51,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
+  cpu      = "SandyBridge-IBRS"
   cores    = 2
   sockets  = 1
   memory   = 4096
@@ -91,6 +93,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
+  cpu      = "SandyBridge-IBRS"
   cores    = 2
   sockets  = 1
   memory   = 4096
