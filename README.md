@@ -16,10 +16,10 @@ explanation of main directories
 	* `unused/reverse-proxy-config/traefik` old unified single traefik VM instance
 	* `unused/terraform` includes the `proxmox-single` subdirectory that includes old ansible and terraform configuration for a non-cluster multi-node proxmox setup
 
-# services
-services I run and want to run
+# Services
+List of services I currently run or want to run in the future.
 
-the ones with the IPs fully written out are up and running right now
+The ones with the IPs fully written out are configured and running right now.
 
 ## Fundamentals
 NTP, DNS, PXE, FTP and APT cache.
@@ -108,19 +108,19 @@ Databases and message queues for applications.
 ### OpenSearch
 .27
 
-### TimescaleDB
+### InfluxDB
 .28
 
-### InfluxDB
+### Clickhouse
 .29
 
 ## Monitoring
 Tools for monitoring, logging, tracing and data visualization.
 
-### syslog
+### Grafana
 .30
 
-### Prometheus + Grafana + Loki
+### Prometheus
 .31
 
 ### Observium or LibreNMS
@@ -129,7 +129,7 @@ Tools for monitoring, logging, tracing and data visualization.
 ### Zabbix
 .33
 
-### Graylog
+### Graylog or Loki
 .34
 
 ### NetBox
@@ -144,14 +144,14 @@ Tools for monitoring, logging, tracing and data visualization.
 ### Sentry
 .38
 
-### Jaeger Clickhouse
-.39
-
-### Hydras.io or Rudderstack
-.40
+### rsyslog or syslog-ng
+.30
 
 ## Code-related infrastrucutre
 Code analysis and git hosting plus container registry and helm repo.
+
+### Nexus
+.42
 
 ### Sonarqube or Deepsource
 .43
