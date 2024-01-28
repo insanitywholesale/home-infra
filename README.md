@@ -9,7 +9,7 @@ explanation of main directories
 	* `terraform` includes terraform configuration to create virtual machines from templates
 	* `ansible` includes ansible automation being built for configuring the proxmox hosts as well as the virtual machines created with terraform
 	
-- the archive ones:
+- the inactive ones:
 	* `unused/vagrant` has some basic examples for how to write a Vagrantfile
 	* `unused/raw-libvirt` is the older version of the terraform+proxmox setup but with libvirt instead of proxmox for virtualization
 	* `unused/kube` mirrors the layout of `kube` but has unused things stored as examples
