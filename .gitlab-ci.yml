@@ -22,6 +22,33 @@ stages:
 kics-iac-sast:
   stage: validate
 
+ansible_lint:
+  tags: [ansible]
+  stage: validate
+  image: pipelinecomponents/ansible-lint:0.63.0
+  artifacts:
+    when: always
+    reports:
+      junit: ansible-lint.xml
+  script:
+    - ansible-lint --show-relpath ansible/ -f pep8 --nocolor | ansible-lint-junit -o ansible-lint.xml
+
+ansible_syntax_check:
+  tags: [ansible]
+  stage: validate
+  image: litmuschaos/ansible-runner
+  script:
+    - cd ansible
+    - ansible-playbook --syntax-check proxmox.yml
+
+ansible_check_diff:
+  tags: [ansible]
+  stage: validate
+  image: litmuschaos/ansible-runner
+  script:
+    - cd ansible
+    - ansible-playbook --check --diff proxmox.yml
+
 terraform_fmt:
   tags: [terraform]
   extends: .terraform:fmt
