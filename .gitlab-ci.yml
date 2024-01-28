@@ -29,7 +29,7 @@ ansible_lint:
   artifacts:
     when: always
     reports:
-      junit: ansible-lint.xml
+      junit: ansible/ansible-lint.xml
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
