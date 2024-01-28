@@ -90,6 +90,7 @@
         cores: 1
         sockets: 1
         memory: 1024
+        ostype: l26
         boot: c
         bootdisk: virtio0
         scsihw: virtio-scsi-pci
