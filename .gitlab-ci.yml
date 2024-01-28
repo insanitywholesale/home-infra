@@ -43,3 +43,9 @@ terraform_apply:
   environment:
     name: $TF_STATE_NAME
     action: start
+
+terraform_destroy:
+  tags: [terraform]
+  extends: .terraform:destroy
+  environment:
+    name: $TF_STATE_NAME
