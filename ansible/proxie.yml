@@ -90,6 +90,7 @@
         cores: 1
         sockets: 1
         memory: 1024
+        numa: true
         ostype: l26
         boot: c
         bootdisk: virtio0
