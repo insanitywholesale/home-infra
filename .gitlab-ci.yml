@@ -38,7 +38,7 @@ ansible_lint:
 ansible_syntax_check:
   tags: [ansible]
   stage: validate
-  image: litmuschaos/ansible-runner
+  image: pipelinecomponents/ansible-lint:0.63.0
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
@@ -48,7 +48,7 @@ ansible_syntax_check:
 ansible_check_diff:
   tags: [ansible]
   stage: validate
-  image: litmuschaos/ansible-runner
+  image: pipelinecomponents/ansible-lint:0.63.0
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
