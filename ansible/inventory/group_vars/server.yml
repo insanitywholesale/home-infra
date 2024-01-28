@@ -18,8 +18,6 @@ k3s_server:
     - flannel
     # Disable local-path-provisioner - installed with Flux
     - local-storage
-    # Disable metrics-server - installed with Flux
-    #- metrics-server
     # Disable servicelb - replaced with metallb and installed with Flux
     - servicelb
     # Disable traefik - replaced with ingress-nginx and installed with Flux
@@ -45,3 +43,4 @@ k3s_server:
   kube-apiserver-arg:
     # Required for HAProxy health-checks
     - "anonymous-auth=true"
+...

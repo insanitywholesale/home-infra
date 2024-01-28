@@ -4,13 +4,13 @@
   become: true
   tasks:
     - name: Remove enterprise repo
-      file:
+      ansible.builtin.file:
         path: /etc/apt/sources.list.d/pve-enterprise.list
         state: absent
 
     - name: Install useful packages
-      apt:
-        update_cache: yes
+      ansible.builtin.apt:
+        update_cache: true
         name:
           - vim
           - tmux
@@ -27,7 +27,7 @@
 
 - name: Configure NTP on proxmox
   hosts: proxie
-  become: True
+  become: true
   roles:
     - role: geerlingguy.ntp
 
@@ -41,8 +41,8 @@
   hosts: proxie
   become: true
   tasks:
-    - name: get deb-11 could image
-      get_url:
+    - name: Download Debian 11 genericcloud qcow2 image
+      ansible.builtin.get_url:
         url: https://cloud.debian.org/images/cloud/bullseye/20240104-1616/debian-11-genericcloud-amd64-20240104-1616.qcow2
         dest: /tmp/debian-11-amd64.qcow2
         checksum: sha512:01f1a9aa92f6257936193359642d7ff780ad3c721f4b731ed0a04684f015db66d7919a72b2b2a272a7dd3cf0e4e0314694c00684c333552a01bd149a535f2a09
@@ -51,7 +51,7 @@
         group: root
 
     - name: Copy /etc/network/interfaces virtual machine configuration
-      copy:
+      ansible.builtin.copy:
         src: debinterfaces
         dest: /tmp/debinterfaces
         owner: root
@@ -78,7 +78,7 @@
 
     - name: Create Debian 11 virtual machine
       community.general.proxmox_kvm:
-        validate_certs: false #TODO: disable after figuring out LE certs
+        validate_certs: false # TODO: disable after figuring out LE certs
         api_user: root@pam
         api_password: failfail
         api_host: "{{ ansible_host }}"
@@ -110,7 +110,7 @@
 
     - name: Add root disk imported from qcow2 image to Debian 11 virtual machine
       community.general.proxmox_disk:
-        validate_certs: false #TODO: disable after figuring out LE certs
+        validate_certs: false # TODO: disable after figuring out LE certs
         api_user: root@pam
         api_password: failfail
         api_host: "{{ ansible_host }}"
@@ -123,7 +123,7 @@
 
     - name: Convert Debian 11 virtual machine to template
       community.general.proxmox_kvm:
-        validate_certs: false #TODO: disable after figuring out LE certs
+        validate_certs: false # TODO: disable after figuring out LE certs
         api_user: root@pam
         api_password: failfail
         api_host: "{{ ansible_host }}"

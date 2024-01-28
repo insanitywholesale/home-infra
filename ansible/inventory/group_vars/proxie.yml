@@ -2,11 +2,10 @@
 ntp_timezone: Europe/Athens
 pve_group: proxie
 pve_ssh_port: 22
-#pve_repository_line: "deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription"
 pve_remove_subscription_warning: true
-pve_cluster_enabled: yes
+pve_cluster_enabled: true
 pve_cluster_clustername: "{{ pve_group }}"
-pve_manage_hosts_enabled : yes
+pve_manage_hosts_enabled: true
 pve_groups:
   - name: admins
     comment: Administrators of this PVE cluster
@@ -31,20 +30,21 @@ pve_roles:
       - "VM.Audit"
 pve_acls:
   - path: /storage/local
-    roles: [ "PVEDatastoreAdmin" ]
+    roles: ["PVEDatastoreAdmin"]
     groups:
       - api_users
   - path: /storage/local-lvm
-    roles: [ "PVEDatastoreAdmin" ]
+    roles: ["PVEDatastoreAdmin"]
     groups:
       - api_users
   - path: /vms
-    roles: [ "PVEVMAdmin" ]
+    roles: ["PVEVMAdmin"]
     groups:
       - api_users
 pve_storages:
   - name: proxmox-nfs
     type: nfs
-    content: [ "images", "iso", "backup" ]
+    content: ["images", "iso", "backup"]
     server: 10.0.50.100
     export: /mnt/tank-z1/nfs-proxmox
+...
