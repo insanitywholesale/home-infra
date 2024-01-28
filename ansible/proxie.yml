@@ -86,7 +86,7 @@
         name: deb11-tmpl
         description: debian 11 template
         acpi: true
-        cpu: cputype=SandyBridge-IBRS
+        cpu: cputype=SandyBridge
         cores: 1
         sockets: 1
         memory: 1024
