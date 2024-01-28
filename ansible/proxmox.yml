@@ -1,11 +1,11 @@
 ---
-- name: Configure NTP
+- name: Configure NTP on proxmox
   hosts: proxie
   become: True
   roles:
     - role: geerlingguy.ntp
 
-- name: Apply proxmox pre-config
+- name: Proxmox pre-config
   hosts: proxie
   become: true
   tasks:
@@ -14,7 +14,7 @@
         path: /etc/apt/sources.list.d/pve-enterprise.list
         state: absent
 
-    - name: Install essentials
+    - name: Install useful packages
       apt:
         name:
           - vim
@@ -30,7 +30,7 @@
           - libguestfs-tools
         state: present
 
-- name: Configure proxmox
+- name: Set up proxmox cluster
   hosts: proxie
   become: true
   roles:
@@ -85,49 +85,4 @@
         vmid: "{{ template_vmid }}"
         name: deb11-tmpl
         description: debian 11 template
-        acpi: true
-        cpu: cputype=SandyBridge
-        cores: 1
-        sockets: 1
-        memory: 1024
-        numa: true
-        ostype: l26
-        boot: c
-        bootdisk: virtio0
-        scsihw: virtio-scsi-pci
-        ide:
-          ide2: local-lvm:cloudinit,format=raw
-        net:
-          net0: virtio,bridge=vmbr0
-        serial:
-          serial0: socket
-        vga: qxl
-        agent: enabled=1,fstrim_cloned_disks=1
-        hotplug: disk,network,usb,memory,cpu
-        tags: ["debian", "bullseye", "debian11", "template"]
-        state: present
-
-    - name: Add root disk imported from qcow2 image to Debian 11 virtual machine
-      community.general.proxmox_disk:
-        validate_certs: false #TODO: disable after figuring out LE certs
-        api_user: root@pam
-        api_password: failfail
-        api_host: "{{ ansible_host }}"
-        vmid: "{{ template_vmid }}"
-        name: deb11-tmpl
-        disk: virtio0
-        storage: local-lvm
-        import_from: /tmp/debian-11-amd64.qcow2
-        state: present
-
-    - name: Convert Debian 11 virtual machine to template
-      community.general.proxmox_kvm:
-        validate_certs: false #TODO: disable after figuring out LE certs
-        api_user: root@pam
-        api_password: failfail
-        api_host: "{{ ansible_host }}"
-        node: "{{ inventory_hostname }}"
-        vmid: "{{ template_vmid }}"
-        name: deb11-tmpl
-        state: template
 ...
