@@ -34,7 +34,7 @@ ansible_lint:
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
-    - ansible-lint --show-relpath ansible/ -f pep8 --nocolor | ansible-lint-junit -o ansible-lint.xml
+    - ansible-lint -f pep8 --nocolor | ansible-lint-junit -o ansible-lint.xml
 
 ansible_syntax_check:
   tags: [ansible]
