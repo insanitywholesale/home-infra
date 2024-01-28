@@ -2,8 +2,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
   provider    = proxmox.pve0
   count       = 1
   vmid        = 1000 + (count.index * 2) + 51
-  name        = format("k3s-server%02s-cluster%02svp", (count.index * 2) + 1, 1)
-  desc        = format("HA k3s cluster server %02s for cluster %02s", (count.index * 2) + 1, 1)
+  name        = format("k3s-m%02s-c%02svp", (count.index * 2) + 1, 1)
+  desc        = format("HA k3s server/master %02s for cluster %02s", (count.index * 2) + 1, 1)
   target_node = "pve0"
 
   clone    = "deb11-tmpl"
@@ -32,7 +32,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = format("debian;k3s;server;cluster%02s", 1)
+  tags = format("debian;k3s;server;master;cluster%02s", 1)
 
   lifecycle {
     ignore_changes = [
@@ -46,8 +46,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
   provider    = proxmox.pve1
   count       = 1
   vmid        = 1000 + (count.index * 2) + 52
-  name        = format("k3s-server%02s-cluster%02svp", (count.index * 2) + 2, 1)
-  desc        = format("HA k3s cluster server %02s for cluster %02s", (count.index * 2) + 2, 1)
+  name        = format("k3s-m%02s-c%02svp", (count.index * 2) + 2, 1)
+  desc        = format("HA k3s server/master %02s for cluster %02s", (count.index * 2) + 2, 1)
   target_node = "pve1"
 
   clone    = "deb11-tmpl"
@@ -76,7 +76,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = format("debian;k3s;server;cluster%02s", 1)
+  tags = format("debian;k3s;server;master;cluster%02s", 1)
 
   lifecycle {
     ignore_changes = [
@@ -85,12 +85,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
     ]
   }
 }
+
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
   provider    = proxmox.pve2
   count       = 1
   vmid        = 1000 + (count.index * 2) + 53
-  name        = format("k3s-server%02s-cluster%02svp", (count.index * 2) + 3, 1)
-  desc        = format("HA k3s cluster server %02s for cluster %02s", (count.index * 2) + 3, 1)
+  name        = format("k3s-m%02s-c%02svp", (count.index * 2) + 3, 1)
+  desc        = format("HA k3s server/master %02s for cluster %02s", (count.index * 2) + 3, 1)
   target_node = "pve2"
 
   clone    = "deb11-tmpl"
@@ -119,7 +120,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = format("debian;k3s;server;cluster%02s", 1)
+  tags = format("debian;k3s;server;master;cluster%02s", 1)
 
   lifecycle {
     ignore_changes = [
