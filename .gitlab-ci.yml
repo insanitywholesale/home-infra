@@ -1,3 +1,4 @@
+---
 # To contribute improvements to CI/CD templates, please follow the Development guide at:
 # https://docs.gitlab.com/ee/development/cicd/templates.html
 # This specific template is located at:
@@ -34,6 +35,7 @@ terraform_validate:
 terraform_plan:
   tags: [terraform]
   extends: .terraform:build
+  needs: [terraform_fmt, terraform_validate]
   environment:
     name: $TF_STATE_NAME
     action: prepare
@@ -41,6 +43,7 @@ terraform_plan:
 terraform_apply:
   tags: [terraform]
   extends: .terraform:deploy
+  needs: [terraform_plan]
   dependencies: [terraform_plan]
   environment:
     name: $TF_STATE_NAME
