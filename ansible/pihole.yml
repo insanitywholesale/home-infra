@@ -1,6 +1,6 @@
 ---
 - name: Configure pihole
-  hosts: piholes
+  hosts: pihole
   become: true
 
   tasks:
