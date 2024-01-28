@@ -7,14 +7,14 @@ explanation of main directories
 - the active ones:
 	* `kube` includes kubernetes yaml manifests as well as Helm values.yaml configs
 	* `terraform` includes terraform configuration to create virtual machines from templates
-	* `ansible` includes ansible automation being built for configuring the virtual machines created with terraform
+	* `ansible` includes ansible automation being built for configuring the proxmox hosts as well as the virtual machines created with terraform
 	
 - the archive ones:
 	* `unused/vagrant` has some basic examples for how to write a Vagrantfile
 	* `unused/raw-libvirt` is the older version of the terraform+proxmox setup but with libvirt instead of proxmox for virtualization
 	* `unused/kube` mirrors the layout of `kube` but has unused things stored as examples
 	* `unused/reverse-proxy-config/traefik` old unified single traefik VM instance
-	* `unused/terrafor` includes the `proxmox-single` subdirectory that includes ansible and terraform for a non-cluster proxmox setup
+	* `unused/terraform` includes the `proxmox-single` subdirectory that includes old ansible and terraform configuration for a non-cluster multi-node proxmox setup
 
 # services
 services I run and want to run
