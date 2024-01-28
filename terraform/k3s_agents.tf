@@ -32,7 +32,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = format("debian;k3s;agent%02s;cluster%02s", (count.index * 2) + 1, 1)
+  tags = format("debian;k3s;agent;cluster%02s", 1)
 
   lifecycle {
     ignore_changes = [
@@ -76,7 +76,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = format("debian;k3s;agent%02s;cluster%02s", (count.index * 2) + 2, 1)
+  tags = format("debian;k3s;agent;cluster%02s", 1)
 
   lifecycle {
     ignore_changes = [
@@ -120,7 +120,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = format("debian;k3s;agent%02s;cluster%02s", (count.index * 2) + 3, 1)
+  tags = format("debian;k3s;agent;cluster%02s", 1)
 
   lifecycle {
     ignore_changes = [
