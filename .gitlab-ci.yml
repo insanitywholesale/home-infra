@@ -41,8 +41,7 @@ terraform_plan:
 terraform_apply:
   tags: [terraform]
   extends: .terraform:deploy
-  dependencies:
-    - terraform_plan
+  dependencies: [terraform_plan]
   environment:
     name: $TF_STATE_NAME
     action: start
@@ -50,8 +49,7 @@ terraform_apply:
 terraform_destroy:
   tags: [terraform]
   extends: .terraform:destroy
-  needs: []
-  dependencies:
-    - terraform_plan
+  needs: [terraform_plan]
+  dependencies: [terraform_plan]
   environment:
     name: $TF_STATE_NAME
