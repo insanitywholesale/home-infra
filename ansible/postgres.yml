@@ -1,0 +1,29 @@
+---
+- name: Install and slightly configure PostgreSQL
+  hosts: postgres
+  become: true
+  roles:
+    - role: geerlingguy.postgresql
+      vars:
+        postgresql_python_library: python3-psycopg2
+        postgresql_service_state: started
+        postgresql_service_enabled: true
+        postgresql_locales:
+          - 'en_US.UTF-8'
+        # TODO: Check if the following works
+        # postgresql_databases:
+        #   - name: testpostgresdb
+        #     login_host: # defaults to 'localhost'
+        #     login_password: # defaults to not set
+        #     login_user: # defaults to 'postgresql_user'
+        #     owner: testpostgresuser
+        # postgresql_users:
+        #   - name: testpostgresuser
+        #     password: testpostgresuserpassword123
+        #     priv: # defaults to not set
+        #     role_attr_flags: # defaults to not set
+        #     db: testpostgresdb
+        #     login_host: # defaults to 'localhost'
+        #     login_password: # defaults to not set
+        #     login_user: # defaults to '{{ postgresql_user }}'
+...

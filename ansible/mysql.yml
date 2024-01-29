@@ -1,0 +1,20 @@
+---
+- name: Install and slightly configure MySQL
+  hosts: mysql
+  become: true
+  roles:
+    - role: geerlingguy.mysql
+      vars:
+        mysql_root_password_update: true
+        mysql_root_password: mysqladmin123
+        # TODO: Check if the following works
+        # mysql_databases:
+        #   - name: testmysqldb
+        # mysql_users:
+        #   - name: "{{ mysql_root_user }}"
+        #     password: "{{ mysql_root_password }}"
+        #   - name: testmysqluser
+        #     host: "%"
+        #     password: testmysqluserpassword123
+        #     priv: "testmysqldb.*:ALL"
+...
