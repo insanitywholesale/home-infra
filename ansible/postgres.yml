@@ -3,27 +3,36 @@
   hosts: postgres
   become: true
   roles:
-    - role: geerlingguy.postgresql
+    - name: Initial postgres install and setup
+      role: geerlingguy.postgresql
       vars:
         postgresql_python_library: python3-psycopg2
         postgresql_service_state: started
         postgresql_service_enabled: true
         postgresql_locales:
           - 'en_US.UTF-8'
+        postgresql_hba_entries:
+          # defaults
+          - {type: local, database: all, user: postgres, auth_method: peer}
+          - {type: local, database: all, user: all, auth_method: peer}
+          - {type: host, database: all, user: all, address: '127.0.0.1/32', auth_method: "{{ postgresql_auth_method }}"}
+          - {type: host, database: all, user: all, address: '::1/128', auth_method: "{{ postgresql_auth_method }}"}
+          # my addition
+          - {type: host, database: all, user: all, address: '10.0.0.0/8', auth_method: "{{ postgresql_auth_method }}"}
+        postgresql_global_config_options:
+          # defaults
+          - option: unix_socket_directories
+            value: '{{ postgresql_unix_socket_directories | join(",") }}'
+          - option: log_directory
+            value: 'log'
+          # my additions
+          - option: listen_addresses
+            value: '0.0.0.0, ::'
         # TODO: Check if the following works
-        # postgresql_databases:
-        #   - name: testpostgresdb
-        #     login_host: # defaults to 'localhost'
-        #     login_password: # defaults to not set
-        #     login_user: # defaults to 'postgresql_user'
-        #     owner: testpostgresuser
-        # postgresql_users:
-        #   - name: testpostgresuser
-        #     password: testpostgresuserpassword123
-        #     priv: # defaults to not set
-        #     role_attr_flags: # defaults to not set
-        #     db: testpostgresdb
-        #     login_host: # defaults to 'localhost'
-        #     login_password: # defaults to not set
-        #     login_user: # defaults to '{{ postgresql_user }}'
+        postgresql_users:
+          - name: testuser
+            password: testpassword
+        postgresql_databases:
+          - name: testdb
+            owner: testuser
 ...
