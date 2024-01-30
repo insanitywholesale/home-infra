@@ -4,7 +4,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_fog" {
   count       = 1
   name        = format("fog%02svp", (count.index) + 1)
   desc        = format("FOG PXE server %02s", (count.index) + 1)
-  target_node = "pve2"
+  target_node = "pve1"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
