@@ -3,7 +3,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_influxdb" {
   vmid        = 1028
   count       = 1
   name        = format("influxdb%02svp", (count.index) + 1)
-  desc        = "influxdb testing"
+  desc        = format("InfluxDB %02s", (count.index) + 1)
   target_node = "pve2"
 
   clone    = "deb11-tmpl"
