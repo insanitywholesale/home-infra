@@ -1,0 +1,52 @@
+- name: Deploy InfluxDB
+  hosts: influxdb
+  become: true
+
+  tasks:
+    - name: Add InfluxDB debian repo signed by gpg key
+      ansible.builtin.deb822_repository:
+        name: influxdata
+        types: [deb]
+        signed_by: https://repos.influxdata.com/influxdata-archive_compat.key
+        uris: https://repos.influxdata.com/debian
+        suites: stable
+        components: [main]
+        enabled: true
+        state: present
+
+    - name: Install InfluxDB
+      ansible.builtin.apt:
+        name: influxdb2
+        update_cache: true
+        state: present
+
+    - name: Start and enable InfluxDB service
+      ansible.builtin.systemd:
+        name: influxdb
+        enabled: true
+        state: started
+
+    - name: Wait for InfluxDB to start
+      ansible.builtin.wait_for:
+        port: 8086
+        delay: 5
+        timeout: 60
+
+    # - name: Create InfluxDB admin user and database
+    #   influxdb_database:
+    #     host: localhost
+    #     username: root
+    #     password: your_influxdb_password
+    #     database_name: your_database_name
+    #     state: present
+
+    # - name: Create a regular user for InfluxDB
+    #   influxdb_user:
+    #     host: localhost
+    #     username: root
+    #     password: your_influxdb_password
+    #     database_name: your_database_name
+    #     user_name: your_user_name
+    #     user_password: your_user_password
+    #     state: present
+...

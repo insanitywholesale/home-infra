@@ -1,5 +1,11 @@
 all:
   children:
+    influxdb:
+      hosts:
+        10.0.50.28:
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
     k3s_cluster:
       children:
         agent:
