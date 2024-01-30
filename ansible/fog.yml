@@ -19,7 +19,9 @@
         remote_src: true
 
     - name: Run install script
-      ansible.builtin.shell:
+      ansible.builtin.command:
         chdir: /opt/fogproject-1.5.10/bin/
         cmd: ./installfog.sh --autoaccept
+      register: fog_install_output
+      changed_when: "'Setup complete' in fog_install_output.stdout"
 ...
