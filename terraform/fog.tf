@@ -8,6 +8,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_fog" {
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
+  qemu_os  = "l26"
   cpu      = "SandyBridge"
   cores    = 1
   sockets  = 1
