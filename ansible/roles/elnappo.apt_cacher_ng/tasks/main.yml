@@ -1,0 +1,46 @@
+---
+# tasks file for apt-cacher-ng
+- name: Install apt-cacher-ng
+  package:
+    name: apt-cacher-ng
+    state: present
+
+- name: Create CacheDir
+  file:
+    path: "{{ apt_cacher_ng_cache_dir }}"
+    owner: apt-cacher-ng
+    group: apt-cacher-ng
+    mode: 02755
+    state: directory
+
+- name: Set config
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: "{{ item.state | default('present') }}"
+  with_items:
+    - { regexp: "^Port:", line: "Port: {{ apt_cacher_ng_port }}" }
+    - { regexp: "^CacheDir:\ ", line: "CacheDir: {{ apt_cacher_ng_cache_dir }}" }
+  notify:
+    - restart apt-cacher-ng
+
+- name: Remove /etc/apt-cacher-ng/zz_debconf.conf
+  file:
+    path: /etc/apt-cacher-ng/zz_debconf.conf
+    state: absent
+  notify:
+    - restart apt-cacher-ng
+
+- name: Enable apt-cacher-ng on boot
+  service:
+    name: apt-cacher-ng
+    state: started
+    enabled: true
+
+- name: Allow apt-cacher-ng (Firewall)
+  ufw:
+    rule: allow
+    port: "{{ apt_cacher_ng_port }}"
+    proto: tcp
+  when: apt_cacher_ng_setup_ufw
