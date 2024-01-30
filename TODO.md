@@ -1,7 +1,7 @@
 # todos
 
 ## ansible
-- make fog playbook fully automated using [cli args](https://docs.fogproject.org/en/latest/installation/server/command-line-options/#fog-installer-command-line-options)
+- always more to do
 
 ## terraform
 - reorder tags alphabetically and add `qemu_os = "l26"` to avoid unnecessary changes

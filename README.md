@@ -43,7 +43,7 @@ NTP, DNS, PXE, FTP and APT cache.
 .6
 
 ### FOG
-.7
+10.0.50.7
 
 ### Tinkerbell
 .8
