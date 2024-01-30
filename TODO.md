@@ -4,6 +4,7 @@
 - make fog playbook fully automated using [cli args](https://docs.fogproject.org/en/latest/installation/server/command-line-options/#fog-installer-command-line-options)
 
 ## terraform
+- reorder tags alphabetically and add `qemu_os = "l26"` to avoid unnecessary changes
 - structure terraform better with help from [this article](https://12ft.io/proxy?q=https%3A%2F%2Fmedium.com%2Fcodex%2Fterraform-best-practices-limit-resources-in-your-project-a3f3275f7bbf)
 
 ## proxmox
