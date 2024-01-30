@@ -2,6 +2,16 @@
 inventory/inventory.yaml yaml[indentation]
 k3s-site.yml role-name[path]
 k3s-upgrade.yml role-name[path]
+roles/elnappo.apt_cacher_ng role-name
+roles/elnappo.apt_cacher_ng/handlers/main.yml fqcn[action-core]
+roles/elnappo.apt_cacher_ng/handlers/main.yml name[casing]
+roles/elnappo.apt_cacher_ng/meta/main.yml role-name
+roles/elnappo.apt_cacher_ng/meta/main.yml schema[meta]
+roles/elnappo.apt_cacher_ng/molecule/default/prepare.yml fqcn[action-core]
+roles/elnappo.apt_cacher_ng/molecule/default/prepare.yml fqcn[action]
+roles/elnappo.apt_cacher_ng/tasks/main.yml fqcn[action-core]
+roles/elnappo.apt_cacher_ng/tasks/main.yml fqcn[action]
+roles/elnappo.apt_cacher_ng/tasks/main.yml yaml[octal-values]
 roles/geerlingguy.mysql/.github/workflows/stale.yml yaml[line-length]
 roles/geerlingguy.mysql/.github/workflows/stale.yml yaml[trailing-spaces]
 roles/geerlingguy.mysql/handlers/main.yml name[casing]
