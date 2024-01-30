@@ -159,8 +159,7 @@ all:
           apt_proxy: http://10.0.50.9:3142
     proxie:
       hosts:
-        pve0:
-          ansible_host: 10.0.50.70
+        10.0.50.70:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
@@ -220,8 +219,7 @@ all:
             name: terraform@pve
             password: oomfie1234
           template_vmid: 9001
-        pve1:
-          ansible_host: 10.0.50.71
+        10.0.50.71:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
@@ -239,8 +237,7 @@ all:
           pve_storages: *id006
           pve_users: *id007
           template_vmid: 9002
-        pve2:
-          ansible_host: 10.0.50.72
+        10.0.50.72:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
