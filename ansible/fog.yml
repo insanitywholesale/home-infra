@@ -17,4 +17,9 @@
         src: /opt/fog-1_5_10.tar.gz
         dest: /opt/
         remote_src: true
+
+    - name: Run install script
+      ansible.builtin.shell:
+        chdir: /opt/fogproject-1.5.10/bin/
+        cmd: ./installfog.sh --autoaccept
 ...
