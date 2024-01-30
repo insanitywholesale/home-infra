@@ -49,7 +49,7 @@ NTP, DNS, PXE, FTP and APT cache.
 .8
 
 ### apt-cacher-ng
-.9
+10.0.50.9
 
 ## Identity, Secrets and Passwords
 System and app auth, passwords for people and secrets for apps.
@@ -80,6 +80,9 @@ System and app auth, passwords for people and secrets for apps.
 
 ### Authelia
 .18
+
+### Smallstep CA
+.19
 
 ## Databases and Message Queues
 Databases and message queues for applications.
@@ -145,12 +148,18 @@ Tools for monitoring, logging, tracing and data visualization.
 .38
 
 ### rsyslog or syslog-ng
-.30
+.39
 
 ## Code-related infrastrucutre
 Code analysis and git hosting plus container registry and helm repo.
 
 ### Nexus
+.40
+
+### Harbor
+.41
+
+### Chartmuseum
 .42
 
 ### Sonarqube or Deepsource
@@ -162,11 +171,8 @@ Code analysis and git hosting plus container registry and helm repo.
 ### GitLab
 .45
 
-### Harbor
-.48
-
-### Chartmuseum
-.49
+### Gitea
+.46
 
 ## Kubernetes
 Kubernetes nodes
