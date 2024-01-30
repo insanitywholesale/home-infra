@@ -1,11 +1,19 @@
 all:
   children:
+    acng:
+      hosts:
+        10.0.50.9:
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
     influxdb:
       hosts:
         10.0.50.28:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
     k3s_cluster:
       children:
         agent:
@@ -16,6 +24,7 @@ all:
               ansible_user: debian
               api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
                 | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: ''
               k3s_agent: &id001
@@ -29,6 +38,7 @@ all:
               ansible_user: debian
               api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
                 | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: ''
               k3s_agent: *id001
@@ -41,6 +51,7 @@ all:
               ansible_user: debian
               api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
                 | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: ''
               k3s_agent: *id001
@@ -53,6 +64,7 @@ all:
               ansible_user: debian
               api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
                 | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: ''
               k3s_agent: *id001
@@ -67,6 +79,7 @@ all:
               ansible_user: debian
               api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
                 | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: ''
               k3s_control_node: true
@@ -103,6 +116,7 @@ all:
               ansible_user: debian
               api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
                 | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: ''
               k3s_control_node: true
@@ -115,6 +129,7 @@ all:
               ansible_user: debian
               api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
                 | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: ''
               k3s_control_node: true
@@ -127,18 +142,21 @@ all:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
     pihole:
       hosts:
         10.0.50.2:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
     postgres:
       hosts:
         10.0.50.20:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
     proxie:
       hosts:
         pve0:
@@ -146,6 +164,7 @@ all:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
+          apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
           pve_acls: &id003
           - groups:
@@ -206,6 +225,7 @@ all:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
+          apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
           pve_acls: *id003
           pve_cluster_clustername: '{{ pve_group }}'
@@ -224,6 +244,7 @@ all:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
+          apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
           pve_acls: *id003
           pve_cluster_clustername: '{{ pve_group }}'
@@ -245,3 +266,4 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
+              apt_proxy: http://10.0.50.9:3142
