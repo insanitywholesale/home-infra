@@ -26,7 +26,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_agent: &id001
                 node-ip: '{{ ansible_host }}'
               k3s_control_node: false
@@ -40,7 +40,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_agent: *id001
               k3s_control_node: false
               k3s_version: v1.28.5+k3s1
@@ -53,7 +53,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_agent: *id001
               k3s_control_node: false
               k3s_version: v1.28.5+k3s1
@@ -66,7 +66,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_agent: *id001
               k3s_control_node: false
               k3s_version: v1.28.5+k3s1
@@ -79,7 +79,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_agent: *id001
               k3s_control_node: false
               k3s_version: v1.28.5+k3s1
@@ -92,7 +92,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_agent: *id001
               k3s_control_node: false
               k3s_version: v1.28.5+k3s1
@@ -107,7 +107,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_control_node: true
               k3s_server: &id002
                 cluster-cidr: 10.35.0.0/16
@@ -144,7 +144,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_control_node: true
               k3s_server: *id002
               k3s_version: v1.28.5+k3s1
@@ -157,7 +157,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: ''
+              extra_server_args: --disable=traefik
               k3s_control_node: true
               k3s_server: *id002
               k3s_version: v1.28.5+k3s1
