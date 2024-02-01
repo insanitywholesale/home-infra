@@ -4,7 +4,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
   count       = 1
   name        = format("mysql%02svp", (count.index) + 1)
   desc        = "main VM for mysql"
-  target_node = "pve2"
+  target_node = "pve0"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
