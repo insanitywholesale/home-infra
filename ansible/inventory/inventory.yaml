@@ -71,6 +71,32 @@ all:
               k3s_control_node: false
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
+            10.0.50.65:
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
+              extra_agent_args: ''
+              extra_server_args: ''
+              k3s_agent: *id001
+              k3s_control_node: false
+              k3s_version: v1.28.5+k3s1
+              token: vregmenhpatataxwristyri
+            10.0.50.66:
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
+              apt_proxy: http://10.0.50.9:3142
+              extra_agent_args: ''
+              extra_server_args: ''
+              k3s_agent: *id001
+              k3s_control_node: false
+              k3s_version: v1.28.5+k3s1
+              token: vregmenhpatataxwristyri
         server:
           hosts:
             10.0.50.51:
