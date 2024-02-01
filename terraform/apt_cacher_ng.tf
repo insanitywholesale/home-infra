@@ -2,7 +2,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_aptcacherng" {
   provider    = proxmox.pve1
   vmid        = 1009
   count       = 1
-  name        = format("acng%02svp", (count.index) + 1)
+  name        = format("acng%02s", (count.index) + 1)
   desc        = format("APT Cacher NG %02s", (count.index) + 1)
   target_node = "pve1"
 

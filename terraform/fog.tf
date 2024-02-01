@@ -2,7 +2,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_fog" {
   provider    = proxmox.pve1
   vmid        = 1007
   count       = 1
-  name        = format("fog%02svp", (count.index) + 1)
+  name        = format("fog%02s", (count.index) + 1)
   desc        = format("FOG PXE server %02s", (count.index) + 1)
   target_node = "pve1"
 

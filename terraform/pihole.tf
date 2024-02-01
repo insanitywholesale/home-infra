@@ -2,7 +2,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
   provider    = proxmox.pve1
   vmid        = 1002
   count       = 1
-  name        = format("pihole%02svp", (count.index) + 1)
+  name        = format("pihole%02s", (count.index) + 1)
   desc        = format("pihole %02s", (count.index) + 1)
   target_node = "pve1"
 

@@ -2,7 +2,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
   provider    = proxmox.pve0
   vmid        = 1020
   count       = 1
-  name        = format("postgres%02svp", (count.index) + 1)
+  name        = format("postgres%02s", (count.index) + 1)
   desc        = "main VM for postgres"
   target_node = "pve0"
 

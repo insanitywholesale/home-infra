@@ -2,7 +2,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_influxdb" {
   provider    = proxmox.pve2
   vmid        = 1028
   count       = 1
-  name        = format("influxdb%02svp", (count.index) + 1)
+  name        = format("influxdb%02s", (count.index) + 1)
   desc        = format("InfluxDB %02s", (count.index) + 1)
   target_node = "pve2"
 

@@ -2,7 +2,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
   provider    = proxmox.pve0
   count       = 2
   vmid        = 1000 + (count.index * 3) + 61
-  name        = format("k3s-w%02s-c%02svp", (count.index * 3) + 1, 1)
+  name        = format("k3s-w%02s-c%02s", (count.index * 3) + 1, 1)
   desc        = format("HA k3s agent/worker %02s for cluster %02s", (count.index * 3) + 1, 1)
   target_node = "pve0"
 
@@ -47,7 +47,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
   provider    = proxmox.pve1
   count       = 2
   vmid        = 1000 + (count.index * 3) + 62
-  name        = format("k3s-w%02s-c%02svp", (count.index * 3) + 2, 1)
+  name        = format("k3s-w%02s-c%02s", (count.index * 3) + 2, 1)
   desc        = format("HA k3s agent/worker %02s for cluster %02s", (count.index * 3) + 2, 1)
   target_node = "pve1"
 
@@ -92,7 +92,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
   provider    = proxmox.pve2
   count       = 2
   vmid        = 1000 + (count.index * 3) + 63
-  name        = format("k3s-w%02s-c%02svp", (count.index * 3) + 3, 1)
+  name        = format("k3s-w%02s-c%02s", (count.index * 3) + 3, 1)
   desc        = format("HA k3s agent/worker %02s for cluster %02s", (count.index * 3) + 3, 1)
   target_node = "pve2"
 
