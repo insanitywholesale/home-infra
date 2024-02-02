@@ -4,6 +4,30 @@
   become: true
 
   tasks:
+    - name: Create a directory for the install script
+      ansible.builtin.file:
+        path: /opt/pihole-install
+        state: directory
+        mode: '0755'
+
+    - name: Download PiHole install script
+      ansible.builtin.get_url:
+        url: https://install.pi-hole.net
+        dest: /opt/pihole-install/basic-install.sh
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Copy over setupVars.conf
+      ansible.builtin.copy:
+        src: setupVars.conf
+        dest: /etc/pihole/setupVars.conf
+        mode: '0755'
+        owner: root
+        group: root
+
+    # TODO: run install script with --unattended --reconfigure (might remove reconfigure idk)
+
     - name: Install unbound
       ansible.builtin.apt:
         name: unbound
