@@ -50,14 +50,6 @@
         owner: root
         group: root
 
-    - name: Copy /etc/network/interfaces virtual machine configuration
-      ansible.builtin.copy:
-        src: debinterfaces
-        dest: /tmp/debinterfaces
-        owner: root
-        group: root
-        mode: '0644'
-
     - name: Add qemu-guest-agent to the debian image
       vkhitrin.libguestfs.guestfs_package:
         image: /tmp/debian-11-amd64.qcow2
