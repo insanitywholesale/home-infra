@@ -28,6 +28,8 @@
 
     # TODO: run install script with --unattended --reconfigure (might remove reconfigure idk)
 
+    # TODO: add url.redirect = ("^/$" => "/admin" ) to lighttpd and restart it
+
     - name: Install unbound
       ansible.builtin.apt:
         name: unbound
