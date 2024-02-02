@@ -1,0 +1,28 @@
+- name: Deploy osquery
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Add osquery debian repo signed by gpg key
+      ansible.builtin.deb822_repository:
+        name: influxdata
+        types: [deb]
+        signed_by: https://pkg.osquery.io/deb/pubkey.gpg
+        uris: https://pkg.osquery.io/deb
+        suites: deb
+        components: [main]
+        enabled: true
+        state: present
+
+    - name: Install osquery
+      ansible.builtin.apt:
+        name: osquery
+        update_cache: true
+        state: present
+
+    - name: Start and enable osqueryd service
+      ansible.builtin.systemd:
+        name: osqueryd
+        enabled: true
+        state: started
+...
