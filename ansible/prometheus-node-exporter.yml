@@ -1,0 +1,12 @@
+---
+- name: Deploy prometheus-node-exporter
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install prometheus-node-exporter
+      ansible.builtin.apt:
+        name: prometheus-node-exporter
+        update_cache: true
+        state: present
+...
