@@ -6,22 +6,17 @@
 
 # TODO: replace terraform in here with opentofu: https://gitlab.com/components/opentofu
 include:
-  - template: Terraform/Base.latest.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
-  - template: Jobs/SAST-IaC.latest.gitlab-ci.yml   # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Jobs/SAST-IaC.latest.gitlab-ci.yml
+  - component: gitlab.com/components/opentofu/full-pipeline@0.10.0
+    inputs:
+      # The version must currently be specified explicitly as an input,
+      # to find the correctly associated images. # This can be removed
+      # once https://gitlab.com/gitlab-org/gitlab/-/issues/438275 is solved.
+      version: 0.10.0
+      opentofu_version: 1.6.1
+      root_dir: terraform
+      state_name: homelab-cluster
 
-variables:
-  TF_ROOT: terraform
-  TF_STATE_NAME: homelab-cluster
-
-stages:
-  - validate
-  - test
-  - build
-  - deploy
-  - cleanup
-
-kics-iac-sast:
-  stage: validate
+stages: [validate, build, deploy, cleanup]
 
 ansible_lint:
   tags: [ansible]
@@ -59,37 +54,20 @@ ansible_check_diff:
     - ansible-playbook --check --diff proxmox.yml
     - ansible-playbook --check --diff site.yml
 
-terraform_fmt:
+fmt:
   tags: [terraform]
-  extends: .terraform:fmt
-  needs: []
 
-terraform_validate:
+validate:
   tags: [terraform]
-  extends: .terraform:validate
-  needs: []
 
-terraform_plan:
+plan:
   tags: [terraform]
-  extends: .terraform:build
-  needs: [terraform_fmt, terraform_validate]
-  environment:
-    name: $TF_STATE_NAME
-    action: prepare
 
-terraform_apply:
+apply:
   tags: [terraform]
-  extends: .terraform:deploy
-  needs: [terraform_plan]
-  dependencies: [terraform_plan]
-  environment:
-    name: $TF_STATE_NAME
-    action: start
 
-terraform_destroy:
+destroy:
   tags: [terraform]
-  extends: .terraform:destroy
-  needs: [terraform_plan]
-  dependencies: [terraform_plan]
-  environment:
-    name: $TF_STATE_NAME
+
+delete-state:
+  tags: [terraform]
