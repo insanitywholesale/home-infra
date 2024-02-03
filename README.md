@@ -183,11 +183,11 @@ Kubernetes nodes
 ### k3s control plane nodes
 10.0.50.51-53
 
-### k3s worker nodes
-10.0.50.61-64
-
 ### k3s single-node cluster
-.69
+.60
+
+### k3s worker nodes
+10.0.50.61-69
 
 ## Physical servers
 Bare-metal machines where most things run on
