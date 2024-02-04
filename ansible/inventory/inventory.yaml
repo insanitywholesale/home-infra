@@ -26,7 +26,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
@@ -38,7 +39,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
@@ -50,7 +52,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
@@ -62,7 +65,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
@@ -74,7 +78,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
@@ -86,7 +91,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
@@ -100,7 +106,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
@@ -112,7 +119,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
@@ -124,7 +132,8 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
+                servicelb
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
