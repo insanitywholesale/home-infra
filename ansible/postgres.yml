@@ -5,6 +5,7 @@
   tasks:
     - name: Initial postgres install and setup
       # import_role tasks parsed at the beginning, include_role tasks parsed when they're going to run
+      # source: https://www.ansiblejunky.com/blog/ansible-101-include-vs-import/
       ansible.builtin.import_role:
         name: geerlingguy.postgresql
       vars:
