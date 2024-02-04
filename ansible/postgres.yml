@@ -1,10 +1,12 @@
 ---
-- name: Install and slightly configure PostgreSQL
+- name: Install and configure PostgreSQL
   hosts: postgres
   become: true
-  roles:
+  tasks:
     - name: Initial postgres install and setup
-      role: geerlingguy.postgresql
+      # import_role tasks parsed at the beginning, include_role tasks parsed when they're going to run
+      ansible.builtin.import_role:
+        name: geerlingguy.postgresql
       vars:
         postgresql_python_library: python3-psycopg2
         postgresql_service_state: started
@@ -15,10 +17,10 @@
           # defaults
           - {type: local, database: all, user: postgres, auth_method: peer}
           - {type: local, database: all, user: all, auth_method: peer}
-          - {type: host, database: all, user: all, address: '127.0.0.1/32', auth_method: "{{ postgresql_auth_method }}"}
-          - {type: host, database: all, user: all, address: '::1/128', auth_method: "{{ postgresql_auth_method }}"}
+          - {type: hostssl, database: all, user: all, address: '127.0.0.1/32', auth_method: "{{ postgresql_auth_method }}"}
+          - {type: hostssl, database: all, user: all, address: '::1/128', auth_method: "{{ postgresql_auth_method }}"}
           # my addition
-          - {type: host, database: all, user: all, address: '10.0.0.0/8', auth_method: "{{ postgresql_auth_method }}"}
+          - {type: hostssl, database: all, user: all, address: '10.0.0.0/8', auth_method: "{{ postgresql_auth_method }}"}
         postgresql_global_config_options:
           # defaults
           - option: unix_socket_directories
@@ -35,4 +37,68 @@
         postgresql_databases:
           - name: testdb
             owner: testuser
+
+    - name: Create cloudflare credentials file
+      ansible.builtin.template:
+        src: cloudflare.ini.j2
+        dest: /etc/letsencrypt/cloudflare.ini
+        mode: '0600'
+        owner: root
+        group: root
+
+    - name: Get LetsEncrypt TLS certificates
+      ansible.builtin.import_role:
+        name: geerlingguy.certbot
+      vars:
+        certbot_install_method: package
+        certbot_create_if_missing: true
+        certbot_create_method: standalone
+        certbot_admin_email: pepitsizous@zoho.com
+        certbot_certs:
+          - domains:
+              - postgres01.home.inherently.xyz
+        certbot_create_extra_args: "--dns-cloudflare --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini"
+        certbot_create_standalone_stop_services: []
+        certbot_auto_renew_user: root
+
+    - name: Copy certificate into postgres directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/postgres01.home.inherently.xyz/fullchain.pem
+        dest: /etc/postgresql/13/main/fullchain.pem
+        mode: '0600'
+        owner: postgres
+        group: postgres
+
+    - name: Copy private key into postgres directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/postgres01.home.inherently.xyz/privkey.pem
+        dest: /etc/postgresql/13/main/privkey.pem
+        mode: '0600'
+        owner: postgres
+        group: postgres
+
+    - name: Set SSL to on
+      ansible.builtin.lineinfile:
+        path: /etc/postgresql/13/main/postgresql.conf
+        regexp: '^ssl ='
+        line: ssl = on
+
+    - name: Set SSL cert file
+      ansible.builtin.lineinfile:
+        path: /etc/postgresql/13/main/postgresql.conf
+        regexp: '^ssl_cert_file '
+        insertafter: '^#ssl_cert_file '
+        line: ssl_cert_file = '/etc/postgresql/13/main/fullchain.pem'
+
+    - name: Set SSL private key file
+      ansible.builtin.lineinfile:
+        path: /etc/postgresql/13/main/postgresql.conf
+        regexp: '^ssl_key_file '
+        insertafter: '^#ssl_key_file '
+        line: ssl_key_file = '/etc/postgresql/13/main/privkey.pem'
+
+    # Command to test SSL connection
+    # PGSSLMODE=verify-full PGSSLROOTCERT=system psql -h postgres01.home.inherently.xyz -U testuser -d testdb
 ...
