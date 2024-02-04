@@ -18,17 +18,38 @@
         owner: root
         group: root
 
+    - name: Create a directory for pihole
+      ansible.builtin.file:
+        path: /etc/pihole
+        state: directory
+        mode: '0755'
+
     - name: Copy over setupVars.conf
       ansible.builtin.copy:
         src: setupVars.conf
         dest: /etc/pihole/setupVars.conf
-        mode: '0755'
+        mode: '0644'
         owner: root
         group: root
 
-    # TODO: run install script with --unattended --reconfigure (might remove reconfigure idk)
+    - name: Run pihole install script
+      ansible.builtin.command:
+        chdir: /opt/pihole-install/
+        cmd: ./basic-install.sh --unattended
+      register: pihole_install_output
+      changed_when: "'pihole' in pihole_install_output.stdout"
 
-    # TODO: add url.redirect = ("^/$" => "/admin" ) to lighttpd and restart it
+    - name: Add redirect from webroot to admin
+      ansible.builtin.lineinfile:
+        path: /etc/lighttpd/lighttpd.conf
+        line: url.redirect = ("^/$" => "/admin" )
+        insertafter: EOF
+
+    - name: Restart lighttpd service
+      ansible.builtin.service:
+        name: lighttpd
+        enabled: true
+        state: restarted
 
     - name: Install unbound
       ansible.builtin.apt:
