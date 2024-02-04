@@ -26,10 +26,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_agent: &id001
-                node-ip: '{{ ansible_host }}'
-              k3s_control_node: false
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
             10.0.50.62:
@@ -40,9 +37,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_agent: *id001
-              k3s_control_node: false
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
             10.0.50.63:
@@ -53,9 +48,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_agent: *id001
-              k3s_control_node: false
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
             10.0.50.64:
@@ -66,9 +59,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_agent: *id001
-              k3s_control_node: false
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
             10.0.50.65:
@@ -79,9 +70,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_agent: *id001
-              k3s_control_node: false
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
             10.0.50.66:
@@ -92,9 +81,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_agent: *id001
-              k3s_control_node: false
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
         server:
@@ -107,33 +94,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_control_node: true
-              k3s_server: &id002
-                cluster-cidr: 10.35.0.0/16
-                disable:
-                - flannel
-                - local-storage
-                - servicelb
-                - traefik
-                disable-cloud-controller: true
-                disable-network-policy: true
-                docker: false
-                etcd-expose-metrics: true
-                flannel-backend: none
-                kube-apiserver-arg:
-                - anonymous-auth=true
-                kube-controller-manager-arg:
-                - bind-address=0.0.0.0
-                kube-proxy-arg:
-                - metrics-bind-address=0.0.0.0
-                kube-scheduler-arg:
-                - bind-address=0.0.0.0
-                node-ip: '{{ ansible_host }}'
-                service-cidr: 10.45.0.0/16
-                tls-san:
-                - '{{ kubevip_address }}'
-                write-kubeconfig-mode: '644'
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
             10.0.50.52:
@@ -144,9 +105,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_control_node: true
-              k3s_server: *id002
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
             10.0.50.53:
@@ -157,9 +116,7 @@ all:
                 | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
-              extra_server_args: --disable=traefik
-              k3s_control_node: true
-              k3s_server: *id002
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
     mysql:
@@ -206,7 +163,7 @@ all:
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
-          pve_acls: &id003
+          pve_acls: &id001
           - groups:
             - api_users
             path: /storage/local
@@ -225,14 +182,14 @@ all:
           pve_cluster_clustername: '{{ pve_group }}'
           pve_cluster_enabled: true
           pve_group: proxie
-          pve_groups: &id004
+          pve_groups: &id002
           - comment: Administrators of this PVE cluster
             name: admins
           - comment: Users that represent automation tools
             name: api_users
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: &id005
+          pve_roles: &id003
           - name: Monitoring
             privileges:
             - Sys.Modify
@@ -241,7 +198,7 @@ all:
             - VM.Monitor
             - VM.Audit
           pve_ssh_port: 22
-          pve_storages: &id006
+          pve_storages: &id004
           - content:
             - images
             - iso
@@ -250,7 +207,7 @@ all:
             name: proxmox-nfs
             server: 10.0.50.100
             type: nfs
-          pve_users: &id007
+          pve_users: &id005
           - groups:
             - api_users
             name: ansible@pve
@@ -266,17 +223,17 @@ all:
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
-          pve_acls: *id003
+          pve_acls: *id001
           pve_cluster_clustername: '{{ pve_group }}'
           pve_cluster_enabled: true
           pve_group: proxie
-          pve_groups: *id004
+          pve_groups: *id002
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: *id005
+          pve_roles: *id003
           pve_ssh_port: 22
-          pve_storages: *id006
-          pve_users: *id007
+          pve_storages: *id004
+          pve_users: *id005
           template_vmid: 9002
         10.0.50.72:
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
@@ -284,17 +241,17 @@ all:
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
-          pve_acls: *id003
+          pve_acls: *id001
           pve_cluster_clustername: '{{ pve_group }}'
           pve_cluster_enabled: true
           pve_group: proxie
-          pve_groups: *id004
+          pve_groups: *id002
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: *id005
+          pve_roles: *id003
           pve_ssh_port: 22
-          pve_storages: *id006
-          pve_users: *id007
+          pve_storages: *id004
+          pve_users: *id005
           template_vmid: 9003
     pxe:
       children:
