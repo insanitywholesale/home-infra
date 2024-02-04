@@ -1,0 +1,21 @@
+---
+# NOTE: to troubleshoot, export CI="pleasegivelogs"
+- name: Install and configure Prometheus stack
+  hosts: prometheus
+  become: true
+  roles:
+    - name: Install and configure Prometheus
+      role: prometheus.prometheus.prometheus
+    - name: Install and configure blackbox_exporter
+      role: prometheus.prometheus.blackbox_exporter
+    - name: Install and configure Alertmanager
+      role: prometheus.prometheus.alertmanager
+      vars:
+        alertmanager_receivers:
+          - name: pushoverreceiver
+            pushover_configs:
+              - user_key: uwniin3jk1963uw7w1nmmhpji9tss9
+                token: a31grho4qvd69bvn2k6mhhxaacbv3t
+        alertmanager_route:
+          receiver: pushoverreceiver
+...

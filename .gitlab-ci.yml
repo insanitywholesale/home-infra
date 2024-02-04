@@ -30,6 +30,7 @@ ansible_lint:
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
+    - ansible-galaxy collection install prometheus.prometheus
     - ansible-lint -f pep8 --nocolor | ansible-lint-junit -o ansible-lint.xml
 
 ansible_syntax_check:
@@ -40,6 +41,7 @@ ansible_syntax_check:
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
+    - ansible-galaxy collection install prometheus.prometheus
     - ansible-playbook --syntax-check proxmox.yml
     - ansible-playbook --syntax-check site.yml
 
@@ -51,6 +53,7 @@ ansible_check_diff:
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
+    - ansible-galaxy collection install prometheus.prometheus
     - ansible-playbook --check --diff proxmox.yml
     - ansible-playbook --check --diff site.yml
 
