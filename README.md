@@ -28,7 +28,7 @@ NTP, DNS, PXE, FTP and APT cache.
 .1
 
 ### Pi-hole
-.2
+10.0.50.2
 
 ### LANcache
 .3
