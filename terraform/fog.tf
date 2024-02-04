@@ -12,7 +12,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_fog" {
   cpu      = "SandyBridge"
   cores    = 1
   sockets  = 1
-  memory   = 1536
+  memory   = 2048
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
