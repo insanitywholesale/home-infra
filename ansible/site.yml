@@ -1,4 +1,5 @@
 ---
+- ansible.builtin.import_playbook: pihole.yml
 - ansible.builtin.import_playbook: fog.yml
 - ansible.builtin.import_playbook: apt-cacher-ng.yml
 - ansible.builtin.import_playbook: postgres.yml
