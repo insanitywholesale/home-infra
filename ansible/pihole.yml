@@ -35,9 +35,23 @@
     - name: Run pihole install script
       ansible.builtin.command:
         chdir: /opt/pihole-install/
-        cmd: ./basic-install.sh --unattended
+        cmd: sudo ./basic-install.sh --unattended
       register: pihole_install_output
       changed_when: "'pihole' in pihole_install_output.stdout"
+
+    - name: Copy dnsmasq edns-related config
+      ansible.builtin.copy:
+        src: 99-edns.conf
+        dest: /etc/dnsmasq.d/99-edns.conf
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Restart pihole service
+      ansible.builtin.service:
+        name: pihole-FTL
+        enabled: true
+        state: restarted
 
     - name: Add redirect from webroot to admin
       ansible.builtin.lineinfile:
@@ -57,6 +71,20 @@
         update_cache: true
         state: present
 
+    - name: Stop unbound service
+      ansible.builtin.service:
+        name: unbound
+        enabled: true
+        state: started
+
+    - name: Copy pihole-compatible unbound config
+      ansible.builtin.copy:
+        src: unbound-pi-hole.conf
+        dest: /etc/unbound/unbound.conf.d/unbound-pi-hole.conf
+        mode: '0644'
+        owner: root
+        group: root
+
     - name: Download root hints
       ansible.builtin.get_url:
         url: https://www.internic.net/domain/named.root
@@ -65,17 +93,11 @@
         owner: root
         group: root
 
-    - name: Copy dnsmasq edns-related config to pihole
-      ansible.builtin.copy:
-        src: 99-edns.conf
-        dest: /etc/dnsmasq.d/99-edns.conf
-        mode: '0644'
-        owner: root
-        group: root
-
-    - name: Restart unbound service
-      ansible.builtin.service:
+    # NOTE: in case it fails check logs using sudo journalctl -u unbound.service -b
+    - name: Start unbound service
+      ansible.builtin.systemd_service:
         name: unbound
         enabled: true
-        state: restarted
+        daemon_reload: true
+        state: reloaded
 ...
