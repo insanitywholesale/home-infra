@@ -1,0 +1,70 @@
+---
+- name: Install and configure LibreNMS
+  hosts: librenms
+  become: true
+  tasks:
+    - name: Install dependencies
+      ansible.builtin.apt:
+        update_cache: true
+        state: present
+        name:
+          - apt-transport-https
+          - lsb-release 
+          - ca-certificates
+          - wget
+          - acl
+          - curl
+          - fping
+          - git
+          - graphviz
+          - imagemagick
+          - mariadb-client
+          - mariadb-server
+          - mtr-tiny
+          - nginx-full
+          - nmap
+          - php8.2-cli
+          - php8.2-curl
+          - php8.2-fpm
+          - php8.2-gd
+          - php8.2-gmp
+          - php8.2-mbstring
+          - php8.2-mysql
+          - php8.2-snmp
+          - php8.2-xml
+          - php8.2-zip
+          - python3-dotenv
+          - python3-pymysql
+          - python3-redis
+          - python3-setuptools
+          - python3-systemd
+          - python3-pip
+          - rrdtool
+          - snmp
+          - snmpd
+          - unzip
+          - whois
+
+    - name: Download release tarball
+      ansible.builtin.get_url:
+        url: https://github.com/librenms/librenms/archive/refs/tags/24.1.0.tar.gz
+        dest: /opt/24.1.0.tar.gz
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Unarchive librenms tarball
+      ansible.builtin.unarchive:
+        src: /opt/24.1.0.tar.gz
+        dest: /opt/
+        remote_src: true
+        creates: /opt/librenms-24.1.0/README.md
+
+    - name: Add librenms user
+      ansible.builtin.user:
+        name: librenms
+        system: true
+        shell: /bin/bash
+        home: /opt/librenms-24.1.0
+        state: present
+...
