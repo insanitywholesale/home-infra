@@ -1,41 +1,41 @@
 ---
-#- name: Proxmox pre-config
-#  hosts: proxmox_servers
-#  become: true
-#  tasks:
-#    - name: Remove enterprise repo
-#      ansible.builtin.file:
-#        path: /etc/apt/sources.list.d/pve-enterprise.list
-#        state: absent
-#
-#    - name: Install useful packages
-#      ansible.builtin.apt:
-#        update_cache: true
-#        name:
-#          - vim
-#          - tmux
-#          - htop
-#          - python3
-#          - python3-apt
-#          - python3-guestfs
-#          - python3-proxmoxer
-#          - python-is-python3
-#          - nfs-common
-#          - nfs4-acl-tools
-#          - libguestfs-tools
-#        state: present
-#
-#- name: Configure NTP on proxmox
-#  hosts: proxmox_servers
-#  become: true
-#  roles:
-#    - role: geerlingguy.ntp
-#
-#- name: Set up proxmox cluster
-#  hosts: proxmox_servers
-#  become: true
-#  roles:
-#    - role: lae.proxmox
+- name: Proxmox pre-config
+  hosts: proxmox_servers
+  become: true
+  tasks:
+    - name: Remove enterprise repo
+      ansible.builtin.file:
+        path: /etc/apt/sources.list.d/pve-enterprise.list
+        state: absent
+
+    - name: Install useful packages
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - vim
+          - tmux
+          - htop
+          - python3
+          - python3-apt
+          - python3-guestfs
+          - python3-proxmoxer
+          - python-is-python3
+          - nfs-common
+          - nfs4-acl-tools
+          - libguestfs-tools
+        state: present
+
+- name: Configure NTP on proxmox
+  hosts: proxmox_servers
+  become: true
+  roles:
+    - role: geerlingguy.ntp
+
+- name: Set up proxmox cluster
+  hosts: proxmox_servers
+  become: true
+  roles:
+    - role: lae.proxmox
 
 - name: Proxmox post-config
   hosts: proxmox_servers
