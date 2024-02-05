@@ -1,15 +1,25 @@
 all:
   children:
-    acng:
+    aptcache_servers:
       hosts:
-        10.0.50.9:
+        aptcache:
+          ansible_host: 10.0.50.9
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
-    influxdb:
+    fog_servers:
       hosts:
-        10.0.50.28:
+        fog:
+          ansible_host: 10.0.50.7
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
+    influxdb_servers:
+      hosts:
+        influxdb:
+          ansible_host: 10.0.50.28
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
@@ -18,7 +28,8 @@ all:
       children:
         agent:
           hosts:
-            10.0.50.61:
+            k3s-w01-c01:
+              ansible_host: 10.0.50.61
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -31,7 +42,8 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
-            10.0.50.62:
+            k3s-w02-c01:
+              ansible_host: 10.0.50.62
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -44,7 +56,8 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
-            10.0.50.63:
+            k3s-w03-c01:
+              ansible_host: 10.0.50.63
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -57,7 +70,8 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
-            10.0.50.64:
+            k3s-w04-c01:
+              ansible_host: 10.0.50.64
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -70,7 +84,8 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
-            10.0.50.65:
+            k3s-w05-c01:
+              ansible_host: 10.0.50.65
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -83,7 +98,8 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
-            10.0.50.66:
+            k3s-w06-c01:
+              ansible_host: 10.0.50.66
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -98,7 +114,8 @@ all:
               user_kubectl: true
         server:
           hosts:
-            10.0.50.51:
+            k3s-m01-c01:
+              ansible_host: 10.0.50.51
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -111,7 +128,8 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
-            10.0.50.52:
+            k3s-m02-c01:
+              ansible_host: 10.0.50.52
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -124,7 +142,8 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
-            10.0.50.53:
+            k3s-m03-c01:
+              ansible_host: 10.0.50.53
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
@@ -137,50 +156,47 @@ all:
               k3s_version: v1.28.5+k3s1
               token: vregmenhpatataxwristyri
               user_kubectl: true
-    librenms:
+    librenms_servers:
       hosts:
-        10.0.50.32:
+        librenms:
+          ansible_host: 10.0.50.32
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
-    mysql:
+    mysql_servers:
       hosts:
-        10.0.50.21:
+        mysql:
+          ansible_host: 10.0.50.21
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
-    pihole:
+    pihole_servers:
       hosts:
-        10.0.50.2:
+        pihole:
+          ansible_host: 10.0.50.2
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
-    postgres:
+    postgres_servers:
       hosts:
-        10.0.50.20:
+        postgres:
+          ansible_host: 10.0.50.20
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            33663731643431393965336636656266326634366334623265383038383232393165393233643964
-            6462376130383233633864363131653638363563323962380a383236663630636234626465646362
-            33313132383531316239383766623561653430373664363061653263633639346365323331386232
-            3030383732333463620a303635636632643338363063643065333131373065653563353737336662
-            37353133346630346361663539323565396237643139653034386234383364346237613432633332
-            3030343138303130346362653664346337613539633663613936
-    prometheus:
+    prometheus_servers:
       hosts:
-        10.0.50.31:
+        prometheus:
+          ansible_host: 10.0.50.31
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
-    proxie:
+    proxmox_servers:
       hosts:
         pve0:
           ansible_host: 10.0.50.70
@@ -188,60 +204,6 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          ntp_timezone: Europe/Athens
-          pve_acls: &id001
-          - groups:
-            - api_users
-            path: /storage/local
-            roles:
-            - PVEDatastoreAdmin
-          - groups:
-            - api_users
-            path: /storage/local-lvm
-            roles:
-            - PVEDatastoreAdmin
-          - groups:
-            - api_users
-            path: /vms
-            roles:
-            - PVEVMAdmin
-          pve_cluster_clustername: '{{ pve_group }}'
-          pve_cluster_enabled: true
-          pve_group: proxie
-          pve_groups: &id002
-          - comment: Administrators of this PVE cluster
-            name: admins
-          - comment: Users that represent automation tools
-            name: api_users
-          pve_manage_hosts_enabled: true
-          pve_remove_subscription_warning: true
-          pve_roles: &id003
-          - name: Monitoring
-            privileges:
-            - Sys.Modify
-            - Sys.Audit
-            - Datastore.Audit
-            - VM.Monitor
-            - VM.Audit
-          pve_ssh_port: 22
-          pve_storages: &id004
-          - content:
-            - images
-            - iso
-            - backup
-            export: /mnt/tank-z1/nfs-proxmox
-            name: proxmox-nfs
-            server: 10.0.50.100
-            type: nfs
-          pve_users: &id005
-          - groups:
-            - api_users
-            name: ansible@pve
-            password: oomfie1234
-          - groups:
-            - api_users
-            name: terraform@pve
-            password: oomfie1234
           template_vmid: 9001
           template_vmid2: 9004
         pve1:
@@ -250,18 +212,6 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          ntp_timezone: Europe/Athens
-          pve_acls: *id001
-          pve_cluster_clustername: '{{ pve_group }}'
-          pve_cluster_enabled: true
-          pve_group: proxie
-          pve_groups: *id002
-          pve_manage_hosts_enabled: true
-          pve_remove_subscription_warning: true
-          pve_roles: *id003
-          pve_ssh_port: 22
-          pve_storages: *id004
-          pve_users: *id005
           template_vmid: 9002
           template_vmid2: 9005
         pve2:
@@ -270,26 +220,5 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          ntp_timezone: Europe/Athens
-          pve_acls: *id001
-          pve_cluster_clustername: '{{ pve_group }}'
-          pve_cluster_enabled: true
-          pve_group: proxie
-          pve_groups: *id002
-          pve_manage_hosts_enabled: true
-          pve_remove_subscription_warning: true
-          pve_roles: *id003
-          pve_ssh_port: 22
-          pve_storages: *id004
-          pve_users: *id005
           template_vmid: 9003
           template_vmid2: 9006
-    pxe:
-      children:
-        fog:
-          hosts:
-            10.0.50.7:
-              ansible_private_key_file: /home/angle/.ssh/id_ed25519
-              ansible_python_interpreter: /usr/bin/env python3
-              ansible_user: debian
-              apt_proxy: http://10.0.50.9:3142

@@ -1,6 +1,6 @@
 ---
 - name: Install apt-cacher-ng
-  hosts: acng
+  hosts: aptcache
   become: true
   roles:
     - role: elnappo.apt_cacher_ng
@@ -8,7 +8,7 @@
         apt_cacher_ng_setup_ufw: false
 
 - name: Configure apt-cacher-ng clients
-  hosts: all:!proxie
+  hosts: all:!proxmox_servers
   become: true
   tasks:
     - name: Configure debian hosts to use apt-cacher-ng

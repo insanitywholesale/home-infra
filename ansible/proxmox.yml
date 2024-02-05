@@ -1,6 +1,6 @@
 ---
 #- name: Proxmox pre-config
-#  hosts: proxie
+#  hosts: proxmox_servers
 #  become: true
 #  tasks:
 #    - name: Remove enterprise repo
@@ -26,19 +26,19 @@
 #        state: present
 #
 #- name: Configure NTP on proxmox
-#  hosts: proxie
+#  hosts: proxmox_servers
 #  become: true
 #  roles:
 #    - role: geerlingguy.ntp
 #
 #- name: Set up proxmox cluster
-#  hosts: proxie
+#  hosts: proxmox_servers
 #  become: true
 #  roles:
 #    - role: lae.proxmox
 
 - name: Proxmox post-config
-  hosts: proxie
+  hosts: proxmox_servers
   become: true
   tasks:
     - name: Download Debian 11 genericcloud qcow2 image

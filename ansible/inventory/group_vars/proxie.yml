@@ -1,6 +1,6 @@
 ---
 ntp_timezone: Europe/Athens
-pve_group: proxie
+pve_group: proxmox_servers
 pve_ssh_port: 22
 pve_remove_subscription_warning: true
 pve_cluster_enabled: true
