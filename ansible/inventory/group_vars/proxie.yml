@@ -1,5 +1,4 @@
 ---
-ntp_timezone: Europe/Athens
 pve_group: proxmox_servers
 pve_ssh_port: 22
 pve_remove_subscription_warning: true

@@ -1,4 +1,7 @@
 ---
+- ansible.builtin.import_playbook: proxmox.yml
+- ansible.builtin.import_playbook: ntp-all.yml
+- ansible.builtin.import_playbook: upgrade-all.yml
 - ansible.builtin.import_playbook: pihole.yml
 - ansible.builtin.import_playbook: fog.yml
 - ansible.builtin.import_playbook: apt-cacher-ng.yml

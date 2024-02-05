@@ -8,6 +8,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     fog_servers:
       hosts:
         fog:
@@ -16,6 +17,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     influxdb_servers:
       hosts:
         influxdb:
@@ -24,6 +26,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     k3s_cluster:
       children:
         agent:
@@ -40,6 +43,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
             k3s-w02-c01:
@@ -54,6 +58,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
             k3s-w03-c01:
@@ -68,6 +73,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
             k3s-w04-c01:
@@ -82,6 +88,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
             k3s-w05-c01:
@@ -96,6 +103,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
             k3s-w06-c01:
@@ -110,6 +118,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
         server:
@@ -126,6 +135,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
             k3s-m02-c01:
@@ -140,6 +150,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
             k3s-m03-c01:
@@ -154,6 +165,7 @@ all:
               extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
                 servicelb
               k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
     librenms_servers:
@@ -164,6 +176,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     mysql_servers:
       hosts:
         mysql:
@@ -172,6 +185,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     pihole_servers:
       hosts:
         pihole:
@@ -180,6 +194,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     postgres_servers:
       hosts:
         postgres:
@@ -188,6 +203,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     prometheus_servers:
       hosts:
         prometheus:
@@ -196,6 +212,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     proxmox_servers:
       hosts:
         pve0:
@@ -204,6 +221,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
           template_vmid: 9001
           template_vmid2: 9004
         pve1:
@@ -212,6 +230,7 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
           template_vmid: 9002
           template_vmid2: 9005
         pve2:
@@ -220,5 +239,6 @@ all:
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
           template_vmid: 9003
           template_vmid2: 9006
