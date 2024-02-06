@@ -9,7 +9,7 @@
         state: present
         name:
           - apt-transport-https
-          - lsb-release 
+          - lsb-release
           - ca-certificates
           - wget
           - acl
@@ -44,27 +44,54 @@
           - snmpd
           - unzip
           - whois
+          - composer
 
-    - name: Download release tarball
-      ansible.builtin.get_url:
-        url: https://github.com/librenms/librenms/archive/refs/tags/24.1.0.tar.gz
-        dest: /opt/24.1.0.tar.gz
-        mode: '0644'
-        owner: root
-        group: root
+    - name: Clone librenms repository
+      ansible.builtin.git:
+        repo: https://github.com/librenms/librenms.git
+        dest: /opt/librenms
+        version: 24.1.0
+        update: false
+        single_branch: true
 
-    - name: Unarchive librenms tarball
-      ansible.builtin.unarchive:
-        src: /opt/24.1.0.tar.gz
-        dest: /opt/
-        remote_src: true
-        creates: /opt/librenms-24.1.0/README.md
+    - name: Change directory permissions
+      ansible.builtin.file:
+        path: /opt/librenms
+        owner: librenms
+        group: librenms
+        mode: '771'
+        recurse: true
+        state: directory
+
+    - name: Set ACL
+      ansible.posix.acl:
+        path: "{{ item }}"
+        etype: group
+        permissions: rwx
+        default: true
+        recurse: true
+        state: present
+      loop:
+        - /opt/librenms/rrd
+        - /opt/librenms/logs
+        - /opt/librenms/bootstrap/cache/
+        - /opt/librenms/storage/
 
     - name: Add librenms user
       ansible.builtin.user:
         name: librenms
         system: true
         shell: /bin/bash
-        home: /opt/librenms-24.1.0
+        home: /opt/librenms
         state: present
+
+    - name: Set PHP timezone
+      ansible.builtin.lineinfile:
+        path: "{{ item }}"
+        regexp: '^date.timezone = '
+        insertafter: '^;date.timezone = '
+        line: "date.timezone = {{ ntp_timezone }}"
+      loop:
+        - /etc/php/8.2/fpm/php.ini
+        - /etc/php/8.2/cli/php.ini
 ...
