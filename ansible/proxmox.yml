@@ -84,7 +84,7 @@
         state: absent
 
     - name: Copy /etc/network/interfaces config
-      copy:
+      ansible.builtin.copy:
         src: debinterfaces
         dest: /tmp/debinterfaces
         owner: root
