@@ -1,0 +1,39 @@
+---
+- name: Deploy GitLab
+  hosts: gitlab
+  become: true
+
+  tasks:
+    - name: Install dependencies
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        update_cache: true
+        state: present
+      loop:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - debian-archive-keyring
+        - gnupg
+        - openssh-server
+        - perl
+
+    - name: Add gitlab debian repo signed by gpg key
+      ansible.builtin.deb822_repository:
+        name: gitlab
+        types: [deb]
+        signed_by: https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
+        uris: https://packages.gitlab.com/gitlab/gitlab-ce/debian
+        suites: bookworm
+        components: [main]
+        enabled: true
+        state: present
+
+    - name: Install GitLab CE
+      ansible.builtin.apt:
+        name: gitlab-ce
+        update_cache: true
+        state: present
+      environment:
+        EXTERNAL_URL: http://gitlab.home.inherently.xyz
+...
