@@ -12,16 +12,16 @@ resource "proxmox_vm_qemu" "proxmox_vm_gitlab" {
   cpu      = "SandyBridge"
   cores    = 4
   sockets  = 1
-  memory   = 4096
+  memory   = 6144
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
   onboot   = true
 
   disk {
-    size    = "50G"
+    size    = "60G"
     type    = "virtio"
-    storage = "swimming"
+    storage = "local-lvm"
   }
 
   network {
