@@ -18,7 +18,7 @@
         name: grafana
         types: [deb]
         signed_by: https://apt.grafana.com/gpg.key
-        uris: 	https://apt.grafana.com
+        uris: https://apt.grafana.com
         suites: stable
         components: [main]
         enabled: true
