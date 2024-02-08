@@ -2,6 +2,8 @@
 
 ## ansible
 - add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
+- add certbot tasks adapted from postgres to [configure TLS for influxdb](https://docs.influxdata.com/influxdb/v2/admin/security/enable-tls/#configure-influxdb-to-use-tls)
+- configure grafana to connect to influxdb and prometheus
 - finish librenms playbook
 
 ## terraform
@@ -21,7 +23,6 @@
 - add renovatebot to repo to update images
 
 ## other
-- add grafana in vm and connect to influxdb and prometheus
 - add gitlab runners
 - add github runners
 - add docker buildx remote builders
