@@ -22,13 +22,13 @@
         suites: stable
         components: [main]
         enabled: true
-        state: absent
+        state: present
 
     - name: Install grafana
       ansible.builtin.apt:
         name: grafana
         update_cache: true
-        state: absent
+        state: present
 
     - name: Start and enable grafana service
       ansible.builtin.systemd:
