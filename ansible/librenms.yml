@@ -94,4 +94,16 @@
       loop:
         - /etc/php/8.2/fpm/php.ini
         - /etc/php/8.2/cli/php.ini
+
+      # TODO:
+      # 1. set
+      #        innodb_file_per_table=1
+      #         lower_case_table_names=0
+      #    inside /etc/mysql/mariadb.conf.d/50-server.cnf
+      #
+      # 2. initialize database, user and grant access as seen below
+      #        CREATE DATABASE librenms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+      #        CREATE USER 'librenms'@'localhost' IDENTIFIED BY 'password';
+      #        GRANT ALL PRIVILEGES ON librenms.* TO 'librenms'@'localhost';
+
 ...
