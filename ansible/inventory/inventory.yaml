@@ -27,6 +27,15 @@ all:
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
+    grafana_servers:
+      hosts:
+        grafana:
+          ansible_host: 10.0.50.30
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     influxdb_servers:
       hosts:
         influxdb:
