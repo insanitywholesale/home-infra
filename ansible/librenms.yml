@@ -54,6 +54,15 @@
         update: false
         single_branch: true
 
+    - name: Add librenms user
+      ansible.builtin.user:
+        name: librenms
+        system: true
+        shell: /bin/bash
+        home: /opt/librenms
+        state: present
+
+    # TODO: figure out what is wrong with this
     - name: Change directory permissions
       ansible.builtin.file:
         path: /opt/librenms
@@ -63,6 +72,7 @@
         recurse: true
         state: directory
 
+    # TODO: figure out what is wrong with this
     - name: Set ACL
       ansible.posix.acl:
         path: "{{ item }}"
@@ -77,14 +87,6 @@
         - /opt/librenms/bootstrap/cache/
         - /opt/librenms/storage/
 
-    - name: Add librenms user
-      ansible.builtin.user:
-        name: librenms
-        system: true
-        shell: /bin/bash
-        home: /opt/librenms
-        state: present
-
     - name: Set PHP timezone
       ansible.builtin.lineinfile:
         path: "{{ item }}"
@@ -95,15 +97,156 @@
         - /etc/php/8.2/fpm/php.ini
         - /etc/php/8.2/cli/php.ini
 
-      # TODO:
-      # 1. set
-      #        innodb_file_per_table=1
-      #         lower_case_table_names=0
-      #    inside /etc/mysql/mariadb.conf.d/50-server.cnf
-      #
-      # 2. initialize database, user and grant access as seen below
-      #        CREATE DATABASE librenms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-      #        CREATE USER 'librenms'@'localhost' IDENTIFIED BY 'password';
-      #        GRANT ALL PRIVILEGES ON librenms.* TO 'librenms'@'localhost';
+    - name: Create librenms database
+      community.mysql.mysql_db:
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        name: librenms
+        encoding: utf8mb4
+        collation: utf8mb4_unicode_ci
 
+    - name: Create librenms user
+      community.mysql.mysql_user:
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        name: librenms
+        host: localhost
+        priv: 'librenms.*:ALL'
+        state: present
+
+    - name: Copy over 50-server.cnf with librenms-specific additions
+      ansible.builtin.template:
+        src: templates/50-server.cnf.j2
+        dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Copy default www pool config to librenms
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/php/8.2/fpm/pool.d/www.conf
+        dest: /etc/php/8.2/fpm/pool.d/librenms.conf
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Configure PHP-FPM pool name
+      ansible.builtin.lineinfile:
+        path: /etc/php/8.2/fpm/pool.d/librenms.conf
+        regexp: '^\[www'
+        line: "[librenms]"
+
+    - name: Configure PHP-FPM user
+      ansible.builtin.lineinfile:
+        path: /etc/php/8.2/fpm/pool.d/librenms.conf
+        regexp: '^user = '
+        line: "user = librenms"
+
+    - name: Configure PHP-FPM group
+      ansible.builtin.lineinfile:
+        path: /etc/php/8.2/fpm/pool.d/librenms.conf
+        regexp: '^group = '
+        line: "group = librenms"
+
+    - name: Configure PHP-FPM listen socket
+      ansible.builtin.lineinfile:
+        path: /etc/php/8.2/fpm/pool.d/librenms.conf
+        regexp: '^listen = '
+        line: "listen = /run/php-fpm-librenms.sock"
+
+    - name: Copy over librenms.vhost nginx config
+      ansible.builtin.template:
+        src: templates/librenms.vhost
+        dest: /etc/nginx/sites-enabled/librenms.vhost
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Remove default nginx config
+      ansible.builtin.file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: Reload nginx service
+      ansible.builtin.systemd_service:
+        name: nginx
+        enabled: true
+        daemon_reload: true
+        state: reloaded
+
+    - name: Restart php-fpm service
+      ansible.builtin.systemd_service:
+        name: php8.2-fpm
+        enabled: true
+        state: restarted
+
+    - name: Symlink lnms cli executable
+      ansible.builtin.file:
+        src: /opt/librenms/lnms
+        dest: /usr/bin/lnms
+        state: link
+
+    - name: Copy bash completion configuration
+      ansible.builtin.copy:
+        remote_src: true
+        src: /opt/librenms/misc/lnms-completion.bash
+        dest: /etc/bash_completion.d/lnms-completion.bash
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Copy snmpd configuration
+      ansible.builtin.copy:
+        remote_src: true
+        src: /opt/librenms/snmpd.conf.example
+        dest: /etc/snmp/snmpd.conf
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Configure snmpd community
+      ansible.builtin.replace:
+        path: /etc/snmp/snmpd.conf
+        regexp: 'RANDOMSTRINGGOESHERE'
+        replace: "homelab"
+
+    - name: Download librenms agent
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/distro
+        dest: /usr/bin/distro
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Restart snmpd service
+      ansible.builtin.systemd_service:
+        name: snmpd
+        enabled: true
+        state: restarted
+
+    - name: Copy cronjob configuration
+      ansible.builtin.copy:
+        remote_src: true
+        src: /opt/librenms/dist/librenms.cron
+        dest: /etc/cron.d/librenms
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Copy scheduler systemd configs
+      ansible.builtin.copy:
+        remote_src: true
+        src: "/opt/librenms/dist/{{ item }}"
+        dest: "/etc/systemd/system/{{ item }}"
+        mode: '0644'
+        owner: root
+        group: root
+      loop:
+        - librenms-scheduler.service
+        - librenms-scheduler.timer
+
+    - name: Enable and start scheduler timer
+      ansible.builtin.systemd_service:
+        name: librenms-scheduler.timer
+        enabled: true
+        state: started
 ...
