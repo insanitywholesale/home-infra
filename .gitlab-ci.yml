@@ -65,12 +65,16 @@ validate:
 
 plan:
   tags: [terraform]
+  needs:
+    - fmt
+    - validate
 
 apply:
   tags: [terraform]
 
 destroy:
   tags: [terraform]
+  needs: []
 
 delete-state:
   tags: [terraform]
