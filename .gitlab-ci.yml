@@ -71,6 +71,8 @@ plan:
 
 apply:
   tags: [terraform]
+  needs:
+    - plan
 
 destroy:
   tags: [terraform]
