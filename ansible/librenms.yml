@@ -68,11 +68,20 @@
         path: /opt/librenms
         owner: librenms
         group: librenms
-        mode: '771'
+        mode: '0771'
         recurse: true
         state: directory
 
-    # TODO: figure out what is wrong with this
+    - name: Change html sub-directory permissions
+      ansible.builtin.file:
+        path: /opt/librenms/html
+        owner: librenms
+        group: librenms
+        mode: '0777'
+        recurse: true
+        state: directory
+
+    # TODO: figure out might be wrong with this
     - name: Set ACL
       ansible.posix.acl:
         path: "{{ item }}"
@@ -86,6 +95,14 @@
         - /opt/librenms/logs
         - /opt/librenms/bootstrap/cache/
         - /opt/librenms/storage/
+
+    - name: Install PHP dependencies
+      ansible.builtin.shell:
+        cmd: ./scripts/composer_wrapper.php install --no-dev
+        chdir: /opt/librenms
+        creates: /opt/librenms/vendor/autoload.php
+      become_user: librenms
+      register: composer_install_output
 
     - name: Set PHP timezone
       ansible.builtin.lineinfile:
@@ -109,6 +126,8 @@
         login_unix_socket: /var/run/mysqld/mysqld.sock
         name: librenms
         host: localhost
+        encrypted: true
+        password: '*1BD3B8B249B3A457CAE5EB31F72878A03A55AD8B'
         priv: 'librenms.*:ALL'
         state: present
 
