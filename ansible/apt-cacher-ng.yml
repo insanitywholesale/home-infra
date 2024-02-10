@@ -8,7 +8,7 @@
         apt_cacher_ng_setup_ufw: false
 
 - name: Configure apt-cacher-ng clients
-  hosts: all:!proxmox_servers
+  hosts: all:!proxmox_servers:!desktops
   become: true
   tasks:
     - name: Configure debian hosts to use apt-cacher-ng

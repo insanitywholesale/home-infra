@@ -27,7 +27,7 @@
           receiver: pushoverreceiver
 
 - name: Install and configure additional Prometheus exporters
-  hosts: all:!gitlab
+  hosts: all:!gitlab_servers:!desktops
   become: true
   roles:
     - name: Install and configure Node Exporter
