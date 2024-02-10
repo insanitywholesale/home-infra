@@ -10,9 +10,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_sentry" {
   os_type  = "cloud-init"
   qemu_os  = "l26"
   cpu      = "SandyBridge"
-  cores    = 2
+  cores    = 3
   sockets  = 1
-  memory   = 4096
+  memory   = 6144
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
