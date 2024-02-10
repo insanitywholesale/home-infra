@@ -35,7 +35,7 @@
 - name: Set timezone.
   community.general.timezone:
     name: "{{ ntp_timezone }}"
-  notify: restart cron
+  notify: Restart cron
 
 - name: Populate service facts.
   ansible.builtin.service_facts:
@@ -71,5 +71,5 @@
     src: "{{ ntp_config_file | basename }}.j2"
     dest: "{{ ntp_config_file }}"
     mode: "0644"
-  notify: restart ntp
+  notify: Restart ntp
   when: ntp_manage_config | bool
