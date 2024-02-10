@@ -12,7 +12,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_sentry" {
   cpu      = "SandyBridge"
   cores    = 3
   sockets  = 1
-  memory   = 6144
+  memory   = 9216
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
