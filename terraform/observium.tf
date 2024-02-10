@@ -1,9 +1,9 @@
-resource "proxmox_vm_qemu" "proxmox_vm_librenms" {
+resource "proxmox_vm_qemu" "proxmox_vm_observium" {
   provider    = proxmox.pve1
   vmid        = 1032
   count       = 1
-  name        = format("librenms%02s", (count.index) + 1)
-  desc        = format("LibreNMS %02s", (count.index) + 1)
+  name        = format("observium%02s", (count.index) + 1)
+  desc        = format("Observium %02s", (count.index) + 1)
   target_node = "pve1"
 
   clone    = "deb12-tmpl"
@@ -33,7 +33,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_librenms" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "debian;librenms;monitoring"
+  tags = "debian;observium;monitoring"
 
   lifecycle {
     ignore_changes = [
