@@ -100,7 +100,11 @@
         chdir: /opt/librenms
         creates: /opt/librenms/vendor/autoload.php
       become_user: librenms
+      become: true
       register: composer_install_output
+
+    # TODO: might need to add a run of the following somehwere
+    # pip3 install --break-system-packages -r /opt/librenms/requirements.txt
 
     - name: Set PHP timezone
       ansible.builtin.lineinfile:
