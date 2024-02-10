@@ -37,7 +37,7 @@
     dest: "{{ nginx_conf_file_path }}"
     owner: root
     group: "{{ root_group }}"
-    mode: 0644
+    mode: "0644"
   notify:
     - reload nginx
 

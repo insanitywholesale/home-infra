@@ -68,7 +68,7 @@
         path: /opt/librenms
         owner: librenms
         group: librenms
-        mode: '0771'
+        mode: "0771"
         recurse: true
         state: directory
 
@@ -77,7 +77,7 @@
         path: /opt/librenms/html
         owner: librenms
         group: librenms
-        mode: '0777'
+        mode: "0777"
         recurse: true
         state: directory
 
@@ -107,9 +107,9 @@
     - name: Set PHP timezone
       ansible.builtin.lineinfile:
         path: "{{ item }}"
-        regexp: '^date.timezone = '
-        insertafter: '^;date.timezone = '
-        line: "date.timezone = {{ ntp_timezone }}"
+        regexp: "^date.timezone = "
+        insertafter: "^;date.timezone = "
+        line: date.timezone = {{ ntp_timezone }}
       loop:
         - /etc/php/8.2/fpm/php.ini
         - /etc/php/8.2/cli/php.ini
@@ -127,15 +127,15 @@
         name: librenms
         host: localhost
         encrypted: true
-        password: '*1BD3B8B249B3A457CAE5EB31F72878A03A55AD8B'
-        priv: 'librenms.*:ALL'
+        password: "*1BD3B8B249B3A457CAE5EB31F72878A03A55AD8B"
+        priv: librenms.*:ALL
         state: present
 
     - name: Copy over 50-server.cnf with librenms-specific additions
       ansible.builtin.template:
         src: templates/50-server.cnf.j2
         dest: /etc/mysql/mariadb.conf.d/50-server.cnf
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
@@ -144,39 +144,39 @@
         remote_src: true
         src: /etc/php/8.2/fpm/pool.d/www.conf
         dest: /etc/php/8.2/fpm/pool.d/librenms.conf
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
     - name: Configure PHP-FPM pool name
       ansible.builtin.lineinfile:
         path: /etc/php/8.2/fpm/pool.d/librenms.conf
-        regexp: '^\[www'
+        regexp: ^\[www
         line: "[librenms]"
 
     - name: Configure PHP-FPM user
       ansible.builtin.lineinfile:
         path: /etc/php/8.2/fpm/pool.d/librenms.conf
-        regexp: '^user = '
-        line: "user = librenms"
+        regexp: "^user = "
+        line: user = librenms
 
     - name: Configure PHP-FPM group
       ansible.builtin.lineinfile:
         path: /etc/php/8.2/fpm/pool.d/librenms.conf
-        regexp: '^group = '
-        line: "group = librenms"
+        regexp: "^group = "
+        line: group = librenms
 
     - name: Configure PHP-FPM listen socket
       ansible.builtin.lineinfile:
         path: /etc/php/8.2/fpm/pool.d/librenms.conf
-        regexp: '^listen = '
-        line: "listen = /run/php-fpm-librenms.sock"
+        regexp: "^listen = "
+        line: listen = /run/php-fpm-librenms.sock
 
     - name: Copy over librenms.vhost nginx config
       ansible.builtin.template:
         src: templates/librenms.vhost
         dest: /etc/nginx/sites-enabled/librenms.vhost
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
@@ -209,7 +209,7 @@
         remote_src: true
         src: /opt/librenms/misc/lnms-completion.bash
         dest: /etc/bash_completion.d/lnms-completion.bash
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
@@ -218,21 +218,21 @@
         remote_src: true
         src: /opt/librenms/snmpd.conf.example
         dest: /etc/snmp/snmpd.conf
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
     - name: Configure snmpd community
       ansible.builtin.replace:
         path: /etc/snmp/snmpd.conf
-        regexp: 'RANDOMSTRINGGOESHERE'
-        replace: "homelab"
+        regexp: RANDOMSTRINGGOESHERE
+        replace: homelab
 
     - name: Download librenms agent
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/distro
         dest: /usr/bin/distro
-        mode: '0755'
+        mode: "0755"
         owner: root
         group: root
 
@@ -247,16 +247,16 @@
         remote_src: true
         src: /opt/librenms/dist/librenms.cron
         dest: /etc/cron.d/librenms
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
     - name: Copy scheduler systemd configs
       ansible.builtin.copy:
         remote_src: true
-        src: "/opt/librenms/dist/{{ item }}"
-        dest: "/etc/systemd/system/{{ item }}"
-        mode: '0644'
+        src: /opt/librenms/dist/{{ item }}
+        dest: /etc/systemd/system/{{ item }}
+        mode: "0644"
         owner: root
         group: root
       loop:
@@ -268,4 +268,3 @@
         name: librenms-scheduler.timer
         enabled: true
         state: started
-...

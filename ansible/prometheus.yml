@@ -18,4 +18,3 @@
                 token: a31grho4qvd69bvn2k6mhhxaacbv3t
         alertmanager_route:
           receiver: pushoverreceiver
-...

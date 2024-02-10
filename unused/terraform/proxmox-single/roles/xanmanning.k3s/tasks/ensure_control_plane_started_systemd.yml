@@ -1,5 +1,4 @@
 ---
-
 - name: Ensure k3s control plane server is started
   ansible.builtin.systemd:
     name: k3s

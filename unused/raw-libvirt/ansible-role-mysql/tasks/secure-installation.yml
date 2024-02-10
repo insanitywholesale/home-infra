@@ -2,19 +2,19 @@
 - name: Ensure default user is present.
   mysql_user:
     name: "{{ mysql_user_name }}"
-    host: 'localhost'
+    host: localhost
     password: "{{ mysql_user_password }}"
-    priv: '*.*:ALL,GRANT'
+    priv: "*.*:ALL,GRANT"
     state: present
   when: mysql_user_name != mysql_root_username
 
 # Has to be after the password assignment, for idempotency.
 - name: Copy user-my.cnf file with password credentials.
   template:
-    src: "user-my.cnf.j2"
+    src: user-my.cnf.j2
     dest: "{{ mysql_user_home }}/.my.cnf"
     owner: "{{ mysql_user_name }}"
-    mode: 0600
+    mode: "0600"
   when: >
     mysql_user_name != mysql_root_username
     and (mysql_install_packages | bool or mysql_user_password_update)
@@ -26,11 +26,7 @@
 #   changed_when: false
 
 - name: Get list of hosts for the root user.
-  command: mysql -NBe
-    "SELECT Host
-    FROM mysql.user
-    WHERE User = '{{ mysql_root_username }}'
-    ORDER BY (Host='localhost') ASC"
+  command: mysql -NBe "SELECT Host FROM mysql.user WHERE User = '{{ mysql_root_username }}' ORDER BY (Host='localhost') ASC"
   register: mysql_root_hosts
   changed_when: false
   check_mode: false
@@ -62,11 +58,11 @@
 # Has to be after the root password assignment, for idempotency.
 - name: Copy .my.cnf file with root password credentials.
   template:
-    src: "root-my.cnf.j2"
+    src: root-my.cnf.j2
     dest: "{{ mysql_root_home }}/.my.cnf"
     owner: root
     group: root
-    mode: 0600
+    mode: "0600"
   when: mysql_install_packages | bool or mysql_root_password_update
 
 - name: Get list of hosts for the anonymous user.
@@ -83,4 +79,4 @@
   with_items: "{{ mysql_anonymous_hosts.stdout_lines|default([]) }}"
 
 - name: Remove MySQL test database.
-  mysql_db: "name='test' state=absent"
+  mysql_db: name='test' state=absent

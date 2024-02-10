@@ -1,3 +1,4 @@
+---
 rbac:
   buildNamespaces:
     - drone
@@ -22,4 +23,4 @@ ingress:
   hosts:
     - host: drone-runner.kates.test
       paths:
-        - "/"
+        - /

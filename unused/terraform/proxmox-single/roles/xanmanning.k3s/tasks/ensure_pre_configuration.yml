@@ -1,5 +1,4 @@
 ---
-
 - name: Ensure k3s_build_cluster is false if running against a single node.
   ansible.builtin.set_fact:
     k3s_build_cluster: false
@@ -81,17 +80,16 @@
       @@@ END:{{ host }}
       {% endfor %}
     create: true
-    mode: 0600
+    mode: "0600"
   check_mode: false
   when: k3s_control_node is defined
 
 - name: Delegate an initializing control plane node
-  when: k3s_registration_address is not defined
-        or k3s_control_delegate is not defined
+  when: k3s_registration_address is not defined or k3s_control_delegate is not defined
   block:
     - name: Lookup control node from file
       ansible.builtin.command:
-        cmd: "grep -i '{{ 'P_True' if (k3s_controller_list | length > 1) else 'C_True' }}' /tmp/inventory.txt"
+        cmd: grep -i '{{ 'P_True' if (k3s_controller_list | length > 1) else 'C_True' }}' /tmp/inventory.txt
       changed_when: false
       check_mode: false
       register: k3s_control_delegate_raw
@@ -119,7 +117,8 @@
 
     - name: Ensure the node registration address is defined
       ansible.builtin.set_fact:
-        k3s_registration_address: "{{ hostvars[k3s_control_delegate].ansible_host | default(hostvars[k3s_control_delegate].ansible_fqdn) }}"
+        k3s_registration_address: "{{ hostvars[k3s_control_delegate].ansible_host | default(hostvars[k3s_control_delegate].ansible_fqdn)
+          }}"
       check_mode: false
       when:
         - k3s_registration_address is not defined

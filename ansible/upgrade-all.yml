@@ -7,4 +7,3 @@
       ansible.builtin.apt:
         upgrade: full
         update_cache: true
-...

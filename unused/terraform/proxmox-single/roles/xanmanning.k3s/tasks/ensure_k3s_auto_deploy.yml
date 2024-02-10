@@ -1,10 +1,9 @@
 ---
-
 - name: Ensure that the manifests directory exists
   ansible.builtin.file:
     state: directory
     path: "{{ k3s_server_manifests_dir }}"
-    mode: 0755
+    mode: "0755"
   when: >-
     k3s_primary_control_node and
     (k3s_server_manifests_templates | length > 0
@@ -15,7 +14,7 @@
   ansible.builtin.file:
     state: directory
     path: "{{ k3s_server_pod_manifests_dir }}"
-    mode: 0755
+    mode: "0755"
   when: >-
     k3s_control_node and
     (k3s_server_pod_manifests_templates | length > 0
@@ -27,7 +26,7 @@
   ansible.builtin.template:
     src: "{{ item }}"
     dest: "{{ k3s_server_manifests_dir }}/{{ item | basename | replace('.j2', '') }}"
-    mode: 0644
+    mode: "0644"
   loop: "{{ k3s_server_manifests_templates }}"
   become: "{{ k3s_become }}"
   when:
@@ -38,7 +37,7 @@
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ k3s_server_manifests_dir }}/{{ item.filename | default(item.url | basename) }}"
-    mode: 0644
+    mode: "0644"
   loop: "{{ k3s_server_manifests_urls }}"
   become: "{{ k3s_become }}"
   when:
@@ -51,7 +50,7 @@
   ansible.builtin.template:
     src: "{{ item }}"
     dest: "{{ k3s_server_pod_manifests_dir }}/{{ item | basename | replace('.j2', '') }}"
-    mode: 0644
+    mode: "0644"
   loop: "{{ k3s_server_pod_manifests_templates }}"
   become: "{{ k3s_become }}"
   when:
@@ -62,7 +61,7 @@
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ k3s_server_pod_manifests_dir }}/{{ item.filename | default(item.url | basename) }}"
-    mode: 0644
+    mode: "0644"
   loop: "{{ k3s_server_pod_manifests_urls }}"
   become: "{{ k3s_become }}"
   when:

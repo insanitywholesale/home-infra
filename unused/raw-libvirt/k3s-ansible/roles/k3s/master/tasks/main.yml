@@ -1,20 +1,19 @@
 ---
-
 - name: Copy K3s service file
   register: k3s_service
   template:
-    src: "k3s.service.j2"
+    src: k3s.service.j2
     dest: "{{ systemd_dir }}/k3s.service"
     owner: root
     group: root
-    mode: 0755
+    mode: "0755"
 
 - name: Enable and check K3s service
   systemd:
     name: k3s
-    daemon_reload: yes
+    daemon_reload: true
     state: restarted
-    enabled: yes
+    enabled: true
 
 - name: Wait for node-token
   wait_for:
@@ -28,7 +27,7 @@
 - name: Change file access node-token
   file:
     path: /var/lib/rancher/k3s/server
-    mode: "g+rx,o+rx"
+    mode: g+rx,o+rx
 
 - name: Read node-token from master
   slurp:
@@ -54,7 +53,7 @@
   copy:
     src: /etc/rancher/k3s/k3s.yaml
     dest: ~{{ ansible_user }}/.kube/config
-    remote_src: yes
+    remote_src: true
     owner: "{{ ansible_user }}"
 
 - name: Replace https://localhost:6443 by https://master-ip:6443

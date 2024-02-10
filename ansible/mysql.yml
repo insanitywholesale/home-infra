@@ -17,4 +17,3 @@
         #     host: "%"
         #     password: testmysqluserpassword123
         #     priv: "testmysqldb.*:ALL"
-...

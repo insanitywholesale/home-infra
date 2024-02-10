@@ -1,3 +1,4 @@
+---
 # Default values for gitea.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -12,7 +13,6 @@ image:
   pullPolicy: Always
 
 imagePullSecrets: []
-
 service:
   http:
     type: ClusterIP
@@ -26,12 +26,11 @@ service:
     #externalTrafficPolicy:
     #externalIPs:
     annotations:
-
 ingress:
   enabled: true
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  # kubernetes.io/ingress.class: nginx
+  # kubernetes.io/tls-acme: "true"
   hostname: gitea.kates.test
   tls: []
   #  - secretName: chart-example-tls
@@ -39,27 +38,24 @@ ingress:
   #      - git.example.com
 
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
 
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
-
 statefulset:
   env: []
-    # - name: VARIABLE
-    #   value: my-value
+  # - name: VARIABLE
+  #   value: my-value
   terminationGracePeriodSeconds: 60
 
 persistence:
@@ -73,7 +69,7 @@ gitea:
   admin:
     username: inherently
     password: Asus_hol1
-    email: "pepitsizous@zoho.com"
+    email: pepitsizous@zoho.com
 
   ldap:
     enabled: false
@@ -100,7 +96,6 @@ gitea:
   #    PASSWORD_COMPLEXITY: spec
 
   podAnnotations: {}
-
   database:
     builtIn:
       postgresql:

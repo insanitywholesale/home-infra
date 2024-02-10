@@ -13,10 +13,10 @@ k3s_state: installed
 k3s_release_version: false
 
 # Location of the k3s configuration file
-k3s_config_file: "/etc/rancher/k3s/config.yaml"
+k3s_config_file: /etc/rancher/k3s/config.yaml
 
 # Location of the k3s configuration directory
-k3s_config_yaml_d_dir: "/etc/rancher/k3s/config.yaml.d"
+k3s_config_yaml_d_dir: /etc/rancher/k3s/config.yaml.d
 
 # When multiple ansible_play_hosts are present, attempt to cluster the nodes.
 # Using false will create multiple standalone nodes.
@@ -49,13 +49,10 @@ k3s_install_hard_links: false
 
 # A list of templates used for configuring the server.
 k3s_server_config_yaml_d_files: []
-
 # A list of templates used for configuring the agent.
 k3s_agent_config_yaml_d_files: []
-
 # A list of templates used for pre-configuring the cluster.
 k3s_server_manifests_templates: []
-
 # A list of URLs used for pre-configuring the cluster.
 k3s_server_manifests_urls: []
 #  - url: https://some/url/to/manifest.yml
@@ -63,7 +60,6 @@ k3s_server_manifests_urls: []
 
 # A list of templates used for installing static pod manifests on the control plane.
 k3s_server_pod_manifests_templates: []
-
 # A list of URLs used for installing static pod manifests on the control plane.
 k3s_server_pod_manifests_urls: []
 #  - url: https://some/url/to/manifest.yml
@@ -87,16 +83,12 @@ k3s_start_on_boot: true
 
 # List of required systemd units to k3s service unit.
 k3s_service_requires: []
-
 # List of "wanted" systemd unit to k3s (weaker than "requires").
 k3s_service_wants: []
-
 # Start k3s before a defined list of systemd units.
 k3s_service_before: []
-
 # Start k3s after a defined list of systemd units.
 k3s_service_after: []
-
 # Dictionary of environment variables to use within systemd unit file
 # Some examples below
 k3s_service_env_vars: {}
@@ -106,7 +98,6 @@ k3s_service_env_vars: {}
 # Location on host of a environment file to include. This must already exist on
 # the target as this role will not populate this file.
 k3s_service_env_file: false
-
 
 ##
 # Server Configuration
@@ -138,9 +129,9 @@ k3s_become: false
 k3s_registries:
 
   mirrors:
-#    docker.io:
-#      endpoint:
-#        - "https://mycustomreg.com:5000"
+  #    docker.io:
+  #      endpoint:
+  #        - "https://mycustomreg.com:5000"
   configs:
 #    "mycustomreg:5000":
 #      auth:

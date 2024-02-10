@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,20 +17,20 @@ spec:
         app: minio
     spec:
       containers:
-      - name: minio
-        image: quay.io/minio/minio:latest
-        command: ["minio", "server", "/data", "--console-address", ":9001"]
-        ports:
-        - containerPort: 9000
-        - containerPort: 9001
-        env:
-        - name: MINIO_ROOT_USER
-          value: "minioaccesskeyid"
-        - name: MINIO_ROOT_PASSWORD
-          value: "miniosecretaccesskey"
-        volumeMounts:
-        - mountPath: "/data"
-          name: gifinator-minio-data
+        - name: minio
+          image: quay.io/minio/minio:latest
+          command: [minio, server, /data, --console-address, :9001]
+          ports:
+            - containerPort: 9000
+            - containerPort: 9001
+          env:
+            - name: MINIO_ROOT_USER
+              value: minioaccesskeyid
+            - name: MINIO_ROOT_PASSWORD
+              value: miniosecretaccesskey
+          volumeMounts:
+            - mountPath: /data
+              name: gifinator-minio-data
       volumes:
         - name: gifinator-minio-data
           persistentVolumeClaim:

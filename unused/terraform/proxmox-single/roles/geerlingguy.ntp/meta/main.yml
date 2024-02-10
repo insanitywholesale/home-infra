@@ -1,12 +1,11 @@
 ---
 dependencies: []
-
 galaxy_info:
   role_name: ntp
   author: geerlingguy
   description: NTP installation and configuration for Linux.
-  company: "Midwestern Mac, LLC"
-  license: "license (BSD, MIT)"
+  company: Midwestern Mac, LLC
+  license: license (BSD, MIT)
   min_ansible_version: 2.10
   platforms:
     - name: Fedora

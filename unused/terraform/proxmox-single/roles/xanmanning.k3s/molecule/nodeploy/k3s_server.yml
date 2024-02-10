@@ -1,6 +1,6 @@
 ---
 
-flannel-backend: 'none'
+flannel-backend: none
 disable-scheduler: true
 disable-cloud-controller: true
 disable-network-policy: true
@@ -11,4 +11,4 @@ disable:
   - local-storage
   - metrics-server
 node-taint:
-  - "k3s-controlplane=true:NoExecute"
+  - k3s-controlplane=true:NoExecute

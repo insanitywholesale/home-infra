@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,15 +23,15 @@ spec:
             - containerPort: 8080
           env:
             - name: DB_PATH
-              value: "/data/todo.db"
+              value: /data/todo.db
           volumeMounts:
-            - mountPath: "/data"
+            - mountPath: /data
               name: todo-data
       securityContext:
         runAsUser: 5000
         runAsGroup: 5000
         fsGroup: 5000
-        fsGroupChangePolicy: "OnRootMismatch"
+        fsGroupChangePolicy: OnRootMismatch
       volumes:
         - name: todo-data
           persistentVolumeClaim:

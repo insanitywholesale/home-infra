@@ -10,4 +10,3 @@
 - ansible.builtin.import_playbook: influxdb.yml
 - ansible.builtin.import_playbook: prometheus.yml
 - ansible.builtin.import_playbook: k3s-site.yml
-...

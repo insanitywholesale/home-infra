@@ -1,5 +1,4 @@
 ---
-
 - name: Ensure nodes are drained and removed
   ansible.builtin.import_tasks: ensure_drain_and_remove_nodes.yml
 

@@ -1,11 +1,10 @@
 ---
-
 - name: Check that k3s_state is a supported value
   ansible.builtin.assert:
     that:
       - k3s_state in k3s_valid_states
-    fail_msg: "k3s_state not valid. Check README.md for details."
-    success_msg: "k3s_state is valid."
+    fail_msg: k3s_state not valid. Check README.md for details.
+    success_msg: k3s_state is valid.
   when: k3s_state is defined
 
 - name: Check that Ansible v{{ ansible_version.string }} is supported by this role
@@ -15,7 +14,7 @@
     fail_msg: >-
       Ansible v{{ ansible_version.string }} is not supported by this role.
       Please install >= v{{ k3s_ansible_min_version }}.
-    success_msg: "Ansible v{{ ansible_version.string }} is supported."
+    success_msg: Ansible v{{ ansible_version.string }} is supported.
   become: false
   delegate_to: localhost
   run_once: true
@@ -30,7 +29,7 @@
     fail_msg: >-
       Python v{{ ansible_python_version }} is not supported by this role.
       Please install >= v{{ k3s_python_min_version }}.
-    success_msg: "Python v{{ ansible_python_version }} is supported."
+    success_msg: Python v{{ ansible_python_version }} is supported.
   become: false
   delegate_to: localhost
   run_once: true
@@ -65,7 +64,7 @@
       - k3s_check_openrc_run.stat.exists
     fail_msg: >-
       openrc was not found, cannot install to {{ ansible_service_mgr }}
-    success_msg: "openrc found"
+    success_msg: openrc found
   when:
     - k3s_service_handler[ansible_service_mgr] == 'service'
     - not k3s_skip_validation
@@ -74,9 +73,7 @@
 - name: Run version pre-checks
   ansible.builtin.include_tasks: pre_checks_version.yml
   when:
-    - (k3s_release_version is not defined
-        or not k3s_release_version
-        or k3s_release_version is not regex('\\+k3s[1-9]$'))
+    - (k3s_release_version is not defined or not k3s_release_version or k3s_release_version is not regex('\\+k3s[1-9]$'))
     - not k3s_airgap
 
 - name: Run cgroups pre-checks

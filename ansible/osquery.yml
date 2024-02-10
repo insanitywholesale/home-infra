@@ -1,3 +1,4 @@
+---
 - name: Deploy osquery
   hosts: all
   become: true
@@ -25,4 +26,3 @@
         name: osqueryd
         enabled: true
         state: started
-...

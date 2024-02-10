@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,16 +17,16 @@ spec:
         app: render
     spec:
       containers:
-      - name: render
-        image: inherently/gifinator:0.0.5
-        command: ["/render"]
-        env:
-        - name: MINIO_PORT
-          value: "80"
-        - name: MINIO_NAME
-          #value: "minio-service"
-          value: "minio.kates.test"
-        - name: RENDER_PORT
-          value: "8085"
-        ports:
-        - containerPort: 8085
+        - name: render
+          image: inherently/gifinator:0.0.5
+          command: [/render]
+          env:
+            - name: MINIO_PORT
+              value: "80"
+            - name: MINIO_NAME
+              #value: "minio-service"
+              value: minio.kates.test
+            - name: RENDER_PORT
+              value: "8085"
+          ports:
+            - containerPort: 8085

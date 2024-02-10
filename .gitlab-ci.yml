@@ -11,13 +11,12 @@ include:
       # The version must currently be specified explicitly as an input,
       # to find the correctly associated images. # This can be removed
       # once https://gitlab.com/gitlab-org/gitlab/-/issues/438275 is solved.
-      version: 0.10.0
+      version: "0.10.0"
       opentofu_version: 1.6.1
       root_dir: terraform
       state_name: homelab-cluster
 
 stages: [validate, build, deploy, cleanup]
-
 ansible_lint:
   tags: [ansible]
   stage: validate
@@ -59,10 +58,8 @@ ansible_check_diff:
 
 fmt:
   tags: [terraform]
-
 validate:
   tags: [terraform]
-
 plan:
   tags: [terraform]
   needs:
@@ -77,6 +74,5 @@ apply:
 destroy:
   tags: [terraform]
   needs: []
-
 delete-state:
   tags: [terraform]

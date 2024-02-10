@@ -1,5 +1,4 @@
 ---
-
 - name: get dem centy boiz done up
   hosts: all
   become: true
@@ -7,7 +6,7 @@
   tasks:
     - name: upd8 every m8
       yum:
-        name: '*'
+        name: "*"
         state: latest
 
     - name: INSTALL epel release repo
@@ -29,4 +28,3 @@
         name:
           - nano
         state: absent
-...

@@ -1,10 +1,9 @@
 ---
-
 - name: Check if embedded etcd datastore is enabled and marked as experimental
   ansible.builtin.assert:
     that:
       - k3s_use_experimental is defined and k3s_use_experimental
-    success_msg: "Experimental variables are defined and enabled."
+    success_msg: Experimental variables are defined and enabled.
     fail_msg: >-
       Experimental variable k3s_etcd_datastore has been configured.
       If you want to use this ensure you set k3s_use_experimental,
@@ -17,7 +16,7 @@
   ansible.builtin.assert:
     that:
       - k3s_use_experimental is defined and k3s_use_experimental
-    success_msg: "Experimental variables are defined and enabled."
+    success_msg: Experimental variables are defined and enabled.
     fail_msg: >-
       Experimental variable {{ item.setting }} has been configured.
       If you want to use this ensure you set k3s_use_experimental.
@@ -27,5 +26,5 @@
   loop: "{{ k3s_experimental_config }}"
   when:
     - (item.setting in k3s_runtime_config and k3s_runtime_config[item.setting])
-    - ((item.until is not defined) or
-        (item.until is defined and (k3s_release_version | replace('v', '')) is version_compare(item.until, '<')))
+    - ((item.until is not defined) or (item.until is defined and (k3s_release_version | replace('v', '')) is version_compare(item.until,
+      '<')))

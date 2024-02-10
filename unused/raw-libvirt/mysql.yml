@@ -1,5 +1,4 @@
 ---
-
 - name: bestow lxc container with mysql
   hosts: mysql
   become: true
@@ -7,5 +6,3 @@
     - ./ansible-role-mysql/vars/main.yml
   roles:
     - role: ./ansible-role-mysql
-
-...

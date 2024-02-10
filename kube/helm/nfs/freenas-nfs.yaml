@@ -1,36 +1,37 @@
+---
 csiDriver:
   # should be globally unique for a given cluster
-  name: "org.democratic-csi.nfs"
+  name: org.democratic-csi.nfs
 
 # add note here about volume expansion requirements
 storageClasses:
-- name: freenas-nfs-csi
-  defaultClass: false
-  reclaimPolicy: Delete
-  volumeBindingMode: Immediate
-  allowVolumeExpansion: true
-  parameters:
+  - name: freenas-nfs-csi
+    defaultClass: false
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+    parameters:
     # for block-based storage can be ext3, ext4, xfs
     # for nfs should be nfs
-    fsType: nfs
-      
+      fsType: nfs
+
     # if true, volumes created from other snapshots will be
     # zfs send/received instead of zfs cloned
     # detachedVolumesFromSnapshots: "false"
-    
+
     # if true, volumes created from other volumes will be
     # zfs send/received instead of zfs cloned
     # detachedVolumesFromVolumes: "false"
 
-  mountOptions:
-  - noatime
-  - nfsvers=4
-  secrets:
-    provisioner-secret:
-    controller-publish-secret:
-    node-stage-secret:
-    node-publish-secret:
-    controller-expand-secret:
+    mountOptions:
+      - noatime
+      - nfsvers=4
+    secrets:
+      provisioner-secret:
+      controller-publish-secret:
+      node-stage-secret:
+      node-publish-secret:
+      controller-expand-secret:
 
 # if your cluster supports snapshots you may enable below
 volumeSnapshotClasses: []
@@ -64,8 +65,8 @@ driver:
       port: 22
       username: root
       # use either password or key
-      password: "failfail"
-    
+      password: failfail
+
     zfs:
       datasetParentName: tank-z1/k8s/nfs/vols
       # do NOT make datasetParentName and detachedSnapshotsDatasetParentName overlap
@@ -79,7 +80,7 @@ driver:
       #datasetPermissionsAcls:
       #- "-m everyone@:full_set:allow"
       #- "-m u:kube:full_set:allow"
-    
+
     nfs:
       shareHost: 192.168.19.97
       shareAlldirs: false

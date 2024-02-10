@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,36 +16,36 @@ spec:
         app: minecraft
     spec:
       containers:
-      - name: minecraft
-        image: itzg/minecraft-server
-        env:
-        - name: EULA
-          value: "TRUE"
-        - name: VERSION
-          value: "1.16.4"
-        - name: ONLINE_MODE
-          value: "FALSE"
-        #- name: UID
-        #  value: "0"
-        #- name: GID
-        #  value: "0"
-        securityContext:
-          runAsUser: 0
-          runAsGroup: 0
-          privileged: true
-          allowPrivilegeEscalation: true
-        ports:
-        - containerPort: 25565
-        volumeMounts:
-        - mountPath: "/data"
-          name: minecraft-data
-        - mountPath: "/data/ops.json"
-          name: mc-config
-          subPath: "ops.json"
+        - name: minecraft
+          image: itzg/minecraft-server
+          env:
+            - name: EULA
+              value: "TRUE"
+            - name: VERSION
+              value: 1.16.4
+            - name: ONLINE_MODE
+              value: "FALSE"
+          #- name: UID
+          #  value: "0"
+          #- name: GID
+          #  value: "0"
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+            privileged: true
+            allowPrivilegeEscalation: true
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+            - mountPath: /data
+              name: minecraft-data
+            - mountPath: /data/ops.json
+              name: mc-config
+              subPath: ops.json
       volumes:
-      - name: minecraft-data
-        persistentVolumeClaim:
-          claimName: mc-data-pvc
-      - name: mc-config
-        configMap:
-          name: minecraft-config
+        - name: minecraft-data
+          persistentVolumeClaim:
+            claimName: mc-data-pvc
+        - name: mc-config
+          configMap:
+            name: minecraft-config

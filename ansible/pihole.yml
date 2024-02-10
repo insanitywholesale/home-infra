@@ -8,13 +8,13 @@
       ansible.builtin.file:
         path: /opt/pihole-install
         state: directory
-        mode: '0755'
+        mode: "0755"
 
     - name: Download PiHole install script
       ansible.builtin.get_url:
         url: https://install.pi-hole.net
         dest: /opt/pihole-install/basic-install.sh
-        mode: '0755'
+        mode: "0755"
         owner: root
         group: root
 
@@ -22,13 +22,13 @@
       ansible.builtin.file:
         path: /etc/pihole
         state: directory
-        mode: '0755'
+        mode: "0755"
 
     - name: Copy over setupVars.conf
       ansible.builtin.copy:
         src: setupVars.conf
         dest: /etc/pihole/setupVars.conf
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
@@ -43,7 +43,7 @@
       ansible.builtin.copy:
         src: 99-edns.conf
         dest: /etc/dnsmasq.d/99-edns.conf
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
@@ -81,7 +81,7 @@
       ansible.builtin.copy:
         src: unbound-pi-hole.conf
         dest: /etc/unbound/unbound.conf.d/unbound-pi-hole.conf
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
@@ -89,7 +89,7 @@
       ansible.builtin.get_url:
         url: https://www.internic.net/domain/named.root
         dest: /var/lib/unbound/root.hints
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
@@ -100,4 +100,3 @@
         enabled: true
         daemon_reload: true
         state: reloaded
-...

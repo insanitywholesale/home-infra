@@ -1,5 +1,4 @@
 ---
-
 - name: Run version pre-checks
   ansible.builtin.import_tasks: pre_checks_version.yml
   when:

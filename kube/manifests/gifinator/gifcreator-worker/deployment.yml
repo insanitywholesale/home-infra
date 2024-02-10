@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,26 +17,26 @@ spec:
         app: gifcreator-worker
     spec:
       containers:
-      - name: gifcreator-worker
-        image: inherently/gifinator:0.0.5
-        command: ["/gifcreator", "-worker"]
-        env:
-        - name: RENDER_NAME
-          value: "render-service"
-        - name: RENDER_PORT
-          value: "8085"
-        - name: REDIS_NAME
-          value: "redis-service"
-        - name: REDIS_PORT
-          value: "6379"
-        - name: GIFCREATOR_PORT
-          value: "8081"
-        - name: MINIO_PORT
-          value: "80"
-        - name: MINIO_NAME
-          #value: "minio-service"
-          value: "minio.kates.test"
-        - name: SCENE_PATH
-          value: "/tmp/scene"
-        ports:
-        - containerPort: 8081
+        - name: gifcreator-worker
+          image: inherently/gifinator:0.0.5
+          command: [/gifcreator, -worker]
+          env:
+            - name: RENDER_NAME
+              value: render-service
+            - name: RENDER_PORT
+              value: "8085"
+            - name: REDIS_NAME
+              value: redis-service
+            - name: REDIS_PORT
+              value: "6379"
+            - name: GIFCREATOR_PORT
+              value: "8081"
+            - name: MINIO_PORT
+              value: "80"
+            - name: MINIO_NAME
+              #value: "minio-service"
+              value: minio.kates.test
+            - name: SCENE_PATH
+              value: /tmp/scene
+          ports:
+            - containerPort: 8081

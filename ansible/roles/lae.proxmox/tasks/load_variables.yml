@@ -1,6 +1,6 @@
 ---
 - name: Gather distribution specific variables
-  include_vars: "debian-{{ ansible_distribution_release }}.yml"
+  include_vars: debian-{{ ansible_distribution_release }}.yml
 
 - name: Ensure pve_cluster_addr0 is in the host facts
   set_fact:

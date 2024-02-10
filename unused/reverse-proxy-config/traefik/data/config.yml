@@ -1,11 +1,12 @@
+---
 http:
 
-# routers
+  # routers
   routers:
     pve0:
       entryPoints:
-        - "https"
-      rule: "Host(`pve0.home.inherently.xyz`)"
+        - https
+      rule: Host(`pve0.home.inherently.xyz`)
       middlewares:
         - default-headers
         - https-redirectscheme
@@ -13,8 +14,8 @@ http:
       service: pve0
     pve1:
       entryPoints:
-        - "https"
-      rule: "Host(`pve1.home.inherently.xyz`)"
+        - https
+      rule: Host(`pve1.home.inherently.xyz`)
       middlewares:
         - default-headers
         - https-redirectscheme
@@ -22,33 +23,33 @@ http:
       service: pve1
     truenas:
       entryPoints:
-        - "https"
-      rule: "Host(`truenas.home.inherently.xyz`)"
+        - https
+      rule: Host(`truenas.home.inherently.xyz`)
       middlewares:
         - default-headers
         - https-redirectscheme
       tls: {}
       service: truenas
 
-# services
+  # services
   services:
     pve0:
       loadBalancer:
         servers:
-          - url: "https://192.168.70.1:8006"
+          - url: https://192.168.70.1:8006
         passHostHeader: true
     pve1:
       loadBalancer:
         servers:
-          - url: "https://192.168.70.2:8006"
+          - url: https://192.168.70.2:8006
         passHostHeader: true
     truenas:
       loadBalancer:
         servers:
-          - url: "https://192.168.19.97:6443"
+          - url: https://192.168.19.97:6443
         passHostHeader: true
 
-# middlewares
+  # middlewares
   middlewares:
     https-redirectscheme:
       redirectScheme:
@@ -71,12 +72,12 @@ http:
     default-whitelist:
       ipWhiteList:
         sourceRange:
-        - "10.0.0.0/8"
-        - "192.168.0.0/16"
-        - "172.16.0.0/12"
+          - 10.0.0.0/8
+          - 192.168.0.0/16
+          - 172.16.0.0/12
 
     secured:
       chain:
         middlewares:
-        - default-whitelist
-        - default-headers
+          - default-whitelist
+          - default-headers

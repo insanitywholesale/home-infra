@@ -8,7 +8,7 @@
       ansible.builtin.get_url:
         url: https://github.com/FOGProject/fogproject/archive/1.5.10.tar.gz
         dest: /opt/fog-1_5_10.tar.gz
-        mode: '0644'
+        mode: "0644"
         owner: root
         group: root
 
@@ -25,4 +25,3 @@
         cmd: ./installfog.sh --autoaccept
       register: fog_install_output
       changed_when: "'Setup complete' in fog_install_output.stdout"
-...

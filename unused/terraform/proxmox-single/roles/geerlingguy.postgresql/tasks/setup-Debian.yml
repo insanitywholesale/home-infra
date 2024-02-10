@@ -10,7 +10,7 @@
     state: present
 
 - name: Ensure all configured locales are present.
-  locale_gen: "name={{ item }} state=present"
+  locale_gen: name={{ item }} state=present
   with_items: "{{ postgresql_locales }}"
   register: locale_gen_result
 

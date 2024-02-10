@@ -51,7 +51,7 @@ platforms:
     image: geerlingguy/docker-rockylinux8-ansible:latest
     pre_build_image: true
     ports:
-      - "6443:6443"
+      - 6443:6443
     networks:
       - name: k3snet
 provisioner:

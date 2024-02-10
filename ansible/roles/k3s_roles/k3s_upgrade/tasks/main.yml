@@ -3,7 +3,7 @@
 # local control-plane instead of the remote host. Shell supports wildcards.
 - name: Save current K3s service
   ansible.builtin.shell:
-    cmd: "cp {{ systemd_dir }}/k3s*.service /tmp/"
+    cmd: cp {{ systemd_dir }}/k3s*.service /tmp/
   changed_when: true
 
 - name: Install new K3s Version
@@ -16,7 +16,7 @@
 
 - name: Restore K3s service
   ansible.builtin.shell:
-    cmd: "mv /tmp/k3s*.service {{ systemd_dir }}/"
+    cmd: mv /tmp/k3s*.service {{ systemd_dir }}/
   changed_when: true
 
 - name: Restart K3s service [server]

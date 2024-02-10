@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -15,4 +16,4 @@ spec:
     #- nfsvers=4.1
   nfs:
     server: 192.168.19.97
-    path: "/mnt/tank-z1/k8nfs"
+    path: /mnt/tank-z1/k8nfs

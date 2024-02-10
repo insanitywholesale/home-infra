@@ -6,4 +6,4 @@ nginx_mime_file_path: /usr/local/etc/nginx/mime.types
 nginx_pidfile: /var/run/nginx.pid
 nginx_vhost_path: /usr/local/etc/nginx/sites-enabled
 nginx_default_vhost_path: /usr/local/etc/nginx/sites-enabled/default
-__nginx_user: "www"
+__nginx_user: www

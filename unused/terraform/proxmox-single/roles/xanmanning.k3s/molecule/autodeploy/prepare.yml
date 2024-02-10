@@ -12,15 +12,15 @@
 
     - name: Ensure install directory and configuration directory exists
       ansible.builtin.file:
-        path: "/opt/k3s/{{ item }}"
+        path: /opt/k3s/{{ item }}
         state: directory
-        mode: 0755
+        mode: "0755"
       loop:
         - bin
         - etc
 
     - name: Ensure data directory exists
       ansible.builtin.file:
-        path: "/var/lib/k3s-io"
+        path: /var/lib/k3s-io
         state: directory
-        mode: 0755
+        mode: "0755"

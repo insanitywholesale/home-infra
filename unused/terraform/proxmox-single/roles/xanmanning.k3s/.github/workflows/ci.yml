@@ -1,7 +1,7 @@
 ---
 
 name: CI
-'on':
+on:
   pull_request:
   push:
     branches:
@@ -13,7 +13,7 @@ name: CI
 
 defaults:
   run:
-    working-directory: "xanmanning.k3s"
+    working-directory: xanmanning.k3s
 
 jobs:
   ansible-lint:
@@ -23,12 +23,12 @@ jobs:
       - name: Checkout codebase
         uses: actions/checkout@v2
         with:
-          path: "xanmanning.k3s"
+          path: xanmanning.k3s
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
         with:
-          python-version: "3.x"
+          python-version: 3.x
 
       - name: Install test dependencies
         run: pip3 install -r molecule/lint-requirements.txt
@@ -48,41 +48,41 @@ jobs:
         include:
           - distro: geerlingguy/docker-debian11-ansible:latest
             scenario: default
-            prebuilt: 'true'
+            prebuilt: "true"
           - distro: geerlingguy/docker-ubuntu2204-ansible:latest
             scenario: default
-            prebuilt: 'true'
+            prebuilt: "true"
           - distro: geerlingguy/docker-amazonlinux2-ansible:latest
             scenario: default
-            prebuilt: 'true'
+            prebuilt: "true"
           - distro: geerlingguy/docker-ubuntu2004-ansible:latest
             scenario: default
-            prebuilt: 'true'
+            prebuilt: "true"
           - distro: geerlingguy/docker-fedora35-ansible:latest
             scenario: nodeploy
-            prebuilt: 'true'
+            prebuilt: "true"
           - distro: geerlingguy/docker-fedora34-ansible:latest
             scenario: highavailabilitydb
-            prebuilt: 'true'
+            prebuilt: "true"
           - distro: geerlingguy/docker-fedora33-ansible:latest
             scenario: autodeploy
           - distro: xanmanning/docker-alpine-ansible:3.16
             scenario: highavailabilityetcd
-            prebuilt: 'false'
+            prebuilt: "false"
           - distro: geerlingguy/docker-rockylinux9-ansible:latest
             scenario: highavailabilityetcd
-            prebuilt: 'true'
+            prebuilt: "true"
 
     steps:
       - name: Checkout codebase
         uses: actions/checkout@v2
         with:
-          path: "xanmanning.k3s"
+          path: xanmanning.k3s
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
         with:
-          python-version: "3.x"
+          python-version: 3.x
 
       - name: Install test dependencies
         run: pip3 install -r molecule/requirements.txt
@@ -91,8 +91,8 @@ jobs:
         run: molecule test --scenario-name "${{ matrix.scenario }}"
         # continue-on-error: true
         env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"
           MOLECULE_DISTRO: ${{ matrix.distro }}
           MOLECULE_PREBUILT: ${{ matrix.prebuilt }}
           MOLECULE_DOCKER_COMMAND: ${{ matrix.command }}

@@ -1,3 +1,4 @@
+---
 all:
   children:
     aptcache_servers:
@@ -54,12 +55,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -69,12 +68,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -84,12 +81,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -99,12 +94,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -114,12 +107,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -129,12 +120,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -146,12 +135,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -161,12 +148,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -176,12 +161,10 @@ all:
               ansible_private_key_file: /home/angle/.ssh/id_ed25519
               ansible_python_interpreter: /usr/bin/env python3
               ansible_user: debian
-              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
-                | default(groups[''server''][0]) }}'
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ''
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable
-                servicelb
+              extra_agent_args: ""
+              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri

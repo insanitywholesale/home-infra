@@ -1,5 +1,4 @@
 ---
-
 - name: Check that all nodes to be ready
   ansible.builtin.command:
     cmd: "{{ k3s_install_dir }}/kubectl get nodes"
@@ -15,7 +14,6 @@
   delay: 5
   when:
     - k3s_control_node
-    - ("flannel-backend" not in k3s_runtime_config
-       or k3s_runtime_config["flannel-backend"] != "none")
+    - ("flannel-backend" not in k3s_runtime_config or k3s_runtime_config["flannel-backend"] != "none")
     - not ansible_check_mode
   become: "{{ k3s_become }}"

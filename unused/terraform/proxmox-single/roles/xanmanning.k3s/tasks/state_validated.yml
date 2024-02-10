@@ -1,5 +1,4 @@
 ---
-
 - name: Run control plane post checks
   ansible.builtin.import_tasks: post_checks_control_plane.yml
 

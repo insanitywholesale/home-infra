@@ -1,6 +1,5 @@
 ---
-
-- name: "Check that k3s_release_version >= {{ k3s_min_version }}"
+- name: Check that k3s_release_version >= {{ k3s_min_version }}
   ansible.builtin.assert:
     that:
       - (k3s_release_version | replace('v', '')) is version_compare(k3s_min_version, '>=')
@@ -24,8 +23,7 @@
 - name: Check configuration in k3s_server and k3s_agent for deprecated configuration
   ansible.builtin.assert:
     that:
-      - (item.setting not in k3s_runtime_config)
-        or (not k3s_runtime_config[item.setting])
+      - (item.setting not in k3s_runtime_config) or (not k3s_runtime_config[item.setting])
     success_msg: "{{ item.setting }} not found in server/agent config"
     fail_msg: >-
       {{ item.setting }} found in server/agent config.
@@ -36,8 +34,8 @@
   loop: "{{ k3s_deprecated_config }}"
   when:
     - not k3s_airgap
-    - (item.when is not defined
-       or (item.when is defined and (k3s_release_version | replace('v', '')) is version_compare(item.when, '>=')))
+    - (item.when is not defined or (item.when is defined and (k3s_release_version | replace('v', '')) is version_compare(item.when,
+      '>=')))
     - not k3s_use_unsupported_config
 
 - name: Check configuration in k3s_server and k3s_agent against release version

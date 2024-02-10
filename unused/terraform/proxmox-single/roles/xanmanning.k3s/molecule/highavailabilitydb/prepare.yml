@@ -16,13 +16,13 @@
       ansible.builtin.file:
         path: /usr/local/etc/haproxy
         state: directory
-        mode: 0755
+        mode: "0755"
 
     - name: Ensure HAProxy is configured
       ansible.builtin.template:
         src: haproxy-loadbalancer.conf.j2
         dest: /usr/local/etc/haproxy/haproxy.cfg
-        mode: 0644
+        mode: "0644"
 
     - name: Ensure HAProxy service is started
       ansible.builtin.command:
@@ -43,6 +43,6 @@
     - name: Ensure environment file exists for k3s_service_env_file
       ansible.builtin.lineinfile:
         path: /tmp/k3s.env
-        line: "THISHOST={{ ansible_hostname }}"
-        mode: 0644
+        line: THISHOST={{ ansible_hostname }}
+        mode: "0644"
         create: true

@@ -1,3 +1,4 @@
+---
 - name: Identify imported ZFS pools
   community.general.zpool_facts:
 - name: Create testpool ZFS pool

@@ -1,3 +1,4 @@
+---
 mysql_databases:
   - name: k3s
     encoding: utf8
@@ -6,4 +7,4 @@ mysql_users:
   - name: k3s
     host: "%"
     password: flagrant
-    priv: "k3s.*:ALL"
+    priv: k3s.*:ALL

@@ -1,5 +1,4 @@
 ---
-
 - name: Check if kubectl exists
   ansible.builtin.stat:
     path: "{{ k3s_install_dir }}/kubectl"

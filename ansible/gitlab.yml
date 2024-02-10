@@ -36,4 +36,3 @@
         state: present
       environment:
         EXTERNAL_URL: http://gitlab.home.inherently.xyz
-...

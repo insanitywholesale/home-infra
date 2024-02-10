@@ -3,15 +3,15 @@
   file:
     path: /root/.ssh/
     state: directory
-    mode: 0700
+    mode: "0700"
 
 - name: Create root SSH key pair for PVE
   user:
     name: root
-    generate_ssh_key: yes
+    generate_ssh_key: true
     ssh_key_file: /root/.ssh/id_ed25519
     ssh_key_type: rsa
-    ssh_key_comment: "root@{{ inventory_hostname_short }}"
+    ssh_key_comment: root@{{ inventory_hostname_short }}
 
 - name: Fetch root SSH public key
   slurp:
@@ -27,8 +27,8 @@
 - name: Configure SSH clients for connecting to PVE cluster hosts
   blockinfile:
     dest: /etc/ssh/ssh_config
-    create: yes
-    mode: 0644
+    create: true
+    mode: "0644"
     marker: "# {mark}: PVE host configuration options (managed by ansible)."
     content: |
       {% for host in groups[pve_group] %}
@@ -46,26 +46,26 @@
       Match Address {{ hostvars[host].pve_cluster_ssh_addrs | join(",") }}
       PermitRootLogin prohibit-password
       {% endfor %}
-    validate: "/usr/sbin/sshd -t -f %s"
+    validate: /usr/sbin/sshd -t -f %s
   notify:
     - reload ssh server configuration
 
 - name: Enable and start SSH server
   ansible.builtin.systemd:
     name: ssh.service
-    enabled: yes
+    enabled: true
     state: started
 
 - name: Fetch a SSH public key to use for cluster joins
   ansible.builtin.slurp:
-    src: "/etc/ssh/ssh_host_ed25519_key.pub"
+    src: /etc/ssh/ssh_host_ed25519_key.pub
   register: _pve_ssh_public_key
 
 - name: Add PVE-provided ciphers to SSH client config
   lineinfile:
-    line: "Ciphers {{ pve_ssh_ciphers }}"
-    regexp: "^Ciphers .*"
+    line: Ciphers {{ pve_ssh_ciphers }}
+    regexp: ^Ciphers .*
     insertbefore: BOF
-    create: yes
-    mode: 0644
+    create: true
+    mode: "0644"
     dest: /root/.ssh/config

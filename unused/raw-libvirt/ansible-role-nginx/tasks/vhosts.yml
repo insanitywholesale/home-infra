@@ -19,7 +19,7 @@
     force: true
     owner: root
     group: "{{ root_group }}"
-    mode: 0644
+    mode: "0644"
   when: item.state|default('present') != 'absent'
   with_items: "{{ nginx_vhosts }}"
   notify: reload nginx

@@ -8,7 +8,7 @@
     dest: /usr/local/bin/k3s-install.sh
     owner: root
     group: root
-    mode: 0755
+    mode: "0755"
 
 - name: Download K3s binary
   when: airgap_dir is undefined
@@ -17,17 +17,17 @@
   environment:
     INSTALL_K3S_SKIP_START: "true"
     INSTALL_K3S_VERSION: "{{ k3s_version }}"
-    INSTALL_K3S_EXEC: "agent"
+    INSTALL_K3S_EXEC: agent
   changed_when: true
 
 - name: Copy K3s service file
   register: k3s_agent_service
   ansible.builtin.template:
-    src: "k3s-agent.service.j2"
+    src: k3s-agent.service.j2
     dest: "{{ systemd_dir }}/k3s-agent.service"
     owner: root
     group: root
-    mode: "u=rw,g=r,o=r"
+    mode: u=rw,g=r,o=r
 
 - name: Enable and check K3s service
   ansible.builtin.systemd:

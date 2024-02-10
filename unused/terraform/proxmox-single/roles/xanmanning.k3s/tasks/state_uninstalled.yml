@@ -1,5 +1,4 @@
 ---
-
 - name: Run pre-configuration tasks
   ansible.builtin.import_tasks: ensure_pre_configuration.yml
 

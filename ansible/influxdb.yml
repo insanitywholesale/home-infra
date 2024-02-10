@@ -50,4 +50,3 @@
     #     user_name: your_user_name
     #     user_password: your_user_password
     #     state: present
-...

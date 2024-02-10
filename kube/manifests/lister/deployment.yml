@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,10 +17,10 @@ spec:
         app: lister
     spec:
       containers:
-      - name: lister
-        image: inherently/lister:0.0.2
-        #env:
-        #- name: PG_URL
-        #  value: "postgresql://tester:Apasswd@postgres-lister:5432?sslmode=disable"
-        ports:
-        - containerPort: 9392
+        - name: lister
+          image: inherently/lister:0.0.2
+          #env:
+          #- name: PG_URL
+          #  value: "postgresql://tester:Apasswd@postgres-lister:5432?sslmode=disable"
+          ports:
+            - containerPort: 9392

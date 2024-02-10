@@ -19,4 +19,3 @@
   become: true
   roles:
     - role: k3s_roles/k3s_agent
-...

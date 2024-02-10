@@ -1,6 +1,7 @@
+---
 - name: Install and configure ProxMox
   hosts: pve
-  become: True
+  become: true
   roles:
     - role: geerlingguy.ntp
     - role: lae.proxmox
@@ -19,16 +20,16 @@
           - nfs-common
           - nfs4-acl-tools
           - libguestfs-tools
-        state:
-          present
+        state: present
 
     # Debian 11
     - name: Download debian 11 generic cloud image
       get_url:
         url: https://cloud.debian.org/images/cloud/bullseye/20231013-1532/debian-11-genericcloud-amd64-20231013-1532.qcow2
         dest: /root/debian-11-amd64.qcow2
-        checksum: sha512:651051664551425a1b731d5cb90cee33819ab8a3f955780efdb5e7045b057ec350345993a673f23a75c30aa2cb41409d0b6b5222a4f930028beaaa3c052ec0ec
-        mode: '0644'
+        checksum: 
+          sha512:651051664551425a1b731d5cb90cee33819ab8a3f955780efdb5e7045b057ec350345993a673f23a75c30aa2cb41409d0b6b5222a4f930028beaaa3c052ec0ec
+        mode: "0644"
         owner: root
         group: root
 
@@ -41,7 +42,7 @@
       copy:
         src: setup-debian-11-cloudinit.sh
         dest: /root/setup-debian-11-template.sh
-        mode: '0755'
+        mode: "0755"
         owner: root
         group: root
 
@@ -55,8 +56,9 @@
       get_url:
         url: https://cloud.debian.org/images/cloud/bookworm/20231013-1532/debian-12-genericcloud-amd64-20231013-1532.qcow2
         dest: /root/debian-12-amd64.qcow2
-        checksum: sha512:6b55e88b027c14da1b55c85a25a9f7069d4560a8fdb2d948c986a585db469728a06d2c528303e34bb62d8b2984def38fd9ddfc00965846ff6e05b01d6e883bfe
-        mode: '0644'
+        checksum: 
+          sha512:6b55e88b027c14da1b55c85a25a9f7069d4560a8fdb2d948c986a585db469728a06d2c528303e34bb62d8b2984def38fd9ddfc00965846ff6e05b01d6e883bfe
+        mode: "0644"
         owner: root
         group: root
 
@@ -69,7 +71,7 @@
       copy:
         src: setup-debian-12-cloudinit.sh
         dest: /root/setup-debian-12-template.sh
-        mode: '0755'
+        mode: "0755"
         owner: root
         group: root
 

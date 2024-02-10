@@ -1,3 +1,4 @@
+---
 ## Gitea image
 ## ref: https://hub.docker.com/r/gitea/gitea/tags/
 ##
@@ -7,8 +8,8 @@ tags:
 
 images:
   registry: docker.io
-  gitea: "gitea/gitea:1.11.5"
-  memcached: "memcached:1.5.19-alpine"
+  gitea: gitea/gitea:1.11.5
+  memcached: memcached:1.5.19-alpine
   pullPolicy: IfNotPresent
   ## Optionally specify an array of imagePullSecrets.
   ## Secrets must be manually created in the namespace.
@@ -97,7 +98,6 @@ service:
     externalPort: 8022
     externalHost: gitea.k3s.test
     externalIPs: []
-
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
@@ -126,7 +126,7 @@ persistence:
   accessMode: ReadWriteMany
   ## addtional annotations for PVCs. Uncommenting will prevent the PVC from being deleted.
   annotations:
-    "helm.sh/resource-policy": keep
+    helm.sh/resource-policy: keep
 
 ## if you want to mount a volume directly without using a storageClass or pvcs
 #  directGiteaVolumeMount:
@@ -137,8 +137,6 @@ persistence:
 #    glusterfs:
 #      endpoints: "192.168.1.1 192.168.1.2 192.168.1.3"
 #      path: giteaPostgresData
-
-
 
 ##
 ## MariaDB chart configuration
@@ -175,7 +173,7 @@ mariadb:
     persistence:
       enabled: true
       annotations:
-        "helm.sh/resource-policy": keep
+        helm.sh/resource-policy: keep
       ## mariadb data Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
       ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -195,12 +193,11 @@ mariadb:
 #   dbPort: "5432"
 #   dbDatabase: "gitea"
 
-
 ## Actual Gitea configuration (modified the default .ini file for Gitea)
 ## This will skip the initial installation screen. You must have a secretKey already defined
 ## and disableInstaller set to True
 config:
-##  secretKey: ThisIsMySuperSecretKeyThatsUsedInterally
+  ##  secretKey: ThisIsMySuperSecretKeyThatsUsedInterally
   disableInstaller: false
   offlineMode: false
   requireSignin: false
@@ -214,8 +211,6 @@ config:
 nodeSelector: {}
 tolerations: []
 affinity: {}
-
 ## Annotations for the deployment and nodes.
 deploymentAnnotations: {}
 podAnnotations: {}
-

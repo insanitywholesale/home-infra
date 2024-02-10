@@ -5,7 +5,7 @@
     dest: /etc/yum.repos.d/nginx.repo
     owner: root
     group: "{{ root_group }}"
-    mode: 0644
+    mode: "0644"
   when: nginx_yum_repo_enabled | bool
 
 - name: Ensure nginx is installed.

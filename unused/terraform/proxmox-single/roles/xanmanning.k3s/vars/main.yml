@@ -30,28 +30,28 @@ k3s_arch_lookup:
     suffix: ""
   arm64:
     arch: arm64
-    suffix: "-arm64"
+    suffix: -arm64
   aarch64:
     arch: arm64
-    suffix: "-arm64"
+    suffix: -arm64
   arm:
     arch: arm
-    suffix: "-armhf"
+    suffix: -armhf
   arm6l:
     arch: arm
-    suffix: "-armhf"
+    suffix: -armhf
   armv6l:
     arch: arm
-    suffix: "-armhf"
+    suffix: -armhf
   arm7:
     arch: arm
-    suffix: "-armhf"
+    suffix: -armhf
   armv7l:
     arch: arm
-    suffix: "-armhf"
+    suffix: -armhf
   armhf:
     arch: arm
-    suffix: "-armhf"
+    suffix: -armhf
 
 # Always default to stable channel, this will change with k3s_release_version
 k3s_release_channel: stable
@@ -62,22 +62,14 @@ k3s_api_releases: "{{ k3s_api_url }}/v1-release/channels"
 k3s_github_download_url: "{{ k3s_github_url }}/releases/download"
 
 # Generate a runtime config dictionary
-k3s_runtime_config: "{{
-  (k3s_control_node is defined and k3s_control_node)
-  | ternary((k3s_server | default({})) | combine(k3s_agent | default({})),
-      (k3s_agent | default({})),
-      (k3s_server | default({})) | combine(k3s_agent | default({})))
-}}"
+k3s_runtime_config: "{{ (k3s_control_node is defined and k3s_control_node) | ternary((k3s_server | default({})) | combine(k3s_agent
+  | default({})), (k3s_agent | default({})), (k3s_server | default({})) | combine(k3s_agent | default({}))) }}"
 
 # Determine if a cluster should be built
-k3s_conf_build_cluster: "{{
-  not ((ansible_play_hosts_all | length < 2)
-  and k3s_registration_address is not defined)
-}}"
+k3s_conf_build_cluster: "{{ not ((ansible_play_hosts_all | length < 2) and k3s_registration_address is not defined) }}"
 
 # Empty array for counting the number of control plane nodes
 k3s_controller_list: []
-
 # Control plane port default
 k3s_control_plane_port: "{{ k3s_runtime_config['https-listen-port'] | default(6443) }}"
 
@@ -86,7 +78,7 @@ k3s_systemd_context: system
 
 # Directory for systemd unit files to be installed. As this role doesn't use package
 # management, this should live in /etc/systemd, not /lib/systemd
-k3s_systemd_unit_dir: "/etc/systemd/{{ k3s_systemd_context }}"
+k3s_systemd_unit_dir: /etc/systemd/{{ k3s_systemd_context }}
 
 # Directory for installing openrc service file
 k3s_openrc_service_dir: /etc/init.d
@@ -163,7 +155,7 @@ k3s_config_exclude:
 # Config items and the versions that they were introduced
 k3s_config_version_check:
   - setting: etcd-s3-bucket
-    version: 1.20.6  # Prior to this there was very buggy support!
+    version: 1.20.6 # Prior to this there was very buggy support!
 
 # Config items that should be marked as experimental
 k3s_experimental_config:

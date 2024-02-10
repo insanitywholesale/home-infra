@@ -20,4 +20,4 @@
         state: directory
         owner: k3suser
         group: user
-        mode: 0700
+        mode: "0700"
