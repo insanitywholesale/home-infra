@@ -129,13 +129,13 @@ Tools for monitoring, logging, tracing and data visualization.
 ### Observium
 10.0.50.32
 
-### CheckMK
+### Zabbix
 .33
 
-### Graylog or Loki
+### CheckMK
 .34
 
-### NetBox
+### Graylog or Loki
 .35
 
 ### ntfy
@@ -145,7 +145,7 @@ Tools for monitoring, logging, tracing and data visualization.
 .37
 
 ### Sentry
-.38
+10.0.50.38
 
 ### rsyslog or syslog-ng
 .39
@@ -206,6 +206,9 @@ Can't or don't want to run these on kubernetes.
 
 ## Web server for local downloads
 .111
+
+### NetBox
+.112
 
 ## HomeAssistant
 .113

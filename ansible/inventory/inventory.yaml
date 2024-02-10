@@ -251,3 +251,12 @@ all:
           ntp_timezone: Europe/Athens
           template_vmid: 9003
           template_vmid2: 9006
+    sentry_servers:
+      hosts:
+        sentry:
+          ansible_host: 10.0.50.38
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens

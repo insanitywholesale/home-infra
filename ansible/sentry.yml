@@ -1,0 +1,66 @@
+---
+- name: Install and configure Sentry
+  hosts: sentry
+  become: true
+  tasks:
+    - name: Add Docker debian repo signed by gpg key
+      ansible.builtin.deb822_repository:
+        name: docker
+        types: [deb]
+        signed_by: https://download.docker.com/linux/debian/gpg
+        uris: https://download.docker.com/linux/debian
+        suites: bullseye
+        components: [stable]
+        enabled: true
+        state: present
+
+    - name: Install Docker
+      ansible.builtin.apt:
+        update_cache: true
+        state: present
+        name:
+          - ca-certificates
+          - apt-transport-https
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+
+    - name: Install git
+      ansible.builtin.apt:
+        update_cache: true
+        state: present
+        name:
+          - git
+
+    - name: Clone Sentry self-hosted repository
+      ansible.builtin.git:
+        repo: https://github.com/getsentry/self-hosted.git
+        dest: /opt/sentry
+        version: 24.1.2
+        update: false
+        single_branch: true
+
+    # TODO: Remove after a release with  the following PR merged is made
+    # https://github.com/getsentry/self-hosted/pull/2779
+    - name: Delete broken postgres setup script
+      ansible.builtin.file:
+        path: /opt/sentry/install/set-up-and-migrate-database.sh
+        state: absent
+
+    # TODO: Remove after a release with  the following PR merged is made
+    # https://github.com/getsentry/self-hosted/pull/2779
+    - name: Download fixed postgres setup script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/getsentry/self-hosted/master/install/set-up-and-migrate-database.sh
+        dest: /opt/sentry/install/set-up-and-migrate-database.sh
+        mode: "0755"
+        owner: root
+        group: root
+
+    - name: Run install script
+      ansible.builtin.command:
+        cmd: ./install.sh --report-self-hosted-issues --skip-user-creation
+        chdir: /opt/sentry
+        creates: /opt/sentry/geoip/GeoLite2-City.mmdb
