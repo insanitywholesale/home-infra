@@ -1,6 +1,6 @@
 ---
 # handlers file for apt-cacher-ng
-- name: restart apt-cacher-ng
-  service:
+- name: Restart apt-cacher-ng
+  ansible.builtin.service:
     name: apt-cacher-ng
     state: restarted

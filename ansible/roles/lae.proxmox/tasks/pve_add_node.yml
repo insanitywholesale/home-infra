@@ -1,5 +1,7 @@
 ---
-- block:
+- when: pve_manage_ssh | bool
+
+  block:
     - name: Identify the SSH public key and SSH addresses of initial cluster host
       ansible.builtin.set_fact:
         _pve_cluster_host_key: "{{ ' '.join((hostvars[_init_node]._pve_ssh_public_key.content | b64decode).split()[:-1]) }}"
@@ -12,8 +14,6 @@
         mode: "0600"
         marker: "# {mark}: cluster host key for joining"
         content: "{{ _pve_cluster_host_addresses }} {{ _pve_cluster_host_key }}"
-  when: pve_manage_ssh | bool
-
 - name: Add node to Proxmox cluster
   ansible.builtin.command: >-
     pvecm add {{ hostvars[_init_node].pve_cluster_addr0 }} -use_ssh

@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: Retrieve new lists of packages and performs an upgrade
-      apt:
+      ansible.builtin.apt:
         update_cache: true
         upgrade: dist
         autoremove: true
@@ -12,7 +12,7 @@
       when: ansible_os_family == 'Debian'
 
     - name: Retrieve new lists of packages and performs an upgrade
-      pacman:
+      community.general.pacman:
         update_cache: true
         upgrade: true
       when: ansible_os_family == 'Archlinux'
@@ -27,7 +27,7 @@
         - skip_ansible_lint
 
     - name: Install dependencies
-      package:
+      ansible.builtin.package:
         name: "{{ item }}"
         state: present
       loop:

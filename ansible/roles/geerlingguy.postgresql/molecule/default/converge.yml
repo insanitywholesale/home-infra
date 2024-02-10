@@ -12,7 +12,7 @@
   pre_tasks:
     # The Fedora 30+ container images have only C.UTF-8 installed
     - name: Set database locale if using Fedora 30+ or RedHat 8+
-      set_fact:
+      ansible.builtin.set_fact:
         postgresql_databases:
           - name: example
             lc_collate: C.UTF-8
@@ -22,7 +22,10 @@
           in ['8','9'])
 
     - name: Update apt cache.
-      apt: update_cache=true cache_valid_time=600
+      ansible.builtin.apt:
+        update_cache: "true"
+        cache_valid_time: "600"
+        cmd: ""
       changed_when: false
       when: ansible_os_family == 'Debian'
 
@@ -31,7 +34,7 @@
 
   post_tasks:
     - name: Verify postgres is running.
-      command: "{{ postgresql_bin_path }}/pg_ctl -D {{ postgresql_data_dir }} status"
+      ansible.builtin.command: "{{ postgresql_bin_path }}/pg_ctl -D {{ postgresql_data_dir }} status"
       changed_when: false
       become: true
       become_user: postgres

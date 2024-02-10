@@ -1,14 +1,19 @@
 ---
 # See: https://github.com/geerlingguy/ansible-role-certbot/issues/107
-- block:
+- when:
+    - ansible_distribution == 'CentOS'
+    - ansible_distribution_major_version | int >= 8
+  block:
     - name: Ensure dnf-plugins are installed on CentOS 8+.
-      yum:
+      ansible.builtin.yum:
         name: dnf-plugins-core
         state: present
 
-    - block:
+    - when: ansible_facts['distribution_version'] is version('8.2', '<=')
+
+      block:
         - name: Enable DNF module for CentOS 8.3+.
-          shell: |
+          ansible.builtin.shell: |
             dnf config-manager --set-enabled powertools
           register: dnf_module_enable
           changed_when: false
@@ -16,13 +21,7 @@
           when: ansible_facts['distribution_version'] is version('8.3', '>=')
 
         - name: Enable DNF module for CentOS 8.0–8.2.
-          shell: |
+          ansible.builtin.shell: |
             dnf config-manager --set-enabled PowerTools
           register: dnf_module_enable
           changed_when: false
-
-      when: ansible_facts['distribution_version'] is version('8.2', '<=')
-
-  when:
-    - ansible_distribution == 'CentOS'
-    - ansible_distribution_major_version | int >= 8
