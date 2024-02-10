@@ -97,7 +97,7 @@
         - /opt/librenms/storage/
 
     - name: Install PHP dependencies
-      ansible.builtin.shell:
+      ansible.builtin.command:
         cmd: ./scripts/composer_wrapper.php install --no-dev
         chdir: /opt/librenms
         creates: /opt/librenms/vendor/autoload.php
