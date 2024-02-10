@@ -64,3 +64,7 @@
         cmd: ./install.sh --report-self-hosted-issues --skip-user-creation
         chdir: /opt/sentry
         creates: /opt/sentry/geoip/GeoLite2-City.mmdb
+
+    - name: Print reminder to create superuser
+      ansible.builtin.debug:
+        msg: Please run 'sudo docker compose run --rm web createuser' and answer yes to create a superuser
