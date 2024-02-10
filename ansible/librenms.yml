@@ -44,7 +44,6 @@
           - snmpd
           - unzip
           - whois
-          - composer
 
     - name: Clone librenms repository
       ansible.builtin.git:
@@ -62,7 +61,6 @@
         home: /opt/librenms
         state: present
 
-    # TODO: figure out what is wrong with this
     - name: Change directory permissions
       ansible.builtin.file:
         path: /opt/librenms
@@ -72,6 +70,7 @@
         recurse: true
         state: directory
 
+    # TODO: figure out what is wrong and this is needed
     - name: Change html sub-directory permissions
       ansible.builtin.file:
         path: /opt/librenms/html
@@ -81,7 +80,6 @@
         recurse: true
         state: directory
 
-    # TODO: figure out might be wrong with this
     - name: Set ACL
       ansible.posix.acl:
         path: "{{ item }}"
@@ -91,8 +89,8 @@
         recurse: true
         state: present
       loop:
-        - /opt/librenms/rrd
-        - /opt/librenms/logs
+        - /opt/librenms/rrd/
+        - /opt/librenms/logs/
         - /opt/librenms/bootstrap/cache/
         - /opt/librenms/storage/
 
