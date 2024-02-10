@@ -6,6 +6,13 @@
   roles:
     - name: Install and configure Prometheus
       role: prometheus.prometheus.prometheus
+      prometheus_config_flags_extra:
+        web.enable-admin-api:
+      prometheus_targets:
+        node:
+          - targets: "{{ groups['all'] | map('extract', hostvars, ['ansible_host']) | map('regex_replace', '$', ':9100') | list }}"
+            labels:
+              env: homelab
     - name: Install and configure blackbox_exporter
       role: prometheus.prometheus.blackbox_exporter
     - name: Install and configure Alertmanager
@@ -20,7 +27,7 @@
           receiver: pushoverreceiver
 
 - name: Install and configure additional Prometheus exporters
-  hosts: all
+  hosts: all:!gitlab
   become: true
   roles:
     - name: Install and configure Node Exporter
