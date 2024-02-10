@@ -1,0 +1,12 @@
+---
+- name: Install and configure Observium
+  hosts: observium
+  become: true
+  tasks:
+    - name: Download Observium install script
+      ansible.builtin.get_url:
+        url: http://www.observium.org/observium_installscript.sh
+        dest: /tmp/observium_installscript.sh
+        mode: "0777"
+        owner: root
+        group: root

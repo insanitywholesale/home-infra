@@ -169,19 +169,19 @@ all:
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
-    librenms_servers:
+    mysql_servers:
       hosts:
-        librenms:
-          ansible_host: 10.0.50.32
+        mysql:
+          ansible_host: 10.0.50.21
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
-    mysql_servers:
+    observium_servers:
       hosts:
-        mysql:
-          ansible_host: 10.0.50.21
+        observium:
+          ansible_host: 10.0.50.32
           ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
