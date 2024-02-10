@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_sentry" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve1
   vmid        = 1038
   count       = 1
   name        = format("sentry%02s", (count.index) + 1)
   desc        = format("Sentry server %02s", (count.index) + 1)
-  target_node = "pve2"
+  target_node = "pve1"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
@@ -12,7 +12,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_sentry" {
   cpu      = "SandyBridge"
   cores    = 3
   sockets  = 1
-  memory   = 9216
+  memory   = 10240
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
