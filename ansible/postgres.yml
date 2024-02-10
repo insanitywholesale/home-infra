@@ -51,10 +51,16 @@
           - name: testdb
             owner: testuser
 
+    - name: Install CloudFlare certbot plugin
+      ansible.builtin.apt:
+        name: python3-certbot-dns-cloudflare
+        update_cache: true
+        state: present
+
     - name: Create cloudflare credentials file
       ansible.builtin.template:
         src: cloudflare.ini.j2
-        dest: /etc/letsencrypt/cloudflare.ini
+        dest: /etc/ssl/cloudflare.ini
         mode: "0600"
         owner: root
         group: root
@@ -70,7 +76,7 @@
         certbot_certs:
           - domains:
               - postgres01.home.inherently.xyz
-        certbot_create_extra_args: --dns-cloudflare --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini
+        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
         certbot_create_standalone_stop_services: []
         certbot_auto_renew_user: root
 
