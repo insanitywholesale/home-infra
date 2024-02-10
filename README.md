@@ -88,10 +88,10 @@ System and app auth, passwords for people and secrets for apps.
 Databases and message queues for applications.
 
 ### PostgreSQL
-.20
+10.0.50.20
 
 ### MySQL
-.21
+10.0.50.21
 
 ### MongoDB
 .22
@@ -112,7 +112,7 @@ Databases and message queues for applications.
 .27
 
 ### InfluxDB
-.28
+10.0.50.28
 
 ### Clickhouse
 .29
@@ -121,15 +121,15 @@ Databases and message queues for applications.
 Tools for monitoring, logging, tracing and data visualization.
 
 ### Grafana
-.30
+10.0.50.30
 
 ### Prometheus
-.31
+10.0.50.31
 
-### Observium or LibreNMS
-.32
+### Observium
+10.0.50.32
 
-### Zabbix
+### CheckMK
 .33
 
 ### Graylog or Loki
@@ -169,7 +169,7 @@ Code analysis and git hosting plus container registry and helm repo.
 .44
 
 ### GitLab
-.45
+10.0.50.45
 
 ### Gitea
 .46
@@ -204,8 +204,11 @@ Bare-metal machines where most things run on
 ## Non-clusterful applications
 Can't or don't want to run these on kubernetes.
 
+## Web server for local downloads
+.111
+
 ## HomeAssistant
-.102
+.113
 
 ## Jellyfin
-.105
+.115

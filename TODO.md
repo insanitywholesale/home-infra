@@ -4,10 +4,12 @@
 - add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
 - add certbot tasks adapted from postgres to [configure TLS for influxdb](https://docs.influxdata.com/influxdb/v2/admin/security/enable-tls/#configure-influxdb-to-use-tls)
 - configure grafana to connect to influxdb and prometheus
-- finish librenms playbook
+- extend gitlab playbook to configure [HTTPS manually](https://docs.gitlab.com/omnibus/settings/ssl/index.html#configure-https-manually)
+- add certbot tasks adapted from postgres to configure TLS for mysql
 
 ## terraform
 - structure terraform better with help from [this article](https://12ft.io/proxy?q=https%3A%2F%2Fmedium.com%2Fcodex%2Fterraform-best-practices-limit-resources-in-your-project-a3f3275f7bbf)
+- create windows template with help from [this blog post](https://yetiops.net/posts/proxmox-terraform-cloudinit-windows/)
 
 ## proxmox
 - use ansible to add letsencrypt certificates to proxmox cluster

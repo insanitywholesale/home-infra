@@ -8,5 +8,8 @@
 - ansible.builtin.import_playbook: postgres.yml
 - ansible.builtin.import_playbook: mysql.yml
 - ansible.builtin.import_playbook: influxdb.yml
+- ansible.builtin.import_playbook: grafana.yml
 - ansible.builtin.import_playbook: prometheus.yml
+- ansible.builtin.import_playbook: observium.yml
+- ansible.builtin.import_playbook: gitlab.yml
 - ansible.builtin.import_playbook: k3s-site.yml
