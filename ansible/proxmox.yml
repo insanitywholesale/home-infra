@@ -45,8 +45,7 @@
       ansible.builtin.get_url:
         url: https://cloud.debian.org/images/cloud/bullseye/20240104-1616/debian-11-genericcloud-amd64-20240104-1616.qcow2
         dest: /tmp/debian-11-amd64.qcow2
-        checksum: 
-          sha512:01f1a9aa92f6257936193359642d7ff780ad3c721f4b731ed0a04684f015db66d7919a72b2b2a272a7dd3cf0e4e0314694c00684c333552a01bd149a535f2a09
+        checksum: sha512:01f1a9aa92f6257936193359642d7ff780ad3c721f4b731ed0a04684f015db66d7919a72b2b2a272a7dd3cf0e4e0314694c00684c333552a01bd149a535f2a09
         mode: "0644"
         owner: root
         group: root
@@ -55,8 +54,7 @@
       ansible.builtin.get_url:
         url: https://cloud.debian.org/images/cloud/bookworm/20240201-1644/debian-12-genericcloud-amd64-20240201-1644.qcow2
         dest: /tmp/debian-12-amd64.qcow2
-        checksum: 
-          sha512:c6b12eaf0a74397ed55d0d74d48a35e5eb187ab415e666fd3d67e91361d1f7ffc594df7735a32ae8f7124db78848e3eea069ca2bcdab43f6ab100b87129e1cf1
+        checksum: sha512:c6b12eaf0a74397ed55d0d74d48a35e5eb187ab415e666fd3d67e91361d1f7ffc594df7735a32ae8f7124db78848e3eea069ca2bcdab43f6ab100b87129e1cf1
         mode: "0644"
         owner: root
         group: root

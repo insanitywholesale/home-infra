@@ -1,14 +1,12 @@
 ---
 # See: https://github.com/geerlingguy/ansible-role-certbot/issues/107
 - block:
-
     - name: Ensure dnf-plugins are installed on CentOS 8+.
       yum:
         name: dnf-plugins-core
         state: present
 
     - block:
-
         - name: Enable DNF module for CentOS 8.3+.
           shell: |
             dnf config-manager --set-enabled powertools

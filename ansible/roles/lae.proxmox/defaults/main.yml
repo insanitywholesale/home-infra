@@ -18,8 +18,8 @@ pve_zfs_enabled: false
 # pve_zfs_zed_email: "email address for zfs events"
 pve_zfs_create_volumes: []
 pve_ceph_enabled: false
-pve_ceph_repository_line: deb http://download.proxmox.com/debian/{% if ansible_distribution_release == 'buster' %}ceph-nautilus
-  buster{% else %}ceph-pacific bullseye{% endif %} main
+pve_ceph_repository_line: deb http://download.proxmox.com/debian/{% if ansible_distribution_release == 'buster' %}ceph-nautilus buster{% else %}ceph-pacific bullseye{%
+  endif %} main
 pve_ceph_network: "{{ (ansible_default_ipv4.network +'/'+ ansible_default_ipv4.netmask) | ipaddr('net') }}"
 pve_ceph_nodes: "{{ pve_group }}"
 pve_ceph_mon_group: "{{ pve_group }}"
@@ -34,8 +34,8 @@ pve_ceph_crush_rules: []
 pve_cluster_enabled: false
 pve_cluster_clustername: "{{ pve_group }}"
 pve_manage_hosts_enabled: true
-pve_cluster_addr0: "{{ ansible_default_ipv4.address if ansible_default_ipv4.address is defined else ansible_default_ipv6.address
-  if ansible_default_ipv6.address is defined }}"
+pve_cluster_addr0: "{{ ansible_default_ipv4.address if ansible_default_ipv4.address is defined else ansible_default_ipv6.address if ansible_default_ipv6.address is
+  defined }}"
 # pve_cluster_addr1: "{{ ansible_eth1.ipv4.address }}
 pve_datacenter_cfg: {}
 pve_cluster_ha_groups: []

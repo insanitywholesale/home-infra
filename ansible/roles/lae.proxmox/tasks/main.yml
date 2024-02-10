@@ -32,8 +32,8 @@
   blockinfile:
     dest: /etc/hosts
     marker: "# {mark} ANSIBLE MANAGED: Proxmox Cluster Hosts"
-    content: "{% for host in groups[pve_group] %}{{ hostvars[host].pve_cluster_addr0 }} {{ hostvars[host].ansible_fqdn }}
-      {{ hostvars[host].ansible_hostname }}\n\n{% endfor %}"
+    content: "{% for host in groups[pve_group] %}{{ hostvars[host].pve_cluster_addr0 }} {{ hostvars[host].ansible_fqdn }} {{ hostvars[host].ansible_hostname }}\n\n
+      {% endfor %}"
   when: pve_cluster_enabled | bool and pve_manage_hosts_enabled | bool
 
 - name: Remove conflicting lines in hosts files
@@ -45,15 +45,14 @@
     # above, then we match against different IPs (e.g. NOT 10.0.3.17) that have
     # the hostname/fqdn we inserted a record for previously, taking care also to
     # detect word boundaries (\b wasn't working for some reason)
-    regexp: "^(?!{{ _correct_line | regex_escape() }}){# Ignore lines starting with the current cluster host #}(?!{{ _correct_ip
-      | regex_escape() }}){# Match an IPv4/v6 address at the start #}[0-9a-f:.]{# Match any hostnames, surrounded by
-      whitespace #}+(\\s+.*)?\\s({{ _match_hosts | map('regex_escape') | join('|') }})(\\s+.*|\\s*)$"
+    regexp: "^(?!{{ _correct_line | regex_escape() }}){# Ignore lines starting with the current cluster host #}(?!{{ _correct_ip | regex_escape() }}){# Match
+      an IPv4/v6 address at the start #}[0-9a-f:.]{# Match any hostnames, surrounded by whitespace #}+(\\s+.*)?\\s({{ _match_hosts | map('regex_escape') | join('|')
+      }})(\\s+.*|\\s*)$"
     state: absent
     backup: true
   loop: "{{ groups[pve_group] }}"
   vars:
-    _correct_line: "{{ hostvars[item].pve_cluster_addr0 }} {{ hostvars[item].ansible_fqdn }} {{ hostvars[item].ansible_hostname
-      }}"
+    _correct_line: "{{ hostvars[item].pve_cluster_addr0 }} {{ hostvars[item].ansible_fqdn }} {{ hostvars[item].ansible_hostname }}"
     _correct_ip: "{{ hostvars[item].pve_cluster_addr0 }}"
     _match_hosts: >-
       [
@@ -65,10 +64,9 @@
 - name: Define hostname in /etc/hosts for single-host installations
   lineinfile:
     dest: /etc/hosts
-    regexp: "{# Match an IPv4/v6 address at the start #}^\\s*[0-9a-f:.]+{# Match at least one whitespace, and any non-hostname
-      names #}(\\s+.*)*\\s{# Match either our fqdn or hostname #}({{ ansible_fqdn | regex_escape() }}|{{ ansible_hostname
-      | regex_escape() }}){# Require there be a word boundary at the end of the name(s). #}{# This can be any whitespace,
-      or end-of-line. #}(\\s+.*|\\s*)$"
+    regexp: "{# Match an IPv4/v6 address at the start #}^\\s*[0-9a-f:.]+{# Match at least one whitespace, and any non-hostname names #}(\\s+.*)*\\s{# Match
+      either our fqdn or hostname #}({{ ansible_fqdn | regex_escape() }}|{{ ansible_hostname | regex_escape() }}){# Require there be a word boundary at the end
+      of the name(s). #}{# This can be any whitespace, or end-of-line. #}(\\s+.*|\\s*)$"
     line: "{{ hostvars[inventory_hostname].pve_cluster_addr0 }} {{ ansible_fqdn }} {{ ansible_hostname }}"
     backup: true
   when: not pve_cluster_enabled | bool and pve_manage_hosts_enabled | bool

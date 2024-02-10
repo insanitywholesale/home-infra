@@ -28,8 +28,7 @@
   changed_when: false
 
 - name: Get list of hosts for the root user.
-  ansible.builtin.command: mysql -NBe "SELECT Host FROM mysql.user WHERE User = '{{ mysql_root_username }}' ORDER BY (Host='localhost')
-    ASC"
+  ansible.builtin.command: mysql -NBe "SELECT Host FROM mysql.user WHERE User = '{{ mysql_root_username }}' ORDER BY (Host='localhost') ASC"
   register: mysql_root_hosts
   changed_when: false
   check_mode: false

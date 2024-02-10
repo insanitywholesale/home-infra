@@ -2,8 +2,8 @@
 ---
 - block:
     - name: Create initial Ceph config
-      command: pveceph init --network {{ pve_ceph_network }}  {% if pve_ceph_cluster_network is defined  %} --cluster-network
-        {{ pve_ceph_cluster_network }} {% endif %}
+      command: pveceph init --network {{ pve_ceph_network }}  {% if pve_ceph_cluster_network is defined  %} --cluster-network {{ pve_ceph_cluster_network }} {% endif
+        %}
       args:
         creates: /etc/ceph/ceph.conf
 
@@ -84,14 +84,12 @@
             path: crush_map_decompressed
             regexp: >-
               rule\s+{{ item.name }}\s+{(?:(?P<space>\s+)id\s+(?P<id>[^\s]+)|\s+type\s+(?P<r_type>[^\s]+)|\s+min_size[ ](?P<min>[^\s]+)|\s+max_size\s+(?P<max>[^\s]+)|\s+step\s+take\s+default(?:\n|\s+class\s+(?P<class>[^\n]*))|\s+step\s+(?P<choose>chooseleaf|choose).*?type\s+(?P<type>[^\s]+))+(?:.|\n)*?}
-            replace: "rule {{ item.name }} {\\g<space>id \\g<id>\\g<space>type \\g<r_type>\\g<space>min_size {{ (pve_ceph_crush_rules
-              | selectattr(\"name\", \"match\", item.name) | list)[0].min_size | default(\"\\g<min>\") | trim }}\\g<space>max_size
-              {{ (pve_ceph_crush_rules | selectattr(\"name\", \"match\", item.name) | list)[0].max_size | default(\"\\g<max>\"\
-              ) | trim }}{%- if ((pve_ceph_crush_rules | selectattr(\"name\", \"match\", item.name) | list)[0].class | default(False))
-              -%}\\g<space>step take default class {{ (pve_ceph_crush_rules | selectattr(\"name\", \"match\", item.name) |
-              list)[0].class }}{%- else -%}\\g<space>step take default\\g<class>{%- endif -%}\\g<space>step \\g<choose> firstn
-              0 type {{ (pve_ceph_crush_rules | selectattr(\"name\", \"match\", item.name) | list)[0].type | default(\"\\\
-              g<type>\") | trim }}\\g<space>step emit\n}"
+            replace: "rule {{ item.name }} {\\g<space>id \\g<id>\\g<space>type \\g<r_type>\\g<space>min_size {{ (pve_ceph_crush_rules | selectattr(\"name\", \"match\"\
+              , item.name) | list)[0].min_size | default(\"\\g<min>\") | trim }}\\g<space>max_size {{ (pve_ceph_crush_rules | selectattr(\"name\", \"match\", item.name)
+              | list)[0].max_size | default(\"\\g<max>\") | trim }}{%- if ((pve_ceph_crush_rules | selectattr(\"name\", \"match\", item.name) | list)[0].class | default(False))
+              -%}\\g<space>step take default class {{ (pve_ceph_crush_rules | selectattr(\"name\", \"match\", item.name) | list)[0].class }}{%- else -%}\\g<space>step
+              take default\\g<class>{%- endif -%}\\g<space>step \\g<choose> firstn 0 type {{ (pve_ceph_crush_rules | selectattr(\"name\", \"match\", item.name) |
+              list)[0].type | default(\"\\g<type>\") | trim }}\\g<space>step emit\n}"
           loop: "{{ pve_ceph_crush_rules }}"
           register: _crushmap
 
@@ -201,8 +199,7 @@
         label: "{{ item.item.0.name }}_{{ item.item.1 }}"
 
     - name: Create Ceph filesystem key
-      command: ceph auth get-or-create client.{{ item.name }} osd "allow rw pool={{ item.name }}_data" mon "allow r" mds "allow
-        rw"
+      command: ceph auth get-or-create client.{{ item.name }} osd "allow rw pool={{ item.name }}_data" mon "allow r" mds "allow rw"
       register: _ceph_fs_auth
       changed_when: '"added key" in _ceph_fs_auth.stdout'
       when: item.mountpoint is defined
