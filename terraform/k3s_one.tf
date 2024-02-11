@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_one" {
   provider    = proxmox.pve2
-  count       = 1
+  count       = 0
   vmid        = 1060
   name        = format("k3s-one-c%02s", 3)
   desc        = format("k3s single node, technically cluster %02s", 3)
