@@ -12,6 +12,8 @@
 - add keycloak playbook based on [this post](https://developers.redhat.com/articles/2023/02/20/automate-your-sso-ansible-and-keycloak) and [this post](https://developers.redhat.com/articles/2022/04/20/deploy-keycloak-single-sign-ansible) and using [this collection](https://github.com/ansible-middleware/keycloak)
 - add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
 - add github actions runner based on [this role](https://github.com/MonolithProjects/ansible-github_actions_runner)
+- continue work on powerdns playbook using [this role](https://github.com/PowerDNS/pdns-ansible) and [this role](https://github.com/PowerDNS/pdns_recursor-ansible)
+- add graylog playbook based on [this role](https://github.com/Graylog2/graylog-ansible-role)
 
 ## terraform
 - structure terraform better with help from [this article](https://12ft.io/proxy?q=https%3A%2F%2Fmedium.com%2Fcodex%2Fterraform-best-practices-limit-resources-in-your-project-a3f3275f7bbf)
@@ -40,3 +42,18 @@
 
 ## other
 - add docker buildx remote builders
+- look into collectd using the following
+	* https://medium.com/@dreampuf/customized-metrics-in-collectd-with-ansible-eddaa39c1972
+	* https://middlewaretechnologies.in/2023/12/how-to-install-and-configure-collectd-with-network-plugin-using-ansible.html
+	* https://github.com/AerisCloud/ansible-collectd
+	* https://github.com/azavea/ansible-collectd
+	* https://github.com/bertvv/ansible-role-collectd
+	* https://github.com/robertdebock/ansible-role-collectd
+	* https://github.com/Stouts/Stouts.collectd
+	* https://github.com/opennext-io/ansible-collectd
+	* https://github.com/buluma/ansible-role-collectd
+	* https://github.com/Oefenweb/ansible-collectd
+	* https://github.com/nlware/ansible-collectd
+	* https://github.com/giovtorres/ansible-role-collectd
+	* https://github.com/Temelio/ansible-role-collectd
+	* https://github.com/wasanthag/ansible_deploy_collectd_prometheus
