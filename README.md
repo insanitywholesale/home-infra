@@ -111,8 +111,8 @@ Databases and message queues for applications.
 ### OpenSearch
 .27
 
-### InfluxDB
-10.0.50.28
+### Logstash
+.28
 
 ### Clickhouse
 .29
@@ -126,20 +126,14 @@ Tools for monitoring, logging, tracing and data visualization.
 ### Prometheus
 10.0.50.31
 
-### Observium
+### InfluxDB
 10.0.50.32
 
-### Zabbix
-.33
+### Observium
+10.0.50.34
 
-### CheckMK
-.34
-
-### Graylog or Loki
+### Graylog
 .35
-
-### ntfy
-.36
 
 ### Gatus or Uptime Kuma
 .37
@@ -212,6 +206,9 @@ Can't or don't want to run these on kubernetes.
 
 ## HomeAssistant
 .113
+
+### ntfy
+.114
 
 ## Jellyfin
 .115

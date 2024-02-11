@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "proxmox_vm_observium" {
   provider    = proxmox.pve1
-  vmid        = 1032
+  vmid        = 1034
   count       = 1
   name        = format("observium%02s", (count.index) + 1)
   desc        = format("Observium %02s", (count.index) + 1)
@@ -29,7 +29,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_observium" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.${(count.index) + 32}/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.${(count.index) + 34}/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
