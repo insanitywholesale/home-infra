@@ -1,4 +1,16 @@
 ---
+- name: Install kubernetes deps
+  hosts: k3s_cluster_1
+  become: true
+  tasks:
+    - name: Install dependencies
+      ansible.builtin.apt:
+        update_cache: true
+        state: present
+        name:
+          - nfs-common
+          - nfs4-acl-tools
+
 - name: Cluster prep
   hosts: k3s_cluster_1
   gather_facts: true
