@@ -1,6 +1,6 @@
 ---
 - name: Upgrade all hosts
-  hosts: all
+  hosts: all:!desktops
   become: true
   tasks:
     - name: Run apt full-upgrade
