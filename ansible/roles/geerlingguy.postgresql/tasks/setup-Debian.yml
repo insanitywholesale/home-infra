@@ -11,10 +11,9 @@
 
 - name: Ensure all configured locales are present.
   community.general.locale_gen:
-    name: "{{"
+    name: "{{ item }}"
     state: present
-    cmd: item }}
-  with_items: "{{ postgresql_locales }}"
+  loop: "{{ postgresql_locales }}"
   register: locale_gen_result
 
 - name: Force-restart PostgreSQL after new locales are generated.
