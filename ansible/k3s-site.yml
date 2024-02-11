@@ -1,6 +1,6 @@
 ---
 - name: Cluster prep
-  hosts: k3s_cluster
+  hosts: k3s_cluster_1
   gather_facts: true
   become: true
   roles:
@@ -9,13 +9,13 @@
     - role: k3s_roles/raspberrypi
 
 - name: Setup K3S server
-  hosts: server
+  hosts: k3s_server_1
   become: true
   roles:
     - role: k3s_roles/k3s_server
 
 - name: Setup K3S agent
-  hosts: agent
+  hosts: k3s_agent_1
   become: true
   roles:
     - role: k3s_roles/k3s_agent

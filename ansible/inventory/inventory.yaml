@@ -55,9 +55,9 @@ all:
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
-    k3s_cluster:
+    k3s_cluster_1:
       children:
-        agent:
+        k3s_agent_1:
           hosts:
             k3s-w01-c01:
               ansible_host: 10.0.50.61
@@ -137,7 +137,7 @@ all:
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
-        server:
+        k3s_server_1:
           hosts:
             k3s-m01-c01:
               ansible_host: 10.0.50.51
@@ -178,6 +178,54 @@ all:
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
               user_kubectl: true
+    k3s_cluster_2:
+      children:
+        k3s_agent_2:
+          hosts:
+            k3s-w01-c02:
+              ansible_host: 10.0.50.67
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              apt_proxy: http://10.0.50.9:3142
+              ntp_timezone: Europe/Athens
+            k3s-w02-c02:
+              ansible_host: 10.0.50.68
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              apt_proxy: http://10.0.50.9:3142
+              ntp_timezone: Europe/Athens
+            k3s-w03-c02:
+              ansible_host: 10.0.50.69
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              apt_proxy: http://10.0.50.9:3142
+              ntp_timezone: Europe/Athens
+        k3s_server_2:
+          hosts:
+            k3s-m01-c02:
+              ansible_host: 10.0.50.54
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              apt_proxy: http://10.0.50.9:3142
+              ntp_timezone: Europe/Athens
+            k3s-m02-c02:
+              ansible_host: 10.0.50.55
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              apt_proxy: http://10.0.50.9:3142
+              ntp_timezone: Europe/Athens
+            k3s-m03-c02:
+              ansible_host: 10.0.50.56
+              ansible_private_key_file: /home/angle/.ssh/id_ed25519
+              ansible_python_interpreter: /usr/bin/env python3
+              ansible_user: debian
+              apt_proxy: http://10.0.50.9:3142
+              ntp_timezone: Europe/Athens
     mysql_servers:
       hosts:
         mysql:
@@ -221,6 +269,15 @@ all:
             3030383732333463620a303635636632643338363063643065333131373065653563353737336662
             37353133346630346361663539323565396237643139653034386234383364346237613432633332
             3030343138303130346362653664346337613539633663613936
+          ntp_timezone: Europe/Athens
+    powerdns_servers:
+      hosts:
+        powerdns:
+          ansible_host: 10.0.50.5
+          ansible_private_key_file: /home/angle/.ssh/id_ed25519
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
     prometheus_servers:
       hosts:
