@@ -28,7 +28,7 @@ ansible_lint:
       junit: ansible/ansible-lint.xml
   before_script:
     - apk update
-    - apk add --no-cache ansible ansible-lint
+    - apk add --no-cache ansible ansible-lint openssh
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
@@ -42,7 +42,7 @@ ansible_syntax_check:
   image: alpine:latest
   before_script:
     - apk update
-    - apk add --no-cache ansible ansible-lint
+    - apk add --no-cache ansible ansible-lint openssh
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
@@ -56,7 +56,7 @@ ansible_check_diff:
   image: alpine:latest
   before_script:
     - apk update
-    - apk add --no-cache ansible ansible-lint
+    - apk add --no-cache ansible ansible-lint openssh
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
