@@ -22,6 +22,8 @@ ansible_lint:
   tags: [ansible]
   stage: validate
   image: alpine:latest
+  variables:
+    ANSIBLE_HOST_KEY_CHECKING: "False"
   artifacts:
     when: always
     reports:
@@ -40,6 +42,8 @@ ansible_syntax_check:
   tags: [ansible]
   stage: validate
   image: alpine:latest
+  variables:
+    ANSIBLE_HOST_KEY_CHECKING: "False"
   before_script:
     - apk update
     - apk add --no-cache ansible ansible-lint openssh
@@ -54,6 +58,8 @@ ansible_check_diff:
   tags: [ansible]
   stage: validate
   image: alpine:latest
+  variables:
+    ANSIBLE_HOST_KEY_CHECKING: "False"
   before_script:
     - apk update
     - apk add --no-cache ansible ansible-lint openssh
