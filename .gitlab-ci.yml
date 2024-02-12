@@ -21,11 +21,14 @@ stages: [validate, build, deploy, cleanup]
 ansible_lint:
   tags: [ansible]
   stage: validate
-  image: pipelinecomponents/ansible-lint:0.63.0
+  image: alpine:latest
   artifacts:
     when: always
     reports:
       junit: ansible/ansible-lint.xml
+  before_script:
+    - apk update
+    - apk add --no-cache ansible ansible-lint
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
@@ -36,7 +39,10 @@ ansible_lint:
 ansible_syntax_check:
   tags: [ansible]
   stage: validate
-  image: pipelinecomponents/ansible-lint:0.63.0
+  image: alpine:latest
+  before_script:
+    - apk update
+    - apk add --no-cache ansible ansible-lint
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
@@ -47,7 +53,10 @@ ansible_syntax_check:
 ansible_check_diff:
   tags: [ansible]
   stage: validate
-  image: pipelinecomponents/ansible-lint:0.63.0
+  image: alpine:latest
+  before_script:
+    - apk update
+    - apk add --no-cache ansible ansible-lint
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
