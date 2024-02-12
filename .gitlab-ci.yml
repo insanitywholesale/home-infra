@@ -42,8 +42,7 @@ ansible_syntax_check:
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
-    - ansible-playbook --syntax-check proxmox.yml
-    - ansible-playbook --syntax-check site.yml
+    - ansible-playbook -i inventory/inventory.yml --syntax-check site.yml
 
 ansible_check_diff:
   tags: [ansible]
@@ -54,8 +53,7 @@ ansible_check_diff:
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
-    - ansible-playbook --check --diff proxmox.yml
-    - ansible-playbook --check --diff site.yml
+    - ansible-playbook -i inventory/inventory.yml --check --diff site.yml
 
 fmt:
   tags: [terraform]
