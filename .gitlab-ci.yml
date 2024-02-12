@@ -31,6 +31,7 @@ ansible_lint:
   before_script:
     - apk update
     - apk add --no-cache ansible ansible-lint openssh
+    - pip install --break-system-packages ansible-lint-junit
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
