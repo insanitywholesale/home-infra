@@ -47,7 +47,7 @@ ansible_syntax_check:
     ANSIBLE_HOST_KEY_CHECKING: "False"
   before_script:
     - apk update
-    - apk add --no-cache ansible ansible-lint openssh
+    - apk add --no-cache ansible openssh
   script:
     - cd ansible
     - ansible-galaxy collection install community.general

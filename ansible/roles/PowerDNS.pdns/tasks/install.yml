@@ -1,6 +1,5 @@
 ---
 - block:
-
     - name: Prefix the PowerDNS version with the correct separator on RedHat
       set_fact:
         _pdns_package_version: -{{ pdns_package_version }}

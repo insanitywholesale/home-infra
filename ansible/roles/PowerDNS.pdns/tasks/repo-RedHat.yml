@@ -1,6 +1,5 @@
 ---
 - block:
-
     - name: Install epel-release on CentOS
       yum:
         name: epel-release

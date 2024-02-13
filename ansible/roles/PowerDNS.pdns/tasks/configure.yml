@@ -1,6 +1,5 @@
 ---
 - block:
-
     - name: Ensure the override directory exists (systemd)
       file:
         name: /etc/systemd/system/{{ pdns_service_name }}.service.d
