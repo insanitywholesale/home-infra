@@ -18,7 +18,7 @@
         remote_src: true
         creates: /opt/fogproject-1.5.10/bin/installfog.sh
 
-    - name: Run install script
+    - name: Run fog install script
       ansible.builtin.command:
         chdir: /opt/fogproject-1.5.10/bin/
         cmd: ./installfog.sh --autoaccept
