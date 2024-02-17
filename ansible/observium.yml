@@ -3,10 +3,17 @@
   hosts: observium
   become: true
   tasks:
-    - name: Download Observium install script
-      ansible.builtin.get_url:
-        url: http://www.observium.org/observium_installscript.sh
-        dest: /tmp/observium_installscript.sh
+    - name: Copy fully automatic observium install script
+      ansible.builtin.copy:
+        src: files/2024-02-17_observium_fullauto_installscript.sh
+        dest: /tmp/observium_fullauto_installscript.sh
         mode: "0777"
         owner: root
         group: root
+
+    - name: Run observium install script
+      ansible.builtin.command:
+        chdir: /tmp/
+        cmd: ./observium_fullauto_installscript.sh
+      register: observium_install_output
+      changed_when: "'Installation finished' in observium_install_output.stdout"
