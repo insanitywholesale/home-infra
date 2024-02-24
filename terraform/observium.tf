@@ -1,7 +1,7 @@
 resource "proxmox_vm_qemu" "proxmox_vm_observium" {
   provider    = proxmox.pve1
   vmid        = 1034
-  count       = 1
+  count       = 0
   name        = format("observium%02s", (count.index) + 1)
   desc        = format("Observium %02s", (count.index) + 1)
   target_node = "pve1"
