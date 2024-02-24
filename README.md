@@ -30,10 +30,10 @@ NTP, DNS, PXE, FTP and APT cache.
 ### Pi-hole
 10.0.50.2
 
-### LANcache
+### AdGuard Home
 .3
 
-### Bind9 (external-dns RFC2136 provider)
+### LANcache
 .4
 
 ### PowerDNS (external-dns pdns provider)
@@ -45,7 +45,7 @@ NTP, DNS, PXE, FTP and APT cache.
 ### FOG
 10.0.50.7
 
-### Tinkerbell
+### netboot.xyz
 .8
 
 ### apt-cacher-ng
