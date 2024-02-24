@@ -186,29 +186,29 @@ Kubernetes nodes
 ## Physical servers
 Bare-metal machines where most things run on
 
-## Proxmox
+### Proxmox
 10.0.50.70-72 (leave space for up to .75)
 
-## TrueNAS
+### TrueNAS
 10.0.50.100
 
-## Backup
+### Backup
 .101
 
 ## Non-clusterful applications
 Can't or don't want to run these on kubernetes.
 
-## Web server for local downloads
+### Web server for local downloads
 .111
 
 ### NetBox
 .112
 
-## HomeAssistant
+### HomeAssistant
 .113
 
 ### ntfy
 .114
 
-## Jellyfin
+### Jellyfin
 .115
