@@ -291,6 +291,7 @@ fi
 cd observium
 echo -e "${GREEN} [*] Creating database user for Observium with a random password...${NC}"
 mysql_observium="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-15};echo;)"
+mysql_root="observium"
 mysql -uroot -p"$mysql_root" -e "CREATE DATABASE observium DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"
 
 if [[ $OS = "Ubuntu" ]] && ( [[ $VER = "20.04" ]] || [[ $VER = "21.04" ]] || [[ $VER = "22.04" ]] ); then
