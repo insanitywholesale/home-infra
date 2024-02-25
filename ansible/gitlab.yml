@@ -17,6 +17,7 @@
         - gnupg
         - openssh-server
         - perl
+        - cron
 
     - name: Add gitlab debian repo signed by gpg key
       ansible.builtin.deb822_repository:
@@ -36,3 +37,86 @@
         state: present
       environment:
         EXTERNAL_URL: http://gitlab.home.inherently.xyz
+
+    - name: Ensure gitlab SSL dir exists
+      ansible.builtin.file:
+        path: /etc/gitlab/ssl
+        owner: root
+        group: root
+        mode: "0755"
+        recurse: true
+        state: directory
+
+    - name: Install CloudFlare certbot plugin
+      ansible.builtin.apt:
+        name: python3-certbot-dns-cloudflare
+        update_cache: true
+        state: present
+
+    - name: Create cloudflare credentials file
+      ansible.builtin.template:
+        src: cloudflare.ini.j2
+        dest: /etc/ssl/cloudflare.ini
+        mode: "0600"
+        owner: root
+        group: root
+
+    - name: Get LetsEncrypt TLS certificates
+      ansible.builtin.import_role:
+        name: geerlingguy.certbot
+      vars:
+        certbot_install_method: package
+        certbot_create_if_missing: true
+        certbot_create_method: standalone
+        certbot_admin_email: pepitsizous@zoho.com
+        certbot_certs:
+          - domains:
+              - gitlab.home.inherently.xyz
+        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive
+          --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
+        certbot_create_standalone_stop_services: []
+        certbot_auto_renew_user: root
+
+    - name: Copy certificate into gitlab SSL directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/gitlab.home.inherently.xyz/fullchain.pem
+        dest: /etc/gitlab/ssl/gitlab.home.inherently.xyz.crt
+        mode: "0644"
+        owner: root
+        group: root
+
+    - name: Copy private key into gitlab SSL directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/gitlab.home.inherently.xyz/privkey.pem
+        dest: /etc/gitlab/ssl/gitlab.home.inherently.xyz.key
+        mode: "0644"
+        owner: root
+        group: root
+
+    - name: Disable LetsEncrypt integration
+      ansible.builtin.lineinfile:
+        path: /etc/gitlab/gitlab.rb
+        regexp: "^letsencrypt['enable'] = "
+        insertafter: "# letsencrypt['enable'] = "
+        line: letsencrypt['enable'] = false
+
+    - name: Enable nginx HTTP to HTTPS redirection
+      ansible.builtin.lineinfile:
+        path: /etc/gitlab/gitlab.rb
+        regexp: "^nginx['redirect_http_to_https'] = "
+        insertafter: "# nginx['redirect_http_to_https'] = "
+        line: nginx['redirect_http_to_https'] = true
+
+    - name: Set external_url to HTTPS
+      ansible.builtin.replace:
+        path: /etc/gitlab/gitlab.rb
+        regexp: http://gitlab.home.inherently.xyz
+        replace: https://gitlab.home.inherently.xyz
+
+    - name: Reconfigure gitlab
+      ansible.builtin.command:
+        cmd: sudo gitlab-ctl reconfigure
+      register: gitlab_reconfigure_output
+      changed_when: "'gitlab Reconfigured!' in gitlab_reconfigure_output.stdout"

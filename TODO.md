@@ -5,7 +5,6 @@
 - add certbot tasks adapted from postgres to [configure TLS for influxdb](https://docs.influxdata.com/influxdb/v2/admin/security/enable-tls/#configure-influxdb-to-use-tls)
 - configure grafana to connect to influxdb and prometheus
 - extend gitlab playbook accordign to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
-- extend gitlab playbook by configuring [HTTPS manually](https://docs.gitlab.com/omnibus/settings/ssl/index.html#configure-https-manually)
 - add certbot tasks adapted from postgres to configure TLS for mysql
 - add step-ca playbook based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
 - add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
