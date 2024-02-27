@@ -71,7 +71,7 @@
   environment:
     PATH: /usr/local/bin:{{ _path }}
   notify:
-    - reload netbox.service
+    - Reload netbox.service
   retries: 2
   register: _netbox_uwsgi_install
   until: _netbox_uwsgi_install is succeeded
@@ -83,28 +83,28 @@
     owner: "{{ netbox_user }}"
     group: "{{ netbox_group }}"
   notify:
-    - reload netbox.service
+    - Reload netbox.service
 
 - name: Install NetBox socket unit file
   ansible.builtin.template:
     src: netbox.socket.j2
     dest: /lib/systemd/system/netbox.socket
   notify:
-    - restart netbox.socket
+    - Restart netbox.socket
 
 - name: Install NetBox service unit file
   ansible.builtin.template:
     src: netbox.service.j2
     dest: /lib/systemd/system/netbox.service
   notify:
-    - restart netbox.service
+    - Restart netbox.service
 
 - name: Install NetBox-rqworker service unit file
   ansible.builtin.template:
     src: netbox-rqworker.service.j2
     dest: /lib/systemd/system/netbox-rqworker.service
   notify:
-    - restart netbox-rqworker.service
+    - Restart netbox-rqworker.service
 
 - name: Start and enable NetBox' socket and service
   ansible.builtin.systemd:

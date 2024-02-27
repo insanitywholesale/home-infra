@@ -7,7 +7,7 @@
     state: "{{ item.state | default('present') }}"
     mode: "0644"
   with_items: "{{ postgresql_global_config_options }}"
-  notify: restart postgresql
+  notify: Restart postgresql
 
 - name: Configure host based authentication (if entries are configured).
   ansible.builtin.template:
@@ -16,7 +16,7 @@
     owner: "{{ postgresql_user }}"
     group: "{{ postgresql_group }}"
     mode: "0600"
-  notify: restart postgresql
+  notify: Restart postgresql
   when: postgresql_hba_entries | length > 0
 
 - name: Ensure PostgreSQL unix socket dirs exist.

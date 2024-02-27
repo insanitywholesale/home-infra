@@ -16,4 +16,4 @@
     group: "{{ netbox_group }}"
     state: link
   notify:
-    - reload netbox.service
+    - Reload netbox.service

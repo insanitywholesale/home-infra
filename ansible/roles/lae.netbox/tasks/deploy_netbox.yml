@@ -64,8 +64,8 @@
   when: (_netbox_python_deps | length) > 0
   loop: "{{ _netbox_python_deps }}"
   notify:
-    - restart netbox.service
-    - restart netbox-rqworker.service
+    - Restart netbox.service
+    - Restart netbox-rqworker.service
 
 - name: Generate NetBox configuration file
   ansible.builtin.template:
@@ -77,8 +77,8 @@
     validate: "{{ netbox_virtualenv_path }}/bin/python -c \"import py_compile,os; f=r'%s';c='/tmp/' + os.path.basename(os.path.dirname(f)) + '-' + os.path.basename(f)
       + 'c';py_compile.compile(f, c); os.remove(c)\""
   notify:
-    - reload netbox.service
-    - reload netbox-rqworker.service
+    - Reload netbox.service
+    - Reload netbox-rqworker.service
 
 - name: Generate LDAP configuration for NetBox if enabled
   ansible.builtin.template:
@@ -90,7 +90,7 @@
     validate: "{{ netbox_virtualenv_path }}/bin/python -c \"import py_compile,os; f=r'%s';c='/tmp/' + os.path.basename(os.path.dirname(f)) + '-' + os.path.basename(f)
       + 'c';py_compile.compile(f, c); os.remove(c)\""
   notify:
-    - reload netbox.service
+    - Reload netbox.service
   when:
     - netbox_ldap_enabled
 
@@ -110,7 +110,7 @@
     group: "{{ netbox_group }}"
     state: "{{ 'link' if netbox_ldap_enabled else 'absent' }}"
   notify:
-    - reload netbox.service
+    - Reload netbox.service
 
 - name: Copy NetBox scripts into SCRIPTS_ROOT
   ansible.builtin.copy:

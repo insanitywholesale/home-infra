@@ -93,7 +93,7 @@
     chdir: "{{ netbox_git_repo_path }}"
     executable: /bin/bash
   notify:
-    - reload netbox.service
+    - Reload netbox.service
   when:
     - _netbox_git_repo is changed
   become: true

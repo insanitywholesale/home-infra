@@ -1,5 +1,5 @@
 ---
-- hosts: netbox.idolactiviti.es
+- hosts: netbox
   become: true
   roles:
     - geerlingguy.postgresql
@@ -13,6 +13,8 @@
     netbox_config:
       ALLOWED_HOSTS:
         - "{{ ansible_host }}"
+        - "{{ inventory_hostname }}"
+        - netbox.home.inherently.xyz
       MEDIA_ROOT: "{{ netbox_shared_path }}/media"
       REPORTS_ROOT: "{{ netbox_shared_path }}/reports"
       SCRIPTS_ROOT: "{{ netbox_shared_path }}/scripts"
@@ -21,4 +23,4 @@
         role_attr_flags: CREATEDB,NOSUPERUSER
     redis_bind: 127.0.0.1
     redis_version: 7.2.4
-    redis_checksum: sha256:9262b72e13512c593342256cb9ba5138c6eaabbc0b30320f55491472b44ffa60
+    redis_checksum: sha256:8d104c26a154b29fd67d6568b4f375212212ad41e0c2caa3d66480e78dbd3b59
