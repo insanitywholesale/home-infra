@@ -30,7 +30,7 @@ ansible_lint:
       junit: ansible/ansible-lint.xml
   before_script:
     - apk update
-    - apk add --no-cache ansible ansible-lint py3-pip
+    - apk add --no-cache ansible ansible-lint py3-pip py3-jmespath
     - pip install --break-system-packages ansible-lint-junit
   script:
     - cd ansible
