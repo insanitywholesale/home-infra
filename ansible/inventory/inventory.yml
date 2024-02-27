@@ -5,7 +5,6 @@ all:
       hosts:
         aptcache:
           ansible_host: 10.0.50.9
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -14,7 +13,6 @@ all:
       hosts:
         arch_main:
           ansible_host: 10.0.20.49
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: angle
           apt_proxy: http://10.0.50.9:3142
@@ -23,7 +21,6 @@ all:
       hosts:
         fog:
           ansible_host: 10.0.50.7
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -32,7 +29,6 @@ all:
       hosts:
         gitlab:
           ansible_host: 10.0.50.45
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -49,7 +45,6 @@ all:
       hosts:
         grafana:
           ansible_host: 10.0.50.30
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -58,7 +53,6 @@ all:
       hosts:
         influxdb:
           ansible_host: 10.0.50.32
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -67,7 +61,6 @@ all:
       hosts:
         mysql:
           ansible_host: 10.0.50.21
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -76,7 +69,6 @@ all:
       hosts:
         netbox:
           ansible_host: 10.0.50.112
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -85,7 +77,6 @@ all:
       hosts:
         observium:
           ansible_host: 10.0.50.34
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -94,7 +85,6 @@ all:
       hosts:
         pihole:
           ansible_host: 10.0.50.2
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -103,7 +93,6 @@ all:
       hosts:
         postgres:
           ansible_host: 10.0.50.20
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -120,7 +109,6 @@ all:
       hosts:
         powerdns:
           ansible_host: 10.0.50.5
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -129,7 +117,6 @@ all:
       hosts:
         prometheus:
           ansible_host: 10.0.50.31
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
@@ -138,7 +125,6 @@ all:
       hosts:
         pve0:
           ansible_host: 10.0.50.70
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
@@ -147,7 +133,6 @@ all:
           template_vmid2: 9004
         pve1:
           ansible_host: 10.0.50.71
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
@@ -156,7 +141,6 @@ all:
           template_vmid2: 9005
         pve2:
           ansible_host: 10.0.50.72
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
@@ -167,7 +151,6 @@ all:
       hosts:
         sentry:
           ansible_host: 10.0.50.38
-          ansible_private_key_file: /home/angle/.ssh/id_ed25519
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
