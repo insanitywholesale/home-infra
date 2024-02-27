@@ -67,6 +67,11 @@ ansible_check_diff:
   before_script:
     - apk update
     - apk add --no-cache ansible ansible-lint openssh
+    - eval $(ssh-agent -s)
+    - chmod 400 "$ANGLE_SSH_PRIVATE_KEY"
+    - ssh-add "$ANGLE_SSH_PRIVATE_KEY"
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
   script:
     - cd ansible
     - ansible-galaxy collection install community.general
