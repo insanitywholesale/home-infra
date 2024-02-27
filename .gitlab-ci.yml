@@ -24,6 +24,7 @@ ansible_lint:
   image: alpine:latest
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
+    ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
   artifacts:
     when: always
     reports:
@@ -45,6 +46,7 @@ ansible_syntax_check:
   image: alpine:latest
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
+    ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
   before_script:
     - apk update
     - apk add --no-cache ansible openssh
@@ -61,6 +63,7 @@ ansible_check_diff:
   image: alpine:latest
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
+    ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
   before_script:
     - apk update
     - apk add --no-cache ansible ansible-lint openssh
