@@ -1,0 +1,104 @@
+---
+
+- name: Check for deluged user service dir
+  ansible.builtin.stat:
+    path: "{{ deluge_user_service_dir | dirname }}"
+  register: _deluge_user_service_dir
+  tags:
+    - deluge
+
+- name: Create deluged user service dir
+  ansible.builtin.file:
+    path: "{{ deluge_user_service_dir }}"
+    state: directory
+    mode: '0750'
+    owner: root
+    group: root
+  when:
+    - _deluge_user_service_dir is defined
+    - not _deluge_user_service_dir.stat.exists
+  tags:
+    - deluge
+  become: true
+
+- name: Copy user service config
+  ansible.builtin.template:
+    src: "user.conf.j2"
+    dest: "{{ deluge_user_service_dir }}user.conf"
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+
+- name: Check for deluge-web user service dir
+  ansible.builtin.stat:
+    path: "{{ deluge_web_user_service_dir | dirname }}"
+  register: _deluge_web_user_service_dir
+  when: deluge_web
+  tags:
+    - deluge
+
+- name: Create deluge-web user service dir
+  ansible.builtin.file:
+    path: "{{ deluge_web_user_service_dir }}"
+    state: directory
+    mode: '0750'
+    owner: root
+    group: root
+  when:
+    - _deluge_web_user_service_dir is defined
+    - not _deluge_web_user_service_dir.stat.exists
+    - deluge_web
+  tags:
+    - deluge
+  become: true
+
+- name: Copy user service config
+  ansible.builtin.template:
+    src: "user.conf.j2"
+    dest: "{{ deluge_web_user_service_dir }}user.conf"
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+  when: deluge_web
+  tags:
+    - deluge
+
+- name: Install deluged services
+  ansible.builtin.template:
+    src: "deluged.service.j2"
+    dest: "/etc/systemd/system/deluged.service"
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+  tags:
+    - deluge
+
+- name: Install deluge-web services
+  ansible.builtin.template:
+    src: "deluge-web.service.j2"
+    dest: "/etc/systemd/system/deluge-web.service"
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+  tags:
+    - deluge
+
+- name: Reload Daemon, and enable Deluged service
+  ansible.builtin.systemd:
+    name: deluged
+    enabled: true
+    daemon_reload: true
+  become: true
+  changed_when: false
+
+- name: Enable Deluge Web service
+  ansible.builtin.systemd:
+    name: deluge-web
+    enabled: true
+  become: true
+  when: deluge_web
+  changed_when: false

@@ -1,0 +1,24 @@
+{
+    "file": 1,
+    "format": 1
+}{
+    "base": "/",
+    "cert": "ssl/daemon.cert",
+    "default_daemon": "",
+    "enabled_plugins": [],
+    "first_login": false,
+    "https": false,
+    "interface": "0.0.0.0",
+    "language": "",
+    "pkey": "ssl/daemon.pkey",
+    "port": {{ deluge_web_port }},
+    "pwd_salt": "{{ deluge_web_password_salt }}",
+    "pwd_sha1": "{{ deluge_web_password | salted_sha1(deluge_web_password_salt) }}",
+    "session_timeout": 3600,
+    "sessions": {},
+    "show_session_speed": false,
+    "show_sidebar": true,
+    "sidebar_multiple_filters": true,
+    "sidebar_show_zero": false,
+    "theme": "gray"
+}

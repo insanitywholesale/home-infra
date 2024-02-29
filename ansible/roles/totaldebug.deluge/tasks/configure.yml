@@ -1,0 +1,98 @@
+---
+
+- name: Check for config dir
+  ansible.builtin.stat:
+    path: "{{ deluge_config_dir | dirname }}"
+  register: _deluge_config_dir
+  tags:
+    - deluge
+    - deluge_config
+
+- name: Create config directory
+  ansible.builtin.file:
+    path: "{{ deluge_config_dir }}"
+    state: directory
+    mode: 0700
+    owner: "{{ deluge_service_user }}"
+    group: "{{ deluge_service_group }}"
+  when:
+    - _deluge_config_dir is defined
+    - not _deluge_config_dir.stat.exists
+  tags:
+    - deluge
+    - deluge_config
+  become: true
+
+- name: Checking if we should template the deluge config file
+  ansible.builtin.template:
+    src: "{{ deluge_core_conf_template }}"
+    dest: "{{ deluge_config_dir }}/core.conf"
+    owner: "{{ deluge_service_user }}"
+    group: "{{ deluge_service_group }}"
+    mode: 0644
+  check_mode: true
+  become: true
+  register: _deluge_core_conf
+  tags:
+    - deluge_config
+
+- name: deluged config file needs updating. deluge should be stopped beforehand
+  ansible.builtin.service:
+    name: deluged
+    state: stopped
+  become: true
+  when: _deluge_core_conf is changed
+  tags:
+    - deluge_config
+
+- name: Copy deluge configuration file
+  ansible.builtin.template:
+    src: "{{ deluge_core_conf_template }}"
+    dest: "{{ deluge_config_dir }}/core.conf"
+    owner: "{{ deluge_service_user }}"
+    group: "{{ deluge_service_group }}"
+    mode: 0644
+    backup: true
+  become: true
+  notify: restart deluged
+  tags:
+    - deluge_config
+
+- name: Checking if we should template the deluge-web config file
+  ansible.builtin.template:
+    src: "{{ deluge_web_conf_template }}"
+    dest: "{{ deluge_config_dir }}/web.conf"
+    owner: "{{ deluge_service_user }}"
+    group: "{{ deluge_service_group }}"
+    mode: 0644
+  check_mode: true
+  become: true
+  register: _deluge_web_conf
+  changed_when: false
+  tags:
+    - deluge_config
+
+- name: deluge-web config file needs updating. deluge-web should be stopped beforehand
+  ansible.builtin.service:
+    name: deluge-web
+    state: stopped
+  become: true
+  when: _deluge_web_conf is changed
+  changed_when: false
+  tags:
+    - deluge_config
+
+- name: Copy deluge-web configuration file
+  ansible.builtin.template:
+    src: "{{ deluge_web_conf_template }}"
+    dest: "{{ deluge_config_dir }}/web.conf"
+    owner: "{{ deluge_service_user }}"
+    group: "{{ deluge_service_group }}"
+    mode: 0644
+    backup: true
+  become: true
+  notify: restart deluge-web
+  when: deluge_web
+  changed_when: false
+  tags:
+    - deluge_config

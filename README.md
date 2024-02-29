@@ -123,7 +123,7 @@ Tools for monitoring, logging, tracing and data visualization.
 ### Grafana
 10.0.50.30
 
-### Prometheus
+### Prometheus + Alertmanager
 10.0.50.31
 
 ### InfluxDB
@@ -212,3 +212,6 @@ Can't or don't want to run these on kubernetes.
 
 ### Jellyfin
 .115
+
+### Deluge
+.116
