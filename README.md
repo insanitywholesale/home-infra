@@ -198,7 +198,10 @@ Bare-metal machines where most things run on
 ## Non-clusterful applications
 Can't or don't want to run these on kubernetes.
 
-### Web server for local downloads
+### Generic web server
+.110
+
+### Web server for local downloads/caching
 .111
 
 ### NetBox
