@@ -129,6 +129,59 @@ all:
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
+          pve_acls: &id001
+            - groups:
+                - api_users
+              path: /storage/local
+              roles:
+                - PVEDatastoreAdmin
+            - groups:
+                - api_users
+              path: /storage/local-lvm
+              roles:
+                - PVEDatastoreAdmin
+            - groups:
+                - api_users
+              path: /vms
+              roles:
+                - PVEVMAdmin
+          pve_cluster_clustername: "{{ pve_group }}"
+          pve_cluster_enabled: true
+          pve_group: proxmox_servers
+          pve_groups: &id002
+            - comment: Administrators of this PVE cluster
+              name: admins
+            - comment: Users that represent automation tools
+              name: api_users
+          pve_manage_hosts_enabled: true
+          pve_remove_subscription_warning: true
+          pve_roles: &id003
+            - name: Monitoring
+              privileges:
+                - Sys.Modify
+                - Sys.Audit
+                - Datastore.Audit
+                - VM.Monitor
+                - VM.Audit
+          pve_ssh_port: 22
+          pve_storages: &id004
+            - content:
+                - images
+                - iso
+                - backup
+              export: /mnt/tank-z1/nfs-proxmox
+              name: proxmox-nfs
+              server: 10.0.50.100
+              type: nfs
+          pve_users: &id005
+            - groups:
+                - api_users
+              name: ansible@pve
+              password: oomfie1234
+            - groups:
+                - api_users
+              name: terraform@pve
+              password: oomfie1234
           template_vmid: 9001
           template_vmid2: 9004
         pve1:
@@ -137,6 +190,17 @@ all:
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
+          pve_acls: *id001
+          pve_cluster_clustername: "{{ pve_group }}"
+          pve_cluster_enabled: true
+          pve_group: proxmox_servers
+          pve_groups: *id002
+          pve_manage_hosts_enabled: true
+          pve_remove_subscription_warning: true
+          pve_roles: *id003
+          pve_ssh_port: 22
+          pve_storages: *id004
+          pve_users: *id005
           template_vmid: 9002
           template_vmid2: 9005
         pve2:
@@ -145,6 +209,17 @@ all:
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
+          pve_acls: *id001
+          pve_cluster_clustername: "{{ pve_group }}"
+          pve_cluster_enabled: true
+          pve_group: proxmox_servers
+          pve_groups: *id002
+          pve_manage_hosts_enabled: true
+          pve_remove_subscription_warning: true
+          pve_roles: *id003
+          pve_ssh_port: 22
+          pve_storages: *id004
+          pve_users: *id005
           template_vmid: 9003
           template_vmid2: 9006
     sentry_servers:
