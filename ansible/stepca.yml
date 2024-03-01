@@ -1,0 +1,21 @@
+- hosts: step_ca
+  become: yes
+  tasks:
+    # Install and initialize the CA server.
+    # There are a lot of configuration options, see the step_ca README for details
+    - name: Install step-ca
+      include_role:
+        name: maxhoesel.smallstep.step_ca
+      vars:
+        step_ca_name: Inherently Internal CA
+        step_ca_root_password: "incredibly_secret_password"
+        step_ca_intermediate_password: "very_secret_password"
+
+    # The CA root cert fingerprint is used by clients to verify the authenticity of your CA.
+    # You can save the output of this task and then pass it on to any client that you want to trust the CA.
+    - name: Get root CA fingerprint
+      command: 'step-cli certificate fingerprint /etc/step-ca/certs/root_ca.crt'
+      register: root_ca_fp
+    - name: Show root CA fingerprint
+      debug:
+        msg: "Fingerprint of root cert: {{ root_ca_fp.stdout }}"

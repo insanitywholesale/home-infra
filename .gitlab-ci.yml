@@ -38,6 +38,7 @@ ansible_lint:
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
+    - ansible-galaxy collection install maxhoesel.smallstep
     - ansible-lint --warn-list experimental --parseable --nocolor | ansible-lint-junit -o ansible-lint.xml
 
 ansible_syntax_check:
@@ -55,6 +56,7 @@ ansible_syntax_check:
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
+    - ansible-galaxy collection install maxhoesel.smallstep
     - ansible-playbook -i inventory/inventory.yml --syntax-check site.yml
 
 ansible_check_diff:
@@ -77,6 +79,7 @@ ansible_check_diff:
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
+    - ansible-galaxy collection install maxhoesel.smallstep
     - ansible-playbook -i inventory/inventory.yml --check --diff site.yml
 
 fmt:
