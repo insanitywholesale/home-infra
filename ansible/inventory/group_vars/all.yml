@@ -1,4 +1,5 @@
 ---
+ansible_user: debian
 ansible_python_interpreter: /usr/bin/env python3
 apt_proxy: http://10.0.50.9:3142
 ntp_timezone: Europe/Athens
