@@ -1,5 +1,4 @@
 ---
-
 - name: Check for config dir
   ansible.builtin.stat:
     path: "{{ deluge_config_dir | dirname }}"
@@ -12,7 +11,7 @@
   ansible.builtin.file:
     path: "{{ deluge_config_dir }}"
     state: directory
-    mode: 0700
+    mode: "0700"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
   when:
@@ -29,7 +28,7 @@
     dest: "{{ deluge_config_dir }}/core.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
-    mode: 0644
+    mode: "0644"
   check_mode: true
   become: true
   register: _deluge_core_conf
@@ -51,7 +50,7 @@
     dest: "{{ deluge_config_dir }}/core.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
-    mode: 0644
+    mode: "0644"
     backup: true
   become: true
   notify: restart deluged
@@ -64,7 +63,7 @@
     dest: "{{ deluge_config_dir }}/web.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
-    mode: 0644
+    mode: "0644"
   check_mode: true
   become: true
   register: _deluge_web_conf
@@ -88,7 +87,7 @@
     dest: "{{ deluge_config_dir }}/web.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
-    mode: 0644
+    mode: "0644"
     backup: true
   become: true
   notify: restart deluge-web

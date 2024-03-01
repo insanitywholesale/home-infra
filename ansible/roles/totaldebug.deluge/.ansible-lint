@@ -3,5 +3,5 @@
 exclude_paths:
   - .github/
 skip_list:
-  - '204'
-  - '106'
+  - "204"
+  - "106"

@@ -2,7 +2,7 @@
 - name: check for supported OS
   assert:
     that:
-      - "ansible_os_family in supported_ansible_os_families"
+      - ansible_os_family in supported_ansible_os_families
 
 - name: Start Install
   include: install/main.yml

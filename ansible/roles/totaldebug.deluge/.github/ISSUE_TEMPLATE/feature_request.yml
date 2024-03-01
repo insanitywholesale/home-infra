@@ -2,7 +2,7 @@
 
 name: Feature request
 description: Suggest an idea for this project
-labels: 'type/feature'
+labels: type/feature
 body:
   - type: markdown
     attributes:
@@ -13,8 +13,8 @@ body:
       label: Is there an existing issue for this?
       description: Please search to see if an issue already exists for the feature you are requesting.
       options:
-      - label: I have searched the existing issues
-        required: true
+        - label: I have searched the existing issues
+          required: true
   - type: textarea
     id: feature-description
     attributes:

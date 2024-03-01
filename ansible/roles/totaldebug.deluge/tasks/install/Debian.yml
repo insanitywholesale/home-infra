@@ -1,5 +1,4 @@
 ---
-
 - name: Install gnupg
   ansible.builtin.apt:
     name: gnupg
@@ -32,7 +31,7 @@
 
 - name: Install Deluge Daemon
   ansible.builtin.apt:
-    name: ['deluged', 'deluge-console']
+    name: [deluged, deluge-console]
     update_cache: true
     state: present
     cache_valid_time: 3600

@@ -1,5 +1,4 @@
 ---
-
 - name: include OS-specific tasks
   include: "{{ ansible_os_family }}.yml"
 
@@ -29,7 +28,7 @@
   ansible.builtin.user:
     name: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
-    comment: "Deluge Service"
+    comment: Deluge Service
     create_home: true
     home: "{{ deluge_home }}"
     system: true
@@ -49,7 +48,7 @@
   ansible.builtin.file:
     path: "{{ deluge_log_dir }}"
     state: directory
-    mode: '0750'
+    mode: "0750"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
   when:
@@ -71,7 +70,7 @@
     path: "{{ deluge_download_location }}"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
-    mode: '0755'
+    mode: "0755"
     recurse: true
     state: directory
   when:
