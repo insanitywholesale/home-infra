@@ -33,7 +33,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_stepca" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "debian;CA;certificates;step-ca"
+  tags = "ca;certificates;debian;step-ca"
 
   lifecycle {
     ignore_changes = [
