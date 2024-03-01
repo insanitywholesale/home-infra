@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_powerdns" {
-  provider    = proxmox.pve0
+  provider    = proxmox.pve2
   vmid        = 1005
   count       = 1
   name        = format("powerdns%02s", (count.index) + 1)
   desc        = format("PowerDNS %02s", (count.index) + 1)
-  target_node = "pve0"
+  target_node = "pve2"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"

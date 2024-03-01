@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_gitlab" {
-  provider    = proxmox.pve1
+  provider    = proxmox.pve0
   vmid        = 1045
   count       = 1
   name        = format("gitlab%02s", (count.index) + 1)
   desc        = format("GitLab server %02s", (count.index) + 1)
-  target_node = "pve1"
+  target_node = "pve0"
 
   clone    = "deb12-tmpl"
   os_type  = "cloud-init"
