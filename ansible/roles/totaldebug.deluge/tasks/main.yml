@@ -5,7 +5,7 @@
       - ansible_os_family in supported_ansible_os_families
 
 - name: Start Install
-  include: install/main.yml
+  ansible.builtin.import_tasks: install/main.yml
 
 - name: Start Configure
-  include: configure.yml
+  ansible.builtin.import_tasks: configure.yml

@@ -9,6 +9,14 @@ all:
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
+    deluge_servers:
+      hosts:
+        deluge:
+          ansible_host: 10.0.50.116
+          ansible_python_interpreter: /usr/bin/env python3
+          ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     desktops:
       hosts:
         arch_main:

@@ -86,18 +86,21 @@
   tags:
     - deluge
 
-- name: Reload Daemon, and enable Deluged service
+- name: Reload Daemon, start and enable Deluged service
   ansible.builtin.systemd:
     name: deluged
     enabled: true
     daemon_reload: true
+    state: started
   become: true
   changed_when: false
 
-- name: Enable Deluge Web service
+- name: Reload Daemon, start and enable Deluge Web service
   ansible.builtin.systemd:
     name: deluge-web
     enabled: true
+    daemon_reload: true
+    state: started
   become: true
   when: deluge_web
   changed_when: false

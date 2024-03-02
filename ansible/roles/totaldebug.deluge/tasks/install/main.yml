@@ -1,6 +1,6 @@
 ---
 - name: include OS-specific tasks
-  include: "{{ ansible_os_family }}.yml"
+  ansible.builtin.include_tasks: "{{ ansible_os_family }}.yml"
 
 - name: create deluge group
   ansible.builtin.group:
@@ -81,4 +81,4 @@
     - deluge
 
 - name: Include systemd configs
-  include: systemd.yml
+  ansible.builtin.import_tasks: systemd.yml
