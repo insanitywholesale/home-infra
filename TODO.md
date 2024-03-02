@@ -2,7 +2,6 @@
 
 ## ansible
 - add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
-- add certbot tasks adapted from postgres to [configure TLS for influxdb](https://docs.influxdata.com/influxdb/v2/admin/security/enable-tls/#configure-influxdb-to-use-tls)
 - configure grafana to connect to influxdb and prometheus
 - extend gitlab playbook accordign to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
 - add certbot tasks adapted from postgres to configure TLS for mysql
@@ -14,6 +13,7 @@
 - continue work on powerdns playbook using [this role](https://github.com/PowerDNS/pdns-ansible) and [this role](https://github.com/PowerDNS/pdns_recursor-ansible)
 - add graylog playbook based on [this role](https://github.com/Graylog2/graylog-ansible-role)
 - add deluge playbook base on [this role](https://github.com/totaldebug/ansible-role-deluge)
+- add SSL certs to netbox
 
 ## terraform
 - structure terraform better with help from [this article](https://12ft.io/proxy?q=https%3A%2F%2Fmedium.com%2Fcodex%2Fterraform-best-practices-limit-resources-in-your-project-a3f3275f7bbf)

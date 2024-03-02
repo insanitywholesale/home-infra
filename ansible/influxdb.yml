@@ -50,3 +50,77 @@
     #     user_name: your_user_name
     #     user_password: your_user_password
     #     state: present
+
+    - name: Install CloudFlare certbot plugin
+      ansible.builtin.apt:
+        name: python3-certbot-dns-cloudflare
+        update_cache: true
+        state: present
+
+    - name: Create cloudflare credentials file
+      ansible.builtin.template:
+        src: cloudflare.ini.j2
+        dest: /etc/ssl/cloudflare.ini
+        mode: "0600"
+        owner: root
+        group: root
+
+    - name: Get LetsEncrypt TLS certificates
+      ansible.builtin.import_role:
+        name: geerlingguy.certbot
+      vars:
+        certbot_install_method: package
+        certbot_create_if_missing: true
+        certbot_create_method: standalone
+        certbot_admin_email: pepitsizous@zoho.com
+        certbot_certs:
+          - domains:
+              - influxdb.home.inherently.xyz
+        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive
+          --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
+        certbot_create_standalone_stop_services: []
+        certbot_auto_renew_user: root
+
+    - name: Copy certificate into gitlab SSL directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/influxdb.home.inherently.xyz/fullchain.pem
+        dest: /etc/ssl/influxdb.home.inherently.xyz.crt
+        mode: "0644"
+        owner: root
+        group: root
+
+    - name: Copy private key into gitlab SSL directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/influxdb.home.inherently.xyz/privkey.pem
+        dest: /etc/ssl/influxdb.home.inherently.xyz.key
+        mode: "0644"
+        owner: root
+        group: root
+
+    - name: Ensure tls-cert config option is set
+      ansible.builtin.lineinfile:
+        path: /etc/influxdb/config.toml
+        line: 'tls-cert = "/etc/ssl/influxdb.home.inherently.xyz.crt"'
+        create: true
+        state: present
+
+    - name: Ensure tls-key config option is set
+      ansible.builtin.lineinfile:
+        path: /etc/influxdb/config.toml
+        line: 'tls-key = "/etc/ssl/influxdb.home.inherently.xyz.key"'
+        create: true
+        state: present
+
+    - name: Restart InfluxDB service
+      ansible.builtin.systemd:
+        name: influxdb
+        state: restarted
+
+    - name: Wait for InfluxDB to start
+      ansible.builtin.wait_for:
+        port: 8086
+        delay: 5
+        timeout: 60
+

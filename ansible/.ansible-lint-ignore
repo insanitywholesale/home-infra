@@ -1,5 +1,6 @@
 # This file contains ignores rule violations for ansible-lint
 gitlab.yml yaml[line-length]
+influxdb.yml yaml[line-length]
 k3s-site.yml role-name[path]
 k3s-upgrade.yml role-name[path]
 netbox.yml name[play]
@@ -152,4 +153,3 @@ roles/totaldebug.deluge/tasks/main.yml fqcn[action-core]
 roles/totaldebug.deluge/tasks/main.yml name[casing]
 roles/totaldebug.deluge/tasks/main.yml schema[tasks]
 site.yml name[play]
-stepca.yml no-changed-when
