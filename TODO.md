@@ -14,6 +14,8 @@
 - fix step-ca playbook based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep) that fails [somewhere in here](https://github.com/maxhoesel-ansible/ansible-collection-smallstep/blob/9ab14b6e848475bd8e8b04aeb23448676c6efb5e/roles/step_ca/tasks/init.yml#L17)
 - add SSL certs to netbox
 - add SSL certs to deluge
+- add SSL certs to prometheus
+- add SSL certs to grafana
 
 ## terraform
 - structure terraform better with help from [this article](https://12ft.io/proxy?q=https%3A%2F%2Fmedium.com%2Fcodex%2Fterraform-best-practices-limit-resources-in-your-project-a3f3275f7bbf)
