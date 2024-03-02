@@ -101,17 +101,23 @@
 
     - name: Ensure tls-cert config option is set
       ansible.builtin.lineinfile:
+        state: present
+        create: true
         path: /etc/influxdb/config.toml
         line: 'tls-cert = "/etc/ssl/influxdb.home.inherently.xyz.crt"'
-        create: true
-        state: present
+        mode: "0644"
+        owner: root
+        group: root
 
     - name: Ensure tls-key config option is set
       ansible.builtin.lineinfile:
+        state: present
+        create: true
         path: /etc/influxdb/config.toml
         line: 'tls-key = "/etc/ssl/influxdb.home.inherently.xyz.key"'
-        create: true
-        state: present
+        mode: "0644"
+        owner: root
+        group: root
 
     - name: Restart InfluxDB service
       ansible.builtin.systemd:
@@ -123,4 +129,3 @@
         port: 8086
         delay: 5
         timeout: 60
-
