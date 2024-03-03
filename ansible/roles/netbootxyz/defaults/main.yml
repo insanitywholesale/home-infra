@@ -1,103 +1,104 @@
+---
 boot_domain: boot.netboot.xyz
 boot_timeout: 300000
 boot_version: 2.x
 bootloader_disks:
-- netboot.xyz
+  - netboot.xyz
 bootloader_http_enabled: true
 bootloader_https_enabled: true
 bootloaders:
   arm:
-  - desc: Used for CD/DVD, Virtual CDs, DRAC/iLO, VMware, Virtual Box
-    ipxe_bin: ipxe.iso
-    output_bin: -arm64.iso
-    type: ISO
-  - desc: Used for creation of USB Keys
-    ipxe_bin: ipxe.img
-    output_bin: -arm64.img
-    type: IMG
-  - desc: DHCP EFI boot image file, uses built-in iPXE NIC drivers
-    ipxe_bin: ipxe.efi
-    output_bin: -arm64.efi
-    type: DHCP
-  - desc: EFI w/ Simple Network Protocol, attempts to boot all net devices
-    ipxe_bin: snp.efi
-    output_bin: -arm64-snp.efi
-    type: DHCP-snp
-  - desc: EFI w/ Simple Network Protocol, only boots from device chained from
-    ipxe_bin: snponly.efi
-    output_bin: -arm64-snponly.efi
-    type: DHCP-snponly
+    - desc: Used for CD/DVD, Virtual CDs, DRAC/iLO, VMware, Virtual Box
+      ipxe_bin: ipxe.iso
+      output_bin: -arm64.iso
+      type: ISO
+    - desc: Used for creation of USB Keys
+      ipxe_bin: ipxe.img
+      output_bin: -arm64.img
+      type: IMG
+    - desc: DHCP EFI boot image file, uses built-in iPXE NIC drivers
+      ipxe_bin: ipxe.efi
+      output_bin: -arm64.efi
+      type: DHCP
+    - desc: EFI w/ Simple Network Protocol, attempts to boot all net devices
+      ipxe_bin: snp.efi
+      output_bin: -arm64-snp.efi
+      type: DHCP-snp
+    - desc: EFI w/ Simple Network Protocol, only boots from device chained from
+      ipxe_bin: snponly.efi
+      output_bin: -arm64-snponly.efi
+      type: DHCP-snponly
   hybrid:
-  - desc: Used for CD/DVD, Virtual CDs, DRAC/iLO, VMware, Virtual Box
-    ipxe_bin: ipxe.iso
-    output_bin: .iso
-    type: ISO
-  - desc: Used for creation of USB Keys
-    ipxe_bin: ipxe.img
-    output_bin: .img
-    type: IMG
+    - desc: Used for CD/DVD, Virtual CDs, DRAC/iLO, VMware, Virtual Box
+      ipxe_bin: ipxe.iso
+      output_bin: .iso
+      type: ISO
+    - desc: Used for creation of USB Keys
+      ipxe_bin: ipxe.img
+      output_bin: .img
+      type: IMG
   legacy:
-  - desc: Used for booting from GRUB/EXTLINUX
-    ipxe_bin: ipxe.lkrn
-    output_bin: .lkrn
-    type: Kernel
-  - desc: Virtual floppy disk for DRAC/iLO, VMware, Virtual Box, etc
-    ipxe_bin: ipxe.dsk
-    output_bin: .dsk
-    type: Floppy
-  - desc: Padded Virtual floppy disk for DRAC/iLO, VMware, Virtual Box, etc
-    ipxe_bin: ipxe.pdsk
-    output_bin: .pdsk
-    type: Floppy
-  - desc: DHCP boot image file, uses built-in iPXE NIC drivers
-    ipxe_bin: ipxe.kpxe
-    output_bin: .kpxe
-    type: DHCP
-  - desc: DHCP boot image file, use if you have NIC issues
-    ipxe_bin: undionly.kpxe
-    output_bin: -undionly.kpxe
-    type: DHCP-undionly
+    - desc: Used for booting from GRUB/EXTLINUX
+      ipxe_bin: ipxe.lkrn
+      output_bin: .lkrn
+      type: Kernel
+    - desc: Virtual floppy disk for DRAC/iLO, VMware, Virtual Box, etc
+      ipxe_bin: ipxe.dsk
+      output_bin: .dsk
+      type: Floppy
+    - desc: Padded Virtual floppy disk for DRAC/iLO, VMware, Virtual Box, etc
+      ipxe_bin: ipxe.pdsk
+      output_bin: .pdsk
+      type: Floppy
+    - desc: DHCP boot image file, uses built-in iPXE NIC drivers
+      ipxe_bin: ipxe.kpxe
+      output_bin: .kpxe
+      type: DHCP
+    - desc: DHCP boot image file, use if you have NIC issues
+      ipxe_bin: undionly.kpxe
+      output_bin: -undionly.kpxe
+      type: DHCP-undionly
   multiarch:
-  - desc: Used for CD/DVD, Virtual CDs, DRAC/iLO, VMware, Virtual Box
-    ipxe_bin: ipxe.iso
-    output_bin: -multiarch.iso
-    type: ISO
-  - desc: Used for creation of USB Keys
-    ipxe_bin: ipxe.img
-    output_bin: -multiarch.img
-    type: IMG
+    - desc: Used for CD/DVD, Virtual CDs, DRAC/iLO, VMware, Virtual Box
+      ipxe_bin: ipxe.iso
+      output_bin: -multiarch.iso
+      type: ISO
+    - desc: Used for creation of USB Keys
+      ipxe_bin: ipxe.img
+      output_bin: -multiarch.img
+      type: IMG
   rpi:
-  - desc: Raspberry Pi 4 - USB/SD Card Image
-    ipxe_bin: rpi4-sdcard.img
-    output_bin: -rpi4-sdcard.img
-    type: USB/SD Card
-  - desc: Raspberry Pi 4 - EFI Image
-    ipxe_bin: snp.efi
-    output_bin: -rpi4-snp.efi
-    type: DHCP-snp
+    - desc: Raspberry Pi 4 - USB/SD Card Image
+      ipxe_bin: rpi4-sdcard.img
+      output_bin: -rpi4-sdcard.img
+      type: USB/SD Card
+    - desc: Raspberry Pi 4 - EFI Image
+      ipxe_bin: snp.efi
+      output_bin: -rpi4-snp.efi
+      type: DHCP-snp
   uefi:
-  - desc: DHCP EFI boot image file, uses built-in iPXE NIC drivers
-    ipxe_bin: ipxe.efi
-    output_bin: .efi
-    type: DHCP
-  - desc: EFI w/ Simple Network Protocol, attempts to boot all net devices
-    ipxe_bin: snp.efi
-    output_bin: -snp.efi
-    type: DHCP-snp
-  - desc: EFI w/ Simple Network Protocol, only boots from device chained from
-    ipxe_bin: snponly.efi
-    output_bin: -snponly.efi
-    type: DHCP-snponly
+    - desc: DHCP EFI boot image file, uses built-in iPXE NIC drivers
+      ipxe_bin: ipxe.efi
+      output_bin: .efi
+      type: DHCP
+    - desc: EFI w/ Simple Network Protocol, attempts to boot all net devices
+      ipxe_bin: snp.efi
+      output_bin: -snp.efi
+      type: DHCP-snp
+    - desc: EFI w/ Simple Network Protocol, only boots from device chained from
+      ipxe_bin: snponly.efi
+      output_bin: -snponly.efi
+      type: DHCP-snponly
 cert_dir: /etc/netbootxyz/certs
 cert_file_filename: ca-netboot-xyz.crt
-checksums_filename: '{{ site_name }}-sha256-checksums.txt'
+checksums_filename: "{{ site_name }}-sha256-checksums.txt"
 codesign_cert_filename: codesign.crt
 codesign_key_filename: codesign.key
 custom_generate_menus: false
 custom_github_menus: true
-custom_templates_dir: '{{ netbootxyz_conf_dir }}/custom'
+custom_templates_dir: "{{ netbootxyz_conf_dir }}/custom"
 custom_url_menus: true
-early_menu_contents: '### put early ipxe settings here'
+early_menu_contents: "### put early ipxe settings here"
 early_menu_enabled: false
 generate_checksums: true
 generate_disks: true
@@ -136,10 +137,10 @@ releases:
     mirror: http://repo.almalinux.org
     name: AlmaLinux
     versions:
-    - code_name: 9
-      name: 9 (Latest)
-    - code_name: 8
-      name: 8 (Latest)
+      - code_name: 9
+        name: 9 (Latest)
+      - code_name: 8
+        name: 8 (Latest)
   alpinelinux:
     base_dir: alpine
     enabled: true
@@ -147,10 +148,10 @@ releases:
     mirror: http://dl-cdn.alpinelinux.org
     name: Alpine Linux
     versions:
-    - code_name: v3.19
-      name: '3.19'
-    - code_name: edge
-      name: Edge (development)
+      - code_name: v3.19
+        name: "3.19"
+      - code_name: edge
+        name: Edge (development)
   archlinux:
     base_dir: archlinux
     enabled: true
@@ -158,15 +159,15 @@ releases:
     mirror: mirrors.kernel.org
     name: Arch Linux
     versions:
-    - code_name: 2024.02.01
-      name: 2024.02.01
+      - code_name: 2024.02.01
+        name: 2024.02.01
   blackarch:
     enabled: true
     menu: linux
     name: BlackArch
     versions:
-    - code_name: current
-      name: current
+      - code_name: current
+        name: current
   centos:
     base_dir: centos
     enabled: true
@@ -174,16 +175,16 @@ releases:
     mirror: http://mirror.centos.org
     name: CentOS
     versions:
-    - code_name: 9-stream
-      name: 9.0 Stream
-    - code_name: 8.5.2111
-      name: '8.5'
-    - code_name: 8
-      name: 8.x Latest
-    - code_name: 8-stream
-      name: 8.0 Stream
-    - code_name: 7
-      name: 7.x Latest
+      - code_name: 9-stream
+        name: 9.0 Stream
+      - code_name: 8.5.2111
+        name: "8.5"
+      - code_name: 8
+        name: 8.x Latest
+      - code_name: 8-stream
+        name: 8.0 Stream
+      - code_name: 7
+        name: 7.x Latest
   coreos:
     base_dir: prod/streams
     enabled: true
@@ -191,12 +192,12 @@ releases:
     mirror: https://builds.coreos.fedoraproject.org
     name: Fedora CoreOS
     versions:
-    - code_name: 39.20240128.3.0
-      name: stable
-    - code_name: 39.20240210.2.0
-      name: testing
-    - code_name: 39.20240210.1.0
-      name: next
+      - code_name: 39.20240128.3.0
+        name: stable
+      - code_name: 39.20240210.2.0
+        name: testing
+      - code_name: 39.20240210.1.0
+        name: next
   debian:
     archive_mirror: http://archive.debian.org
     base_dir: debian
@@ -206,17 +207,17 @@ releases:
     name: Debian
     versions:
       stable:
-      - code_name: bookworm
-        name: 12.0 (bookworm)
-      - code_name: bullseye
-        name: 11.0 (bullseye)
-      - code_name: buster
-        name: 10.0 (buster)
+        - code_name: bookworm
+          name: 12.0 (bookworm)
+        - code_name: bullseye
+          name: 11.0 (bullseye)
+        - code_name: buster
+          name: 10.0 (buster)
       testing:
-      - code_name: trixie
-        name: trixie (testing)
-      - code_name: sid
-        name: sid (unstable)
+        - code_name: trixie
+          name: trixie (testing)
+        - code_name: sid
+          name: sid (unstable)
   devuan:
     base_dir: devuan
     enabled: true
@@ -225,15 +226,15 @@ releases:
     name: Devuan
     versions:
       stable:
-      - code_name: daedalus
-        name: 5.0 Daedalus (stable)
-      - code_name: chimaera
-        name: 4.0 Chimaera (oldstable)
-      - code_name: beowulf
-        name: 3.1 Beowulf (oldoldstable)
+        - code_name: daedalus
+          name: 5.0 Daedalus (stable)
+        - code_name: chimaera
+          name: 4.0 Chimaera (oldstable)
+        - code_name: beowulf
+          name: 3.1 Beowulf (oldoldstable)
       testing:
-      - code_name: excalibur
-        name: Excalibur (testing)
+        - code_name: excalibur
+          name: Excalibur (testing)
   fedora:
     base_dir: fedora
     enabled: true
@@ -241,24 +242,24 @@ releases:
     mirror: http://mirrors.kernel.org
     name: Fedora
     versions:
-    - code_name: 39
-      name: 39
-    - code_name: 38
-      name: 38
+      - code_name: 39
+        name: 39
+      - code_name: 38
+        name: 38
   flatcar:
     enabled: true
     menu: linux
-    mirror: ''
+    mirror: ""
     name: Flatcar Container Linux
     versions:
-    - code_name: stable
-      name: Stable Channel
-    - code_name: beta
-      name: Beta Channel
-    - code_name: alpha
-      name: Alpha Channel
-    - code_name: edge
-      name: Edge Channel
+      - code_name: stable
+        name: Stable Channel
+      - code_name: beta
+        name: Beta Channel
+      - code_name: alpha
+        name: Alpha Channel
+      - code_name: edge
+        name: Edge Channel
   freebsd:
     enabled: true
     menu: bsd
@@ -270,10 +271,10 @@ releases:
     mirror: http://www.ibiblio.org
     name: FreeDOS
     versions:
-    - code_name: FD13-FullUSB
-      name: 1.3 Full Installer
-    - code_name: FD13-LiteUSB
-      name: 1.3 Lite Installer
+      - code_name: FD13-FullUSB
+        name: 1.3 Full Installer
+      - code_name: FD13-LiteUSB
+        name: 1.3 Lite Installer
   gentoo:
     enabled: true
     menu: linux
@@ -289,8 +290,8 @@ releases:
     mirror: https://downloads.ipfire.org
     name: IPFire
     versions:
-    - code_name: 2.29-core183
-      name: 2.29 Core183
+      - code_name: 2.29-core183
+        name: 2.29 Core183
   k3os:
     enabled: true
     menu: linux
@@ -303,8 +304,8 @@ releases:
     mirror: http://http.kali.org
     name: Kali Linux
     versions:
-    - code_name: rolling
-      name: Rolling Edition
+      - code_name: rolling
+        name: Rolling Edition
   mageia:
     base_dir: mageia
     enabled: true
@@ -312,49 +313,49 @@ releases:
     mirror: http://mirrors.kernel.org
     name: Mageia
     versions:
-    - code_name: '8'
-      name: '8'
-    - code_name: cauldron
-      name: cauldron
+      - code_name: "8"
+        name: "8"
+      - code_name: cauldron
+        name: cauldron
   nixos:
     base_dir: nixos
     enabled: true
     menu: linux
     name: NixOS
     versions:
-    - code_name: nixos-20.09
-      name: nixos-20.09
-    - code_name: nixos-21.05
-      name: nixos-21.05
-    - code_name: nixos-21.11
-      name: nixos-21.11
-    - code_name: nixos-22.05
-      name: nixos-22.05
-    - code_name: nixos-22.11
-      name: nixos-22.11
-    - code_name: nixos-23.05
-      name: nixos-23.05
-    - code_name: nixos-23.11
-      name: nixos-23.11
-    - code_name: nixos-unstable
-      name: nixos-unstable
+      - code_name: nixos-20.09
+        name: nixos-20.09
+      - code_name: nixos-21.05
+        name: nixos-21.05
+      - code_name: nixos-21.11
+        name: nixos-21.11
+      - code_name: nixos-22.05
+        name: nixos-22.05
+      - code_name: nixos-22.11
+        name: nixos-22.11
+      - code_name: nixos-23.05
+        name: nixos-23.05
+      - code_name: nixos-23.11
+        name: nixos-23.11
+      - code_name: nixos-unstable
+        name: nixos-unstable
   openEuler:
-    base_dir: null
+    base_dir:
     enabled: true
     menu: linux
     mirror: http://repo.openeuler.org
     name: openEuler
     versions:
-    - code_name: openEuler-23.09
-      name: openEuler-23.09
-    - code_name: openEuler-20.03-LTS-SP3
-      name: openEuler-20.03-LTS-SP3
-    - code_name: openEuler-22.03-LTS
-      name: openEuler-22.03-LTS
-    - code_name: openEuler-22.03-LTS-SP1
-      name: openEuler-22.03-LTS-SP1
-    - code_name: openEuler-22.03-LTS-SP2
-      name: openEuler-22.03-LTS-SP2
+      - code_name: openEuler-23.09
+        name: openEuler-23.09
+      - code_name: openEuler-20.03-LTS-SP3
+        name: openEuler-20.03-LTS-SP3
+      - code_name: openEuler-22.03-LTS
+        name: openEuler-22.03-LTS
+      - code_name: openEuler-22.03-LTS-SP1
+        name: openEuler-22.03-LTS-SP1
+      - code_name: openEuler-22.03-LTS-SP2
+        name: openEuler-22.03-LTS-SP2
   openbsd:
     base_dir: pub/OpenBSD
     enabled: true
@@ -362,18 +363,18 @@ releases:
     mirror: http://ftp.openbsd.org
     name: OpenBSD
     versions:
-    - code_name: '7.4'
-      image_ver: '74'
-      name: '7.4'
-    - code_name: '7.3'
-      image_ver: '73'
-      name: '7.3'
-    - code_name: '7.2'
-      image_ver: '72'
-      name: '7.2'
-    - code_name: snapshots
-      image_ver: '74'
-      name: 7.4 Latest Snapshot
+      - code_name: "7.4"
+        image_ver: "74"
+        name: "7.4"
+      - code_name: "7.3"
+        image_ver: "73"
+        name: "7.3"
+      - code_name: "7.2"
+        image_ver: "72"
+        name: "7.2"
+      - code_name: snapshots
+        image_ver: "74"
+        name: 7.4 Latest Snapshot
   opensuse:
     base_dir: distribution/leap
     enabled: true
@@ -381,14 +382,14 @@ releases:
     mirror: http://download.opensuse.org
     name: openSUSE
     versions:
-    - code_name: '15.5'
-      name: openSUSE Leap 15.5
-    - code_name: '15.4'
-      name: openSUSE Leap 15.4
-    - code_name: '15.3'
-      name: openSUSE Leap 15.3
-    - code_name: tumbleweed
-      name: openSUSE tumbleweed
+      - code_name: "15.5"
+        name: openSUSE Leap 15.5
+      - code_name: "15.4"
+        name: openSUSE Leap 15.4
+      - code_name: "15.3"
+        name: openSUSE Leap 15.3
+      - code_name: tumbleweed
+        name: openSUSE tumbleweed
   oracle:
     enabled: true
     menu: linux
@@ -417,10 +418,10 @@ releases:
     mirror: http://download.rockylinux.org
     name: Rocky Linux
     versions:
-    - code_name: 9
-      name: 9 (Latest)
-    - code_name: 8
-      name: 8 (Latest)
+      - code_name: 9
+        name: 9 (Latest)
+      - code_name: 8
+        name: 8 (Latest)
   scientific:
     base_dir: linux/scientific
     enabled: true
@@ -428,14 +429,14 @@ releases:
     mirror: http://ftp1.scientificlinux.org
     name: Scientific Linux
     versions:
-    - code_name: '7.9'
-      name: '7.9'
-    - code_name: '7.8'
-      name: '7.8'
-    - code_name: '7.7'
-      name: '7.7'
-    - code_name: '7.6'
-      name: '7.6'
+      - code_name: "7.9"
+        name: "7.9"
+      - code_name: "7.8"
+        name: "7.8"
+      - code_name: "7.7"
+        name: "7.7"
+      - code_name: "7.6"
+        name: "7.6"
   slackware:
     base_dir: slackware
     enabled: true
@@ -443,14 +444,14 @@ releases:
     mirror: http://mirrors.kernel.org
     name: Slackware
     versions:
-    - code_name: current
-      name: Current
-    - code_name: '14.2'
-      name: '14.2'
-    - code_name: '14.1'
-      name: '14.1'
-    - code_name: '15.0'
-      name: '15.0'
+      - code_name: current
+        name: Current
+      - code_name: "14.2"
+        name: "14.2"
+      - code_name: "14.1"
+        name: "14.1"
+      - code_name: "15.0"
+        name: "15.0"
   smartos:
     base_dir: /platform/i86pc/
     enabled: true
@@ -458,154 +459,154 @@ releases:
     mirror: https://netboot.smartos.org/os/
     name: SmartOS
     versions:
-    - code_name: 20240222T001232Z
-      name: 20240222T001232Z
-    - code_name: 20240208T000334Z
-      name: 20240208T000334Z
-    - code_name: 20240125T000404Z
-      name: 20240125T000404Z
-    - code_name: 20240111T002438Z
-      name: 20240111T002438Z
+      - code_name: 20240222T001232Z
+        name: 20240222T001232Z
+      - code_name: 20240208T000334Z
+        name: 20240208T000334Z
+      - code_name: 20240125T000404Z
+        name: 20240125T000404Z
+      - code_name: 20240111T002438Z
+        name: 20240111T002438Z
   talos:
     enabled: true
     menu: linux
     mirror: https://github.com/siderolabs/talos/releases
     name: Talos
     platforms:
-    - key: metal
-      name: Bare Metal
-    - key: aws
-      name: AWS
-    - key: azure
-      name: Azure
-    - key: digitalocean
-      name: Digital Ocean
-    - key: equinixMetal
-      name: Equinix Metal
-    - key: gcp
-      name: GCP
-    - key: hcloud
-      name: Hetzner Cloud
-    - key: nocloud
-      name: Nocloud
-    - key: openstack
-      name: Openstack
-    - key: oracle
-      name: oracle
-    - key: scaleway
-      name: Scaleway
-    - key: upcloud
-      name: Upcloud
-    - key: vmware
-      name: VMware
-    - key: vultr
-      name: Vultr
+      - key: metal
+        name: Bare Metal
+      - key: aws
+        name: AWS
+      - key: azure
+        name: Azure
+      - key: digitalocean
+        name: Digital Ocean
+      - key: equinixMetal
+        name: Equinix Metal
+      - key: gcp
+        name: GCP
+      - key: hcloud
+        name: Hetzner Cloud
+      - key: nocloud
+        name: Nocloud
+      - key: openstack
+        name: Openstack
+      - key: oracle
+        name: oracle
+      - key: scaleway
+        name: Scaleway
+      - key: upcloud
+        name: Upcloud
+      - key: vmware
+        name: VMware
+      - key: vultr
+        name: Vultr
   tinycore:
     enabled: true
     menu: linux
     mirror: http://distro.ibiblio.org/tinycorelinux
     name: Tiny Core Linux
     versions:
-    - arch: x86
-      code_name: core
-      initrd: /15.x/x86/release/distribution_files/core.gz
-      kernel: /15.x/x86/release/distribution_files/vmlinuz
-      name: Core
-    - arch: x86_64
-      code_name: corepure
-      initrd: /15.x/x86_64/release/distribution_files/corepure64.gz
-      kernel: /15.x/x86_64/release/distribution_files/vmlinuz64
-      name: CorePure
-    - arch: x86
-      code_name: dcorebionic
-      initrd: /dCore/x86/release/dCore-bionic/dCore-bionic.gz
-      kernel: /dCore/x86/release/dCore-bionic/vmlinuz-bionic
-      name: dCore Bionic
-    - arch: x86
-      code_name: dcorebionicplus
-      initrd: /dCore/x86/release/dCore-bionic/dCorePlus-bionic.gz
-      kernel: /dCore/x86/release/dCore-bionic/vmlinuz-bionic
-      name: dCore Bionic Plus
-    - arch: x86
-      code_name: dcorejessie
-      initrd: /dCore/x86/release/dCore-jessie/dCore-jessie.gz
-      kernel: /dCore/x86/release/dCore-jessie/vmlinuz-jessie
-      name: dCore Jessie
-    - arch: x86
-      code_name: dcorejessieplus
-      initrd: /dCore/x86/release/dCore-jessie/dCorePlus-jessie.gz
-      kernel: /dCore/x86/release/dCore-jessie/vmlinuz-jessie
-      name: dCore Jessie Plus
-    - arch: x86
-      code_name: dcorestretch
-      initrd: /dCore/x86/release/dCore-stretch/dCore-stretch.gz
-      kernel: /dCore/x86/release/dCore-stretch/vmlinuz-stretch
-      name: dCore Stretch
-    - arch: x86
-      code_name: dcorestretchplus
-      initrd: /dCore/x86/release/dCore-stretch/dCorePlus-stretch.gz
-      kernel: /dCore/x86/release/dCore-stretch/vmlinuz-stretch
-      name: dCore Stretch Plus
-    - arch: x86
-      code_name: dcoretrusty
-      initrd: /dCore/x86/release/dCore-trusty/dCore-trusty.gz
-      kernel: /dCore/x86/release/dCore-trusty/vmlinuz-trusty
-      name: dCore Trusty
-    - arch: x86
-      code_name: dcoretrustyplus
-      initrd: /dCore/x86/release/dCore-trusty/dCorePlus-trusty.gz
-      kernel: /dCore/x86/release/dCore-trusty/vmlinuz-trusty
-      name: dCore Trusty Plus
-    - arch: x86
-      code_name: dcorewheezy
-      initrd: /dCore/x86/release/dCore-wheezy/dCore-wheezy.gz
-      kernel: /dCore/x86/release/dCore-wheezy/vmlinuz-wheezy
-      name: dCore Wheezy
-    - arch: x86
-      code_name: dcorewheezyplus
-      initrd: /dCore/x86/release/dCore-wheezy/dCorePlus-wheezy.gz
-      kernel: /dCore/x86/release/dCore-wheezy/vmlinuz-wheezy
-      name: dCore Wheezy Plus
-    - arch: x86
-      code_name: dcorexenial
-      initrd: /dCore/x86/release/dCore-xenial/dCore-xenial.gz
-      kernel: /dCore/x86/release/dCore-xenial/vmlinuz-xenial
-      name: dCore Xenial
-    - arch: x86
-      code_name: dcorexenialplus
-      initrd: /dCore/x86/release/dCore-xenial/dCorePlus-xenial.gz
-      kernel: /dCore/x86/release/dCore-xenial/vmlinuz-xenial
-      name: dCore Xenial Plus
-    - arch: x86_64
-      code_name: dcore64bionic
-      initrd: /dCore/x86_64/release/dCore-bionic64/dCore-bionic64.gz
-      kernel: /dCore/x86_64/release/dCore-bionic64/vmlinuz-bionic64
-      name: dCore64 Bionic
-    - arch: x86_64
-      code_name: dcore64bionicplus
-      initrd: /dCore/x86_64/release/dCore-bionic64/dCorePlus-bionic64.gz
-      kernel: /dCore/x86_64/release/dCore-bionic64/vmlinuz-bionic64
-      name: dCore64 Bionic Plus
-    - arch: x86_64
-      code_name: dcore64buster
-      initrd: /dCore/x86_64/release/dCore-buster64/dCore-buster64.gz
-      kernel: /dCore/x86_64/release/dCore-buster64/vmlinuz-buster64
-      name: dCore64 Buster
-    - arch: x86_64
-      code_name: dcore64busterplus
-      initrd: /dCore/x86_64/release/dCore-buster64/dCorePlus-buster64.gz
-      kernel: /dCore/x86_64/release/dCore-buster64/vmlinuz-buster64
-      name: dCore64 Buster Plus
-    - arch: x86_64
-      code_name: dcore64stretch
-      initrd: /dCore/x86_64/release/dCore-stretch64/dCore-stretch64.gz
-      kernel: /dCore/x86_64/release/dCore-stretch64/vmlinuz-stretch64
-      name: dCore64 Stretch
-    - arch: x86_64
-      code_name: dcore64stretchplus
-      initrd: /dCore/x86_64/release/dCore-stretch64/dCorePlus-stretch64.gz
-      kernel: /dCore/x86_64/release/dCore-stretch64/vmlinuz-stretch64
-      name: dCore Stretch Plus
+      - arch: x86
+        code_name: core
+        initrd: /15.x/x86/release/distribution_files/core.gz
+        kernel: /15.x/x86/release/distribution_files/vmlinuz
+        name: Core
+      - arch: x86_64
+        code_name: corepure
+        initrd: /15.x/x86_64/release/distribution_files/corepure64.gz
+        kernel: /15.x/x86_64/release/distribution_files/vmlinuz64
+        name: CorePure
+      - arch: x86
+        code_name: dcorebionic
+        initrd: /dCore/x86/release/dCore-bionic/dCore-bionic.gz
+        kernel: /dCore/x86/release/dCore-bionic/vmlinuz-bionic
+        name: dCore Bionic
+      - arch: x86
+        code_name: dcorebionicplus
+        initrd: /dCore/x86/release/dCore-bionic/dCorePlus-bionic.gz
+        kernel: /dCore/x86/release/dCore-bionic/vmlinuz-bionic
+        name: dCore Bionic Plus
+      - arch: x86
+        code_name: dcorejessie
+        initrd: /dCore/x86/release/dCore-jessie/dCore-jessie.gz
+        kernel: /dCore/x86/release/dCore-jessie/vmlinuz-jessie
+        name: dCore Jessie
+      - arch: x86
+        code_name: dcorejessieplus
+        initrd: /dCore/x86/release/dCore-jessie/dCorePlus-jessie.gz
+        kernel: /dCore/x86/release/dCore-jessie/vmlinuz-jessie
+        name: dCore Jessie Plus
+      - arch: x86
+        code_name: dcorestretch
+        initrd: /dCore/x86/release/dCore-stretch/dCore-stretch.gz
+        kernel: /dCore/x86/release/dCore-stretch/vmlinuz-stretch
+        name: dCore Stretch
+      - arch: x86
+        code_name: dcorestretchplus
+        initrd: /dCore/x86/release/dCore-stretch/dCorePlus-stretch.gz
+        kernel: /dCore/x86/release/dCore-stretch/vmlinuz-stretch
+        name: dCore Stretch Plus
+      - arch: x86
+        code_name: dcoretrusty
+        initrd: /dCore/x86/release/dCore-trusty/dCore-trusty.gz
+        kernel: /dCore/x86/release/dCore-trusty/vmlinuz-trusty
+        name: dCore Trusty
+      - arch: x86
+        code_name: dcoretrustyplus
+        initrd: /dCore/x86/release/dCore-trusty/dCorePlus-trusty.gz
+        kernel: /dCore/x86/release/dCore-trusty/vmlinuz-trusty
+        name: dCore Trusty Plus
+      - arch: x86
+        code_name: dcorewheezy
+        initrd: /dCore/x86/release/dCore-wheezy/dCore-wheezy.gz
+        kernel: /dCore/x86/release/dCore-wheezy/vmlinuz-wheezy
+        name: dCore Wheezy
+      - arch: x86
+        code_name: dcorewheezyplus
+        initrd: /dCore/x86/release/dCore-wheezy/dCorePlus-wheezy.gz
+        kernel: /dCore/x86/release/dCore-wheezy/vmlinuz-wheezy
+        name: dCore Wheezy Plus
+      - arch: x86
+        code_name: dcorexenial
+        initrd: /dCore/x86/release/dCore-xenial/dCore-xenial.gz
+        kernel: /dCore/x86/release/dCore-xenial/vmlinuz-xenial
+        name: dCore Xenial
+      - arch: x86
+        code_name: dcorexenialplus
+        initrd: /dCore/x86/release/dCore-xenial/dCorePlus-xenial.gz
+        kernel: /dCore/x86/release/dCore-xenial/vmlinuz-xenial
+        name: dCore Xenial Plus
+      - arch: x86_64
+        code_name: dcore64bionic
+        initrd: /dCore/x86_64/release/dCore-bionic64/dCore-bionic64.gz
+        kernel: /dCore/x86_64/release/dCore-bionic64/vmlinuz-bionic64
+        name: dCore64 Bionic
+      - arch: x86_64
+        code_name: dcore64bionicplus
+        initrd: /dCore/x86_64/release/dCore-bionic64/dCorePlus-bionic64.gz
+        kernel: /dCore/x86_64/release/dCore-bionic64/vmlinuz-bionic64
+        name: dCore64 Bionic Plus
+      - arch: x86_64
+        code_name: dcore64buster
+        initrd: /dCore/x86_64/release/dCore-buster64/dCore-buster64.gz
+        kernel: /dCore/x86_64/release/dCore-buster64/vmlinuz-buster64
+        name: dCore64 Buster
+      - arch: x86_64
+        code_name: dcore64busterplus
+        initrd: /dCore/x86_64/release/dCore-buster64/dCorePlus-buster64.gz
+        kernel: /dCore/x86_64/release/dCore-buster64/vmlinuz-buster64
+        name: dCore64 Buster Plus
+      - arch: x86_64
+        code_name: dcore64stretch
+        initrd: /dCore/x86_64/release/dCore-stretch64/dCore-stretch64.gz
+        kernel: /dCore/x86_64/release/dCore-stretch64/vmlinuz-stretch64
+        name: dCore64 Stretch
+      - arch: x86_64
+        code_name: dcore64stretchplus
+        initrd: /dCore/x86_64/release/dCore-stretch64/dCorePlus-stretch64.gz
+        kernel: /dCore/x86_64/release/dCore-stretch64/vmlinuz-stretch64
+        name: dCore Stretch Plus
   ubuntu:
     archive_mirror: http://old-releases.ubuntu.com
     base_dir: ubuntu
@@ -614,20 +615,20 @@ releases:
     mirror: http://archive.ubuntu.com
     name: Ubuntu
     versions:
-    - code_name: mantic
-      name: 23.10 Mantic Minotaur
-    - code_name: jammy
-      name: 22.04 LTS Jammy Jellyfish
-    - code_name: focal
-      name: 20.04 LTS Focal Fossa (Subiquity)
-    - code_name: focal-legacy
-      name: 20.04 LTS Focal Fossa (Legacy)
-    - code_name: bionic
-      name: 18.04 LTS Bionic Beaver
-    - code_name: xenial
-      name: 16.04 LTS Xenial Xerus
-    - code_name: trusty
-      name: 14.04 LTS Trusty Tahr
+      - code_name: mantic
+        name: 23.10 Mantic Minotaur
+      - code_name: jammy
+        name: 22.04 LTS Jammy Jellyfish
+      - code_name: focal
+        name: 20.04 LTS Focal Fossa (Subiquity)
+      - code_name: focal-legacy
+        name: 20.04 LTS Focal Fossa (Legacy)
+      - code_name: bionic
+        name: 18.04 LTS Bionic Beaver
+      - code_name: xenial
+        name: 16.04 LTS Xenial Xerus
+      - code_name: trusty
+        name: 14.04 LTS Trusty Tahr
   vmware:
     enabled: true
     menu: linux
@@ -637,21 +638,21 @@ releases:
     menu: linux
     name: VyOS
     versions:
-    - code_name: rolling
-      name: 1.5 rolling
+      - code_name: rolling
+        name: 1.5 rolling
   zeninstall:
     enabled: true
     menu: linux
     name: Zen Installer Arch
     versions:
-    - code_name: current
-      name: current
-sigs_dir: '{{ netbootxyz_root }}/sigs'
+      - code_name: current
+        name: current
+sigs_dir: "{{ netbootxyz_root }}/sigs"
 sigs_enabled: false
 sigs_location: http://${boot_domain}/sigs/
 sigs_menu: false
 site_name: netboot.xyz
-time_server: 0.pool.ntp.org
+time_server: "0.pool.ntp.org"
 utilitiesarm:
   memtest86:
     enabled: false
@@ -666,17 +667,15 @@ utilitiesefi:
   bootrepair:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.bootrepair.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.bootrepair.path }}vmlinuz ip=dhcp boot=casper
-      netboot=http fetch=${live_endpoint}{{ endpoints.bootrepair.path }}filesystem.squashfs
+    kernel: ${live_endpoint}{{ endpoints.bootrepair.path }}vmlinuz ip=dhcp boot=casper netboot=http fetch=${live_endpoint}{{ endpoints.bootrepair.path }}filesystem.squashfs
       {{ kernel_params }}
     name: Boot Repair CD
     type: direct
   caine:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.caine.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.caine.path }}vmlinuz ip=dhcp boot=casper
-      netboot=url url=${live_endpoint}{{ endpoints.caine.path }}filesystem.squashfs
-      {{ kernel_params }}
+    kernel: ${live_endpoint}{{ endpoints.caine.path }}vmlinuz ip=dhcp boot=casper netboot=url url=${live_endpoint}{{ endpoints.caine.path }}filesystem.squashfs {{
+      kernel_params }}
     name: CAINE
     type: direct
   clonezilla:
@@ -700,21 +699,19 @@ utilitiesefi:
     name: Memtest86+ {{ endpoints.memtest86plus.version }}
     type: memtest
     util_path: ${live_endpoint}{{ endpoints.memtest86plus.path }}memtest64.efi
-    version: '{{ endpoints.memtest86plus.version }}'
+    version: "{{ endpoints.memtest86plus.version }}"
   redorescue:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.redorescue.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.redorescue.path }}vmlinuz boot=live noprompt
-      nocomponents setkmap=us fetch=${live_endpoint}{{ endpoints.redorescue.path }}filesystem.squashfs
+    kernel: ${live_endpoint}{{ endpoints.redorescue.path }}vmlinuz boot=live noprompt nocomponents setkmap=us fetch=${live_endpoint}{{ endpoints.redorescue.path }}filesystem.squashfs
       {{ kernel_params }}
     name: RedoRescue
     type: direct
   rescatux:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.rescatux.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.rescatux.path }}vmlinuz boot=live fetch=${live_endpoint}{{
-      endpoints.rescatux.path }}filesystem.squashfs selinux=1 security=selinux enforcing=0
-      {{ kernel_params }}
+    kernel: ${live_endpoint}{{ endpoints.rescatux.path }}vmlinuz boot=live fetch=${live_endpoint}{{ endpoints.rescatux.path }}filesystem.squashfs selinux=1 security=selinux
+      enforcing=0 {{ kernel_params }}
     name: Rescatux
     type: direct
   rescuezilla:
@@ -745,7 +742,7 @@ utilitiespcbios32:
     name: Memtest86+ {{ endpoints.memtest86plus.version }}
     type: memtest
     util_path: ${live_endpoint}{{ endpoints.memtest86plus.path }}memtest32.bin
-    version: '{{ endpoints.memtest86plus.version }}'
+    version: "{{ endpoints.memtest86plus.version }}"
   shredos:
     enabled: true
     name: ShredOS
@@ -762,23 +759,20 @@ utilitiespcbios64:
   bootrepair:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.bootrepair.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.bootrepair.path }}vmlinuz ip=dhcp boot=casper
-      netboot=http fetch=${live_endpoint}{{ endpoints.bootrepair.path }}filesystem.squashfs
+    kernel: ${live_endpoint}{{ endpoints.bootrepair.path }}vmlinuz ip=dhcp boot=casper netboot=http fetch=${live_endpoint}{{ endpoints.bootrepair.path }}filesystem.squashfs
       {{ kernel_params }}
     name: Boot Repair CD
     type: direct
   breakin:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.breakin.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.breakin.path }}vmlinuz sshpasswd=breakin
-      startup=breakin {{ kernel_params }}
+    kernel: ${live_endpoint}{{ endpoints.breakin.path }}vmlinuz sshpasswd=breakin startup=breakin {{ kernel_params }}
     name: Breakin
     type: direct
   caine:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.caine.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.caine.path }}vmlinuz ip=dhcp boot=casper
-      netboot=http fetch=${live_endpoint}{{ endpoints.caine.path }}filesystem.squashfs
+    kernel: ${live_endpoint}{{ endpoints.caine.path }}vmlinuz ip=dhcp boot=casper netboot=http fetch=${live_endpoint}{{ endpoints.caine.path }}filesystem.squashfs
       {{ kernel_params }}
     name: CAINE
     type: direct
@@ -813,21 +807,19 @@ utilitiespcbios64:
     name: Memtest86+ {{ endpoints.memtest86plus.version }}
     type: memtest
     util_path: ${live_endpoint}{{ endpoints.memtest86plus.path }}memtest64.bin
-    version: '{{ endpoints.memtest86plus.version }}'
+    version: "{{ endpoints.memtest86plus.version }}"
   redorescue:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.redorescue.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.redorescue.path }}vmlinuz boot=live noprompt
-      nocomponents setkmap=us fetch=${live_endpoint}{{ endpoints.redorescue.path }}filesystem.squashfs
+    kernel: ${live_endpoint}{{ endpoints.redorescue.path }}vmlinuz boot=live noprompt nocomponents setkmap=us fetch=${live_endpoint}{{ endpoints.redorescue.path }}filesystem.squashfs
       {{ kernel_params }}
     name: RedoRescue
     type: direct
   rescatux:
     enabled: true
     initrd: ${live_endpoint}{{ endpoints.rescatux.path }}initrd
-    kernel: ${live_endpoint}{{ endpoints.rescatux.path }}vmlinuz boot=live fetch=${live_endpoint}{{
-      endpoints.rescatux.path }}filesystem.squashfs selinux=1 security=selinux enforcing=0
-      {{ kernel_params }}
+    kernel: ${live_endpoint}{{ endpoints.rescatux.path }}vmlinuz boot=live fetch=${live_endpoint}{{ endpoints.rescatux.path }}filesystem.squashfs selinux=1 security=selinux
+      enforcing=0 {{ kernel_params }}
     name: Rescatux
     type: direct
   rescuezilla:
@@ -853,6 +845,6 @@ utilitiespcbios64:
     name: Ultimate Boot CD (UBCD)
     type: memdisk
     util_path: https://mirror.sysadminguide.net/ubcd/ubcd539.iso
-    version: '539'
+    version: "539"
 wimboot_location: http://${boot_domain}/wimboot
 wimboot_upstream_url: https://github.com/ipxe/wimboot/releases/latest/download/wimboot
