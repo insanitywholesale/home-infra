@@ -11,8 +11,8 @@
 - add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
 - add github actions runner based on [this role](https://github.com/MonolithProjects/ansible-github_actions_runner)
 - add graylog playbook based on [this role](https://github.com/Graylog2/graylog-ansible-role)
-- fix step-ca playbook based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep) that fails [somewhere in here](https://github.com/maxhoesel-ansible/ansible-collection-smallstep/blob/9ab14b6e848475bd8e8b04aeb23448676c6efb5e/roles/step_ca/tasks/init.yml#L17)
 - add ansible playbook for netbootxyz based on [this role](https://github.com/netbootxyz/netboot.xyz/tree/2.0.77/roles/netbootxyz) that is already included and using vars files [endpoints.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/endpoints.yml) and [user_overrides.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/user_overrides.yml)
+- extend step-ca playbook to generate certs based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
 - add SSL certs to netbox
 - add SSL certs to deluge
 - add SSL certs to prometheus

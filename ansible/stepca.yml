@@ -6,7 +6,7 @@
     # Install and initialize the CA server.
     # There are a lot of configuration options, see the step_ca README for details
     - name: Install step-ca
-      ansible.builtin.include_role:
+      ansible.builtin.import_role:
         name: maxhoesel.smallstep.step_ca
       vars:
         step_ca_name: Inherently Internal CA
