@@ -68,7 +68,7 @@ ansible_check_diff:
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
   before_script:
     - apk update
-    - apk add --no-cache ansible ansible-lint openssh
+    - apk add --no-cache ansible ansible-lint openssh py3-jmespath
     - eval $(ssh-agent -s)
     - chmod 400 "$ANGLE_SSH_PRIVATE_KEY"
     - ssh-add "$ANGLE_SSH_PRIVATE_KEY"
