@@ -1,26 +1,27 @@
 # todos
+things to do
 
 ## ansible
-- continue work on powerdns playbook using [this role](https://github.com/PowerDNS/pdns-ansible) and [this role](https://github.com/PowerDNS/pdns_recursor-ansible)
-- add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
-- configure grafana to connect to influxdb and prometheus
-- extend gitlab playbook accordign to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
 - add certbot tasks adapted from postgres to configure TLS for mysql
-- add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
-- add keycloak playbook based on [this post](https://developers.redhat.com/articles/2023/02/20/automate-your-sso-ansible-and-keycloak) and [this post](https://developers.redhat.com/articles/2022/04/20/deploy-keycloak-single-sign-ansible) and using [this collection](https://github.com/ansible-middleware/keycloak)
-- add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
-- add github actions runner based on [this role](https://github.com/MonolithProjects/ansible-github_actions_runner)
-- add graylog playbook based on [this role](https://github.com/Graylog2/graylog-ansible-role)
-- add ansible playbook for netbootxyz based on [this role](https://github.com/netbootxyz/netboot.xyz/tree/2.0.77/roles/netbootxyz) that is already included and using vars files [endpoints.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/endpoints.yml) and [user_overrides.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/user_overrides.yml)
-- extend step-ca playbook to generate certs based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
+- continue work on powerdns playbook using [this role](https://github.com/PowerDNS/pdns-ansible) and [this role](https://github.com/PowerDNS/pdns_recursor-ansible)
 - add SSL certs to netbox
 - add SSL certs to deluge
 - add SSL certs to prometheus
 - add SSL certs to grafana
+- add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
+- add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
+- add github actions runner playbook based on [this role](https://github.com/MonolithProjects/ansible-github_actions_runner)
+- add netbootxyz playbook based on [this role](https://github.com/netbootxyz/netboot.xyz/tree/2.0.77/roles/netbootxyz) that is already included and using vars files [endpoints.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/endpoints.yml) and [user_overrides.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/user_overrides.yml)
+- configure grafana to connect to influxdb and prometheus
+- extend step-ca playbook to generate certs based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
+- extend gitlab playbook accordign to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
+- add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
+- add graylog playbook based on [this role](https://github.com/Graylog2/graylog-ansible-role)
+- add keycloak playbook based on [this post](https://developers.redhat.com/articles/2023/02/20/automate-your-sso-ansible-and-keycloak) and [this post](https://developers.redhat.com/articles/2022/04/20/deploy-keycloak-single-sign-ansible) and using [this collection](https://github.com/ansible-middleware/keycloak)
 
 ## terraform
 - structure terraform better with help from [this article](https://12ft.io/proxy?q=https%3A%2F%2Fmedium.com%2Fcodex%2Fterraform-best-practices-limit-resources-in-your-project-a3f3275f7bbf)
-- create windows template with help from [this blog post](https://yetiops.net/posts/proxmox-terraform-cloudinit-windows/)
+- create windows template with help from [this blog post](https://yetiops.net/posts/proxmox-terraform-cloudinit-windows/) and [this blog post](https://blog.sunshower.io/2021/02/22/building-a-home-cloud-with-proxmox-dns-terraform/)
 
 ## proxmox
 - use ansible to add letsencrypt certificates to proxmox cluster
@@ -42,6 +43,13 @@
 - add [system-upgrade-controller](https://github.com/rancher/system-upgrade-controller)
 - add renovatebot to repo to update images
 - look into [Cluster API Provider for Proxmox](https://github.com/ionos-cloud/cluster-api-provider-proxmox)
+- add sentry-kubernetes to send errors to sentry using the following:
+	* https://blog.sentry.io/surface-kubernetes-errors-with-sentry/
+	* https://github.com/getsentry/sentry-kubernetes
+	* https://medium.com/xgeeks/sentry-and-kubernetes-eabc507c96b7
+	* https://raslasarslas.medium.com/how-to-deploy-sentry-on-a-kubernetes-cluster-using-helm-600db31d4486
+	* https://github.com/sentry-kubernetes/charts
+	* https://github.com/fullfacing/sentry-kubernetes
 
 ## other
 - add docker buildx remote builders

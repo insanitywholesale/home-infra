@@ -12,7 +12,7 @@
 
     - name: Download PiHole install script
       ansible.builtin.get_url:
-        url: https://install.pi-hole.net
+        url: https://raw.githubusercontent.com/pi-hole/pi-hole/master/automated%20install/basic-install.sh
         dest: /opt/pihole-install/basic-install.sh
         mode: "0755"
         owner: root

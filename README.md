@@ -205,7 +205,7 @@ Can't or don't want to run these on kubernetes.
 .111
 
 ### NetBox
-.112
+10.0.50.112
 
 ### HomeAssistant
 .113
@@ -217,4 +217,4 @@ Can't or don't want to run these on kubernetes.
 .115
 
 ### Deluge
-.116
+10.0.50.116

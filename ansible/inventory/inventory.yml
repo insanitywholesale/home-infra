@@ -20,7 +20,7 @@ all:
     desktops:
       hosts:
         arch_main:
-          ansible_host: 10.0.20.49
+          ansible_host: 10.0.20.50
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: angle
           apt_proxy: http://10.0.50.9:3142

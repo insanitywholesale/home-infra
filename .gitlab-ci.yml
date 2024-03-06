@@ -4,7 +4,6 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Terraform.latest.gitlab-ci.yml
 
-# TODO: replace terraform in here with opentofu: https://gitlab.com/components/opentofu
 include:
   - component: gitlab.com/components/opentofu/full-pipeline@0.15.0
     inputs:
@@ -21,7 +20,7 @@ stages: [validate, build, deploy, cleanup]
 ansible_lint:
   tags: [ansible]
   stage: validate
-  image: alpine:latest
+  image: debian:12-slim
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
@@ -30,10 +29,16 @@ ansible_lint:
     reports:
       junit: ansible/ansible-lint.xml
   before_script:
-    - apk update
-    - apk add --no-cache ansible ansible-lint py3-pip py3-jmespath
-    - pip install --break-system-packages ansible-lint-junit
+    - apt update
+    - apt install -y openssh-client pipx python-is-python3
+    - pipx install --include-deps ansible
+    - pipx install --include-deps ansible-lint
+    - pipx install --include-deps ansible-lint-junit
+    - pipx inject ansible jmespath  # lae.proxmox dep
+    - pipx inject ansible dnspython # lae.proxmox dep
   script:
+    - export PATH="$PATH:$HOME/.local/bin"
+    - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
@@ -44,14 +49,20 @@ ansible_lint:
 ansible_syntax_check:
   tags: [ansible]
   stage: validate
-  image: alpine:latest
+  image: debian:12-slim
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
   before_script:
-    - apk update
-    - apk add --no-cache ansible openssh
+    - apt update
+    - apt install -y openssh-client pipx python-is-python3
+    - pipx install --include-deps ansible
+    - pipx install --include-deps ansible-lint
+    - pipx inject ansible jmespath  # lae.proxmox dep
+    - pipx inject ansible dnspython # lae.proxmox dep
   script:
+    - export PATH="$PATH:$HOME/.local/bin"
+    - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
@@ -62,25 +73,36 @@ ansible_syntax_check:
 ansible_check_diff:
   tags: [ansible]
   stage: validate
-  image: alpine:edge
+  image: debian:12-slim
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
+    JUNIT_OUTPUT_DIR: "$CI_PROJECT_DIR/ansible/junit-log"
+  artifacts:
+    when: always
+    reports:
+      junit: "$CI_PROJECT_DIR/ansible/junit-log/*.xml"
   before_script:
-    - apk update
-    - apk add --no-cache ansible ansible-lint openssh py3-jmespath
+    - apt update
+    - apt install -y openssh-client pipx python-is-python3
+    - pipx install --include-deps ansible
+    - pipx install --include-deps ansible-lint
+    - pipx inject ansible jmespath  # lae.proxmox dep
+    - pipx inject ansible dnspython # lae.proxmox dep
     - eval $(ssh-agent -s)
     - chmod 400 "$ANGLE_SSH_PRIVATE_KEY"
     - ssh-add "$ANGLE_SSH_PRIVATE_KEY"
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
   script:
+    - export PATH="$PATH:$HOME/.local/bin"
+    - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
-    - ansible-playbook -i inventory/inventory.yml --check --diff site.yml
+    - ansible-playbook --vault-password-file "$ANGLE_VAULT_PASS_FILE" -i inventory/inventory.yml --check --diff site.yml
 
 fmt:
   tags: [terraform]

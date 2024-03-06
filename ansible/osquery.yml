@@ -1,6 +1,6 @@
 ---
 - name: Deploy osquery
-  hosts: all
+  hosts: all:!desktops
   become: true
 
   tasks:
