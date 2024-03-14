@@ -41,6 +41,7 @@ ansible_lint:
     - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
+    - ansible-galaxy collection install ansible.posix
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
@@ -65,6 +66,7 @@ ansible_syntax_check:
     - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
+    - ansible-galaxy collection install ansible.posix
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
@@ -99,6 +101,7 @@ ansible_check_diff:
     - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
+    - ansible-galaxy collection install ansible.posix
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
