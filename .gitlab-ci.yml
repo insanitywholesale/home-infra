@@ -34,6 +34,10 @@ ansible_lint:
     - pipx install --include-deps ansible
     - pipx install --include-deps ansible-lint
     - pipx install --include-deps ansible-lint-junit
+
+    - pipx inject ansible ansible-lint
+    - pipx inject ansible-lint ansible
+
     - pipx inject ansible jmespath  # lae.proxmox dep
     - pipx inject ansible dnspython # lae.proxmox dep
   script:
@@ -41,7 +45,6 @@ ansible_lint:
     - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
-    - ansible-galaxy collection install ansible.posix
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
@@ -66,7 +69,6 @@ ansible_syntax_check:
     - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
-    - ansible-galaxy collection install ansible.posix
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
@@ -101,7 +103,6 @@ ansible_check_diff:
     - pipx ensurepath
     - cd ansible
     - ansible-galaxy collection install community.general
-    - ansible-galaxy collection install ansible.posix
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
