@@ -29,27 +29,26 @@ ansible_lint:
     reports:
       junit: ansible/ansible-lint.xml
   before_script:
+    - export PATH="$PATH:$HOME/.local/bin"
     - apt update
     - apt install -y openssh-client pipx python-is-python3
     - pipx install --include-deps ansible
     - pipx install --include-deps ansible-lint
     - pipx install --include-deps ansible-lint-junit
-
     - pipx inject ansible ansible-lint
     - pipx inject ansible-lint ansible
-
     - pipx inject ansible jmespath  # lae.proxmox dep
     - pipx inject ansible dnspython # lae.proxmox dep
     - pipx inject ansible-lint jmespath  # lae.proxmox dep
     - pipx inject ansible-lint dnspython # lae.proxmox dep
-  script:
-    - export PATH="$PATH:$HOME/.local/bin"
     - pipx ensurepath
+  script:
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
+    - ansible-lint --warn-list experimental --parseable
     - ansible-lint --warn-list experimental --parseable --nocolor | ansible-lint-junit -o ansible-lint.xml
 
 ansible_syntax_check:
@@ -60,15 +59,15 @@ ansible_syntax_check:
     ANSIBLE_HOST_KEY_CHECKING: "False"
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
   before_script:
+    - export PATH="$PATH:$HOME/.local/bin"
     - apt update
     - apt install -y openssh-client pipx python-is-python3
     - pipx install --include-deps ansible
     - pipx install --include-deps ansible-lint
     - pipx inject ansible jmespath  # lae.proxmox dep
     - pipx inject ansible dnspython # lae.proxmox dep
-  script:
-    - export PATH="$PATH:$HOME/.local/bin"
     - pipx ensurepath
+  script:
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
@@ -89,6 +88,7 @@ ansible_check_diff:
     reports:
       junit: "$CI_PROJECT_DIR/ansible/junit-log/*.xml"
   before_script:
+    - export PATH="$PATH:$HOME/.local/bin"
     - apt update
     - apt install -y openssh-client pipx python-is-python3
     - pipx install --include-deps ansible
@@ -100,9 +100,8 @@ ansible_check_diff:
     - ssh-add "$ANGLE_SSH_PRIVATE_KEY"
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-  script:
-    - export PATH="$PATH:$HOME/.local/bin"
     - pipx ensurepath
+  script:
     - cd ansible
     - ansible-galaxy collection install community.general
     - ansible-galaxy collection install vkhitrin.libguestfs
