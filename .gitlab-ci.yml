@@ -40,6 +40,8 @@ ansible_lint:
 
     - pipx inject ansible jmespath  # lae.proxmox dep
     - pipx inject ansible dnspython # lae.proxmox dep
+    - pipx inject ansible-lint jmespath  # lae.proxmox dep
+    - pipx inject ansible-lint dnspython # lae.proxmox dep
   script:
     - export PATH="$PATH:$HOME/.local/bin"
     - pipx ensurepath
