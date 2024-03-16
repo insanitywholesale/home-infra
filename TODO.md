@@ -7,13 +7,13 @@ things to do
 - add SSL certs to deluge
 - add SSL certs to prometheus
 - add SSL certs to grafana
-- add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
+- configure grafana to connect to influxdb and prometheus
+- extend gitlab playbook according to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
 - add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
 - add github actions runner playbook based on [this role](https://github.com/MonolithProjects/ansible-github_actions_runner)
+- add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
 - add netbootxyz playbook based on [this role](https://github.com/netbootxyz/netboot.xyz/tree/2.0.77/roles/netbootxyz) that is already included and using vars files [endpoints.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/endpoints.yml) and [user_overrides.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/user_overrides.yml)
-- configure grafana to connect to influxdb and prometheus
 - extend step-ca playbook to generate certs based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
-- extend gitlab playbook accordign to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
 - add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
 - add graylog playbook based on [this role](https://github.com/Graylog2/graylog-ansible-role)
 - add keycloak playbook based on [this post](https://developers.redhat.com/articles/2023/02/20/automate-your-sso-ansible-and-keycloak) and [this post](https://developers.redhat.com/articles/2022/04/20/deploy-keycloak-single-sign-ansible) and using [this collection](https://github.com/ansible-middleware/keycloak)
