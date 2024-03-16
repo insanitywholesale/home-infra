@@ -6,6 +6,7 @@
     - davidwittman.redis
     - lae.netbox
   vars:
+    # variables for netbox role
     netbox_stable: true
     netbox_database_socket: "{{ postgresql_unix_socket_directories[0] }}"
     netbox_superuser_password: netbox
@@ -18,9 +19,13 @@
       MEDIA_ROOT: "{{ netbox_shared_path }}/media"
       REPORTS_ROOT: "{{ netbox_shared_path }}/reports"
       SCRIPTS_ROOT: "{{ netbox_shared_path }}/scripts"
+    netbox_metrics_enabled: true
+    netbox_keep_uwsgi_updated: false
+    # variables for postgres role
     postgresql_users:
       - name: "{{ netbox_database_user }}"
         role_attr_flags: CREATEDB,NOSUPERUSER
+    # variables for redis role
     redis_bind: 127.0.0.1
     redis_version: 7.2.4
     redis_checksum: sha256:8d104c26a154b29fd67d6568b4f375212212ad41e0c2caa3d66480e78dbd3b59
