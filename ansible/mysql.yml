@@ -7,18 +7,26 @@
       ansible.builtin.import_role:
         name: geerlingguy.mysql
       vars:
-        mysql_root_password_update: true
-        mysql_root_password: mysqladmin123
-        # TODO: Check if the following works
-        # mysql_databases:
-        #   - name: testmysqldb
-        # mysql_users:
-        #   - name: "{{ mysql_root_user }}"
-        #     password: "{{ mysql_root_password }}"
-        #   - name: testmysqluser
-        #     host: "%"
-        #     password: testmysqluserpassword123
-        #     priv: "testmysqldb.*:ALL"
+        mysql_root_password_update: false # set to true if root password here is changed
+        mysql_root_username: root
+        mysql_root_password: "*2304CA907AD20C629F898FCE11C167F21663318A"
+        mysql_bind_address: "0.0.0.0"
+        mysql_databases:
+          - name: testmysqldb
+        mysql_users:
+          - name: testmysqluser
+            host: "%"
+            password: "*CB03FF1A1F88F88B238BBC3AC17C11AC32E498E4"
+            priv: testmysqldb.*:ALL
+
+    - name: Ensure mysql SSL dir exists
+      ansible.builtin.file:
+        path: /etc/mysql/ssl
+        owner: root
+        group: root
+        mode: "0755"
+        recurse: true
+        state: directory
 
     - name: Install CloudFlare certbot plugin
       ansible.builtin.apt:
@@ -49,3 +57,35 @@
           --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
         certbot_create_standalone_stop_services: []
         certbot_auto_renew_user: root
+
+    - name: Copy certificate into mysql SSL directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/mysql01.home.inherently.xyz/fullchain.pem
+        dest: /etc/mysql/ssl/server-cert.pem
+        mode: "0644"
+        owner: root
+        group: root
+
+    - name: Copy private key into mysql SSL directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/mysql01.home.inherently.xyz/privkey.pem
+        dest: /etc/mysql/ssl/server-key.pem
+        mode: "0644"
+        owner: root
+        group: root
+
+    - name: Set mysql SSL cert file
+      ansible.builtin.lineinfile:
+        path: /etc/mysql/mariadb.conf.d/50-server.cnf
+        regexp: "^ssl-cert "
+        insertafter: "^#ssl-cert "
+        line: ssl-cert=/etc/mysql/ssl/server-cert.pem
+
+    - name: Set mysql SSL private key file
+      ansible.builtin.lineinfile:
+        path: /etc/mysql/mariadb.conf.d/50-server.cnf
+        regexp: "^ssl-key "
+        insertafter: "^#ssl-key "
+        line: ssl-key=/etc/mysql/ssl/server-key.pem

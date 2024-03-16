@@ -2,7 +2,6 @@
 things to do
 
 ## ansible
-- add certbot tasks adapted from postgres to configure TLS for mysql
 - continue work on powerdns playbook using [this role](https://github.com/PowerDNS/pdns-ansible) and [this role](https://github.com/PowerDNS/pdns_recursor-ansible)
 - add SSL certs to netbox
 - add SSL certs to deluge
