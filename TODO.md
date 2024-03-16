@@ -3,17 +3,18 @@ things to do
 
 ## ansible
 - continue work on powerdns playbook using [this role](https://github.com/PowerDNS/pdns-ansible) and [this role](https://github.com/PowerDNS/pdns_recursor-ansible)
-- add SSL certs to netbox
-- add SSL certs to deluge
-- add SSL certs to prometheus
-- add SSL certs to grafana
+- add SSL certs to netbox (add `https = =0,mysql01.home.inherently.xyz.crt,mysql01.home.inherently.xyz.key,HIGH` to `netbox_uwsgi_options: {}` and also move the certs inside there with that name
+- add SSL certs to deluge (move cert and key inside `{{ deluge_config_dir }}/ssl` and name them `daemon.cert` and `daemon.pkey`)
+- add SSL certs to prometheus according to [the documentation](https://prometheus.io/docs/guides/tls-encryption/)
+- add SSL certs to grafana according to [the documentation](https://grafana.com/docs/grafana/latest/setup-grafana/set-up-https/)
 - configure grafana to connect to influxdb and prometheus
 - extend gitlab playbook according to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
 - add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
 - add github actions runner playbook based on [this role](https://github.com/MonolithProjects/ansible-github_actions_runner)
-- add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
-- add netbootxyz playbook based on [this role](https://github.com/netbootxyz/netboot.xyz/tree/2.0.77/roles/netbootxyz) that is already included and using vars files [endpoints.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/endpoints.yml) and [user_overrides.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/user_overrides.yml)
+- add docker buildx remote builders
 - extend step-ca playbook to generate certs based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
+- add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
+- add netbootxyz playbook based on [this role](https://github.com/netbootxyz/netboot.xyz/tree/2.0.77/roles/netbootxyz) that is already included and using vars files [endpoints.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/endpoints.yml) and [user\_overrides.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/user_overrides.yml)
 - add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
 - add graylog playbook based on [this role](https://github.com/Graylog2/graylog-ansible-role)
 - add keycloak playbook based on [this post](https://developers.redhat.com/articles/2023/02/20/automate-your-sso-ansible-and-keycloak) and [this post](https://developers.redhat.com/articles/2022/04/20/deploy-keycloak-single-sign-ansible) and using [this collection](https://github.com/ansible-middleware/keycloak)
@@ -25,7 +26,7 @@ things to do
 ## proxmox
 - use ansible to add letsencrypt certificates to proxmox cluster
 - configure haproxy on router to have a single endpoint for proxmox cluster according to the following
-	* https://pve.proxmox.com/wiki/Web_Interface_Via_Nginx_Proxy
+	* https://pve.proxmox.com/wiki/Web\_Interface\_Via\_Nginx\_Proxy
 	* https://www.armand.nz/notes/ProxMox/Installing%20Nginx%20as%20a%20reverse%20proxy%20for%20your%20Proxmox%20Web%20interface
 	* https://forum.proxmox.com/threads/using-nginx-as-reverse-proxy-externally.116127/
 - make non-k3s VMs HA
@@ -51,19 +52,4 @@ things to do
 	* https://github.com/fullfacing/sentry-kubernetes
 
 ## other
-- add docker buildx remote builders
-- look into collectd using the following
-	* https://medium.com/@dreampuf/customized-metrics-in-collectd-with-ansible-eddaa39c1972
-	* https://middlewaretechnologies.in/2023/12/how-to-install-and-configure-collectd-with-network-plugin-using-ansible.html
-	* https://github.com/AerisCloud/ansible-collectd
-	* https://github.com/azavea/ansible-collectd
-	* https://github.com/bertvv/ansible-role-collectd
-	* https://github.com/robertdebock/ansible-role-collectd
-	* https://github.com/Stouts/Stouts.collectd
-	* https://github.com/opennext-io/ansible-collectd
-	* https://github.com/buluma/ansible-role-collectd
-	* https://github.com/Oefenweb/ansible-collectd
-	* https://github.com/nlware/ansible-collectd
-	* https://github.com/giovtorres/ansible-role-collectd
-	* https://github.com/Temelio/ansible-role-collectd
-	* https://github.com/wasanthag/ansible_deploy_collectd_prometheus
+- nothing _for now_
