@@ -82,7 +82,7 @@ System and app auth, passwords for people and secrets for apps.
 .18
 
 ### Smallstep CA
-.19
+10.0.50.19
 
 ## Databases and Message Queues
 Databases and message queues for applications.

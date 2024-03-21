@@ -10,6 +10,7 @@
 - ansible.builtin.import_playbook: pihole.yml
 # - ansible.builtin.import_playbook: powerdns.yml
 - ansible.builtin.import_playbook: fog.yml
+- ansible.builtin.import_playbook: stepca.yml
 - ansible.builtin.import_playbook: postgres.yml
 - ansible.builtin.import_playbook: mysql.yml
 - ansible.builtin.import_playbook: grafana.yml
