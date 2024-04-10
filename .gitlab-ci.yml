@@ -17,6 +17,7 @@ include:
       auto_apply: "true"
 
 stages: [validate, build, deploy, cleanup]
+
 ansible_lint:
   tags: [ansible_local]
   stage: validate
@@ -48,8 +49,9 @@ ansible_lint:
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
-    - ansible-lint --warn-list experimental --parseable
-    - ansible-lint --warn-list experimental --parseable --nocolor | ansible-lint-junit -o ansible-lint.xml
+    - ansible-lint --warn-list experimental --parseable --nocolor > ansible-lint.txt
+    - cat ansible-lint.txt
+    - ansible-lint-junit ansible-lint.txt -o ansible-lint.xml
 
 ansible_syntax_check:
   tags: [ansible_local]
