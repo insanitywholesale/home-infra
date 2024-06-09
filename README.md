@@ -193,7 +193,7 @@ Bare-metal machines where most things run on
 10.0.50.100
 
 ### Backup
-.101
+10.0.50.101
 
 ## Non-clusterful applications
 Can't or don't want to run these on kubernetes.
