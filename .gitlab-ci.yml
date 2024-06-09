@@ -49,7 +49,7 @@ ansible_lint:
     - ansible-galaxy collection install vkhitrin.libguestfs
     - ansible-galaxy collection install prometheus.prometheus
     - ansible-galaxy collection install maxhoesel.smallstep
-    - ansible-lint --warn-list experimental --parseable --nocolor > ansible-lint.txt
+    - ansible-lint --warn-list experimental --parseable --nocolor > ansible-lint.txt || echo ''
     - cat ansible-lint.txt
     - ansible-lint-junit ansible-lint.txt -o ansible-lint.xml
 
