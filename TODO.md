@@ -2,6 +2,19 @@
 things to do
 
 ## ansible
+- fix lae.proxmox problem:
+```
+TASK [lae.proxmox : Configure Proxmox groups] ************************************************************
+skipping: [pve1] => (item={'comment': 'Administrators of this PVE cluster', 'name': 'admins'})
+skipping: [pve1] => (item={'comment': 'Users that represent automation tools', 'name': 'api_users'})
+skipping: [pve1]
+skipping: [pve2] => (item={'comment': 'Administrators of this PVE cluster', 'name': 'admins'})
+skipping: [pve2] => (item={'comment': 'Users that represent automation tools', 'name': 'api_users'})
+skipping: [pve2]
+<unknown>:59: SyntaxWarning: invalid escape sequence '\('
+<unknown>:60: SyntaxWarning: invalid escape sequence '\.'
+<unknown>:61: SyntaxWarning: invalid escape sequence '\.'
+```
 - continue work on powerdns playbook using [this role](https://github.com/PowerDNS/pdns-ansible) and [this role](https://github.com/PowerDNS/pdns_recursor-ansible)
 - add SSL to pihole following [this post](https://discourse.pi-hole.net/t/enabling-https-for-your-pi-hole-web-interface/5771)
 - add SSL certs to netbox (add `https = =0,mysql01.home.inherently.xyz.crt,mysql01.home.inherently.xyz.key,HIGH` to `netbox_uwsgi_options: {}` and also move the certs inside there with that name
