@@ -23,14 +23,14 @@
     - { regexp: "^Port:", line: "Port: {{ apt_cacher_ng_port }}" }
     - { regexp: "^CacheDir: ", line: "CacheDir: {{ apt_cacher_ng_cache_dir }}" }
   notify:
-    - restart apt-cacher-ng
+    - Restart apt-cacher-ng
 
 - name: Remove /etc/apt-cacher-ng/zz_debconf.conf
   ansible.builtin.file:
     path: /etc/apt-cacher-ng/zz_debconf.conf
     state: absent
   notify:
-    - restart apt-cacher-ng
+    - Restart apt-cacher-ng
 
 - name: Enable apt-cacher-ng on boot
   ansible.builtin.service:
