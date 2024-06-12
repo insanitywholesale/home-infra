@@ -10,7 +10,7 @@
         mysql_root_password_update: false # set to true if root password here is changed
         mysql_root_username: root
         mysql_root_password: "*2304CA907AD20C629F898FCE11C167F21663318A"
-        mysql_bind_address: "0.0.0.0"
+        mysql_bind_address: 0.0.0.0
         mysql_databases:
           - name: testmysqldb
         mysql_users:

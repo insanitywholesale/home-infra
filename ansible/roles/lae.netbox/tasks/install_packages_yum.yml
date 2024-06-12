@@ -1,12 +1,12 @@
 ---
 - name: Install EPEL repository
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: epel-release
     state: installed
   when: netbox_install_epel
 
 - name: Install required packages for selected NetBox configuration
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "{{ _netbox_yum_packages | flatten }}"
     state: present
     update_cache: true

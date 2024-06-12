@@ -9,4 +9,4 @@
     - name: Install PowerDNS Recursor
       role: PowerDNS.pdns_recursor
       pdns_rec_install_repo: "{{ pdns_rec_powerdns_repo_50 }}"
-      local-address: "0.0.0.0:5300"
+      local-address: 0.0.0.0:5300

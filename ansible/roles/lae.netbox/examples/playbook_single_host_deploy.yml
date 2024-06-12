@@ -7,7 +7,7 @@
     - lae.netbox
   vars:
     netbox_stable: true
-    netbox_socket: "0.0.0.0:80"
+    netbox_socket: 0.0.0.0:80
     netbox_superuser_password: netbox
     netbox_config:
       ALLOWED_HOSTS:
@@ -56,8 +56,8 @@
             postgresql_config_path: /var/lib/pgsql/10/data
             postgresql_daemon: postgresql-10
         - name: Install the EPEL yum repository
-          ansible.builtin.yum:
+          ansible.builtin.dnf:
             name: epel-release
         - name: Install the PostgreSQL yum repository
-          ansible.builtin.yum:
+          ansible.builtin.dnf:
             name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-{{ ansible_distribution_major_version }}-x86_64/pgdg-redhat-repo-latest.noarch.rpm

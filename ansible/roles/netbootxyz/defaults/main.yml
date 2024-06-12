@@ -652,7 +652,7 @@ sigs_enabled: false
 sigs_location: http://${boot_domain}/sigs/
 sigs_menu: false
 site_name: netboot.xyz
-time_server: "0.pool.ntp.org"
+time_server: 0.pool.ntp.org
 utilitiesarm:
   memtest86:
     enabled: false

@@ -103,7 +103,7 @@ redis_auto_aof_rewrite_percentage: "100"
 redis_auto_aof_rewrite_min_size: 64mb
 redis_notify_keyspace_events: '""'
 
-redis_client_output_buffer_limit_normal: "0 0 0"
+redis_client_output_buffer_limit_normal: 0 0 0
 redis_client_output_buffer_limit_slave: 256mb 64mb 60
 redis_client_output_buffer_limit_pubsub: 32mb 8mb 60
 
@@ -121,7 +121,7 @@ redis_config_additional: ""
 redis_sentinel: false
 redis_sentinel_protected_mode: "yes"
 redis_sentinel_dir: /var/lib/redis/sentinel_{{ redis_sentinel_port }}
-redis_sentinel_bind: "0.0.0.0"
+redis_sentinel_bind: 0.0.0.0
 redis_sentinel_port: 26379
 redis_sentinel_password: false
 redis_sentinel_pidfile: /var/run/redis/sentinel_{{ redis_sentinel_port }}.pid
