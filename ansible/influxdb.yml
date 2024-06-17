@@ -81,7 +81,7 @@
         certbot_create_standalone_stop_services: []
         certbot_auto_renew_user: root
 
-    - name: Copy certificate into gitlab SSL directory
+    - name: Copy certificate into influxdb SSL directory
       ansible.builtin.copy:
         remote_src: true
         src: /etc/letsencrypt/live/influxdb.home.inherently.xyz/fullchain.pem
@@ -90,7 +90,7 @@
         owner: root
         group: root
 
-    - name: Copy private key into gitlab SSL directory
+    - name: Copy private key into influxdb SSL directory
       ansible.builtin.copy:
         remote_src: true
         src: /etc/letsencrypt/live/influxdb.home.inherently.xyz/privkey.pem
