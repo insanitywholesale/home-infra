@@ -19,7 +19,6 @@ skipping: [pve2]
 - add SSL to pihole following [this post](https://discourse.pi-hole.net/t/enabling-https-for-your-pi-hole-web-interface/5771)
 - add SSL certs to netbox (add `https = =0,mysql01.home.inherently.xyz.crt,mysql01.home.inherently.xyz.key,HIGH` to `netbox_uwsgi_options: {}` and also move the certs inside there with that name
 - add SSL certs to deluge (move cert and key inside `{{ deluge_config_dir }}/ssl` and name them `daemon.cert` and `daemon.pkey`)
-- add SSL certs to prometheus according to [the documentation](https://prometheus.io/docs/guides/tls-encryption/)
 - add SSL certs to grafana according to [the documentation](https://grafana.com/docs/grafana/latest/setup-grafana/set-up-https/)
 - configure grafana to connect to influxdb and prometheus
 - extend gitlab playbook according to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
