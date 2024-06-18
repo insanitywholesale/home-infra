@@ -36,7 +36,7 @@ NTP, DNS, PXE, FTP and APT cache.
 ### LANcache
 .4
 
-### PowerDNS (external-dns pdns provider)
+### PowerDNS (external-dns `pdns` provider)
 .5
 
 ### CoreDNS (`k8s_gateway` plugin)
@@ -221,3 +221,6 @@ Can't or don't want to run these on kubernetes.
 
 ### Archivebox
 .117
+
+### cloudflared
+.201
