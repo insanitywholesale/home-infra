@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_observium" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve03
   vmid        = 1034
   count       = 1
   name        = format("observium%02s", (count.index) + 1)
   desc        = format("Observium %02s", (count.index) + 1)
-  target_node = "pve2"
+  target_node = "pve03"
 
   clone    = "deb12-tmpl"
   os_type  = "cloud-init"

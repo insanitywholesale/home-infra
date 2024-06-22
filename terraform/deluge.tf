@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_deluge" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve03
   vmid        = 1116
   count       = 1
   name        = format("deluge%02s", (count.index) + 1)
   desc        = format("Deluge %02s", (count.index) + 1)
-  target_node = "pve2"
+  target_node = "pve03"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"

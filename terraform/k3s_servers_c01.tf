@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
-  provider    = proxmox.pve0
+  provider    = proxmox.pve01
   count       = 1
   vmid        = 1000 + (count.index * 3) + 51
   name        = format("k3s-m%02s-c%02s", (count.index * 3) + 1, 1)
   desc        = format("HA k3s server/master %02s for cluster %02s", (count.index * 3) + 1, 1)
-  target_node = "pve0"
+  target_node = "pve01"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
@@ -44,12 +44,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
 }
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
-  provider    = proxmox.pve1
+  provider    = proxmox.pve02
   count       = 1
   vmid        = 1000 + (count.index * 3) + 52
   name        = format("k3s-m%02s-c%02s", (count.index * 3) + 2, 1)
   desc        = format("HA k3s server/master %02s for cluster %02s", (count.index * 3) + 2, 1)
-  target_node = "pve1"
+  target_node = "pve02"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
@@ -89,12 +89,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
 }
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve03
   count       = 1
   vmid        = 1000 + (count.index * 3) + 53
   name        = format("k3s-m%02s-c%02s", (count.index * 3) + 3, 1)
   desc        = format("HA k3s server/master %02s for cluster %02s", (count.index * 3) + 3, 1)
-  target_node = "pve2"
+  target_node = "pve03"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"

@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_grafana" {
-  provider    = proxmox.pve0
+  provider    = proxmox.pve01
   vmid        = 1030
   count       = 1
   name        = format("grafana%02s", (count.index) + 1)
   desc        = format("Grafana %02s", (count.index) + 1)
-  target_node = "pve0"
+  target_node = "pve01"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"

@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_sentry" {
-  provider    = proxmox.pve1
+  provider    = proxmox.pve02
   vmid        = 1038
   count       = 1
   name        = format("sentry%02s", (count.index) + 1)
   desc        = format("Sentry server %02s", (count.index) + 1)
-  target_node = "pve1"
+  target_node = "pve02"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"

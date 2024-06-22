@@ -9,16 +9,7 @@ terraform {
 }
 
 provider "proxmox" {
-  alias           = "pve0"
-  pm_tls_insecure = true
-  pm_api_url      = "https://10.0.50.70:8006/api2/json"
-  pm_password     = "failfail"
-  pm_user         = "root@pam"
-  pm_timeout      = 900
-}
-
-provider "proxmox" {
-  alias           = "pve1"
+  alias           = "pve01"
   pm_tls_insecure = true
   pm_api_url      = "https://10.0.50.71:8006/api2/json"
   pm_password     = "failfail"
@@ -27,9 +18,18 @@ provider "proxmox" {
 }
 
 provider "proxmox" {
-  alias           = "pve2"
+  alias           = "pve02"
   pm_tls_insecure = true
   pm_api_url      = "https://10.0.50.72:8006/api2/json"
+  pm_password     = "failfail"
+  pm_user         = "root@pam"
+  pm_timeout      = 900
+}
+
+provider "proxmox" {
+  alias           = "pve03"
+  pm_tls_insecure = true
+  pm_api_url      = "https://10.0.50.73:8006/api2/json"
   pm_password     = "failfail"
   pm_user         = "root@pam"
   pm_timeout      = 900

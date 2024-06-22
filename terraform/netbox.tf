@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_netbox" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve03
   vmid        = 1112
   count       = 1
   name        = format("netbox%02s", (count.index) + 1)
   desc        = "NetBox"
-  target_node = "pve2"
+  target_node = "pve03"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"

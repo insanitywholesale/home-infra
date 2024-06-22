@@ -174,8 +174,8 @@ all:
           ntp_timezone: Europe/Athens
     proxmox_servers:
       hosts:
-        pve0:
-          ansible_host: 10.0.50.70
+        pve01:
+          ansible_host: 10.0.50.71
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
@@ -235,8 +235,8 @@ all:
               password: oomfie1234
           template_vmid: 9001
           template_vmid2: 9004
-        pve1:
-          ansible_host: 10.0.50.71
+        pve02:
+          ansible_host: 10.0.50.72
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
@@ -254,8 +254,8 @@ all:
           pve_users: *id005
           template_vmid: 9002
           template_vmid2: 9005
-        pve2:
-          ansible_host: 10.0.50.72
+        pve03:
+          ansible_host: 10.0.50.73
           ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142

@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve03
   vmid        = 1021
   count       = 1
   name        = format("mysql%02s", (count.index) + 1)
   desc        = "main VM for mysql"
-  target_node = "pve2"
+  target_node = "pve03"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"

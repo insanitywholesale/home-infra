@@ -1,10 +1,10 @@
 resource "proxmox_vm_qemu" "proxmox_vm_stepca" {
-  provider    = proxmox.pve2
+  provider    = proxmox.pve03
   vmid        = 1019
   count       = 1
   name        = format("stepca%02s", (count.index) + 1)
   desc        = format("Smallstep CA %02s", (count.index) + 1)
-  target_node = "pve2"
+  target_node = "pve03"
 
   clone    = "deb11-tmpl"
   os_type  = "cloud-init"
