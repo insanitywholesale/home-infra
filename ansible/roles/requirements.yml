@@ -1,0 +1,10 @@
+---
+- src: elnappo.apt_cacher_ng
+- src: davidwittman.redis
+- src: geerlingguy.certbot
+- src: geerlingguy.mysql
+- src: geerlingguy.ntp
+- src: geerlingguy.postgresql
+- src: lae.netbox
+- src: lae.proxmox
+- src: totaldebug.deluge
