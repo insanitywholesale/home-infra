@@ -1,0 +1,17 @@
+---
+
+collections:
+  - maxhoesel.smallstep
+  - prometheus.prometheus
+  - vkhitrin.libguestfs
+
+roles:
+  - elnappo.apt_cacher_ng
+  - davidwittman.redis
+  - geerlingguy.certbot
+  - geerlingguy.mysql
+  - geerlingguy.ntp
+  - geerlingguy.postgresql
+  - lae.netbox
+  - lae.proxmox
+  - totaldebug.deluge

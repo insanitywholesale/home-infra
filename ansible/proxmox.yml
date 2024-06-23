@@ -1,13 +1,20 @@
 ---
-- name: Proxmox pre-config
+- name: Configure NTP on proxmox
+  hosts: proxmox_servers
+  become: true
+  roles:
+    - role: geerlingguy.ntp
+
+- name: Set up proxmox cluster
+  hosts: proxmox_servers
+  become: true
+  roles:
+    - role: lae.proxmox
+
+- name: Proxmox post-config
   hosts: proxmox_servers
   become: true
   tasks:
-    - name: Remove enterprise repo
-      ansible.builtin.file:
-        path: /etc/apt/sources.list.d/pve-enterprise.list
-        state: absent
-
     - name: Install useful packages
       ansible.builtin.apt:
         update_cache: true
@@ -25,22 +32,6 @@
           - libguestfs-tools
         state: present
 
-- name: Configure NTP on proxmox
-  hosts: proxmox_servers
-  become: true
-  roles:
-    - role: geerlingguy.ntp
-
-- name: Set up proxmox cluster
-  hosts: proxmox_servers
-  become: true
-  roles:
-    - role: lae.proxmox
-
-- name: Proxmox post-config
-  hosts: proxmox_servers
-  become: true
-  tasks:
     - name: Download Debian 11 genericcloud qcow2 image
       ansible.builtin.get_url:
         url: https://cloud.debian.org/images/cloud/bullseye/20240104-1616/debian-11-genericcloud-amd64-20240104-1616.qcow2
@@ -59,158 +50,158 @@
         owner: root
         group: root
 
-    - name: Add qemu-guest-agent to Debian 11 image
-      vkhitrin.libguestfs.guestfs_package:
-        image: /tmp/debian-11-amd64.qcow2
-        name: qemu-guest-agent
-        state: present
-
-    - name: Add qemu-guest-agent to Debian 12 image
-      vkhitrin.libguestfs.guestfs_package:
-        image: /tmp/debian-12-amd64.qcow2
-        name: qemu-guest-agent
-        state: present
-
-    - name: Remove unattended-upgrades from Debian 11
-      vkhitrin.libguestfs.guestfs_package:
-        image: /tmp/debian-11-amd64.qcow2
-        name: unattended-upgrades
-        state: absent
-
-    - name: Remove unattended-upgrades from Debian 12
-      vkhitrin.libguestfs.guestfs_package:
-        image: /tmp/debian-12-amd64.qcow2
-        name: unattended-upgrades
-        state: absent
-
-    - name: Copy /etc/network/interfaces config
-      ansible.builtin.copy:
-        src: debinterfaces
-        dest: /tmp/debinterfaces
-        owner: root
-        group: root
-        mode: "0644"
-
-    - name: Change network interfaces config for Debian 11
-      vkhitrin.libguestfs.guestfs_copy_in:
-        image: /tmp/debian-11-amd64.qcow2
-        src: /tmp/debinterfaces
-        dest: /etc/network/interfaces
-
-    - name: Change network interfaces config for Debian 12
-      vkhitrin.libguestfs.guestfs_copy_in:
-        image: /tmp/debian-12-amd64.qcow2
-        src: /tmp/debinterfaces
-        dest: /etc/network/interfaces
-
-    - name: Create Debian 11 virtual machine
-      community.general.proxmox_kvm:
-        validate_certs: false # TODO: disable after figuring out LE certs
-        api_user: root@pam
-        api_password: failfail
-        api_host: "{{ ansible_host }}"
-        node: "{{ inventory_hostname }}"
-        vmid: "{{ template_vmid }}"
-        name: deb11-tmpl
-        description: debian 11 template
-        acpi: true
-        cpu: cputype=SandyBridge
-        cores: 1
-        sockets: 1
-        memory: 1024
-        numa_enabled: true
-        ostype: l26
-        boot: c
-        bootdisk: virtio0
-        scsihw: virtio-scsi-pci
-        ide:
-          ide2: local-lvm:cloudinit,format=raw
-        net:
-          net0: virtio,bridge=vmbr0
-        serial:
-          serial0: socket
-        vga: qxl
-        agent: enabled=1,fstrim_cloned_disks=1
-        hotplug: disk,network,usb,memory,cpu
-        tags: [debian, bullseye, debian11, template]
-        state: present
-
-    - name: Create Debian 12 virtual machine
-      community.general.proxmox_kvm:
-        validate_certs: false # TODO: disable after figuring out LE certs
-        api_user: root@pam
-        api_password: failfail
-        api_host: "{{ ansible_host }}"
-        node: "{{ inventory_hostname }}"
-        vmid: "{{ template_vmid2 }}"
-        name: deb12-tmpl
-        description: debian 12 template
-        acpi: true
-        cpu: cputype=SandyBridge
-        cores: 1
-        sockets: 1
-        memory: 1024
-        numa_enabled: true
-        ostype: l26
-        boot: c
-        bootdisk: virtio0
-        scsihw: virtio-scsi-pci
-        ide:
-          ide2: local-lvm:cloudinit,format=raw
-        net:
-          net0: virtio,bridge=vmbr0
-        serial:
-          serial0: socket
-        vga: qxl
-        agent: enabled=1,fstrim_cloned_disks=1
-        hotplug: disk,network,usb,memory,cpu
-        tags: [debian, bookworm, debian12, template]
-        state: present
-
-    - name: Add root disk imported from qcow2 image to Debian 11 virtual machine
-      community.general.proxmox_disk:
-        validate_certs: false # TODO: disable after figuring out LE certs
-        api_user: root@pam
-        api_password: failfail
-        api_host: "{{ ansible_host }}"
-        vmid: "{{ template_vmid }}"
-        name: deb11-tmpl
-        disk: virtio0
-        storage: local-lvm
-        import_from: /tmp/debian-11-amd64.qcow2
-        state: present
-
-    - name: Add root disk imported from qcow2 image to Debian 12 virtual machine
-      community.general.proxmox_disk:
-        validate_certs: false # TODO: disable after figuring out LE certs
-        api_user: root@pam
-        api_password: failfail
-        api_host: "{{ ansible_host }}"
-        vmid: "{{ template_vmid2 }}"
-        name: deb12-tmpl
-        disk: virtio0
-        storage: local-lvm
-        import_from: /tmp/debian-12-amd64.qcow2
-        state: present
-
-    - name: Convert Debian 11 virtual machine to template
-      community.general.proxmox_kvm:
-        validate_certs: false # TODO: disable after figuring out LE certs
-        api_user: root@pam
-        api_password: failfail
-        api_host: "{{ ansible_host }}"
-        node: "{{ inventory_hostname }}"
-        vmid: "{{ template_vmid }}"
-        name: deb11-tmpl
-        state: template
-
-    - name: Convert Debian 12 virtual machine to template
-      community.general.proxmox_kvm:
-        validate_certs: false # TODO: disable after figuring out LE certs
-        api_user: root@pam
-        api_password: failfail
-        api_host: "{{ ansible_host }}"
-        node: "{{ inventory_hostname }}"
-        vmid: "{{ template_vmid2 }}"
-        name: deb12-tmpl
-        state: template
+#    - name: Add qemu-guest-agent to Debian 11 image
+#      vkhitrin.libguestfs.guestfs_package:
+#        image: /tmp/debian-11-amd64.qcow2
+#        name: qemu-guest-agent
+#        state: present
+#
+#    - name: Add qemu-guest-agent to Debian 12 image
+#      vkhitrin.libguestfs.guestfs_package:
+#        image: /tmp/debian-12-amd64.qcow2
+#        name: qemu-guest-agent
+#        state: present
+#
+#    - name: Remove unattended-upgrades from Debian 11
+#      vkhitrin.libguestfs.guestfs_package:
+#        image: /tmp/debian-11-amd64.qcow2
+#        name: unattended-upgrades
+#        state: absent
+#
+#    - name: Remove unattended-upgrades from Debian 12
+#      vkhitrin.libguestfs.guestfs_package:
+#        image: /tmp/debian-12-amd64.qcow2
+#        name: unattended-upgrades
+#        state: absent
+#
+#    - name: Copy /etc/network/interfaces config
+#      ansible.builtin.copy:
+#        src: debinterfaces
+#        dest: /tmp/debinterfaces
+#        owner: root
+#        group: root
+#        mode: "0644"
+#
+#    - name: Change network interfaces config for Debian 11
+#      vkhitrin.libguestfs.guestfs_copy_in:
+#        image: /tmp/debian-11-amd64.qcow2
+#        src: /tmp/debinterfaces
+#        dest: /etc/network/interfaces
+#
+#    - name: Change network interfaces config for Debian 12
+#      vkhitrin.libguestfs.guestfs_copy_in:
+#        image: /tmp/debian-12-amd64.qcow2
+#        src: /tmp/debinterfaces
+#        dest: /etc/network/interfaces
+#
+#    - name: Create Debian 11 virtual machine
+#      community.general.proxmox_kvm:
+#        validate_certs: false # TODO: disable after figuring out LE certs
+#        api_user: root@pam
+#        api_password: failfail
+#        api_host: "{{ ansible_host }}"
+#        node: "{{ inventory_hostname }}"
+#        vmid: "{{ template_vmid }}"
+#        name: deb11-tmpl
+#        description: debian 11 template
+#        acpi: true
+#        cpu: cputype=SandyBridge
+#        cores: 1
+#        sockets: 1
+#        memory: 1024
+#        numa_enabled: true
+#        ostype: l26
+#        boot: c
+#        bootdisk: virtio0
+#        scsihw: virtio-scsi-pci
+#        ide:
+#          ide2: local-lvm:cloudinit,format=raw
+#        net:
+#          net0: virtio,bridge=vmbr0
+#        serial:
+#          serial0: socket
+#        vga: qxl
+#        agent: enabled=1,fstrim_cloned_disks=1
+#        hotplug: disk,network,usb,memory,cpu
+#        tags: [debian, bullseye, debian11, template]
+#        state: present
+#
+#    - name: Create Debian 12 virtual machine
+#      community.general.proxmox_kvm:
+#        validate_certs: false # TODO: disable after figuring out LE certs
+#        api_user: root@pam
+#        api_password: failfail
+#        api_host: "{{ ansible_host }}"
+#        node: "{{ inventory_hostname }}"
+#        vmid: "{{ template_vmid2 }}"
+#        name: deb12-tmpl
+#        description: debian 12 template
+#        acpi: true
+#        cpu: cputype=SandyBridge
+#        cores: 1
+#        sockets: 1
+#        memory: 1024
+#        numa_enabled: true
+#        ostype: l26
+#        boot: c
+#        bootdisk: virtio0
+#        scsihw: virtio-scsi-pci
+#        ide:
+#          ide2: local-lvm:cloudinit,format=raw
+#        net:
+#          net0: virtio,bridge=vmbr0
+#        serial:
+#          serial0: socket
+#        vga: qxl
+#        agent: enabled=1,fstrim_cloned_disks=1
+#        hotplug: disk,network,usb,memory,cpu
+#        tags: [debian, bookworm, debian12, template]
+#        state: present
+#
+#    - name: Add root disk imported from qcow2 image to Debian 11 virtual machine
+#      community.general.proxmox_disk:
+#        validate_certs: false # TODO: disable after figuring out LE certs
+#        api_user: root@pam
+#        api_password: failfail
+#        api_host: "{{ ansible_host }}"
+#        vmid: "{{ template_vmid }}"
+#        name: deb11-tmpl
+#        disk: virtio0
+#        storage: local-lvm
+#        import_from: /tmp/debian-11-amd64.qcow2
+#        state: present
+#
+#    - name: Add root disk imported from qcow2 image to Debian 12 virtual machine
+#      community.general.proxmox_disk:
+#        validate_certs: false # TODO: disable after figuring out LE certs
+#        api_user: root@pam
+#        api_password: failfail
+#        api_host: "{{ ansible_host }}"
+#        vmid: "{{ template_vmid2 }}"
+#        name: deb12-tmpl
+#        disk: virtio0
+#        storage: local-lvm
+#        import_from: /tmp/debian-12-amd64.qcow2
+#        state: present
+#
+#    - name: Convert Debian 11 virtual machine to template
+#      community.general.proxmox_kvm:
+#        validate_certs: false # TODO: disable after figuring out LE certs
+#        api_user: root@pam
+#        api_password: failfail
+#        api_host: "{{ ansible_host }}"
+#        node: "{{ inventory_hostname }}"
+#        vmid: "{{ template_vmid }}"
+#        name: deb11-tmpl
+#        state: template
+#
+#    - name: Convert Debian 12 virtual machine to template
+#      community.general.proxmox_kvm:
+#        validate_certs: false # TODO: disable after figuring out LE certs
+#        api_user: root@pam
+#        api_password: failfail
+#        api_host: "{{ ansible_host }}"
+#        node: "{{ inventory_hostname }}"
+#        vmid: "{{ template_vmid2 }}"
+#        name: deb12-tmpl
+#        state: template

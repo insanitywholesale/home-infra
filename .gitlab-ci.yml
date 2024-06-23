@@ -13,7 +13,7 @@ include:
       version: 0.17.0
       opentofu_version: 1.6.1
       root_dir: terraform
-      state_name: homelab-cluster
+      state_name: proxmox
       auto_apply: "true"
 
 stages: [validate, build, deploy, cleanup]
@@ -45,10 +45,7 @@ ansible_lint:
     - pipx ensurepath
   script:
     - cd ansible
-    - ansible-galaxy collection install community.general
-    - ansible-galaxy collection install vkhitrin.libguestfs
-    - ansible-galaxy collection install prometheus.prometheus
-    - ansible-galaxy collection install maxhoesel.smallstep
+    - ansible-galaxy install -r requirements.yml
     - ansible-lint --warn-list experimental --parseable --nocolor > ansible-lint.txt || echo ''
     - cat ansible-lint.txt
     - ansible-lint-junit ansible-lint.txt -o ansible-lint.xml
@@ -71,10 +68,7 @@ ansible_syntax_check:
     - pipx ensurepath
   script:
     - cd ansible
-    - ansible-galaxy collection install community.general
-    - ansible-galaxy collection install vkhitrin.libguestfs
-    - ansible-galaxy collection install prometheus.prometheus
-    - ansible-galaxy collection install maxhoesel.smallstep
+    - ansible-galaxy install -r requirements.yml
     - ansible-playbook -i inventory/inventory.yml --syntax-check site.yml
 
 ansible_check_diff:
@@ -105,10 +99,7 @@ ansible_check_diff:
     - pipx ensurepath
   script:
     - cd ansible
-    - ansible-galaxy collection install community.general
-    - ansible-galaxy collection install vkhitrin.libguestfs
-    - ansible-galaxy collection install prometheus.prometheus
-    - ansible-galaxy collection install maxhoesel.smallstep
+    - ansible-galaxy install -r requirements.yml
     - ansible-playbook --vault-password-file "$ANGLE_VAULT_PASS_FILE" -i inventory/inventory.yml --check --diff site.yml
 
 fmt:

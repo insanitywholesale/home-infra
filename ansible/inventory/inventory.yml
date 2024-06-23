@@ -5,7 +5,6 @@ all:
       hosts:
         aptcache:
           ansible_host: 10.0.50.9
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -13,7 +12,6 @@ all:
       hosts:
         deluge:
           ansible_host: 10.0.50.116
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -21,7 +19,6 @@ all:
       hosts:
         arch_main:
           ansible_host: 10.0.20.50
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: angle
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -29,7 +26,6 @@ all:
       hosts:
         fog:
           ansible_host: 10.0.50.7
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -37,7 +33,6 @@ all:
       hosts:
         gitlab:
           ansible_host: 10.0.50.45
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           cloudflare_api_token: !vault |
@@ -53,7 +48,6 @@ all:
       hosts:
         grafana:
           ansible_host: 10.0.50.30
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -61,7 +55,6 @@ all:
       hosts:
         influxdb:
           ansible_host: 10.0.50.32
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           cloudflare_api_token: !vault |
@@ -88,7 +81,6 @@ all:
       hosts:
         mysql:
           ansible_host: 10.0.50.21
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           cloudflare_api_token: !vault |
@@ -104,7 +96,6 @@ all:
       hosts:
         netbox:
           ansible_host: 10.0.50.112
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -112,7 +103,6 @@ all:
       hosts:
         observium:
           ansible_host: 10.0.50.34
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -120,7 +110,6 @@ all:
       hosts:
         pihole:
           ansible_host: 10.0.50.2
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           cloudflare_api_token: !vault |
@@ -136,7 +125,6 @@ all:
       hosts:
         postgres:
           ansible_host: 10.0.50.20
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           cloudflare_api_token: !vault |
@@ -152,7 +140,6 @@ all:
       hosts:
         powerdns:
           ansible_host: 10.0.50.5
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -160,7 +147,6 @@ all:
       hosts:
         prometheus:
           ansible_host: 10.0.50.31
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           cloudflare_api_token: !vault |
@@ -176,7 +162,6 @@ all:
       hosts:
         pve01:
           ansible_host: 10.0.50.71
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -196,7 +181,7 @@ all:
               path: /vms
               roles:
                 - PVEVMAdmin
-          pve_cluster_clustername: "{{ pve_group }}"
+          pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
           pve_groups: &id002
@@ -237,12 +222,11 @@ all:
           template_vmid2: 9004
         pve02:
           ansible_host: 10.0.50.72
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
           pve_acls: *id001
-          pve_cluster_clustername: "{{ pve_group }}"
+          pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
           pve_groups: *id002
@@ -256,12 +240,11 @@ all:
           template_vmid2: 9005
         pve03:
           ansible_host: 10.0.50.73
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
           pve_acls: *id001
-          pve_cluster_clustername: "{{ pve_group }}"
+          pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
           pve_groups: *id002
@@ -277,7 +260,6 @@ all:
       hosts:
         sentry:
           ansible_host: 10.0.50.38
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
@@ -285,7 +267,6 @@ all:
       hosts:
         step_ca:
           ansible_host: 10.0.50.19
-          ansible_python_interpreter: /usr/bin/env python3
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
