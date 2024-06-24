@@ -13,7 +13,7 @@ include:
       version: 0.17.0
       opentofu_version: 1.6.1
       root_dir: terraform
-      state_name: proxmox
+      state_name: homelab-cluster
       auto_apply: "true"
 
 stages: [validate, build, deploy, cleanup]
