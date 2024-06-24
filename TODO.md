@@ -33,6 +33,7 @@ skipping: [pve2]
 - add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
 
 ## terraform
+- move to [this terraform provider](https://github.com/bpg/terraform-provider-proxmox)
 - structure terraform better with help from [this article](https://12ft.io/proxy?q=https%3A%2F%2Fmedium.com%2Fcodex%2Fterraform-best-practices-limit-resources-in-your-project-a3f3275f7bbf)
 - create windows template with help from [this blog post](https://yetiops.net/posts/proxmox-terraform-cloudinit-windows/) and [this blog post](https://blog.sunshower.io/2021/02/22/building-a-home-cloud-with-proxmox-dns-terraform/)
 
