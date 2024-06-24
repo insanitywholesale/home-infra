@@ -1,0 +1,42 @@
+# TODO: template out references to pve01, pve02, pve03
+
+vrrp_instance homelab_cluster {
+    # Conditionals using @hostname syntax are used
+    # Hostnames are taken from machine-id which in turn uses uname -n
+
+    @pve01 state BACKUP
+    @pve02 state BACKUP
+    @pve03 state MASTER
+
+    @pve01 interface vmbr0
+    @pve02 interface vmbr0
+    @pve03 interface vmbr0
+
+    @pve01 priority 101
+    @pve02 priority 102
+    @pve03 priority 103
+
+    virtual_router_id 55
+
+    advert_int 1
+
+    unicast_peer {
+        @pve01 10.0.50.72
+        @pve01 10.0.50.73
+
+        @pve02 10.0.50.71
+        @pve02 10.0.50.73
+
+        @pve03 10.0.50.71
+        @pve03 10.0.50.72
+    }
+
+    authentication {
+        auth_type PASS
+        auth_pass {{ keepalived_password }}
+    }
+
+    virtual_ipaddress {
+        10.0.50.70/24 dev vmbr0  # VIP address
+    }
+}

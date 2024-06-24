@@ -164,8 +164,15 @@ all:
           ansible_host: 10.0.50.71
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
+          keepalived_password: &id001 !vault |
+            $ANSIBLE_VAULT;1.1;AES256
+            62656632393864353833633732653238626366326238646361313861393664626261393332633532
+            3534626333623630333231356131633765633536356230310a613736343539346366623137653230
+            36323261306431313435383938313561626436626139393362393333656330363032323266633632
+            3739623739643830660a653961353066386566376662346132363862363465336338616230333565
+            3062
           ntp_timezone: Europe/Athens
-          pve_acls: &id001
+          pve_acls: &id002
             - groups:
                 - api_users
               path: /storage/local
@@ -184,14 +191,14 @@ all:
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: &id002
+          pve_groups: &id003
             - comment: Administrators of this PVE cluster
               name: admins
             - comment: Users that represent automation tools
               name: api_users
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: &id003
+          pve_roles: &id004
             - name: Monitoring
               privileges:
                 - Sys.Modify
@@ -200,7 +207,7 @@ all:
                 - VM.Monitor
                 - VM.Audit
           pve_ssh_port: 22
-          pve_storages: &id004
+          pve_storages: &id005
             - content:
                 - images
                 - iso
@@ -209,7 +216,7 @@ all:
               name: proxmox-nfs
               server: 10.0.50.100
               type: nfs
-          pve_users: &id005
+          pve_users: &id006
             - groups:
                 - api_users
               name: ansible@pve
@@ -224,36 +231,38 @@ all:
           ansible_host: 10.0.50.72
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
+          keepalived_password: *id001
           ntp_timezone: Europe/Athens
-          pve_acls: *id001
+          pve_acls: *id002
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: *id002
+          pve_groups: *id003
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: *id003
+          pve_roles: *id004
           pve_ssh_port: 22
-          pve_storages: *id004
-          pve_users: *id005
+          pve_storages: *id005
+          pve_users: *id006
           template_vmid: 9002
           template_vmid2: 9005
         pve03:
           ansible_host: 10.0.50.73
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
+          keepalived_password: *id001
           ntp_timezone: Europe/Athens
-          pve_acls: *id001
+          pve_acls: *id002
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: *id002
+          pve_groups: *id003
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: *id003
+          pve_roles: *id004
           pve_ssh_port: 22
-          pve_storages: *id004
-          pve_users: *id005
+          pve_storages: *id005
+          pve_users: *id006
           template_vmid: 9003
           template_vmid2: 9006
     sentry_servers:
