@@ -78,7 +78,7 @@ System and app auth, passwords for people and secrets for apps.
 ### Keycloak
 .17
 
-### Authelia
+### Authelia or Authentik
 .18
 
 ### Smallstep CA
