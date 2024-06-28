@@ -19,9 +19,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_fog" {
   onboot   = true
 
   disk {
-    size    = "30G"
-    type    = "virtio"
-    storage = "local-lvm"
+    virtio {
+      virtio0 {
+        size    = 30
+        storage = "local-lvm"
+      }
+    }
   }
 
   network {

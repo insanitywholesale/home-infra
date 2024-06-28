@@ -1,7 +1,7 @@
 resource "proxmox_vm_qemu" "proxmox_vm_powerdns" {
   provider    = proxmox.pve03
   vmid        = 1005
-  count       = 1
+  count       = 0
   name        = format("powerdns%02s", (count.index) + 1)
   desc        = format("PowerDNS %02s", (count.index) + 1)
   target_node = "pve03"
@@ -19,9 +19,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_powerdns" {
   onboot   = true
 
   disk {
-    size    = "30G"
-    type    = "virtio"
-    storage = "local-lvm"
+    virtio {
+      virtio0 {
+        size    = 30
+        storage = "local-lvm"
+      }
+    }
   }
 
   network {

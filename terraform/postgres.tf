@@ -19,9 +19,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
   onboot   = true
 
   disk {
-    size    = "60G"
-    type    = "virtio"
-    storage = "local-lvm"
+    virtio {
+      virtio0 {
+        size    = 60
+        storage = "local-lvm"
+      }
+    }
   }
 
   network {

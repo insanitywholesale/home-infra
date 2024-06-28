@@ -171,13 +171,13 @@ Code analysis and git hosting plus container registry and helm repo.
 ## Kubernetes
 Kubernetes nodes
 
-### k3s ingress
+### k3s main cluster ingress
 10.0.50.50
 
 ### k3s control plane nodes
 10.0.50.51-53
 
-### k3s single-node cluster
+### k3s secondary cluster ingress
 .60
 
 ### k3s worker nodes

@@ -19,9 +19,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_grafana" {
   onboot   = true
 
   disk {
-    size    = "50G"
-    type    = "virtio"
-    storage = "local-lvm"
+    virtio {
+      virtio0 {
+        size    = 50
+        storage = "local-lvm"
+      }
+    }
   }
 
   network {

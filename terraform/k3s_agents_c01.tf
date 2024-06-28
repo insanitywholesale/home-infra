@@ -19,9 +19,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
   onboot   = true
 
   disk {
-    size    = "30G"
-    type    = "virtio"
-    storage = "local-lvm"
+    virtio {
+      virtio0 {
+        size    = 30
+        storage = "local-lvm"
+      }
+    }
   }
 
   network {
@@ -64,9 +67,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
   onboot   = true
 
   disk {
-    size    = "30G"
-    type    = "virtio"
-    storage = "local-lvm"
+    virtio {
+      virtio0 {
+        size    = 30
+        storage = "local-lvm"
+      }
+    }
   }
 
   network {
@@ -109,9 +115,12 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
   onboot   = true
 
   disk {
-    size    = "30G"
-    type    = "virtio"
-    storage = "local-lvm"
+    virtio {
+      virtio0 {
+        size    = 30
+        storage = "local-lvm"
+      }
+    }
   }
 
   network {
