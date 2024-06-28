@@ -21,8 +21,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_grafana" {
   disk {
     virtio {
       virtio0 {
-        size    = 50
-        storage = "local-lvm"
+        size         = 50
+        storage      = "local-lvm"
+        storage_type = "virtio"
       }
     }
   }

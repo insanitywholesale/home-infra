@@ -21,8 +21,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_fog" {
   disk {
     virtio {
       virtio0 {
-        size    = 30
-        storage = "local-lvm"
+        size         = 30
+        storage      = "local-lvm"
+        storage_type = "virtio"
       }
     }
   }

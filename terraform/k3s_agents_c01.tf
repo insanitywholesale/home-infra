@@ -21,8 +21,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
   disk {
     virtio {
       virtio0 {
-        size    = 30
-        storage = "local-lvm"
+        size         = 30
+        storage      = "local-lvm"
+        storage_type = "virtio"
       }
     }
   }
@@ -69,8 +70,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
   disk {
     virtio {
       virtio0 {
-        size    = 30
-        storage = "local-lvm"
+        size         = 30
+        storage      = "local-lvm"
+        storage_type = "virtio"
       }
     }
   }
@@ -117,8 +119,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
   disk {
     virtio {
       virtio0 {
-        size    = 30
-        storage = "local-lvm"
+        size         = 30
+        storage      = "local-lvm"
+        storage_type = "virtio"
       }
     }
   }
