@@ -19,13 +19,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_stepca" {
   onboot   = true
 
   disk {
-    virtio {
-      virtio0 {
-        size         = 30
-        storage      = "local-lvm"
-        storage_type = "virtio"
-      }
-    }
+    size    = 30
+    storage = "local-lvm"
+    type    = "virtio"
   }
 
   network {

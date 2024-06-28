@@ -19,13 +19,9 @@ resource "proxmox_vm_qemu" "proxmox_vm_aptcacherng" {
   onboot   = true
 
   disks {
-    virtio {
-      virtio0 {
-        size         = 50
-        storage      = "local-lvm"
-        storage_type = "virtio"
-      }
-    }
+    size    = 50
+    storage = "local-lvm"
+    type    = "virtio"
   }
 
   network {
