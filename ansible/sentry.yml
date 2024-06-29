@@ -9,7 +9,7 @@
         types: [deb]
         signed_by: https://download.docker.com/linux/debian/gpg
         uris: https://download.docker.com/linux/debian
-        suites: bullseye
+        suites: bookworm
         components: [stable]
         enabled: true
         state: present

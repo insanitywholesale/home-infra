@@ -5,7 +5,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
   desc        = "main VM for mysql"
   target_node = "pve03"
 
-  clone    = "deb11-tmpl"
+  clone    = "deb12-tmpl"
   os_type  = "cloud-init"
   qemu_os  = "l26"
   cpu      = "SandyBridge"

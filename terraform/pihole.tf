@@ -5,7 +5,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
   desc        = format("pihole %02s", (count.index) + 1)
   target_node = "pve02"
 
-  clone    = "deb11-tmpl"
+  clone    = "deb12-tmpl"
   os_type  = "cloud-init"
   qemu_os  = "l26"
   cpu      = "SandyBridge"

@@ -5,7 +5,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_deluge" {
   desc        = format("Deluge %02s", (count.index) + 1)
   target_node = "pve03"
 
-  clone    = "deb11-tmpl"
+  clone    = "deb12-tmpl"
   os_type  = "cloud-init"
   qemu_os  = "l26"
   cpu      = "SandyBridge"
