@@ -18,6 +18,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_sentry" {
   onboot   = true
 
   disks {
+    ide {
+      ide3 {
+        cloudinit {
+          storage = "local-lvm"
+        }
+      }
+    }
     virtio {
       virtio0 {
         disk {

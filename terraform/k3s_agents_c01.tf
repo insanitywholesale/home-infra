@@ -18,6 +18,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0" {
   onboot   = true
 
   disks {
+    ide {
+      ide3 {
+        cloudinit {
+          storage = "local-lvm"
+        }
+      }
+    }
     virtio {
       virtio0 {
         disk {
@@ -67,6 +74,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1" {
   onboot   = true
 
   disks {
+    ide {
+      ide3 {
+        cloudinit {
+          storage = "local-lvm"
+        }
+      }
+    }
     virtio {
       virtio0 {
         disk {
@@ -116,6 +130,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2" {
   onboot   = true
 
   disks {
+    ide {
+      ide3 {
+        cloudinit {
+          storage = "local-lvm"
+        }
+      }
+    }
     virtio {
       virtio0 {
         disk {
