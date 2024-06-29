@@ -17,15 +17,17 @@ resource "proxmox_vm_qemu" "proxmox_vm_sentry" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size         = 50
-        storage      = "local-lvm"
-        storage_type = "virtio"
+        disk {
+          size    = 50
+          storage = "local-lvm"
+        }
       }
     }
   }
+
 
   network {
     model  = "virtio"

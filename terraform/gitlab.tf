@@ -17,12 +17,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_gitlab" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size         = 60
-        storage      = "local-lvm"
-        storage_type = "virtio"
+        disk {
+          size    = 60
+          storage = "local-lvm"
+        }
       }
     }
   }

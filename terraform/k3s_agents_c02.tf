@@ -17,12 +17,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_0_cluster_2" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size         = 30
-        storage      = "local-lvm"
-        storage_type = "virtio"
+        disk {
+          size    = 30
+          storage = "local-lvm"
+        }
       }
     }
   }
@@ -65,12 +66,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_1_cluster_2" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size         = 30
-        storage      = "local-lvm"
-        storage_type = "virtio"
+        disk {
+          size    = 30
+          storage = "local-lvm"
+        }
       }
     }
   }
@@ -113,12 +115,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers_2_cluster_2" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size         = 30
-        storage      = "local-lvm"
-        storage_type = "virtio"
+        disk {
+          size    = 30
+          storage = "local-lvm"
+        }
       }
     }
   }

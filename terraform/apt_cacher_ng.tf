@@ -18,9 +18,14 @@ resource "proxmox_vm_qemu" "proxmox_vm_aptcacherng" {
   onboot   = true
 
   disks {
-    size    = 50
-    storage = "local-lvm"
-    type    = "virtio"
+    virtio {
+      virtio0 {
+        disk {
+          size    = 50
+          storage = "local-lvm"
+        }
+      }
+    }
   }
 
   network {
@@ -32,7 +37,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_aptcacherng" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "apt;apt-cacher-ng;cache;debian"
+  tags = "apt;apt_cacher_ng;cache;debian"
 
   lifecycle {
     ignore_changes = [

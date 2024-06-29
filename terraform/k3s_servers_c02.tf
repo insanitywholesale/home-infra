@@ -17,11 +17,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0_cluster_2" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size    = 40
-        storage = "local-lvm"
+        disk {
+          size    = 40
+          storage = "local-lvm"
+        }
       }
     }
   }
@@ -64,11 +66,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1_cluster_2" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size    = 40
-        storage = "local-lvm"
+        disk {
+          size    = 40
+          storage = "local-lvm"
+        }
       }
     }
   }
@@ -111,11 +115,13 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2_cluster_2" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size    = 40
-        storage = "local-lvm"
+        disk {
+          size    = 40
+          storage = "local-lvm"
+        }
       }
     }
   }

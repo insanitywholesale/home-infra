@@ -17,15 +17,17 @@ resource "proxmox_vm_qemu" "proxmox_vm_powerdns" {
   agent    = 1
   onboot   = true
 
-  disk {
+  disks {
     virtio {
       virtio0 {
-        size         = 30
-        storage      = "local-lvm"
-        storage_type = "virtio"
+        disk {
+          size    = 30
+          storage = "local-lvm"
+        }
       }
     }
   }
+
 
   network {
     model  = "virtio"
