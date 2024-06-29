@@ -20,7 +20,7 @@
   changed_when: true
 
 - name: Restart K3s service [server]
-  when: "'server' in group_names"
+  when: "'k3s_server_1' in group_names"
   ansible.builtin.systemd:
     state: restarted
     daemon_reload: true

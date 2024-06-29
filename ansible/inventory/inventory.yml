@@ -84,10 +84,10 @@ all:
             k3s-w01-c01:
               ansible_host: 10.0.50.61
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
+              extra_server_args: --disable=traefik --disable=servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -95,10 +95,10 @@ all:
             k3s-w02-c01:
               ansible_host: 10.0.50.62
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
+              extra_server_args: --disable=traefik --disable=servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -106,43 +106,10 @@ all:
             k3s-w03-c01:
               ansible_host: 10.0.50.63
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
-              k3s_version: v1.28.5+k3s1
-              ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
-              user_kubectl: true
-            k3s-w04-c01:
-              ansible_host: 10.0.50.64
-              ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
-              apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
-              k3s_version: v1.28.5+k3s1
-              ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
-              user_kubectl: true
-            k3s-w05-c01:
-              ansible_host: 10.0.50.65
-              ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
-              apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
-              k3s_version: v1.28.5+k3s1
-              ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
-              user_kubectl: true
-            k3s-w06-c01:
-              ansible_host: 10.0.50.66
-              ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
-              apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
+              extra_server_args: --disable=traefik --disable=servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -152,10 +119,10 @@ all:
             k3s-m01-c01:
               ansible_host: 10.0.50.51
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
+              extra_server_args: --disable=traefik --disable=servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -163,10 +130,10 @@ all:
             k3s-m02-c01:
               ansible_host: 10.0.50.52
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
+              extra_server_args: --disable=traefik --disable=servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri
@@ -174,10 +141,10 @@ all:
             k3s-m03-c01:
               ansible_host: 10.0.50.53
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
-              extra_server_args: --tls-san 10.0.50.50 --disable=traefik --disable servicelb
+              extra_server_args: --disable=traefik --disable=servicelb
               k3s_version: v1.28.5+k3s1
               ntp_timezone: Europe/Athens
               token: vregmenhpatataxwristyri

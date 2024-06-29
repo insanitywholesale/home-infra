@@ -45,7 +45,7 @@
     - name: If ufw enabled, open etcd ports
       when:
         - ufw_status['stdout'] == "Status':' active"
-        - groups['server'] | length > 1
+        - groups['k3s_server_1'] | length > 1
       community.general.ufw:
         rule: allow
         port: 2379:2381
@@ -75,7 +75,7 @@
         immediate: true
 
     - name: If firewalld enabled, open etcd ports
-      when: groups['server'] | length > 1
+      when: groups['k3s_server_1'] | length > 1
       ansible.posix.firewalld:
         port: 2379-2381/tcp
         zone: trusted
