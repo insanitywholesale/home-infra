@@ -81,6 +81,28 @@ all:
       children:
         k3s_agent_1:
           hosts:
+            k3s-m02-c01:
+              ansible_host: 10.0.50.52
+              ansible_user: debian
+              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
+              apt_proxy: http://10.0.50.9:3142
+              extra_agent_args: ""
+              extra_server_args: --disable=traefik --disable=servicelb
+              k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
+              token: vregmenhpatataxwristyri
+              user_kubectl: true
+            k3s-m03-c01:
+              ansible_host: 10.0.50.53
+              ansible_user: debian
+              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
+              apt_proxy: http://10.0.50.9:3142
+              extra_agent_args: ""
+              extra_server_args: --disable=traefik --disable=servicelb
+              k3s_version: v1.28.5+k3s1
+              ntp_timezone: Europe/Athens
+              token: vregmenhpatataxwristyri
+              user_kubectl: true
             k3s-w01-c01:
               ansible_host: 10.0.50.61
               ansible_user: debian
@@ -118,28 +140,6 @@ all:
           hosts:
             k3s-m01-c01:
               ansible_host: 10.0.50.51
-              ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
-              apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
-              extra_server_args: --disable=traefik --disable=servicelb
-              k3s_version: v1.28.5+k3s1
-              ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
-              user_kubectl: true
-            k3s-m02-c01:
-              ansible_host: 10.0.50.52
-              ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
-              apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
-              extra_server_args: --disable=traefik --disable=servicelb
-              k3s_version: v1.28.5+k3s1
-              ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
-              user_kubectl: true
-            k3s-m03-c01:
-              ansible_host: 10.0.50.53
               ansible_user: debian
               api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
