@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
-  provider    = proxmox.pve01
   count       = 1
   vmid        = 1000 + (count.index * 3) + 51
   name        = format("k3s-m%02s-c%02s", (count.index * 3) + 1, 1)
@@ -47,7 +46,6 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_0" {
 }
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
-  provider    = proxmox.pve02
   count       = 1
   vmid        = 1000 + (count.index * 3) + 52
   name        = format("k3s-m%02s-c%02s", (count.index * 3) + 2, 1)
@@ -95,7 +93,6 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_1" {
 }
 
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters_2" {
-  provider    = proxmox.pve03
   count       = 1
   vmid        = 1000 + (count.index * 3) + 53
   name        = format("k3s-m%02s-c%02s", (count.index * 3) + 3, 1)

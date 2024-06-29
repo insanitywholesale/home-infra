@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_powerdns" {
-  provider    = proxmox.pve03
   vmid        = 1005
   count       = 0
   name        = format("powerdns%02s", (count.index) + 1)

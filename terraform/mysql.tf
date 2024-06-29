@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
-  provider    = proxmox.pve03
   vmid        = 1021
   count       = 1
   name        = format("mysql%02s", (count.index) + 1)

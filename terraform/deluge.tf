@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_deluge" {
-  provider    = proxmox.pve03
   vmid        = 1116
   count       = 1
   name        = format("deluge%02s", (count.index) + 1)

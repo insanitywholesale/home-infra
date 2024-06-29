@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_aptcacherng" {
-  provider    = proxmox.pve02
   vmid        = 1009
   count       = 1
   name        = format("acng%02s", (count.index) + 1)

@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_observium" {
-  provider    = proxmox.pve03
   vmid        = 1034
   count       = 1
   name        = format("observium%02s", (count.index) + 1)

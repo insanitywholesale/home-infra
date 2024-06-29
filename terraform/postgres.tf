@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
-  provider    = proxmox.pve01
   vmid        = 1020
   count       = 1
   name        = format("postgres%02s", (count.index) + 1)

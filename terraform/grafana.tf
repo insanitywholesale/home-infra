@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_grafana" {
-  provider    = proxmox.pve01
   vmid        = 1030
   count       = 1
   name        = format("grafana%02s", (count.index) + 1)

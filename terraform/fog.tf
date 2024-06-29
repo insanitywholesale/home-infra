@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_fog" {
-  provider    = proxmox.pve02
   vmid        = 1007
   count       = 1
   name        = format("fog%02s", (count.index) + 1)

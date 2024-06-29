@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
-  provider    = proxmox.pve02
   vmid        = 1002
   count       = 1
   name        = format("pihole%02s", (count.index) + 1)

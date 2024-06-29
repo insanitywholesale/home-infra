@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_influxdb" {
-  provider    = proxmox.pve01
   vmid        = 1032
   count       = 1
   name        = format("influxdb%02s", (count.index) + 1)

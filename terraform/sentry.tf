@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_sentry" {
-  provider    = proxmox.pve02
   vmid        = 1038
   count       = 1
   name        = format("sentry%02s", (count.index) + 1)

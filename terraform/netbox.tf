@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_netbox" {
-  provider    = proxmox.pve03
   vmid        = 1112
   count       = 1
   name        = format("netbox%02s", (count.index) + 1)

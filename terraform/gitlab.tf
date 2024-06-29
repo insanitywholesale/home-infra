@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_gitlab" {
-  provider    = proxmox.pve01
   vmid        = 1045
   count       = 1
   name        = format("gitlab%02s", (count.index) + 1)

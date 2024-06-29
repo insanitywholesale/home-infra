@@ -1,5 +1,4 @@
 resource "proxmox_vm_qemu" "proxmox_vm_prometheus" {
-  provider    = proxmox.pve02
   vmid        = 1031
   count       = 1
   name        = format("prometheus%02s", (count.index) + 1)
