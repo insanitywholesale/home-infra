@@ -171,13 +171,13 @@ Code analysis and git hosting plus container registry and helm repo.
 ## Kubernetes
 Kubernetes nodes
 
-### k3s main cluster ingress
-10.0.50.50
+### k3s main cluster loadbalanced API server
+.50
 
 ### k3s control plane nodes
 10.0.50.51-53
 
-### k3s secondary cluster ingress
+### k3s secondary cluster loadbalanced API server
 .60
 
 ### k3s worker nodes
@@ -221,6 +221,12 @@ Can't or don't want to run these on kubernetes.
 
 ### Archivebox
 .117
+
+### k3s main cluster ingress
+.150
+
+### k3s main cluster metallb pool
+.150-199
 
 ### cloudflared
 .201
