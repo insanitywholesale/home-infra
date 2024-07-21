@@ -5,9 +5,10 @@ repository for my home infra using infrastructure as code
 explanation of main directories
 
 - the active ones:
-	- `kube` includes kubernetes yaml manifests as well as Helm values.yaml configs
 	- `terraform` includes terraform configuration to create virtual machines from templates
 	- `ansible` includes ansible automation being built for configuring the proxmox hosts as well as the virtual machines created with terraform
+	- `kube` includes kubernetes yaml manifests as well as Helm values.yaml configs
+	- `fluxcd` includes fluxcd configuration to automatically deploy applications to a kubernetes cluster
 
 - the inactive ones:
 	- `unused/vagrant` has some basic examples for how to write a Vagrantfile

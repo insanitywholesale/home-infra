@@ -19,7 +19,7 @@ include:
 stages: [validate, build, deploy, cleanup]
 
 ansible_lint:
-  tags: [ansible_local]
+  tags: [local]
   stage: validate
   image: debian:12-slim
   variables:
@@ -51,7 +51,7 @@ ansible_lint:
     - ansible-lint-junit ansible-lint.txt -o ansible-lint.xml
 
 ansible_syntax_check:
-  tags: [ansible_local]
+  tags: [local]
   stage: validate
   image: debian:12-slim
   variables:
@@ -72,7 +72,7 @@ ansible_syntax_check:
     - ansible-playbook -i inventory/inventory.yml --syntax-check site.yml
 
 ansible_check_diff:
-  tags: [ansible_local]
+  tags: [local]
   stage: validate
   image: debian:12-slim
   variables:
@@ -103,22 +103,22 @@ ansible_check_diff:
     - ansible-playbook --vault-password-file "$ANGLE_VAULT_PASS_FILE" -i inventory/inventory.yml --check --diff site.yml
 
 fmt:
-  tags: [terraform_local]
+  tags: [local]
 validate:
-  tags: [terraform_local]
+  tags: [local]
 plan:
-  tags: [terraform_local]
+  tags: [local]
   needs:
     - fmt
     - validate
 
 apply:
-  tags: [terraform_local]
+  tags: [local]
   needs:
     - plan
 
 destroy:
-  tags: [terraform_local]
+  tags: [local]
   needs: []
 delete-state:
-  tags: [terraform_local]
+  tags: [local]
