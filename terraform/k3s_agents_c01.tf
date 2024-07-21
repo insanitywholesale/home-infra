@@ -5,7 +5,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_workers" {
   desc        = format("HA k3s agent/worker %02s for cluster %02s", count.index + 1, 1)
   target_node = format("pve%02s", (count.index % 3) + 1)
 
-  clone    = "deb11-tmpl"
+  clone    = "deb12-tmpl"
   os_type  = "cloud-init"
   qemu_os  = "l26"
   cpu      = "SandyBridge"
