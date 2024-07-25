@@ -79,6 +79,7 @@ ansible_check_diff:
     ANSIBLE_HOST_KEY_CHECKING: "False"
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
     JUNIT_OUTPUT_DIR: "$CI_PROJECT_DIR/ansible/junit-log"
+    JUNIT_FAIL_ON_CHANGE: "true"
   artifacts:
     when: always
     reports:
