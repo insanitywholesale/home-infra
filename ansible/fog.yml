@@ -10,6 +10,7 @@
         mode: "0644"
         owner: root
         group: root
+      register: fogdownload
 
     - name: Unarchive fog tarball
       ansible.builtin.unarchive:
@@ -17,6 +18,7 @@
         dest: /opt/
         remote_src: true
         creates: /opt/fogproject-1.5.10/bin/installfog.sh
+      when: fogdownload.changed
 
     - name: Run fog install script
       ansible.builtin.command:
