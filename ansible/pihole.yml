@@ -75,7 +75,7 @@
       ansible.builtin.service:
         name: unbound
         enabled: true
-        state: started
+        state: stopped
 
     - name: Copy pihole-compatible unbound config
       ansible.builtin.copy:
