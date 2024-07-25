@@ -1,6 +1,6 @@
 ---
 # Set up proxmox hosts
-- ansible.builtin.import_playbook: proxmox.yml
+#- ansible.builtin.import_playbook: proxmox.yml
 # Set up common stuff for all hosts
 - ansible.builtin.import_playbook: osquery.yml
 - ansible.builtin.import_playbook: apt-cacher-ng.yml
@@ -19,6 +19,6 @@
 - ansible.builtin.import_playbook: observium.yml
 - ansible.builtin.import_playbook: sentry.yml
 - ansible.builtin.import_playbook: gitlab.yml
-- ansible.builtin.import_playbook: netbox.yml
-- ansible.builtin.import_playbook: deluge.yml
+# - ansible.builtin.import_playbook: netbox.yml
+# - ansible.builtin.import_playbook: deluge.yml
 # - ansible.builtin.import_playbook: k3s-site.yml
