@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
-  vmid        = 1002
   count       = 1
+  vmid        = 1002
   name        = format("pihole%02s", (count.index) + 1)
   desc        = format("pihole %02s", (count.index) + 1)
   target_node = "pve02"
@@ -40,7 +40,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.${(count.index) + 2}/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.2/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
