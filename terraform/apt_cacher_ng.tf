@@ -40,7 +40,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_aptcacherng" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.${(count.index) + 9}/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.9/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 

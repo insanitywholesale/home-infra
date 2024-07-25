@@ -37,7 +37,7 @@ NTP, DNS, PXE, FTP and APT cache.
 ### LANcache
 .4
 
-### PowerDNS (external-dns `pdns` provider)
+### BIND9 (external-dns RFC2136 provider)
 .5
 
 ### CoreDNS (`k8s_gateway` plugin)

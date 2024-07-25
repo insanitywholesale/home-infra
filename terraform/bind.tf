@@ -1,11 +1,11 @@
-resource "proxmox_vm_qemu" "proxmox_vm_powerdns" {
+resource "proxmox_vm_qemu" "proxmox_vm_bind" {
+  count       = 1
   vmid        = 1005
-  count       = 0
-  name        = format("powerdns%02s", (count.index) + 1)
-  desc        = format("PowerDNS %02s", (count.index) + 1)
+  name        = format("bind%02s", (count.index) + 1)
+  desc        = format("BIND DNS %02s", (count.index) + 1)
   target_node = "pve03"
 
-  clone    = "deb11-tmpl"
+  clone    = "deb12-tmpl"
   os_type  = "cloud-init"
   qemu_os  = "l26"
   cpu      = "SandyBridge"
@@ -41,11 +41,11 @@ resource "proxmox_vm_qemu" "proxmox_vm_powerdns" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.${(count.index) + 5}/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.5/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "debian;dns;powerdns"
+  tags = "bind;debian;dns"
 
   lifecycle {
     ignore_changes = [
@@ -54,4 +54,3 @@ resource "proxmox_vm_qemu" "proxmox_vm_powerdns" {
     ]
   }
 }
-
