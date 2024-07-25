@@ -8,6 +8,13 @@ all:
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
+    bind_servers:
+      hosts:
+        bind:
+          ansible_host: 10.0.50.5
+          ansible_user: debian
+          apt_proxy: http://10.0.50.9:3142
+          ntp_timezone: Europe/Athens
     deluge_servers:
       hosts:
         deluge:
@@ -243,13 +250,6 @@ all:
             3030383732333463620a303635636632643338363063643065333131373065653563353737336662
             37353133346630346361663539323565396237643139653034386234383364346237613432633332
             3030343138303130346362653664346337613539633663613936
-          ntp_timezone: Europe/Athens
-    powerdns_servers:
-      hosts:
-        powerdns:
-          ansible_host: 10.0.50.5
-          ansible_user: debian
-          apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
     prometheus_servers:
       hosts:
