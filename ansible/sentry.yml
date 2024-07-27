@@ -38,26 +38,9 @@
       ansible.builtin.git:
         repo: https://github.com/getsentry/self-hosted.git
         dest: /opt/sentry
-        version: 24.1.2
+        version: 24.7.1
         update: false
         single_branch: true
-
-    # TODO: Remove after a release with  the following PR merged is made
-    # https://github.com/getsentry/self-hosted/pull/2779
-    - name: Delete broken postgres setup script
-      ansible.builtin.file:
-        path: /opt/sentry/install/set-up-and-migrate-database.sh
-        state: absent
-
-    # TODO: Remove after a release with  the following PR merged is made
-    # https://github.com/getsentry/self-hosted/pull/2779
-    - name: Download fixed postgres setup script
-      ansible.builtin.get_url:
-        url: https://raw.githubusercontent.com/getsentry/self-hosted/master/install/set-up-and-migrate-database.sh
-        dest: /opt/sentry/install/set-up-and-migrate-database.sh
-        mode: "0755"
-        owner: root
-        group: root
 
     - name: Run install script
       ansible.builtin.command:
