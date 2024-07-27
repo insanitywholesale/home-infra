@@ -9,11 +9,14 @@
         path: /opt/pihole-install
         state: directory
         mode: "0755"
+        owner: root
+        group: root
 
     - name: Download PiHole install script
       ansible.builtin.get_url:
-        url: https://raw.githubusercontent.com/pi-hole/pi-hole/master/automated%20install/basic-install.sh
+        url: https://raw.githubusercontent.com/pi-hole/pi-hole/d15beff4ba2d7b65724b07be91ff8f18924a55a6/automated%20install/basic-install.sh
         dest: /opt/pihole-install/basic-install.sh
+        checksum: sha512:fdfd61c46a1f0f89f03bd8de5297f32f1e129b6dc3179d365fa20c671fe131c2af01ef0b6a6e3eb078601936f749bf186dfda50e7a44a1d242305ca60747e26d
         mode: "0755"
         owner: root
         group: root
@@ -22,7 +25,9 @@
       ansible.builtin.file:
         path: /etc/pihole
         state: directory
-        mode: "0755"
+        mode: "0775"
+        owner: root
+        group: root
 
     - name: Copy over setupVars.conf
       ansible.builtin.copy:
