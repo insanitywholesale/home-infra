@@ -1,7 +1,9 @@
 ---
 
 collections:
-  - maxhoesel.smallstep
+  - name: maxhoesel.smallstep
+    type: git
+    source: git+https://github.com/maxhoesel-ansible/ansible-collection-smallstep.git
   - prometheus.prometheus
   - vkhitrin.libguestfs
 
