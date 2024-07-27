@@ -1,5 +1,6 @@
 ---
-- hosts: netbox
+- name: Install and configure NetBox
+  hosts: netbox
   become: true
   roles:
     - geerlingguy.postgresql
