@@ -351,4 +351,4 @@ all:
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
-          step_ca_version: 0.24.2
+          step_ca_version: 0.27.2
