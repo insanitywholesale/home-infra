@@ -101,6 +101,7 @@
       ansible.builtin.get_url:
         url: https://www.internic.net/domain/named.root
         dest: /var/lib/unbound/root.hints
+        checksum: sha512:bb7f5f495e1bac867eb6b5d5934da3c195e6b7d210776673bc6a04d2fe72384a81883f5a19051571879ec712586d6b952fb7915a73fd23ee222ab7287e5e0055
         mode: "0644"
         owner: root
         group: root
@@ -112,7 +113,7 @@
         name: unbound
         enabled: true
         daemon_reload: true
-        state: reloaded
+        state: started
       when: unbound_config.changed or unbound_root_hints.changed or unbound_stopped.changed
 
     - name: Install CloudFlare certbot plugin
