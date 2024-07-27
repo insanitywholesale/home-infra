@@ -20,14 +20,13 @@
         mode: "0755"
         owner: root
         group: root
+      register: pihole_script_new
 
     - name: Create a directory for pihole
       ansible.builtin.file:
         path: /etc/pihole
         state: directory
         mode: "0775"
-        owner: root
-        group: root
 
     - name: Copy over setupVars.conf
       ansible.builtin.copy:
@@ -43,6 +42,7 @@
         cmd: sudo ./basic-install.sh --unattended
       register: pihole_install_output
       changed_when: "'pihole' in pihole_install_output.stdout"
+      when: pihole_script_new.changed
 
     - name: Copy dnsmasq edns-related config
       ansible.builtin.copy:
@@ -57,30 +57,36 @@
         name: pihole-FTL
         enabled: true
         state: restarted
+      when: pihole_install_output.changed
 
     - name: Add redirect from webroot to admin
       ansible.builtin.lineinfile:
         path: /etc/lighttpd/lighttpd.conf
         line: url.redirect = ("^/$" => "/admin" )
         insertafter: EOF
+      register: lighttpd_redirect
 
     - name: Restart lighttpd service
       ansible.builtin.service:
         name: lighttpd
         enabled: true
         state: restarted
+      when: lighttpd_redirect.changed
 
     - name: Install unbound
       ansible.builtin.apt:
         name: unbound
         update_cache: true
         state: present
+      register: unbound_new
 
     - name: Stop unbound service
       ansible.builtin.service:
         name: unbound
         enabled: true
         state: stopped
+      register: unbound_stopped
+      when: unbound_new.changed
 
     - name: Copy pihole-compatible unbound config
       ansible.builtin.copy:
@@ -89,6 +95,7 @@
         mode: "0644"
         owner: root
         group: root
+      register: unbound_config
 
     - name: Download root hints
       ansible.builtin.get_url:
@@ -97,6 +104,7 @@
         mode: "0644"
         owner: root
         group: root
+      register: unbound_root_hints
 
     # NOTE: in case it fails check logs using sudo journalctl -u unbound.service -b
     - name: Start unbound service
@@ -105,6 +113,7 @@
         enabled: true
         daemon_reload: true
         state: reloaded
+      when: unbound_config.changed or unbound_root_hints.changed or unbound_stopped.changed
 
     - name: Install CloudFlare certbot plugin
       ansible.builtin.apt:
