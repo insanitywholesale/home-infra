@@ -26,3 +26,4 @@
         cmd: ./installfog.sh --autoaccept
       register: fog_install_output
       changed_when: "'Setup complete' in fog_install_output.stdout"
+      when: fogdownload.changed
