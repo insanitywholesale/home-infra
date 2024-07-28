@@ -4,18 +4,10 @@ repository for my home infra using infrastructure as code
 ## things in here
 explanation of main directories
 
-- the active ones:
-	- `terraform` includes terraform configuration to create virtual machines from templates
+- the 3 main ones:
 	- `ansible` includes ansible automation being built for configuring the proxmox hosts as well as the virtual machines created with terraform
-	- `kube` includes kubernetes yaml manifests as well as Helm values.yaml configs
+	- `terraform` includes terraform configuration to create virtual machines from templates
 	- `fluxcd` includes fluxcd configuration to automatically deploy applications to a kubernetes cluster
-
-- the inactive ones:
-	- `unused/vagrant` has some basic examples for how to write a Vagrantfile
-	- `unused/raw-libvirt` is the older version of the terraform+proxmox setup but with libvirt instead of proxmox for virtualization
-	- `unused/kube` mirrors the layout of `kube` but has unused things stored as examples
-	- `unused/reverse-proxy-config/traefik` old unified single traefik VM instance
-	- `unused/terraform` includes the `proxmox-single` subdirectory that includes old ansible and terraform configuration for a non-cluster multi-node proxmox setup
 
 # Services
 List of services I currently run or want to run in the future.
