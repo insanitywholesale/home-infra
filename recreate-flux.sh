@@ -98,3 +98,29 @@ flux create kustomization lister-base \
 	--prune \
 	--wait \
 	--export > fluxcd/cluster01/apps/lister/kustomization-fluxCRD.yaml
+
+mkdir -p fluxcd/cluster01/apps/dashboard/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+flux create source helm dashboard \
+	--interval=10m \
+	--url=https://kubernetes.github.io/dashboard \
+	--export > fluxcd/cluster01/apps/dashboard/base/helmrepository.yaml
+
+flux create helmrelease dashboard \
+	--interval=10m \
+	--target-namespace dashboard\
+	--create-target-namespace \
+	--source=HelmRepository/dashboard \
+	--chart=kubernetes-dashboard \
+	--chart-version="7.5.0" \
+	--values=fluxcd/cluster01/apps/dashboard/base/dashboard-values.yml \
+	--export > fluxcd/cluster01/apps/dashboard/base/helmrelease.yaml
+
+flux create kustomization dashboard-base \
+	--interval=10m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/apps/dashboard/base \
+	--depends-on ingress-nginx-base \
+	--prune \
+	--wait \
+	--export > fluxcd/cluster01/apps/dashboard/kustomization-fluxCRD.yaml
