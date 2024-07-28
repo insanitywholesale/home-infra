@@ -5,7 +5,7 @@ metadata:
   name: metallb-base
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 1m0s
   path: ./fluxcd/cluster01/core/metallb/base
   prune: true
   sourceRef:
@@ -22,7 +22,7 @@ metadata:
 spec:
   dependsOn:
   - name: metallb-base
-  interval: 10m0s
+  interval: 1m0s
   path: ./fluxcd/cluster01/core/metallb/config
   prune: true
   sourceRef:
