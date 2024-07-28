@@ -17,12 +17,12 @@ mkdir -p fluxcd/cluster01/core/metallb/base    # For flux helmrepository, upstre
 mkdir -p fluxcd/cluster01/core/metallb/config  # For things other than values of the upstream chart
 
 flux create source helm metallb \
-	--interval=10m \
+	--interval=1m \
 	--url=https://metallb.github.io/metallb \
 	--export > fluxcd/cluster01/core/metallb/base/helmrepository.yaml
 
 flux create helmrelease metallb \
-	--interval=10m \
+	--interval=1m \
 	--target-namespace metallb-system \
 	--create-target-namespace \
 	--source=HelmRepository/metallb \
@@ -32,7 +32,7 @@ flux create helmrelease metallb \
 	--export > fluxcd/cluster01/core/metallb/base/helmrelease.yaml
 
 flux create kustomization metallb-base \
-	--interval=10m \
+	--interval=1m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/metallb/base \
 	--prune \
@@ -40,7 +40,7 @@ flux create kustomization metallb-base \
 	--export > fluxcd/cluster01/core/metallb/kustomization-fluxCRD.yaml
 
 flux create kustomization metallb-config \
-	--interval=10m \
+	--interval=1m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/metallb/config \
 	--depends-on metallb-base \
@@ -51,12 +51,12 @@ flux create kustomization metallb-config \
 mkdir -p fluxcd/cluster01/core/ingress-nginx/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
 flux create source helm ingress-nginx \
-	--interval=10m \
+	--interval=1m \
 	--url=https://kubernetes.github.io/ingress-nginx \
 	--export > fluxcd/cluster01/core/ingress-nginx/base/helmrepository.yaml
 
 flux create helmrelease ingress-nginx \
-	--interval=10m \
+	--interval=1m \
 	--target-namespace ingress-nginx \
 	--create-target-namespace \
 	--source=HelmRepository/ingress-nginx \
@@ -66,7 +66,7 @@ flux create helmrelease ingress-nginx \
 	--export > fluxcd/cluster01/core/ingress-nginx/base/helmrelease.yaml
 
 flux create kustomization ingress-nginx-base \
-	--interval=10m \
+	--interval=1m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/ingress-nginx/base \
 	--depends-on metallb-config \
@@ -77,12 +77,12 @@ flux create kustomization ingress-nginx-base \
 mkdir -p fluxcd/cluster01/apps/lister/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
 flux create source helm lister \
-	--interval=10m \
+	--interval=1m \
 	--url=https://gitlab.com/api/v4/projects/27255221/packages/helm/stable \
 	--export > fluxcd/cluster01/apps/lister/base/helmrepository.yaml
 
 flux create helmrelease lister \
-	--interval=10m \
+	--interval=1m \
 	--target-namespace lister \
 	--create-target-namespace \
 	--source=HelmRepository/lister \
@@ -91,7 +91,7 @@ flux create helmrelease lister \
 	--export > fluxcd/cluster01/apps/lister/base/helmrelease.yaml
 
 flux create kustomization lister-base \
-	--interval=10m \
+	--interval=1m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/apps/lister/base \
 	--depends-on ingress-nginx-base \
@@ -102,12 +102,12 @@ flux create kustomization lister-base \
 mkdir -p fluxcd/cluster01/apps/dashboard/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
 flux create source helm dashboard \
-	--interval=10m \
+	--interval=1m \
 	--url=https://kubernetes.github.io/dashboard \
 	--export > fluxcd/cluster01/apps/dashboard/base/helmrepository.yaml
 
 flux create helmrelease dashboard \
-	--interval=10m \
+	--interval=1m \
 	--target-namespace dashboard\
 	--create-target-namespace \
 	--source=HelmRepository/dashboard \
@@ -117,7 +117,7 @@ flux create helmrelease dashboard \
 	--export > fluxcd/cluster01/apps/dashboard/base/helmrelease.yaml
 
 flux create kustomization dashboard-base \
-	--interval=10m \
+	--interval=1m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/apps/dashboard/base \
 	--depends-on ingress-nginx-base \

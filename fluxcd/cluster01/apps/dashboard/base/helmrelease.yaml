@@ -15,7 +15,7 @@ spec:
       version: 7.5.0
   install:
     createNamespace: true
-  interval: 10m0s
+  interval: 1m0s
   targetNamespace: dashboard
   values:
     app:
