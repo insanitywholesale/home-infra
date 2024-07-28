@@ -43,7 +43,6 @@
           # my additions
           - option: listen_addresses
             value: "0.0.0.0, ::"
-        # TODO: Check if the following works
         postgresql_users:
           - name: testuser
             password: testpassword
@@ -85,7 +84,7 @@
       ansible.builtin.copy:
         remote_src: true
         src: /etc/letsencrypt/live/postgres01.home.inherently.xyz/fullchain.pem
-        dest: /etc/postgresql/13/main/fullchain.pem
+        dest: /etc/postgresql/15/main/fullchain.pem
         mode: "0600"
         owner: postgres
         group: postgres
@@ -94,30 +93,30 @@
       ansible.builtin.copy:
         remote_src: true
         src: /etc/letsencrypt/live/postgres01.home.inherently.xyz/privkey.pem
-        dest: /etc/postgresql/13/main/privkey.pem
+        dest: /etc/postgresql/15/main/privkey.pem
         mode: "0600"
         owner: postgres
         group: postgres
 
     - name: Set SSL to on
       ansible.builtin.lineinfile:
-        path: /etc/postgresql/13/main/postgresql.conf
+        path: /etc/postgresql/15/main/postgresql.conf
         regexp: ^ssl =
         line: ssl = on
 
     - name: Set SSL cert file
       ansible.builtin.lineinfile:
-        path: /etc/postgresql/13/main/postgresql.conf
+        path: /etc/postgresql/15/main/postgresql.conf
         regexp: "^ssl_cert_file "
         insertafter: "^#ssl_cert_file "
-        line: ssl_cert_file = '/etc/postgresql/13/main/fullchain.pem'
+        line: ssl_cert_file = '/etc/postgresql/15/main/fullchain.pem'
 
     - name: Set SSL private key file
       ansible.builtin.lineinfile:
-        path: /etc/postgresql/13/main/postgresql.conf
+        path: /etc/postgresql/15/main/postgresql.conf
         regexp: "^ssl_key_file "
         insertafter: "^#ssl_key_file "
-        line: ssl_key_file = '/etc/postgresql/13/main/privkey.pem'
+        line: ssl_key_file = '/etc/postgresql/15/main/privkey.pem'
 
     # Command to test SSL connection
     # PGSSLMODE=verify-full PGSSLROOTCERT=system psql -h postgres01.home.inherently.xyz -U testuser -d testdb
