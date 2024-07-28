@@ -1,2 +1,0 @@
-# use only the cloudinit config
-source /etc/network/interfaces.d/*

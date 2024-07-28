@@ -1,5 +1,0 @@
----
-- name: dock the to-be rke hosts
-  hosts:
-    - rke
-  become: true
