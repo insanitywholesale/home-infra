@@ -29,13 +29,6 @@ all:
           ansible_user: angle
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
-    fog_servers:
-      hosts:
-        fog:
-          ansible_host: 10.0.50.7
-          ansible_user: debian
-          apt_proxy: http://10.0.50.9:3142
-          ntp_timezone: Europe/Athens
     gitlab_servers:
       hosts:
         gitlab:

@@ -5,10 +5,9 @@
 - ansible.builtin.import_playbook: apt-cacher-ng.yml
 - ansible.builtin.import_playbook: upgrade-all.yml
 # Set up proxmox hosts
-# - ansible.builtin.import_playbook: proxmox.yml
+- ansible.builtin.import_playbook: proxmox.yml
 # Set up the rest of the hosts
 - ansible.builtin.import_playbook: pihole.yml
-- ansible.builtin.import_playbook: fog.yml
 - ansible.builtin.import_playbook: stepca.yml
 - ansible.builtin.import_playbook: postgres.yml
 - ansible.builtin.import_playbook: mysql.yml
