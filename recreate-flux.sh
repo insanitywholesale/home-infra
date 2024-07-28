@@ -23,6 +23,7 @@ flux create source helm metallb \
 
 flux create helmrelease metallb \
 	--interval=1m \
+	--release-name metallb \
 	--target-namespace metallb-system \
 	--create-target-namespace \
 	--source=HelmRepository/metallb \
@@ -57,6 +58,7 @@ flux create source helm ingress-nginx \
 
 flux create helmrelease ingress-nginx \
 	--interval=1m \
+	--release-name ingress-nginx \
 	--target-namespace ingress-nginx \
 	--create-target-namespace \
 	--source=HelmRepository/ingress-nginx \
@@ -83,6 +85,7 @@ flux create source helm lister \
 
 flux create helmrelease lister \
 	--interval=1m \
+	--release-name lister \
 	--target-namespace lister \
 	--create-target-namespace \
 	--source=HelmRepository/lister \
@@ -108,6 +111,7 @@ flux create source helm dashboard \
 
 flux create helmrelease dashboard \
 	--interval=1m \
+	--release-name dashboard \
 	--target-namespace dashboard\
 	--create-target-namespace \
 	--source=HelmRepository/dashboard \

@@ -16,4 +16,5 @@ spec:
   install:
     createNamespace: true
   interval: 1m0s
+  releaseName: lister
   targetNamespace: lister
