@@ -73,3 +73,28 @@ flux create kustomization ingress-nginx-base \
 	--prune \
 	--wait \
 	--export > fluxcd/cluster01/core/ingress-nginx/kustomization-fluxCRD.yaml
+
+mkdir -p fluxcd/cluster01/apps/lister/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+flux create source helm lister \
+	--interval=10m \
+	--url=https://gitlab.com/api/v4/projects/27255221/packages/helm/stable \
+	--export > fluxcd/cluster01/apps/lister/base/helmrepository.yaml
+
+flux create helmrelease lister \
+	--interval=10m \
+	--target-namespace lister \
+	--create-target-namespace \
+	--source=HelmRepository/lister \
+	--chart=lister \
+	--chart-version="0.2.2" \
+	--export > fluxcd/cluster01/apps/lister/base/helmrelease.yaml
+
+flux create kustomization lister-base \
+	--interval=10m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/apps/lister/base \
+	--depends-on ingress-nginx-base \
+	--prune \
+	--wait \
+	--export > fluxcd/cluster01/apps/lister/kustomization-fluxCRD.yaml
