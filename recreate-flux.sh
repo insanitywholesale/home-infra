@@ -47,3 +47,29 @@ flux create kustomization metallb-config \
 	--prune \
 	--wait \
 	--export >> fluxcd/cluster01/core/metallb/kustomization-fluxCRD.yaml
+
+mkdir -p fluxcd/cluster01/core/ingress-nginx/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+flux create source helm ingress-nginx \
+	--interval=10m \
+	--url=https://kubernetes.github.io/ingress-nginx \
+	--export > fluxcd/cluster01/core/ingress-nginx/base/helmrepository.yaml
+
+flux create helmrelease ingress-nginx \
+	--interval=10m \
+	--target-namespace ingress-nginx \
+	--create-target-namespace \
+	--source=HelmRepository/ingress-nginx \
+	--chart=ingress-nginx \
+	--chart-version="4.11.1" \
+	--values=fluxcd/cluster01/core/ingress-nginx/base/ingress-nginx-values.yml \
+	--export > fluxcd/cluster01/core/ingress-nginx/base/helmrelease.yaml
+
+flux create kustomization ingress-nginx-base \
+	--interval=10m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/core/ingress-nginx/base \
+	--depends-on metallb-config \
+	--prune \
+	--wait \
+	--export > fluxcd/cluster01/core/ingress-nginx/kustomization-fluxCRD.yaml
