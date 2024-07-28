@@ -41,12 +41,12 @@ pve_acls:
     roles: [PVEVMAdmin]
     groups:
       - api_users
-pve_storages:
-  - name: proxmox-nfs
-    type: nfs
-    content: [images, iso, backup]
-    server: 10.0.50.100
-    export: /mnt/tank-z1/nfs-proxmox
+#pve_storages:
+#  - name: proxmox-nfs
+#    type: nfs
+#    content: [images, iso, backup]
+#    server: 10.0.50.100
+#    export: /mnt/tank-z1/nfs-proxmox
 keepalived_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   62656632393864353833633732653238626366326238646361313861393664626261393332633532
