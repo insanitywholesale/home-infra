@@ -279,16 +279,7 @@ all:
                 - VM.Monitor
                 - VM.Audit
           pve_ssh_port: 22
-          pve_storages: &id005
-            - content:
-                - images
-                - iso
-                - backup
-              export: /mnt/tank-z1/nfs-proxmox
-              name: proxmox-nfs
-              server: 10.0.50.100
-              type: nfs
-          pve_users: &id006
+          pve_users: &id005
             - groups:
                 - api_users
               name: ansible@pve
@@ -314,8 +305,7 @@ all:
           pve_remove_subscription_warning: true
           pve_roles: *id004
           pve_ssh_port: 22
-          pve_storages: *id005
-          pve_users: *id006
+          pve_users: *id005
           template_vmid: 9002
           template_vmid2: 9005
         pve03:
@@ -333,8 +323,7 @@ all:
           pve_remove_subscription_warning: true
           pve_roles: *id004
           pve_ssh_port: 22
-          pve_storages: *id005
-          pve_users: *id006
+          pve_users: *id005
           template_vmid: 9003
           template_vmid2: 9006
     sentry_servers:
