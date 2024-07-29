@@ -76,6 +76,33 @@ flux create kustomization ingress-nginx-base \
 	--wait \
 	--export > fluxcd/cluster01/core/ingress-nginx/kustomization-fluxCRD.yaml
 
+mkdir -p fluxcd/cluster01/core/external-dns/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+flux create source helm external-dns \
+	--interval=1m \
+	--url=https://kubernetes-sigs.github.io/external-dns \
+	--export > fluxcd/cluster01/core/external-dns/base/helmrepository.yaml
+
+flux create helmrelease external-dns \
+	--interval=1m \
+	--release-name external-dns \
+	--target-namespace external-dns\
+	--create-target-namespace \
+	--source=HelmRepository/external-dns \
+	--chart=external-dns \
+	--chart-version="1.14.5" \
+	--values=fluxcd/cluster01/core/external-dns/base/external-dns-values.yml \
+	--export > fluxcd/cluster01/core/external-dns/base/helmrelease.yaml
+
+flux create kustomization external-dns-base \
+	--interval=1m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/core/external-dns/base \
+	--depends-on "metallb-base,ingress-nginx-base" \
+	--prune \
+	--wait \
+	--export > fluxcd/cluster01/core/external-dns/kustomization-fluxCRD.yaml
+
 mkdir -p fluxcd/cluster01/apps/lister/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
 flux create source helm lister \

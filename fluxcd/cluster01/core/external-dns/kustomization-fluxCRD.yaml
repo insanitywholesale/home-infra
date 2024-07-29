@@ -1,0 +1,18 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: external-dns-base
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: metallb-base
+  - name: ingress-nginx-base
+  interval: 1m0s
+  path: ./fluxcd/cluster01/core/external-dns/base
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  timeout: 2m0s
+  wait: true

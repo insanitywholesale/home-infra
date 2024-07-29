@@ -1,0 +1,17 @@
+# Permalink: https://raw.githubusercontent.com/kubernetes-sigs/external-dns/4da484b7e4bb5c2a3ce18f46a3ce011aecd80d0b/charts/external-dns/values.yaml
+
+# -- How DNS records are synchronized between sources and providers; available values are `sync` & `upsert-only`.
+policy: upsert-only
+
+# -- Specify the registry for storing ownership and labels.
+# Valid values are `txt`, `aws-sd`, `dynamodb` & `noop`.
+registry: noop
+
+provider:
+  # -- _ExternalDNS_ provider name; for the available providers and how to configure them see [README](https://github.com/kubernetes-sigs/external-dns/blob/master/charts/external-dns/README.md#providers).
+  name: pihole
+
+# -- Extra arguments to provide to _ExternalDNS_.
+extraArgs:
+  - --pihole-password=failfail
+  - --pihole-server=https://pihole.home.inherently.xyz
