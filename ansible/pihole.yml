@@ -145,3 +145,44 @@
           --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
         certbot_create_standalone_stop_services: []
         certbot_auto_renew_user: root
+
+    - name: Install openssl module for lighttpd
+      ansible.builtin.apt:
+        name: lighttpd-mod-openssl
+        update_cache: true
+        state: present
+      register: lighttpd_ssl_new
+
+    - name: Delete LE README before creating combined SSL file
+      ansible.builtin.file:
+        path: /etc/letsencrypt/live/pihole.home.inherently.xyz/README
+        state: absent
+
+    - name: Create combined SSL file
+      ansible.builtin.assemble:
+        src: /etc/letsencrypt/live/pihole.home.inherently.xyz
+        dest: /etc/lighttpd/combined.pem
+
+    - name: Copy lighttpd SSL config
+      ansible.builtin.copy:
+        src: 80-ssl.conf
+        dest: /etc/lighttpd/conf-available/80-ssl.conf
+        mode: "0644"
+        owner: root
+        group: root
+      register: pihole_ssl_available
+
+    - name: Enable lighttpd SSL config
+      ansible.builtin.file:
+        src: /etc/lighttpd/conf-available/80-ssl.conf
+        dest: /etc/lighttpd/conf-enabled/80-ssl.conf
+        state: link
+      register: pihole_ssl_enable
+
+    - name: Restart lighttpd
+      ansible.builtin.systemd_service:
+        name: lighttpd
+        enabled: true
+        daemon_reload: true
+        state: restarted
+      when: pihole_ssl_available.changed or pihole_ssl_enable.changed
