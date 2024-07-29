@@ -96,19 +96,6 @@ fi
 
 if [ -f /etc/apache2/sites-available/000-default.conf ] || [ -f /etc/apache2/sites-available/default ]; then
     echo -e "${YELLOW}WARNING: Apache default config found, this script will overwrite that config and your current config will be lost${NC}"
-    echo "Continue?"
-    select yn in "Yes" "No"; do
-        case $yn in
-            Yes )
-                echo "Apache config will be overwritten..."
-                break
-                ;;
-            No )
-                echo "Exiting..."
-                exit 1
-                ;;
-        esac
-    done
 fi
 
 cat << "EOF"
