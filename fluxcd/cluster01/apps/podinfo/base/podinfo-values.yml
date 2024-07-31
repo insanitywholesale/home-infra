@@ -1,0 +1,13 @@
+# Permanlink: https://raw.githubusercontent.com/stefanprodan/podinfo/08238eada746de8114efa36d36e2aa93bd76cfab/charts/podinfo/values.yaml
+
+ui:
+  color: "#440044"
+  message: "inherent podinfo"
+
+ingress:
+  enabled: true
+  hosts:
+    - host: podinfo.home.inherently.xyz
+      paths:
+        - path: /
+          pathType: ImplementationSpecific

@@ -16,7 +16,7 @@
 mkdir -p fluxcd/cluster01/core/metallb/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 mkdir -p fluxcd/cluster01/core/metallb/config  # For things other than values of the upstream chart
 
-cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/metallb/base/kustomization.yaml 
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/metallb/base/kustomization.yaml
 
 flux create source helm metallb \
 	--interval=1m \
@@ -53,7 +53,7 @@ flux create kustomization metallb-config \
 
 mkdir -p fluxcd/cluster01/core/ingress-nginx/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
-cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/ingress-nginx/base/kustomization.yaml 
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/ingress-nginx/base/kustomization.yaml
 
 flux create source helm ingress-nginx \
 	--interval=1m \
@@ -82,7 +82,7 @@ flux create kustomization ingress-nginx-base \
 
 mkdir -p fluxcd/cluster01/core/external-dns/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
-cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/external-dns/base/kustomization.yaml 
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/external-dns/base/kustomization.yaml
 
 flux create source helm external-dns \
 	--interval=1m \
@@ -111,7 +111,7 @@ flux create kustomization external-dns-base \
 
 mkdir -p fluxcd/cluster01/apps/lister/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
-cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/lister/base/kustomization.yaml 
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/lister/base/kustomization.yaml
 
 flux create source helm lister \
 	--interval=1m \
@@ -139,7 +139,7 @@ flux create kustomization lister-base \
 
 mkdir -p fluxcd/cluster01/apps/dashboard/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
-cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/dashboard/base/kustomization.yaml 
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/dashboard/base/kustomization.yaml
 
 flux create source helm dashboard \
 	--interval=1m \
@@ -165,3 +165,32 @@ flux create kustomization dashboard-base \
 	--prune \
 	--wait \
 	--export > fluxcd/cluster01/apps/dashboard/kustomization-fluxCRD.yaml
+
+mkdir -p fluxcd/cluster01/apps/podinfo/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/podinfo/base/kustomization.yaml
+
+ flux create source helm podinfo \
+	--interval=1m \
+	--url=https://stefanprodan.github.io/podinfo \
+	--export > fluxcd/cluster01/apps/podinfo/base/helmrepository.yaml
+
+flux create helmrelease podinfo \
+	--interval=1m \
+	--release-name podinfo \
+	--target-namespace podinfo\
+	--create-target-namespace \
+	--source=HelmRepository/podinfo \
+	--chart=podinfo \
+	--chart-version="6.7.0" \
+	--values=fluxcd/cluster01/apps/podinfo/base/podinfo-values.yml \
+	--export > fluxcd/cluster01/apps/podinfo/base/helmrelease.yaml
+
+flux create kustomization podinfo-base \
+	--interval=1m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/apps/podinfo/base \
+	--depends-on ingress-nginx-base \
+	--prune \
+	--wait \
+	--export > fluxcd/cluster01/apps/podinfo/kustomization-fluxCRD.yaml
