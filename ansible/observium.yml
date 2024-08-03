@@ -10,6 +10,7 @@
         mode: "0777"
         owner: root
         group: root
+      register: observium_script_new
 
     - name: Run observium install script
       ansible.builtin.command:
@@ -17,3 +18,4 @@
         cmd: ./observium_fullauto_installscript.sh
       register: observium_install_output
       changed_when: "'Installation finished' in observium_install_output.stdout"
+      when: observium_script_new.changed
