@@ -27,7 +27,7 @@
         enabled: true
         state: started
 
-    - name: Wait for InfluxDB to start
+    - name: Ensure InfluxDB is started
       ansible.builtin.wait_for:
         port: 8086
         delay: 5
@@ -108,6 +108,7 @@
         mode: "0644"
         owner: root
         group: root
+      register: influx_tlscert
 
     - name: Ensure tls-key config option is set
       ansible.builtin.lineinfile:
@@ -118,14 +119,18 @@
         mode: "0644"
         owner: root
         group: root
+      register: influx_tlskey
 
-    - name: Restart InfluxDB service
+    - name: Ensure InfluxDB was restarted after config change
       ansible.builtin.systemd:
         name: influxdb
         state: restarted
+      register: influx_restart
+      when: influx_tlscert.changed or influx_tlskey.changed
 
-    - name: Wait for InfluxDB to start
+    - name: Wait for InfluxDB to be up after restart
       ansible.builtin.wait_for:
         port: 8086
         delay: 5
         timeout: 60
+      when: influx_restart.changed
