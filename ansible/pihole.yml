@@ -35,6 +35,7 @@
         mode: "0644"
         owner: root
         group: root
+      register: pihole_setupvars
 
     - name: Run pihole install script
       ansible.builtin.command:
@@ -57,7 +58,7 @@
         name: pihole-FTL
         enabled: true
         state: restarted
-      when: pihole_install_output.changed
+      when: pihole_install_output.changed or pihole_setupvars.changed
 
     - name: Add redirect from webroot to admin
       ansible.builtin.lineinfile:
