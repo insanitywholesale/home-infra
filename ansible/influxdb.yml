@@ -4,6 +4,15 @@
   become: true
 
   tasks:
+    - name: Install dependencies
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        update_cache: true
+        state: present
+      loop:
+        - apt-transport-https
+        - software-properties-common
+
     - name: Add InfluxDB debian repo signed by gpg key
       ansible.builtin.deb822_repository:
         name: influxdata
