@@ -1,0 +1,30 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: longhorn
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: longhorn
+      version: 1.6.2
+  install:
+    createNamespace: true
+  interval: 1m0s
+  releaseName: longhorn
+  targetNamespace: longhorn-system
+  values:
+    ingress:
+      enabled: true
+      host: longhorn.home.inherently.xyz
+      path: /
+    persistence:
+      defaultClassReplicaCount: 2
+      defaultDataLocality: best-effort
+      migratable: true
+      reclaimPolicy: Retain

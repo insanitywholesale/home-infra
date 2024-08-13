@@ -1,0 +1,19 @@
+# Permalink: https://raw.githubusercontent.com/longhorn/charts/ad73dc01239b7eeb25ff510ce8358578433d85a5/charts/longhorn/values.yaml
+
+persistence:
+  # -- Replica count of the default Longhorn StorageClass.
+  defaultClassReplicaCount: 2
+  # -- Data locality of the default Longhorn StorageClass. (Options: "disabled", "best-effort")
+  defaultDataLocality: "best-effort"
+  # -- Reclaim policy that provides instructions for handling of a volume after its claim is released. (Options: "Retain", "Delete")
+  reclaimPolicy: Retain
+  # -- Setting that allows you to enable live migration of a Longhorn volume from one node to another.
+  migratable: true
+
+ingress:
+  # -- Setting that allows Longhorn to generate ingress records for the Longhorn UI service.
+  enabled: true
+  # -- Hostname of the Layer 7 load balancer.
+  host: longhorn.home.inherently.xyz
+  # -- Default ingress path. You can access the Longhorn UI by following the full ingress path {{host}}+{{path}}.
+  path: /

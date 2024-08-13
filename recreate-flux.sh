@@ -194,3 +194,31 @@ flux create kustomization podinfo-base \
 	--prune \
 	--wait \
 	--export > fluxcd/cluster01/apps/podinfo/kustomization-fluxCRD.yaml
+
+mkdir -p fluxcd/cluster01/core/longhorn/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/longhorn/base/kustomization.yaml
+
+flux create source helm longhorn \
+	--interval=1m \
+	--url=https://charts.longhorn.io \
+	--export > fluxcd/cluster01/core/longhorn/base/helmrepository.yaml
+
+flux create helmrelease longhorn \
+	--interval=1m \
+	--release-name longhorn \
+	--target-namespace longhorn-system \
+	--create-target-namespace \
+	--source=HelmRepository/longhorn \
+	--chart=longhorn \
+	--chart-version="1.6.2" \
+	--values=fluxcd/cluster01/core/longhorn/base/longhorn-values.yml \
+	--export > fluxcd/cluster01/core/longhorn/base/helmrelease.yaml
+
+flux create kustomization longhorn-base \
+	--interval=1m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/core/longhorn/base \
+	--prune \
+	--wait \
+	--export > fluxcd/cluster01/core/longhorn/kustomization-fluxCRD.yaml
