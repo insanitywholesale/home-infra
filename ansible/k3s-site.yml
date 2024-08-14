@@ -16,18 +16,18 @@
   gather_facts: true
   become: true
   roles:
-    - role: k3s_roles/prereq
-    - role: k3s_roles/airgap
-    - role: k3s_roles/raspberrypi
+    - role: k3s.orchestration.prereq
+    - role: k3s.orchestration.airgap
+    - role: k3s.orchestration.raspberrypi
 
 - name: Setup K3S server
-  hosts: k3s_server_1
+  hosts: server
   become: true
   roles:
-    - role: k3s_roles/k3s_server
+    - role: k3s.orchestration.k3s_server
 
 - name: Setup K3S agent
-  hosts: k3s_agent_1
+  hosts: agent
   become: true
   roles:
-    - role: k3s_roles/k3s_agent
+    - role: k3s.orchestration.k3s_agent

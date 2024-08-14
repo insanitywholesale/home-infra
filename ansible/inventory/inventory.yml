@@ -77,77 +77,87 @@ all:
             32363032656130353165666162323763633064343064303761656132383461343533623435646530
             3431
           ntp_timezone: Europe/Athens
-    k3s_cluster_1:
+    k3s_cluster:
       children:
-        k3s_agent_1:
+        agent:
           hosts:
             k3s-m02-c01:
               ansible_host: 10.0.50.52
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.28.5+k3s1
+              k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
+              token: &id001 !vault |
+                $ANSIBLE_VAULT;1.1;AES256
+                37633333626632356133363161656665633033616166363962623737393362376632356139396134
+                3762656639623239626362623466316263393263626162330a316534326632336633316135393337
+                65643033626134646130306632373037376134356261636566663337303138313834356633323165
+                6466653461373835660a666166366232343861333839383837336331323163326637616631633038
+                39633265613431336433353933643334396134343363316165333563656534613566323130623735
+                65383233656334303135653663353263656339313133623133336561613436633964636565616462
+                35666634656332613839366531326162656264326536356661626537323438383164363439376163
+                32306666316666353466383765396330306632373535656336646537393036623062313732346139
+                3238
               user_kubectl: true
             k3s-m03-c01:
               ansible_host: 10.0.50.53
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.28.5+k3s1
+              k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
+              token: *id001
               user_kubectl: true
             k3s-w01-c01:
               ansible_host: 10.0.50.61
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.28.5+k3s1
+              k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
+              token: *id001
               user_kubectl: true
             k3s-w02-c01:
               ansible_host: 10.0.50.62
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.28.5+k3s1
+              k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
+              token: *id001
               user_kubectl: true
             k3s-w03-c01:
               ansible_host: 10.0.50.63
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.28.5+k3s1
+              k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
+              token: *id001
               user_kubectl: true
-        k3s_server_1:
+        server:
           hosts:
             k3s-m01-c01:
               ansible_host: 10.0.50.51
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['k3s_server_1'][0]]['ansible_host'] | default(groups['k3s_server_1'][0]) }}"
+              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ""
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.28.5+k3s1
+              k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
-              token: vregmenhpatataxwristyri
+              token: *id001
               user_kubectl: true
     mysql_servers:
       hosts:
@@ -229,7 +239,7 @@ all:
           ansible_host: 10.0.50.71
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          keepalived_password: &id001 !vault |
+          keepalived_password: &id002 !vault |
             $ANSIBLE_VAULT;1.1;AES256
             62656632393864353833633732653238626366326238646361313861393664626261393332633532
             3534626333623630333231356131633765633536356230310a613736343539346366623137653230
@@ -237,7 +247,7 @@ all:
             3739623739643830660a653961353066386566376662346132363862363465336338616230333565
             3062
           ntp_timezone: Europe/Athens
-          pve_acls: &id002
+          pve_acls: &id003
             - groups:
                 - api_users
               path: /storage/local
@@ -256,14 +266,14 @@ all:
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: &id003
+          pve_groups: &id004
             - comment: Administrators of this PVE cluster
               name: admins
             - comment: Users that represent automation tools
               name: api_users
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: &id004
+          pve_roles: &id005
             - name: Monitoring
               privileges:
                 - Sys.Modify
@@ -272,7 +282,7 @@ all:
                 - VM.Monitor
                 - VM.Audit
           pve_ssh_port: 22
-          pve_users: &id005
+          pve_users: &id006
             - groups:
                 - api_users
               name: ansible@pve
@@ -287,36 +297,36 @@ all:
           ansible_host: 10.0.50.72
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          keepalived_password: *id001
+          keepalived_password: *id002
           ntp_timezone: Europe/Athens
-          pve_acls: *id002
+          pve_acls: *id003
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: *id003
+          pve_groups: *id004
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: *id004
+          pve_roles: *id005
           pve_ssh_port: 22
-          pve_users: *id005
+          pve_users: *id006
           template_vmid: 9002
           template_vmid2: 9005
         pve03:
           ansible_host: 10.0.50.73
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          keepalived_password: *id001
+          keepalived_password: *id002
           ntp_timezone: Europe/Athens
-          pve_acls: *id002
+          pve_acls: *id003
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: *id003
+          pve_groups: *id004
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: *id004
+          pve_roles: *id005
           pve_ssh_port: 22
-          pve_users: *id005
+          pve_users: *id006
           template_vmid: 9003
           template_vmid2: 9006
     sentry_servers:
