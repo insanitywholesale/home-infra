@@ -125,10 +125,16 @@ Tools for monitoring, logging, tracing and data visualization.
 ### Observium
 10.0.50.34
 
+### Graphite
+.33
+
 ### Graylog
 .35
 
-### Gatus or Uptime Kuma
+### Gatus
+.36
+
+### Uptime Kuma
 .37
 
 ### Sentry
@@ -149,17 +155,20 @@ Code analysis and git hosting plus container registry and helm repo.
 ### Chartmuseum
 .42
 
-### Sonarqube or Deepsource
-.43
-
-### Codecov
-.44
-
 ### GitLab
 10.0.50.45
 
-### Gitea
+### Forgejo
 .46
+
+### Sonarqube
+.47
+
+### Deepsource
+.48
+
+### Codecov
+.49
 
 ## Kubernetes
 Kubernetes nodes
@@ -179,8 +188,11 @@ Kubernetes nodes
 ## Physical servers
 Bare-metal machines where most things run on
 
+### Proxmox loadbalanced endpoint
+10.0.50.70
+
 ### Proxmox
-10.0.50.70-72 (leave space for up to .75)
+10.0.50.71-73 (leave space for up to .75)
 
 ### TrueNAS
 10.0.50.100
