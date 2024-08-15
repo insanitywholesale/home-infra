@@ -222,3 +222,31 @@ flux create kustomization longhorn-base \
 	--prune \
 	--wait \
 	--export > fluxcd/cluster01/core/longhorn/kustomization-fluxCRD.yaml
+
+mkdir -p fluxcd/cluster01/apps/cnpg/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/cnpg/base/kustomization.yaml
+
+flux create source helm cnpg \
+	--interval=1m \
+	--url=https://cloudnative-pg.github.io/charts \
+	--export > fluxcd/cluster01/apps/cnpg/base/helmrepository.yaml
+
+flux create helmrelease cnpg \
+	--interval=1m \
+	--release-name cnpg \
+	--target-namespace cnpg-system \
+	--create-target-namespace \
+	--source=HelmRepository/cnpg \
+	--chart=cloudnative-pg \
+	--chart-version="0.21.6" \
+	--values=fluxcd/cluster01/apps/cnpg/base/cnpg-values.yml \
+	--export > fluxcd/cluster01/apps/cnpg/base/helmrelease.yaml
+
+flux create kustomization cnpg-base \
+	--interval=1m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/apps/cnpg/base \
+	--prune \
+	--wait \
+	--export > fluxcd/cluster01/apps/cnpg/kustomization-fluxCRD.yaml

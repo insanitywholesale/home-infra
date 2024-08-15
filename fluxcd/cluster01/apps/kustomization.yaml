@@ -5,3 +5,4 @@ resources:
   - ./lister/kustomization-fluxCRD.yaml
   - ./dashboard/kustomization-fluxCRD.yaml
   - ./podinfo/kustomization-fluxCRD.yaml
+  - ./cnpg/kustomization-fluxCRD.yaml
