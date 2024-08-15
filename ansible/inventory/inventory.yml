@@ -1,4 +1,3 @@
----
 all:
   children:
     aptcache_servers:
@@ -84,9 +83,10 @@ all:
             k3s-m02-c01:
               ansible_host: 10.0.50.52
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
+              extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
               k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
@@ -105,9 +105,10 @@ all:
             k3s-m03-c01:
               ansible_host: 10.0.50.53
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
+              extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
               k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
@@ -116,9 +117,10 @@ all:
             k3s-w01-c01:
               ansible_host: 10.0.50.61
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
+              extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
               k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
@@ -127,9 +129,10 @@ all:
             k3s-w02-c01:
               ansible_host: 10.0.50.62
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
+              extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
               k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
@@ -138,9 +141,10 @@ all:
             k3s-w03-c01:
               ansible_host: 10.0.50.63
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
+              extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
               k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
@@ -151,9 +155,10 @@ all:
             k3s-m01-c01:
               ansible_host: 10.0.50.51
               ansible_user: debian
-              api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
+              api_endpoint: '{{ hostvars[groups[''server''][0]][''ansible_host'']
+                | default(groups[''server''][0]) }}'
               apt_proxy: http://10.0.50.9:3142
-              extra_agent_args: ""
+              extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
               k3s_version: v1.30.2+k3s1
               ntp_timezone: Europe/Athens
@@ -239,7 +244,15 @@ all:
           ansible_host: 10.0.50.71
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          keepalived_password: &id002 !vault |
+          cloudflare_api_token: &id002 !vault |
+            $ANSIBLE_VAULT;1.1;AES256
+            38363438656234613230613632636136613962653538376434313065323837653734346263626138
+            3465393331363738343339393230643130613430306530310a386362613834343334306138303565
+            33333735363439303533386362343336623036633865623839343432393361323033343931386633
+            3366306564313730640a376331366335376334353435623365666164653766383930376562343762
+            66623239363231353534666330313665313338353339363130316237323936306464316365663066
+            6466326164353536356338646637666663613031306361396465
+          keepalived_password: &id003 !vault |
             $ANSIBLE_VAULT;1.1;AES256
             62656632393864353833633732653238626366326238646361313861393664626261393332633532
             3534626333623630333231356131633765633536356230310a613736343539346366623137653230
@@ -247,86 +260,88 @@ all:
             3739623739643830660a653961353066386566376662346132363862363465336338616230333565
             3062
           ntp_timezone: Europe/Athens
-          pve_acls: &id003
-            - groups:
-                - api_users
-              path: /storage/local
-              roles:
-                - PVEDatastoreAdmin
-            - groups:
-                - api_users
-              path: /storage/local-lvm
-              roles:
-                - PVEDatastoreAdmin
-            - groups:
-                - api_users
-              path: /vms
-              roles:
-                - PVEVMAdmin
+          pve_acls: &id004
+          - groups:
+            - api_users
+            path: /storage/local
+            roles:
+            - PVEDatastoreAdmin
+          - groups:
+            - api_users
+            path: /storage/local-lvm
+            roles:
+            - PVEDatastoreAdmin
+          - groups:
+            - api_users
+            path: /vms
+            roles:
+            - PVEVMAdmin
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: &id004
-            - comment: Administrators of this PVE cluster
-              name: admins
-            - comment: Users that represent automation tools
-              name: api_users
+          pve_groups: &id005
+          - comment: Administrators of this PVE cluster
+            name: admins
+          - comment: Users that represent automation tools
+            name: api_users
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: &id005
-            - name: Monitoring
-              privileges:
-                - Sys.Modify
-                - Sys.Audit
-                - Datastore.Audit
-                - VM.Monitor
-                - VM.Audit
+          pve_roles: &id006
+          - name: Monitoring
+            privileges:
+            - Sys.Modify
+            - Sys.Audit
+            - Datastore.Audit
+            - VM.Monitor
+            - VM.Audit
           pve_ssh_port: 22
-          pve_users: &id006
-            - groups:
-                - api_users
-              name: ansible@pve
-              password: oomfie1234
-            - groups:
-                - api_users
-              name: terraform@pve
-              password: oomfie1234
+          pve_users: &id007
+          - groups:
+            - api_users
+            name: ansible@pve
+            password: oomfie1234
+          - groups:
+            - api_users
+            name: terraform@pve
+            password: oomfie1234
           template_vmid: 9001
           template_vmid2: 9004
         pve02:
           ansible_host: 10.0.50.72
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          keepalived_password: *id002
+          cloudflare_api_token: *id002
+          keepalived_password: *id003
           ntp_timezone: Europe/Athens
-          pve_acls: *id003
+          pve_acls: *id004
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: *id004
+          pve_groups: *id005
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: *id005
+          pve_roles: *id006
           pve_ssh_port: 22
-          pve_users: *id006
+          pve_users: *id007
           template_vmid: 9002
           template_vmid2: 9005
         pve03:
           ansible_host: 10.0.50.73
           ansible_user: root
           apt_proxy: http://10.0.50.9:3142
-          keepalived_password: *id002
+          cloudflare_api_token: *id002
+          keepalived_password: *id003
           ntp_timezone: Europe/Athens
-          pve_acls: *id003
+          pve_acls: *id004
           pve_cluster_clustername: optiplexus
           pve_cluster_enabled: true
           pve_group: proxmox_servers
-          pve_groups: *id004
+          pve_groups: *id005
           pve_manage_hosts_enabled: true
           pve_remove_subscription_warning: true
-          pve_roles: *id005
+          pve_roles: *id006
           pve_ssh_port: 22
-          pve_users: *id006
+          pve_users: *id007
           template_vmid: 9003
           template_vmid2: 9006
     sentry_servers:
