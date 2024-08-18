@@ -7,7 +7,7 @@ metadata:
 spec:
   dependsOn:
   - name: ingress-nginx-base
-  interval: 1m0s
+  interval: 10m0s
   path: ./fluxcd/cluster01/apps/podinfo/base
   prune: true
   sourceRef:

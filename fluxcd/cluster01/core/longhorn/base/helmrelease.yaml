@@ -15,7 +15,7 @@ spec:
       version: 1.6.2
   install:
     createNamespace: true
-  interval: 1m0s
+  interval: 10m0s
   releaseName: longhorn
   targetNamespace: longhorn-system
   values:

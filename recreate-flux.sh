@@ -19,12 +19,12 @@ mkdir -p fluxcd/cluster01/core/metallb/config  # For things other than values of
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/metallb/base/kustomization.yaml
 
 flux create source helm metallb \
-	--interval=1m \
+	--interval=10m \
 	--url=https://metallb.github.io/metallb \
 	--export > fluxcd/cluster01/core/metallb/base/helmrepository.yaml
 
 flux create helmrelease metallb \
-	--interval=1m \
+	--interval=10m \
 	--release-name metallb \
 	--target-namespace metallb-system \
 	--create-target-namespace \
@@ -35,7 +35,7 @@ flux create helmrelease metallb \
 	--export > fluxcd/cluster01/core/metallb/base/helmrelease.yaml
 
 flux create kustomization metallb-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/metallb/base \
 	--prune \
@@ -43,7 +43,7 @@ flux create kustomization metallb-base \
 	--export > fluxcd/cluster01/core/metallb/kustomization-fluxCRD.yaml
 
 flux create kustomization metallb-config \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/metallb/config \
 	--depends-on metallb-base \
@@ -57,12 +57,12 @@ mkdir -p fluxcd/cluster01/core/cert-manager/config  # For things other than valu
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/cert-manager/base/kustomization.yaml
 
 flux create source helm cert-manager \
-	--interval=1m \
+	--interval=10m \
 	--url=https://charts.jetstack.io \
 	--export > fluxcd/cluster01/core/cert-manager/base/helmrepository.yaml
 
 flux create helmrelease cert-manager \
-	--interval=1m \
+	--interval=10m \
 	--release-name cert-manager \
 	--target-namespace cert-manager \
 	--create-target-namespace \
@@ -73,7 +73,7 @@ flux create helmrelease cert-manager \
 	--export > fluxcd/cluster01/core/cert-manager/base/helmrelease.yaml
 
 flux create kustomization cert-manager-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/cert-manager/base \
 	--prune \
@@ -85,12 +85,12 @@ mkdir -p fluxcd/cluster01/core/ingress-nginx/base    # For flux helmrepository, 
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/ingress-nginx/base/kustomization.yaml
 
 flux create source helm ingress-nginx \
-	--interval=1m \
+	--interval=10m \
 	--url=https://kubernetes.github.io/ingress-nginx \
 	--export > fluxcd/cluster01/core/ingress-nginx/base/helmrepository.yaml
 
 flux create helmrelease ingress-nginx \
-	--interval=1m \
+	--interval=10m \
 	--release-name ingress-nginx \
 	--target-namespace ingress-nginx \
 	--create-target-namespace \
@@ -101,7 +101,7 @@ flux create helmrelease ingress-nginx \
 	--export > fluxcd/cluster01/core/ingress-nginx/base/helmrelease.yaml
 
 flux create kustomization ingress-nginx-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/ingress-nginx/base \
 	--depends-on metallb-config \
@@ -114,12 +114,12 @@ mkdir -p fluxcd/cluster01/core/external-dns/base    # For flux helmrepository, u
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/external-dns/base/kustomization.yaml
 
 flux create source helm external-dns \
-	--interval=1m \
+	--interval=10m \
 	--url=https://kubernetes-sigs.github.io/external-dns \
 	--export > fluxcd/cluster01/core/external-dns/base/helmrepository.yaml
 
 flux create helmrelease external-dns \
-	--interval=1m \
+	--interval=10m \
 	--release-name external-dns \
 	--target-namespace external-dns\
 	--create-target-namespace \
@@ -130,7 +130,7 @@ flux create helmrelease external-dns \
 	--export > fluxcd/cluster01/core/external-dns/base/helmrelease.yaml
 
 flux create kustomization external-dns-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/external-dns/base \
 	--depends-on "metallb-base,ingress-nginx-base" \
@@ -143,12 +143,12 @@ mkdir -p fluxcd/cluster01/apps/lister/base    # For flux helmrepository, upstrea
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/lister/base/kustomization.yaml
 
 flux create source helm lister \
-	--interval=1m \
+	--interval=10m \
 	--url=https://gitlab.com/api/v4/projects/27255221/packages/helm/stable \
 	--export > fluxcd/cluster01/apps/lister/base/helmrepository.yaml
 
 flux create helmrelease lister \
-	--interval=1m \
+	--interval=10m \
 	--release-name lister \
 	--target-namespace lister \
 	--create-target-namespace \
@@ -158,7 +158,7 @@ flux create helmrelease lister \
 	--export > fluxcd/cluster01/apps/lister/base/helmrelease.yaml
 
 flux create kustomization lister-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/apps/lister/base \
 	--depends-on ingress-nginx-base \
@@ -171,12 +171,12 @@ mkdir -p fluxcd/cluster01/apps/dashboard/base    # For flux helmrepository, upst
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/dashboard/base/kustomization.yaml
 
 flux create source helm dashboard \
-	--interval=1m \
+	--interval=10m \
 	--url=https://kubernetes.github.io/dashboard \
 	--export > fluxcd/cluster01/apps/dashboard/base/helmrepository.yaml
 
 flux create helmrelease dashboard \
-	--interval=1m \
+	--interval=10m \
 	--release-name dashboard \
 	--target-namespace dashboard\
 	--create-target-namespace \
@@ -187,7 +187,7 @@ flux create helmrelease dashboard \
 	--export > fluxcd/cluster01/apps/dashboard/base/helmrelease.yaml
 
 flux create kustomization dashboard-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/apps/dashboard/base \
 	--depends-on ingress-nginx-base \
@@ -200,12 +200,12 @@ mkdir -p fluxcd/cluster01/apps/podinfo/base    # For flux helmrepository, upstre
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/podinfo/base/kustomization.yaml
 
  flux create source helm podinfo \
-	--interval=1m \
+	--interval=10m \
 	--url=https://stefanprodan.github.io/podinfo \
 	--export > fluxcd/cluster01/apps/podinfo/base/helmrepository.yaml
 
 flux create helmrelease podinfo \
-	--interval=1m \
+	--interval=10m \
 	--release-name podinfo \
 	--target-namespace podinfo\
 	--create-target-namespace \
@@ -216,7 +216,7 @@ flux create helmrelease podinfo \
 	--export > fluxcd/cluster01/apps/podinfo/base/helmrelease.yaml
 
 flux create kustomization podinfo-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/apps/podinfo/base \
 	--depends-on ingress-nginx-base \
@@ -229,12 +229,12 @@ mkdir -p fluxcd/cluster01/core/longhorn/base    # For flux helmrepository, upstr
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/longhorn/base/kustomization.yaml
 
 flux create source helm longhorn \
-	--interval=1m \
+	--interval=10m \
 	--url=https://charts.longhorn.io \
 	--export > fluxcd/cluster01/core/longhorn/base/helmrepository.yaml
 
 flux create helmrelease longhorn \
-	--interval=1m \
+	--interval=10m \
 	--release-name longhorn \
 	--target-namespace longhorn-system \
 	--create-target-namespace \
@@ -245,7 +245,7 @@ flux create helmrelease longhorn \
 	--export > fluxcd/cluster01/core/longhorn/base/helmrelease.yaml
 
 flux create kustomization longhorn-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/core/longhorn/base \
 	--prune \
@@ -257,12 +257,12 @@ mkdir -p fluxcd/cluster01/apps/cnpg/base    # For flux helmrepository, upstream 
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/cnpg/base/kustomization.yaml
 
 flux create source helm cnpg \
-	--interval=1m \
+	--interval=10m \
 	--url=https://cloudnative-pg.github.io/charts \
 	--export > fluxcd/cluster01/apps/cnpg/base/helmrepository.yaml
 
 flux create helmrelease cnpg \
-	--interval=1m \
+	--interval=10m \
 	--release-name cnpg \
 	--target-namespace cnpg-system \
 	--create-target-namespace \
@@ -273,7 +273,7 @@ flux create helmrelease cnpg \
 	--export > fluxcd/cluster01/apps/cnpg/base/helmrelease.yaml
 
 flux create kustomization cnpg-base \
-	--interval=1m \
+	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/cluster01/apps/cnpg/base \
 	--prune \

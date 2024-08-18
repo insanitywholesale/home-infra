@@ -8,7 +8,7 @@ spec:
   dependsOn:
   - name: metallb-base
   - name: ingress-nginx-base
-  interval: 1m0s
+  interval: 10m0s
   path: ./fluxcd/cluster01/core/external-dns/base
   prune: true
   sourceRef:

@@ -15,7 +15,7 @@ spec:
       version: 1.14.5
   install:
     createNamespace: true
-  interval: 1m0s
+  interval: 10m0s
   releaseName: external-dns
   targetNamespace: external-dns
   values:

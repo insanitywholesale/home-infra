@@ -15,7 +15,7 @@ spec:
       version: 0.21.6
   install:
     createNamespace: true
-  interval: 1m0s
+  interval: 10m0s
   releaseName: cnpg
   targetNamespace: cnpg-system
   values:

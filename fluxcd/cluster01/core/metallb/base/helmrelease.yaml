@@ -15,7 +15,7 @@ spec:
       version: 0.14.8
   install:
     createNamespace: true
-  interval: 1m0s
+  interval: 10m0s
   releaseName: metallb
   targetNamespace: metallb-system
   values:
