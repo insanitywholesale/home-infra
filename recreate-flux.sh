@@ -51,6 +51,35 @@ flux create kustomization metallb-config \
 	--wait \
 	--export >> fluxcd/cluster01/core/metallb/kustomization-fluxCRD.yaml
 
+mkdir -p fluxcd/cluster01/core/cert-manager/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+mkdir -p fluxcd/cluster01/core/cert-manager/config  # For things other than values of the upstream chart
+
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/cert-manager/base/kustomization.yaml
+
+flux create source helm cert-manager \
+	--interval=1m \
+	--url=https://charts.jetstack.io \
+	--export > fluxcd/cluster01/core/cert-manager/base/helmrepository.yaml
+
+flux create helmrelease cert-manager \
+	--interval=1m \
+	--release-name cert-manager \
+	--target-namespace cert-manager \
+	--create-target-namespace \
+	--source=HelmRepository/cert-manager \
+	--chart=cert-manager \
+	--chart-version="v1.15.3" \
+	--values=fluxcd/cluster01/core/cert-manager/base/cert-manager-values.yml \
+	--export > fluxcd/cluster01/core/cert-manager/base/helmrelease.yaml
+
+flux create kustomization cert-manager-base \
+	--interval=1m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/core/cert-manager/base \
+	--prune \
+	--wait \
+	--export > fluxcd/cluster01/core/cert-manager/kustomization-fluxCRD.yaml
+
 mkdir -p fluxcd/cluster01/core/ingress-nginx/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/ingress-nginx/base/kustomization.yaml
