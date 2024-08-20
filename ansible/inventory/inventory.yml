@@ -88,7 +88,7 @@ all:
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.30.2+k3s1
+              k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
               token: &id001 !vault |
                 $ANSIBLE_VAULT;1.1;AES256
@@ -110,7 +110,7 @@ all:
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.30.2+k3s1
+              k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
               token: *id001
               user_kubectl: true
@@ -122,7 +122,7 @@ all:
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.30.2+k3s1
+              k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
               token: *id001
               user_kubectl: true
@@ -134,7 +134,7 @@ all:
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.30.2+k3s1
+              k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
               token: *id001
               user_kubectl: true
@@ -146,7 +146,7 @@ all:
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.30.2+k3s1
+              k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
               token: *id001
               user_kubectl: true
@@ -160,7 +160,7 @@ all:
               apt_proxy: http://10.0.50.9:3142
               extra_agent_args: ''
               extra_server_args: --disable=traefik --disable=servicelb --disable=local-storage
-              k3s_version: v1.30.2+k3s1
+              k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
               token: *id001
               user_kubectl: true
