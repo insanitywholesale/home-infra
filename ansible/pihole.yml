@@ -102,7 +102,7 @@
       ansible.builtin.get_url:
         url: https://www.internic.net/domain/named.root
         dest: /var/lib/unbound/root.hints
-        checksum: sha512:bb7f5f495e1bac867eb6b5d5934da3c195e6b7d210776673bc6a04d2fe72384a81883f5a19051571879ec712586d6b952fb7915a73fd23ee222ab7287e5e0055
+        checksum: sha512:70d1f43187e58dbc251f7b63b3dc14db86b71092fa12bdfbde4d72a6e3ea8a1c815aabc2b7807f8c98efed965b02ee64d18123bb741cd5628688b49ec581dec1
         mode: "0644"
         owner: root
         group: root
