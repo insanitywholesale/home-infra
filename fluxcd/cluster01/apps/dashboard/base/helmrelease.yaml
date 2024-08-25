@@ -21,30 +21,21 @@ spec:
   values:
     app:
       ingress:
-        annotations:
-          nginx.ingress.kubernetes.io/backend-protocol: HTTP
-          nginx.ingress.kubernetes.io/ssl-passthrough: "false"
-          nginx.ingress.kubernetes.io/ssl-redirect: "false"
         enabled: true
         hosts:
+        - k8s.home.inherently.xyz
+        - kubernetes.home.inherently.xyz
         - dashboard.home.inherently.xyz
         - k8sdashboard.home.inherently.xyz
         ingressClassName: nginx
         issuer:
-          name: nothing
-          scope: disabled
+          name: letsencrypt-staging
+          scope: cluster
         path: /
-        pathType: ImplementationSpecific
         tls:
-          enabled: false
-        useDefaultAnnotations: false
-        useDefaultIngressClass: true
-      settings:
-        global: null
-        pinnedResources: []
+          enabled: true
+          secretName: dashboard-staging-tls
     kong:
       proxy:
         http:
           enabled: true
-        tls:
-          servicePort: 80
