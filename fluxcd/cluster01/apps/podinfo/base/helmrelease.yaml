@@ -20,12 +20,18 @@ spec:
   targetNamespace: podinfo
   values:
     ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-staging
       enabled: true
       hosts:
       - host: podinfo.home.inherently.xyz
         paths:
         - path: /
           pathType: ImplementationSpecific
+      tls:
+      - hosts:
+        - podinfo.home.inherently.xyz
+        secretName: podinfo-staging-tls
     ui:
       color: '#440044'
       message: inherent podinfo
