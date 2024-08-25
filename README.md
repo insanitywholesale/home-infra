@@ -183,7 +183,7 @@ Kubernetes nodes
 .60
 
 ### k3s worker nodes
-10.0.50.61-69
+10.0.50.61-63
 
 ## Physical servers
 Bare-metal machines where most things run on
