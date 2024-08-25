@@ -1,4 +1,3 @@
 creation_rules:
-  - path_regex: 'fluxcd/.*\.sops\.ya?ml$'
-    encrypted_regex: '^(data|stringData|caBundle)$'
+  - encrypted_regex: '^(data|stringData|caBundle)$'
     age: age1aa9sefsfad7w4hg7xqeg2pr2875vqhtsz228jz0svcssgcf99a9s8ma3nj

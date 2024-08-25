@@ -5,6 +5,10 @@ metadata:
   name: external-dns-base
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
   - name: metallb-base
   - name: ingress-nginx-base

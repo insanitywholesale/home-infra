@@ -40,6 +40,8 @@ flux create kustomization metallb-base \
 	--path=fluxcd/cluster01/core/metallb/base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/core/metallb/kustomization-fluxCRD.yaml
 
 flux create kustomization metallb-config \
@@ -49,6 +51,8 @@ flux create kustomization metallb-config \
 	--depends-on metallb-base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export >> fluxcd/cluster01/core/metallb/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/core/cert-manager/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
@@ -78,6 +82,8 @@ flux create kustomization cert-manager-base \
 	--path=fluxcd/cluster01/core/cert-manager/base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/core/cert-manager/kustomization-fluxCRD.yaml
 
 flux create kustomization cert-manager-config \
@@ -87,6 +93,8 @@ flux create kustomization cert-manager-config \
 	--depends-on cert-manager-base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export >> fluxcd/cluster01/core/cert-manager/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/core/ingress-nginx/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
@@ -116,6 +124,8 @@ flux create kustomization ingress-nginx-base \
 	--depends-on metallb-config \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/core/ingress-nginx/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/core/external-dns/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
@@ -145,6 +155,8 @@ flux create kustomization external-dns-base \
 	--depends-on "metallb-base,ingress-nginx-base" \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/core/external-dns/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/apps/lister/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
@@ -173,6 +185,8 @@ flux create kustomization lister-base \
 	--depends-on ingress-nginx-base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/apps/lister/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/apps/dashboard/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
@@ -202,6 +216,8 @@ flux create kustomization dashboard-base \
 	--depends-on ingress-nginx-base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/apps/dashboard/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/apps/podinfo/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
@@ -231,6 +247,8 @@ flux create kustomization podinfo-base \
 	--depends-on ingress-nginx-base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/apps/podinfo/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/core/longhorn/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
@@ -259,6 +277,8 @@ flux create kustomization longhorn-base \
 	--path=fluxcd/cluster01/core/longhorn/base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/core/longhorn/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/apps/cnpg/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
@@ -287,4 +307,6 @@ flux create kustomization cnpg-base \
 	--path=fluxcd/cluster01/apps/cnpg/base \
 	--prune \
 	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/apps/cnpg/kustomization-fluxCRD.yaml

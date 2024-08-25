@@ -5,6 +5,10 @@ metadata:
   name: lister-base
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
   - name: ingress-nginx-base
   interval: 10m0s

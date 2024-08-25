@@ -5,6 +5,10 @@ metadata:
   name: cert-manager-base
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   interval: 10m0s
   path: ./fluxcd/cluster01/core/cert-manager/base
   prune: true
@@ -20,6 +24,10 @@ metadata:
   name: cert-manager-config
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
   - name: cert-manager-base
   interval: 10m0s

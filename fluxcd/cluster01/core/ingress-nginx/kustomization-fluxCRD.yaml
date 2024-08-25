@@ -5,6 +5,10 @@ metadata:
   name: ingress-nginx-base
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
   - name: metallb-config
   interval: 10m0s
