@@ -80,6 +80,15 @@ flux create kustomization cert-manager-base \
 	--wait \
 	--export > fluxcd/cluster01/core/cert-manager/kustomization-fluxCRD.yaml
 
+flux create kustomization cert-manager-config \
+	--interval=10m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/core/cert-manager/config \
+	--depends-on cert-manager-base \
+	--prune \
+	--wait \
+	--export >> fluxcd/cluster01/core/cert-manager/kustomization-fluxCRD.yaml
+
 mkdir -p fluxcd/cluster01/core/ingress-nginx/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/ingress-nginx/base/kustomization.yaml
