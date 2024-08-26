@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: cnpg
-      version: 0.21.6
+      version: 0.22.0
   install:
     createNamespace: true
   interval: 10m0s

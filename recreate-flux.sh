@@ -297,7 +297,7 @@ flux create helmrelease cnpg \
 	--create-target-namespace \
 	--source=HelmRepository/cnpg \
 	--chart=cloudnative-pg \
-	--chart-version="0.21.6" \
+	--chart-version="0.22.0" \
 	--values=fluxcd/cluster01/apps/cnpg/base/cnpg-values.yml \
 	--export > fluxcd/cluster01/apps/cnpg/base/helmrelease.yaml
 
