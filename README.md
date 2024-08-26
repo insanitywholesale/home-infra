@@ -227,6 +227,15 @@ Can't or don't want to run these on kubernetes.
 ### Archivebox
 .117
 
+### Github actions runner
+.140
+
+### Docker buildx
+.141-142
+
+### Gitlab runners
+.143-145
+
 ### k3s main cluster ingress
 .150
 

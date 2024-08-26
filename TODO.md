@@ -2,19 +2,6 @@
 things to do
 
 ## ansible
-- fix lae.proxmox problem:
-```
-TASK [lae.proxmox : Configure Proxmox groups] ************************************************************
-skipping: [pve1] => (item={'comment': 'Administrators of this PVE cluster', 'name': 'admins'})
-skipping: [pve1] => (item={'comment': 'Users that represent automation tools', 'name': 'api_users'})
-skipping: [pve1]
-skipping: [pve2] => (item={'comment': 'Administrators of this PVE cluster', 'name': 'admins'})
-skipping: [pve2] => (item={'comment': 'Users that represent automation tools', 'name': 'api_users'})
-skipping: [pve2]
-<unknown>:59: SyntaxWarning: invalid escape sequence '\('
-<unknown>:60: SyntaxWarning: invalid escape sequence '\.'
-<unknown>:61: SyntaxWarning: invalid escape sequence '\.'
-```
 - add SSL certs to netbox (add `https = =0,mysql01.home.inherently.xyz.crt,mysql01.home.inherently.xyz.key,HIGH` to `netbox_uwsgi_options: {}` and also move the certs inside there with that name
 - add SSL certs to deluge (move cert and key inside `{{ deluge_config_dir }}/ssl` and name them `daemon.cert` and `daemon.pkey`)
 - add SSL certs to grafana according to [the documentation](https://grafana.com/docs/grafana/latest/setup-grafana/set-up-https/)
@@ -37,7 +24,7 @@ skipping: [pve2]
 - create windows template with help from [this blog post](https://yetiops.net/posts/proxmox-terraform-cloudinit-windows/) and [this blog post](https://blog.sunshower.io/2021/02/22/building-a-home-cloud-with-proxmox-dns-terraform/)
 
 ## proxmox
-- use ansible to add letsencrypt certificates to proxmox cluster
+- use ansible to add letsencrypt certificates for proxmox individual hosts
 - configure haproxy on router to have a single endpoint for proxmox cluster according to the following
 	* https://pve.proxmox.com/wiki/Web\_Interface\_Via\_Nginx\_Proxy
 	* https://www.armand.nz/notes/ProxMox/Installing%20Nginx%20as%20a%20reverse%20proxy%20for%20your%20Proxmox%20Web%20interface
