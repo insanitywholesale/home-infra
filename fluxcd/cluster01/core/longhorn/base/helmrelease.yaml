@@ -22,7 +22,11 @@ spec:
     ingress:
       enabled: true
       host: longhorn.home.inherently.xyz
+      ingressClassName: nginx
       path: /
+      secureBackends: true
+      tls: true
+      tlsSecret: longhorn-staging-tls
     persistence:
       defaultClassReplicaCount: 2
       defaultDataLocality: best-effort
