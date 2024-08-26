@@ -176,6 +176,7 @@ flux create helmrelease lister \
 	--source=HelmRepository/lister \
 	--chart=lister \
 	--chart-version="0.2.2" \
+	--values=fluxcd/cluster01/apps/lister/base/lister-values.yml \
 	--export > fluxcd/cluster01/apps/lister/base/helmrelease.yaml
 
 flux create kustomization lister-base \

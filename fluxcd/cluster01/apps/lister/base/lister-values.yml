@@ -1,0 +1,18 @@
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+  hosts:
+    - host: lister.home.inherently.xyz
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: lister-staging-tls
+      hosts:
+        - lister.home.inherently.xyz

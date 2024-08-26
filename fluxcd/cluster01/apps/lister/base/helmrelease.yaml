@@ -18,3 +18,20 @@ spec:
   interval: 10m0s
   releaseName: lister
   targetNamespace: lister
+  values:
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-staging
+      className: nginx
+      enabled: true
+      hosts:
+      - host: lister.home.inherently.xyz
+        paths:
+        - path: /
+          pathType: ImplementationSpecific
+      tls:
+      - hosts:
+        - lister.home.inherently.xyz
+        secretName: lister-staging-tls
+    serviceAccount:
+      create: false
