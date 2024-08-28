@@ -1,7 +1,7 @@
 ---
 
 collections:
-  - name: c3b8d3fd7a6c9cf908fe515e4855e364a06c3011 # 2024-06-27
+  - name: f2192670e79a8b614a484609ffe81f2f8f3b566f # 2024-08-27
     type: git
     source: git+https://github.com/maxhoesel-ansible/ansible-collection-smallstep.git
   - name: 3e0c982a95717b76b90a405d53a68a5a6a95d316 # 2024-08-23
