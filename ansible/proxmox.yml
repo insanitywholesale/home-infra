@@ -19,7 +19,7 @@
 
     - name: Copy keepalived configuration
       ansible.builtin.template:
-        src: keepalived.conf.j2
+        src: proxmox-keepalived.conf.j2
         dest: /etc/keepalived/keepalived.conf
         owner: root
         group: root
@@ -112,7 +112,7 @@
 
     - name: Copy haproxy configuration
       ansible.builtin.template:
-        src: haproxy.cfg.j2
+        src: proxmox-haproxy.cfg.j2
         dest: /etc/haproxy/haproxy.cfg
         owner: root
         group: root
