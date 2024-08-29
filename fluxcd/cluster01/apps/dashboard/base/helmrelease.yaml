@@ -24,7 +24,6 @@ spec:
         enabled: true
         hosts:
         - k8s.home.inherently.xyz
-        - kubernetes.home.inherently.xyz
         - dashboard.home.inherently.xyz
         - k8sdashboard.home.inherently.xyz
         ingressClassName: nginx
