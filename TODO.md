@@ -9,7 +9,7 @@ things to do
 - extend gitlab playbook according to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
 - add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
 - add github actions runner playbook based on [this role](https://github.com/MonolithProjects/ansible-github_actions_runner)
-- add docker buildx remote builders
+- add docker buildx playbook
 - extend step-ca playbook to generate certs based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
 - add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
 - add keycloak playbook based on [this post](https://developers.redhat.com/articles/2023/02/20/automate-your-sso-ansible-and-keycloak) and [this post](https://developers.redhat.com/articles/2022/04/20/deploy-keycloak-single-sign-ansible) and using [this collection](https://github.com/ansible-middleware/keycloak)
@@ -36,9 +36,6 @@ things to do
 	* https://forum.proxmox.com/threads/trying-to-setup-ceph-radosgw-for-s3-entry.131788/
 
 ## k3s
-- improve metallb and ingress-nginx installation procedure
-- switch to cilium from flannel
-- install more things using fluxcd
 - add longhorn by making 100gb disks on the 2tb drives per k3s vm
 - add [system-upgrade-controller](https://github.com/rancher/system-upgrade-controller)
 - add renovatebot to repo to update images
