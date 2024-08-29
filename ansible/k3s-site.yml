@@ -31,3 +31,85 @@
   become: true
   roles:
     - role: k3s.orchestration.k3s_agent
+
+- name: Install haproxy + keepalived on K3S masters
+  hosts: server
+  become: true
+  tasks:
+    - name: Install keepalived
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - keepalived
+      register: keepalived_new
+
+    - name: Stop keepalived
+      ansible.builtin.systemd_service:
+        name: keepalived
+        enabled: true
+        state: stopped
+      when: keepalived_new.changed
+
+    - name: Copy keepalived configuration
+      ansible.builtin.template:
+        src: k3s-keepalived.conf.j2
+        dest: /etc/keepalived/keepalived.conf
+        owner: root
+        group: root
+        mode: "0644"
+      register: keepalived_config
+
+    - name: Restart keepalived
+      ansible.builtin.systemd_service:
+        name: keepalived
+        enabled: true
+        state: restarted
+      when: keepalived_config.changed
+
+    - name: Ensure keepalived is started
+      ansible.builtin.systemd_service:
+        name: keepalived
+        enabled: true
+        state: started
+
+    - name: Install haproxy
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - haproxy
+      register: haproxy_new
+
+    - name: Stop haproxy
+      ansible.builtin.systemd_service:
+        name: haproxy
+        enabled: true
+        state: stopped
+      when: haproxy_new.changed
+
+    - name: Copy haproxy configuration
+      ansible.builtin.template:
+        src: k3s-haproxy.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
+        owner: root
+        group: root
+        mode: "0644"
+      register: haproxy_config
+
+    - name: Restart haproxy
+      ansible.builtin.systemd_service:
+        name: haproxy
+        enabled: true
+        state: restarted
+      when: haproxy_config.changed
+
+    - name: Ensure haproxy is started
+      ansible.builtin.systemd_service:
+        name: haproxy
+        enabled: true
+        state: started
+
+# TODO: fill this in
+# - name: Copy kubeconfig to ansible host and replace URL with VIP/FQDN
+
+# TODO: fill this in
+# - name: Setup FluxCD

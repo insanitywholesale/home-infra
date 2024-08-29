@@ -1,0 +1,33 @@
+global_defs {
+    enable_script_security
+    script_user root
+}
+
+vrrp_script chk_haproxy {
+    script 'killall -0 haproxy' # faster than pidof
+    interval 2
+}
+
+vrrp_instance haproxy-vip {
+    interface eth0
+# if host == play_hosts[0]
+{% if inventory_hostname == play_hosts[0] %}
+    state MASTER
+{% else %}
+    state BACKUP
+{% endif %}
+
+{% set ip_address = ansible_default_ipv4.address %}
+{% set last_octet = ip_address.split('.')[-1] | int %}
+    priority {{ 300 - last_octet }}
+
+    virtual_router_id 118
+
+    virtual_ipaddress {
+        10.0.50.50/24
+    }
+
+    track_script {
+        chk_haproxy
+    }
+}

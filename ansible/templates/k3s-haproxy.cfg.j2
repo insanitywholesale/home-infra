@@ -1,0 +1,14 @@
+frontend k3s-https-frontend
+    bind *:443
+    mode tcp
+    option tcplog
+    default_backend k3s-backend
+
+backend k3s-backend
+    mode tcp
+    option tcp-check
+    balance roundrobin
+    default-server inter 10s downinter 5s
+{% for host in play_hosts %}
+    server {{ host }} {{ hostvars[host]['ansible_host'] }}:6443 check
+{% endfor %}
