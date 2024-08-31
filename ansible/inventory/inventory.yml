@@ -238,13 +238,6 @@ all:
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           ntp_timezone: Europe/Athens
-    observium_servers:
-      hosts:
-        observium:
-          ansible_host: 10.0.50.34
-          ansible_user: debian
-          apt_proxy: http://10.0.50.9:3142
-          ntp_timezone: Europe/Athens
     pihole_servers:
       hosts:
         pihole:
@@ -396,13 +389,6 @@ all:
           pve_users: *id007
           template_vmid: 9003
           template_vmid2: 9006
-    sentry_servers:
-      hosts:
-        sentry:
-          ansible_host: 10.0.50.38
-          ansible_user: debian
-          apt_proxy: http://10.0.50.9:3142
-          ntp_timezone: Europe/Athens
     stepca_servers:
       hosts:
         step_ca:
