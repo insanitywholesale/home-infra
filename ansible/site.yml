@@ -15,7 +15,7 @@
 - ansible.builtin.import_playbook: prometheus.yml
 - ansible.builtin.import_playbook: influxdb.yml
 - ansible.builtin.import_playbook: gitlab.yml
-# - ansible.builtin.import_playbook: k3s-site.yml
-# - ansible.builtin.import_playbook: netbox.yml
-# - ansible.builtin.import_playbook: deluge.yml
+# - ansible.builtin.import_playbook: k3s-site.yml # NOTE: unsure if re-running it will break anything
+# - ansible.builtin.import_playbook: netbox.yml # NOTE: upstream role is broken
+# - ansible.builtin.import_playbook: deluge.yml # NOTE: upstream role is broken
 - ansible.builtin.import_playbook: docker-runners.yml

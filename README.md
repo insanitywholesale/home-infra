@@ -204,7 +204,7 @@ Can't or don't want to run these on kubernetes.
 .115
 
 ### Deluge
-10.0.50.116
+.116
 
 ### Archivebox
 .117
@@ -213,7 +213,7 @@ Can't or don't want to run these on kubernetes.
 .140
 
 ### Docker buildx
-.141-142
+10.0.50.141-142
 
 ### Gitlab runners
 .143-145
