@@ -1,7 +1,7 @@
 ---
 # NOTE: to troubleshoot, export CI="pleasegivelogs"
 - name: Install and configure Prometheus stack
-  hosts: prometheus
+  hosts: prometheus_servers
   become: true
   tasks:
 
@@ -51,7 +51,7 @@
         certbot_create_standalone_stop_services: []
         certbot_auto_renew_user: root
 
-    - name: Copy certificate into influxdb SSL directory
+    - name: Copy certificate into prometheus SSL directory
       ansible.builtin.copy:
         remote_src: true
         src: /etc/letsencrypt/live/prometheus.home.inherently.xyz/fullchain.pem
@@ -60,7 +60,7 @@
         owner: prometheus
         group: prometheus
 
-    - name: Copy private key into influxdb SSL directory
+    - name: Copy private key into prometheus SSL directory
       ansible.builtin.copy:
         remote_src: true
         src: /etc/letsencrypt/live/prometheus.home.inherently.xyz/privkey.pem
