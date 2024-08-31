@@ -1,43 +1,59 @@
 ---
+- name: Get SSL certs for grafana
+  hosts: grafana_servers
+  become: true
+  tasks:
+    - name: Install CloudFlare certbot plugin
+      ansible.builtin.apt:
+        name: python3-certbot-dns-cloudflare
+        update_cache: true
+        state: present
+
+    - name: Create cloudflare credentials file
+      ansible.builtin.template:
+        src: cloudflare.ini.j2
+        dest: /etc/ssl/cloudflare.ini
+        mode: "0600"
+        owner: root
+        group: root
+
+    - name: Get LetsEncrypt TLS certificates
+      ansible.builtin.import_role:
+        name: geerlingguy.certbot
+      vars:
+        certbot_install_method: package
+        certbot_create_if_missing: true
+        certbot_create_method: standalone
+        certbot_admin_email: pepitsizous@zoho.com
+        certbot_certs:
+          - domains:
+              - grafana.home.inherently.xyz
+        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive
+          --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
+        certbot_create_standalone_stop_services: []
+        certbot_auto_renew_user: root
+
+    - name: Copy certificate into grafana SSL directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/grafana.home.inherently.xyz/fullchain.pem
+        dest: /etc/ssl/grafana.home.inherently.xyz.crt
+        mode: "0644"
+        owner: root
+        group: root
+
+    - name: Copy private key into grafana SSL directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: /etc/letsencrypt/live/grafana.home.inherently.xyz/privkey.pem
+        dest: /etc/ssl/grafana.home.inherently.xyz.key
+        mode: "0644"
+        owner: root
+        group: root
+
 - name: Deploy Grafana
   hosts: grafana
   become: true
+  roles:
+    - role: grafana.grafana.grafana
 
-  tasks:
-    - name: Install dependencies
-      ansible.builtin.apt:
-        name: "{{ item }}"
-        update_cache: true
-        state: present
-      loop:
-        - apt-transport-https
-        - software-properties-common
-
-    - name: Add Grafana debian repo signed by gpg key
-      ansible.builtin.deb822_repository:
-        name: grafana
-        types: [deb]
-        signed_by: https://apt.grafana.com/gpg.key
-        uris: https://apt.grafana.com
-        suites: stable
-        components: [main]
-        enabled: true
-        state: present
-
-    - name: Install grafana
-      ansible.builtin.apt:
-        name: grafana
-        update_cache: true
-        state: present
-
-    - name: Start and enable grafana service
-      ansible.builtin.systemd:
-        name: grafana-server
-        enabled: true
-        state: started
-
-    - name: Wait for grafana to start
-      ansible.builtin.wait_for:
-        port: 3000
-        delay: 5
-        timeout: 60

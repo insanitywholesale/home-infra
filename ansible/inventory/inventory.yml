@@ -87,6 +87,26 @@ all:
             6131343861313866310a643635303535313966666335353732663161396164313566636638366561
             31356531393466633436353161326133653631353639653565623738383135323334383534646132
             3636616132666462313130326534633662636333373664633866
+          grafana_cap_net_bind_service: true
+          grafana_domain: grafana.home.inherently.xyz
+          grafana_port: 443
+          grafana_security:
+            admin_password: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              65306564323835333562376265333734393035666539616565663862626665623933356530303062
+              6530323262333739353331633335333331373862633631340a633535313764616663646562333337
+              64373062303837616533643063396233653962623738373265613735663838396233366363333432
+              3266623036666331390a333236316132613361633030616334633661356365346237333031646339
+              3465
+            admin_user: admin
+            disable_gravatar: true
+          grafana_server:
+            cert_file: /etc/ssl/grafana.home.inherently.xyz.crt
+            cert_key: /etc/ssl/grafana.home.inherently.xyz.key
+            enable_gzip: true
+            enforce_domain: true
+            protocol: https
+          grafana_url: https://grafana.home.inherently.xyz
           ntp_timezone: Europe/Athens
     influxdb_servers:
       hosts:

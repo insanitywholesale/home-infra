@@ -7,15 +7,8 @@ collections:
   - name: 3e0c982a95717b76b90a405d53a68a5a6a95d316 # 2024-08-23
     type: git
     source: git+https://github.com/k3s-io/k3s-ansible.git
-  #- name: maxhoesel.smallstep
-  #  type: git
-  #  source: git+https://github.com/maxhoesel-ansible/ansible-collection-smallstep.git
-  #  version: c3b8d3fd7a6c9cf908fe515e4855e364a06c3011 # 2024-06-27
-  #- name: k3s.orchestration
-  #  type: git
-  #  source: git+https://github.com/k3s-io/k3s-ansible.git
-  #  version: b6e4c8b31ecfaf3897190bbed2e1ddb2dda25c3d # 2024-07-22
   - prometheus.prometheus
+  - grafana.grafana
   - vkhitrin.libguestfs
 
 roles:
