@@ -11,7 +11,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
   cpu      = "SandyBridge"
   cores    = 2
   sockets  = 1
-  memory   = 4096
+  memory   = 6144
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
