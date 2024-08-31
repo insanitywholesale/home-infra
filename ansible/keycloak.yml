@@ -1,0 +1,5 @@
+- name: Install keycloak
+  hosts: keycloak_servers
+  become: true
+  roles:
+    - role: middleware_automation.keycloak.keycloak_quarkus

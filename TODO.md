@@ -2,6 +2,7 @@
 things to do
 
 ## ansible
+- add the following ad-hoc command as tasks in k3s-site.yml ` ansible -i inventory/k3s-inventory.ini -m ansible.builtin.shell -a 'sudo rm /etc/resolv.conf; echo "nameserver 10.0.50.254" | sudo tee /etc/resolv.conf; sudo chattr +i /etc/resolv.conf' --become all`
 - configure grafana to connect to influxdb and prometheus
 - add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
 - extend gitlab playbook according to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)

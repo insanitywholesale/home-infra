@@ -11,9 +11,23 @@ all:
     bind_servers:
       hosts:
         bind:
-          ansible_host: 10.0.50.5
+          ansible_host: 10.0.50.17
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          keycloak_quarkus_admin_pass: !vault |
+            $ANSIBLE_VAULT;1.1;AES256
+            63383734326131346365666435323935353062643634636464386638353338623362313233353038
+            6135396265656364353639396262623762373238653034660a363538623834356665613037316330
+            39366461326633303238616233653065626366616434353639643866333932356366363263643761
+            6365383632363363340a626362346239333331373935373166643531323362316166653730343030
+            3962
+          keycloak_quarkus_host: keycloak.home.inherently.xyz
+          keycloak_quarkus_http_port: 80
+          keycloak_quarkus_https_port: 443
+          keycloak_quarkus_log: file
+          keycloak_quarkus_port: 443
+          keycloak_quarkus_proxy_mode: none
+          keycloak_url: https://{{ keycloak_quarkus_host }}
           ntp_timezone: Europe/Athens
     deluge_servers:
       hosts:
@@ -216,6 +230,9 @@ all:
               ntp_timezone: Europe/Athens
               token: *id001
               user_kubectl: true
+    keycloak_servers:
+      hosts:
+        bind: {}
     mysql_servers:
       hosts:
         mysql:
