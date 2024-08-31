@@ -18,7 +18,6 @@ keycloak_quarkus_http_enabled: false
 keycloak_quarkus_https_port: 443
 keycloak_quarkus_host: keycloak.home.inherently.xyz
 keycloak_quarkus_log: file
-keycloak_quarkus_proxy_mode: none
 keycloak_quarkus_https_key_file_enabled: true
 keycloak_quarkus_cert_file: /etc/ssl/keycloak.home.inherently.xyz.crt.pem
 keycloak_quarkus_key_file: /etc/ssl/keycloak.home.inherently.xyz.key
