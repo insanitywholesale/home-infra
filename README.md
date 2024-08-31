@@ -32,9 +32,6 @@ NTP, DNS, PXE, FTP and APT cache.
 ### BIND9 (external-dns RFC2136 provider)
 .5
 
-### BIND9 (external-dns RFC2136 provider)
-.5
-
 ### CoreDNS (`k8s_gateway` plugin)
 .6
 
@@ -66,7 +63,7 @@ System and app auth, passwords for people and secrets for apps.
 .16
 
 ### Keycloak
-.17
+10.0.50.17
 
 ### Authelia or Authentik
 .18
