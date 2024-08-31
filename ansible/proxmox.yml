@@ -176,25 +176,25 @@
         mode: "0644"
         owner: root
         group: root
- 
+
     - name: Add cron to Debian 12 image
       vkhitrin.libguestfs.guestfs_package:
         image: /tmp/debian-12-amd64.qcow2
         name: cron
         state: present
- 
+
     - name: Add qemu-guest-agent to Debian 12 image
       vkhitrin.libguestfs.guestfs_package:
         image: /tmp/debian-12-amd64.qcow2
         name: qemu-guest-agent
         state: present
- 
+
     - name: Remove unattended-upgrades from Debian 12
       vkhitrin.libguestfs.guestfs_package:
         image: /tmp/debian-12-amd64.qcow2
         name: unattended-upgrades
         state: absent
- 
+
     - name: Copy /etc/network/interfaces config
       ansible.builtin.copy:
         src: debinterfaces
@@ -202,13 +202,13 @@
         owner: root
         group: root
         mode: "0644"
- 
+
     - name: Change network interfaces config for Debian 12
       vkhitrin.libguestfs.guestfs_copy_in:
         image: /tmp/debian-12-amd64.qcow2
         src: /tmp/debinterfaces
         dest: /etc/network/interfaces
- 
+
     - name: Create Debian 12 virtual machine
       community.general.proxmox_kvm:
         validate_certs: false # TODO: disable after figuring out LE certs
@@ -240,7 +240,7 @@
         hotplug: disk,network,usb,memory,cpu
         tags: [debian, bookworm, debian12, template]
         state: present
- 
+
     - name: Add root disk imported from qcow2 image to Debian 12 virtual machine
       community.general.proxmox_disk:
         validate_certs: false # TODO: disable after figuring out LE certs
@@ -253,7 +253,7 @@
         storage: local-lvm
         import_from: /tmp/debian-12-amd64.qcow2
         state: present
- 
+
     - name: Convert Debian 12 virtual machine to template
       community.general.proxmox_kvm:
         validate_certs: false # TODO: disable after figuring out LE certs

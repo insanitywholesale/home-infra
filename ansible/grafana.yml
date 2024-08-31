@@ -56,4 +56,3 @@
   become: true
   roles:
     - role: grafana.grafana.grafana
-

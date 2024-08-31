@@ -13,5 +13,5 @@ token: !vault |
   3238
 user_kubectl: true
 api_endpoint: 10.0.50.50
-extra_server_args: "--disable traefik --disable servicelb --disable local-storage --tls-san 10.0.50.50 --tls-san kubernetes.home.inherently.xyz"
+extra_server_args: --disable traefik --disable servicelb --disable local-storage --tls-san 10.0.50.50 --tls-san kubernetes.home.inherently.xyz
 extra_agent_args: ""
