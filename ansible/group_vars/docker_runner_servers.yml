@@ -1,0 +1,8 @@
+docker_packages:
+  - "docker-{{ docker_edition }}"
+  - "docker-{{ docker_edition }}-cli"
+  - "docker-{{ docker_edition }}-rootless-extras"
+  - "docker-buildx-plugin"
+  - "containerd.io"
+pip_install_packages:
+  - name: docker

@@ -1,0 +1,6 @@
+- name: Deploy docker remote buildx builders
+  hosts: docker_builder_servers
+  become: true
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker

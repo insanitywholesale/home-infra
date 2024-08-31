@@ -2,7 +2,6 @@
 things to do
 
 ## ansible
-- add docker buildx playbook
 - configure grafana to connect to influxdb and prometheus
 - add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
 - extend gitlab playbook according to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)

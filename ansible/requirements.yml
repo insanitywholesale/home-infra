@@ -18,6 +18,8 @@ roles:
   - geerlingguy.mysql
   - geerlingguy.ntp
   - geerlingguy.postgresql
+  - geerlingguy.docker
+  - geerlingguy.pip
   - lae.netbox
   - lae.proxmox
   - totaldebug.deluge

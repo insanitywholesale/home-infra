@@ -1,11 +1,11 @@
 ---
+# Set up proxmox hosts
+# - ansible.builtin.import_playbook: proxmox.yml # NOTE: takes too long
 # Set up common stuff for all hosts
 - ansible.builtin.import_playbook: ntp-all.yml
 - ansible.builtin.import_playbook: osquery.yml
 - ansible.builtin.import_playbook: apt-cacher-ng.yml
 - ansible.builtin.import_playbook: upgrade-all.yml
-# Set up proxmox hosts
-# - ansible.builtin.import_playbook: proxmox.yml # NOTE: takes too long
 # Set up the rest of the hosts
 - ansible.builtin.import_playbook: pihole.yml
 # - ansible.builtin.import_playbook: stepca.yml # NOTE: fails due to upstream brokennes
@@ -18,3 +18,4 @@
 # - ansible.builtin.import_playbook: k3s-site.yml
 # - ansible.builtin.import_playbook: netbox.yml
 # - ansible.builtin.import_playbook: deluge.yml
+- ansible.builtin.import_playbook: docker-runners.yml
