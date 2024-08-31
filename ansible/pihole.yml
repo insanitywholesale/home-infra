@@ -142,8 +142,8 @@
         certbot_certs:
           - domains:
               - pihole.home.inherently.xyz
-        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive
-          --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
+        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive --agree-tos --email
+          {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
         certbot_create_standalone_stop_services: []
         certbot_auto_renew_user: root
 
