@@ -7,7 +7,7 @@ things to do
 - add gitlab-runner playbook based on [this role](https://github.com/riemers/ansible-gitlab-runner) and potentially [this module](https://docs.ansible.com/ansible/latest/collections/community/general/gitlab_runner_module.html)
 - extend gitlab playbook according to [next steps](https://docs.gitlab.com/ee/install/next_steps.html)
 - add github actions runner playbook based on [this role](https://github.com/MonolithProjects/ansible-github_actions_runner)
-- add keycloak playbook based on [this post](https://developers.redhat.com/articles/2023/02/20/automate-your-sso-ansible-and-keycloak) and [this post](https://developers.redhat.com/articles/2022/04/20/deploy-keycloak-single-sign-ansible) and using [this collection](https://github.com/ansible-middleware/keycloak)
+- configure keycloak in playbook according to [this post](https://developers.redhat.com/articles/2023/02/20/automate-your-sso-ansible-and-keycloak)
 - add SSL certs to netbox (add `https = =0,netbox.home.inherently.xyz.crt,netbox.home.inherently.xyz.key,HIGH` to `netbox_uwsgi_options: {}` and also move the certs inside there with that name
 - add SSL certs to deluge (move cert and key inside `{{ deluge_config_dir }}/ssl` and name them `daemon.cert` and `daemon.pkey`)
 - extend step-ca playbook to generate certs based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
