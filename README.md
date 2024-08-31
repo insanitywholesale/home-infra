@@ -32,14 +32,11 @@ NTP, DNS, PXE, FTP and APT cache.
 ### BIND9 (external-dns RFC2136 provider)
 .5
 
+### BIND9 (external-dns RFC2136 provider)
+.5
+
 ### CoreDNS (`k8s_gateway` plugin)
 .6
-
-### matchbox
-.7
-
-### netboot.xyz
-.8
 
 ### apt-cacher-ng
 10.0.50.9
@@ -86,15 +83,6 @@ Databases and message queues for applications.
 ### MySQL
 10.0.50.21
 
-### MongoDB
-.22
-
-### CouchDB
-.23
-
-### Redis
-.24
-
 ### RabbitMQ
 .25
 
@@ -102,12 +90,9 @@ Databases and message queues for applications.
 .26
 
 ### OpenSearch
-.27
+.27-8
 
 ### Logstash
-.28
-
-### Clickhouse
 .29
 
 ## Monitoring
@@ -122,11 +107,11 @@ Tools for monitoring, logging, tracing and data visualization.
 ### InfluxDB
 10.0.50.32
 
-### Observium
-10.0.50.34
-
 ### Graphite
 .33
+
+### LibreNMS
+.34
 
 ### Graylog
 .35
@@ -137,11 +122,8 @@ Tools for monitoring, logging, tracing and data visualization.
 ### Uptime Kuma
 .37
 
-### Sentry
-10.0.50.38
-
-### rsyslog or syslog-ng
-.39
+### GlitchTip
+.38
 
 ## Code-related infrastrucutre
 Code analysis and git hosting plus container registry and helm repo.
