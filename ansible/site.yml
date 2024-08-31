@@ -14,8 +14,6 @@
 - ansible.builtin.import_playbook: grafana.yml
 - ansible.builtin.import_playbook: prometheus.yml
 - ansible.builtin.import_playbook: influxdb.yml
-# - ansible.builtin.import_playbook: observium.yml # NOTE: idrc about this atm
-# - ansible.builtin.import_playbook: sentry.yml # NOTE: should probably be deleted
 - ansible.builtin.import_playbook: gitlab.yml
 # - ansible.builtin.import_playbook: k3s-site.yml
 # - ansible.builtin.import_playbook: netbox.yml
