@@ -7,18 +7,6 @@
     - name: Install and configure Prometheus
       ansible.builtin.import_role:
         name: prometheus.prometheus.prometheus
-      vars:
-        prometheus_config_flags_extra:
-          web.enable-admin-api:
-        prometheus_targets:
-          node:
-            - targets: "{{ groups['all'] | map('extract', hostvars, ['ansible_host']) | map('regex_replace', '$', ':9100') | list }}"
-              labels:
-                env: homelab
-        prometheus_web_config:
-          tls_server_config:
-            cert_file: /etc/ssl/prometheus.home.inherently.xyz.crt
-            key_file: /etc/ssl/prometheus.home.inherently.xyz.key
 
     - name: Install CloudFlare certbot plugin
       ansible.builtin.apt:
