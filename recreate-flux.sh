@@ -282,6 +282,35 @@ flux create kustomization longhorn-base \
 	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/core/longhorn/kustomization-fluxCRD.yaml
 
+mkdir -p fluxcd/cluster01/core/local-path-provisioner/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/local-path-provisioner/base/kustomization.yaml
+
+flux create source helm local-path-provisioner \
+	--interval=10m \
+	--url=https://charts.local-path-provisioner.io \
+	--export > fluxcd/cluster01/core/local-path-provisioner/base/helmrepository.yaml
+
+flux create helmrelease local-path-provisioner \
+	--interval=10m \
+	--release-name local-path-storage \
+	--target-namespace local-path-storage \
+	--create-target-namespace \
+	--source=HelmRepository/local-path-provisioner \
+	--chart=local-path-provisioner \
+	--chart-version="0.0.28" \
+	--export > fluxcd/cluster01/core/local-path-provisioner/base/helmrelease.yaml
+
+flux create kustomization local-path-provisioner-base \
+	--interval=10m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/core/local-path-provisioner/base \
+	--prune \
+	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
+	--export > fluxcd/cluster01/core/local-path-provisioner/kustomization-fluxCRD.yaml
+
 mkdir -p fluxcd/cluster01/apps/cnpg/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/apps/cnpg/base/kustomization.yaml

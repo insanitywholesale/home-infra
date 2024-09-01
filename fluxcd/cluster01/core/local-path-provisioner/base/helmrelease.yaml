@@ -1,0 +1,20 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: local-path-provisioner
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: local-path-provisioner
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: local-path-provisioner
+      version: 0.0.28
+  install:
+    createNamespace: true
+  interval: 10m0s
+  releaseName: local-path-storage
+  targetNamespace: local-path-storage
