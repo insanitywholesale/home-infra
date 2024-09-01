@@ -3,8 +3,6 @@
 # - ansible.builtin.import_playbook: proxmox.yml # NOTE: takes too long
 # Set up common stuff for all hosts
 - ansible.builtin.import_playbook: ntp-all.yml
-- ansible.builtin.import_playbook: osquery.yml
-- ansible.builtin.import_playbook: apt-cacher-ng.yml
 - ansible.builtin.import_playbook: upgrade-all.yml
 # Set up the rest of the hosts
 - ansible.builtin.import_playbook: pihole.yml

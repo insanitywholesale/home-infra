@@ -1,20 +1,6 @@
 ---
 all:
   children:
-    aptcache_servers:
-      hosts:
-        aptcache:
-          ansible_host: 10.0.50.9
-          ansible_user: debian
-          apt_proxy: http://10.0.50.9:3142
-          ntp_timezone: Europe/Athens
-    bind_servers:
-      hosts:
-        bind:
-          ansible_host: 10.0.50.5
-          ansible_user: debian
-          apt_proxy: http://10.0.50.9:3142
-          ntp_timezone: Europe/Athens
     deluge_servers:
       hosts:
         deluge:

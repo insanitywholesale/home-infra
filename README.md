@@ -15,7 +15,7 @@ List of services I currently run or want to run in the future.
 The ones with the IPs fully written out are configured and running right now.
 
 ## Fundamentals
-NTP, DNS, PXE, FTP and APT cache.
+NTP, DNS, PXE and such.
 
 ### NTP
 .1
@@ -29,19 +29,16 @@ NTP, DNS, PXE, FTP and APT cache.
 ### LANcache
 .4
 
-### BIND9 (external-dns RFC2136 provider)
-.5
-
 ### CoreDNS (`k8s_gateway` plugin)
 .6
 
-### apt-cacher-ng
-10.0.50.9
+### PXE (to be determined)
+.7
 
 ## Identity, Secrets and Passwords
-System and app auth, passwords for people and secrets for apps.
+Authentication, authorization and secrets.
 
-### Active Directory
+### SMB4 DC
 .10
 
 ### FreeIPA main
@@ -56,16 +53,13 @@ System and app auth, passwords for people and secrets for apps.
 ### FreeRADIUS
 .14
 
-### Vaultwarden
-.15
-
-### Vault
-.16
-
 ### Keycloak
 10.0.50.17
 
 ### Authelia or Authentik
+.18
+
+### Vault
 .18
 
 ### Smallstep CA
@@ -205,6 +199,9 @@ Can't or don't want to run these on kubernetes.
 
 ### Archivebox
 .117
+
+### Vaultwarden
+.118
 
 ### Github actions runner
 .140
