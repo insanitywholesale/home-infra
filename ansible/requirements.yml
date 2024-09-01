@@ -1,22 +1,18 @@
 ---
 
 collections:
-  - name: f2192670e79a8b614a484609ffe81f2f8f3b566f # 2024-08-27
-    type: git
-    source: git+https://github.com/maxhoesel-ansible/ansible-collection-smallstep.git
+  - grafana.grafana
   - name: 3e0c982a95717b76b90a405d53a68a5a6a95d316 # 2024-08-23
     type: git
     source: git+https://github.com/k3s-io/k3s-ansible.git
-  - prometheus.prometheus
-  - grafana.grafana
+  - name: f2192670e79a8b614a484609ffe81f2f8f3b566f # 2024-08-27
+    type: git
+    source: git+https://github.com/maxhoesel-ansible/ansible-collection-smallstep.git
   - middleware_automation.keycloak
+  - prometheus.prometheus
   - vkhitrin.libguestfs
 
 roles:
-  - name: lae.proxmox
-    src: https://github.com/insanitywholesale/ansible-role-proxmox.git
-    scm: git
-    version: ce8810f8e0140bc2a822e277ff3b2c6e185c7718
   - elnappo.apt_cacher_ng
   - davidwittman.redis
   - geerlingguy.certbot
@@ -26,5 +22,6 @@ roles:
   - geerlingguy.docker
   - geerlingguy.pip
   - lae.netbox
-  - totaldebug.deluge
+  - lae.proxmox
   - riemers.gitlab-runner
+  - totaldebug.deluge
