@@ -69,25 +69,19 @@ Authentication, authorization and secrets.
 10.0.50.19
 
 ## Data places
-Databases, Kafka, Opensearch and Logstash
+Databases, Kafka, Opensearch
 
-### PostgreSQL main
-10.0.50.20
-
-### PostgreSQL replica
-.21
+### PostgreSQL
+10.0.50.20 (reserved up to .22 for cluster)
 
 ### MySQL
-10.0.50.22
+10.0.50.23
 
 ### Kafka
-.23-5
+.24-6
 
 ### OpenSearch
-.26-8
-
-### Logstash
-.29
+.27-9
 
 ## Monitoring
 Tools for monitoring, logging, tracing and data visualization.
@@ -218,11 +212,11 @@ Can't or don't want to run these on kubernetes.
 ### Gitlab runners
 10.0.50.143-145
 
-### k3s main cluster ingress
-10.0.50.150
-
 ### k3s main cluster metallb pool
-.150-199
+10.0.50.150-199
 
 ### cloudflared
 10.0.50.201
+
+### Tailscale
+.202

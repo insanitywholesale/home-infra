@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_docker_builders" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "builder;docker"
+  tags = "debian;builder;docker"
 
   lifecycle {
     ignore_changes = [

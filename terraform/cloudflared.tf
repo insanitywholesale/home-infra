@@ -3,7 +3,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_cloudflared" {
   vmid        = 1201
   name        = format("cloudflared%02s", (count.index) + 1)
   desc        = format("cloudflared %02s", (count.index) + 1)
-  target_node = "pve02"
+  target_node = "pve03"
 
   clone    = "deb12-tmpl"
   os_type  = "cloud-init"

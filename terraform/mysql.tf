@@ -1,8 +1,8 @@
 resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
   count       = 1
-  vmid        = 1021
+  vmid        = 1023
   name        = format("mysql%02s", (count.index) + 1)
-  desc        = "main VM for mysql"
+  desc        = format("MySQL %02s", (count.index) + 1)
   target_node = "pve03"
 
   clone    = "deb12-tmpl"
@@ -40,11 +40,11 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.21/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.23/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "debian;mysql"
+  tags = "database;debian;mysql"
 
   lifecycle {
     ignore_changes = [
@@ -53,4 +53,3 @@ resource "proxmox_vm_qemu" "proxmox_vm_mysql" {
     ]
   }
 }
-

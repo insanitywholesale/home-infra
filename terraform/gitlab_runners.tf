@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_gitlab_runners" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "gitlab;runner"
+  tags = "debian;gitlab;runner"
 
   lifecycle {
     ignore_changes = [

@@ -3,7 +3,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_prometheus" {
   vmid        = 1031
   name        = format("prometheus%02s", (count.index) + 1)
   desc        = format("prometheus %02s", (count.index) + 1)
-  target_node = "pve02"
+  target_node = "pve01"
 
   clone    = "deb12-tmpl"
   os_type  = "cloud-init"

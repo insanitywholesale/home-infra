@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "debian;k3s;master;server"
+  tags = "debian;k3s;master"
 
   lifecycle {
     ignore_changes = [

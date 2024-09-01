@@ -3,7 +3,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_pihole" {
   vmid        = 1002
   name        = format("pihole%02s", (count.index) + 1)
   desc        = format("pihole %02s", (count.index) + 1)
-  target_node = "pve02"
+  target_node = "pve01"
 
   clone    = "deb12-tmpl"
   os_type  = "cloud-init"

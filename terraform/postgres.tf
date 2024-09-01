@@ -2,8 +2,8 @@ resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
   count       = 1
   vmid        = 1020
   name        = format("postgres%02s", (count.index) + 1)
-  desc        = "main VM for postgres"
-  target_node = "pve01"
+  desc        = format("PostgreSQL %02s", (count.index) + 1)
+  target_node = "pve02"
 
   clone    = "deb12-tmpl"
   os_type  = "cloud-init"
@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = "debian;postgres"
+  tags = "database;debian;postgres"
 
   lifecycle {
     ignore_changes = [
@@ -53,4 +53,3 @@ resource "proxmox_vm_qemu" "proxmox_vm_postgres" {
     ]
   }
 }
-

@@ -266,7 +266,7 @@ all:
     mysql_servers:
       hosts:
         mysql:
-          ansible_host: 10.0.50.21
+          ansible_host: 10.0.50.23
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           cloudflare_api_token: !vault |
