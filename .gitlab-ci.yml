@@ -5,13 +5,13 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Terraform.latest.gitlab-ci.yml
 
 include:
-  - component: gitlab.com/components/opentofu/full-pipeline@0.21.0
+  - component: gitlab.com/components/opentofu/full-pipeline@0.26.0
     inputs:
       # The version must currently be specified explicitly as an input,
       # to find the correctly associated images. # This can be removed
       # once https://gitlab.com/gitlab-org/gitlab/-/issues/438275 is solved.
-      version: 0.21.0
-      opentofu_version: 1.7.1
+      version: 0.26.0
+      opentofu_version: 1.8.1
       root_dir: terraform
       state_name: homelab-cluster
       auto_apply: true
