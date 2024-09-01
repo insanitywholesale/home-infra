@@ -237,7 +237,7 @@ all:
     keycloak_servers:
       hosts:
         keycloak:
-          ansible_host: 10.0.50.17
+          ansible_host: 10.0.50.15
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
           cloudflare_api_token: !vault |

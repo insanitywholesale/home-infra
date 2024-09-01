@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "proxmox_vm_keycloak" {
   count       = 1
-  vmid        = 1017
+  vmid        = 1015
   name        = format("keycloak%02s", (count.index) + 1)
   desc        = format("Keycloak %02s", (count.index) + 1)
   target_node = "pve02"
@@ -40,7 +40,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_keycloak" {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=10.0.50.17/24,gw=10.0.50.254"
+  ipconfig0 = "ip=10.0.50.15/24,gw=10.0.50.254"
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 

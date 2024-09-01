@@ -54,10 +54,13 @@ Authentication, authorization and secrets.
 .14
 
 ### Keycloak
-10.0.50.17
+10.0.50.15
 
-### Authelia or Authentik
-.18
+### Authelia
+.16
+
+### Authentik
+.17
 
 ### Vault
 .18
