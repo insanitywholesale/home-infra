@@ -9,7 +9,6 @@ terraform {
 }
 
 provider "proxmox" {
-  pm_tls_insecure = true
   pm_api_url      = "https://pve.home.inherently.xyz/api2/json"
   pm_password     = "failfail"
   pm_user         = "root@pam"

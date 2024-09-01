@@ -1,8 +1,8 @@
 resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
   count       = 3
   vmid        = 1051 + count.index
-  name        = format("k3s-m%02s-c%02s", count.index + 1, 1)
-  desc        = format("HA k3s server/master %02s for cluster %02s", count.index + 1, 1)
+  name        = format("k3s-m%02s", count.index + 1)
+  desc        = format("HA k3s server/master %02s", count.index + 1)
   target_node = format("pve%02s", (count.index % 3) + 1)
 
   clone    = "deb12-tmpl"
@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_k3s_ha_masters" {
 
   sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgah15+jjufEiziZxhrmus/EVq9gPRqHMX5Ejl5dtWk angle"
 
-  tags = format("cluster%02s;debian;k3s;master;server", 1)
+  tags = "debian;k3s;master;server"
 
   lifecycle {
     ignore_changes = [
