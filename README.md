@@ -65,23 +65,23 @@ Authentication, authorization and secrets.
 ### Smallstep CA
 10.0.50.19
 
-## Databases and Message Queues
-Databases and message queues for applications.
+## Data places
+Databases, Kafka, Opensearch and Logstash
 
-### PostgreSQL
+### PostgreSQL main
 10.0.50.20
 
-### MySQL
-10.0.50.21
+### PostgreSQL replica
+.21
 
-### RabbitMQ
-.25
+### MySQL
+10.0.50.22
 
 ### Kafka
-.26
+.23-5
 
 ### OpenSearch
-.27-8
+.26-8
 
 ### Logstash
 .29
@@ -152,7 +152,7 @@ Kubernetes nodes
 ### k3s control plane nodes
 10.0.50.51-53
 
-### k3s secondary cluster loadbalanced API server
+### blank for now, potentially new ingress controller address
 .60
 
 ### k3s worker nodes
@@ -194,7 +194,7 @@ Can't or don't want to run these on kubernetes.
 ### Jellyfin
 .115
 
-### Deluge
+### Torrent client (to be determined)
 .116
 
 ### Archivebox
@@ -203,6 +203,9 @@ Can't or don't want to run these on kubernetes.
 ### Vaultwarden
 .118
 
+### Rudderstack
+.119
+
 ### Github actions runner
 .140
 
@@ -210,10 +213,10 @@ Can't or don't want to run these on kubernetes.
 10.0.50.141-142
 
 ### Gitlab runners
-.143-145
+10.0.50.143-145
 
 ### k3s main cluster ingress
-.150
+10.0.50.150
 
 ### k3s main cluster metallb pool
 .150-199

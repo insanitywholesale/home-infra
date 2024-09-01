@@ -1,7 +1,0 @@
----
-- name: Install and configure deluge
-  hosts: deluge
-  become: true
-  roles:
-    - name: Install deluge
-      role: totaldebug.deluge
