@@ -18,5 +18,5 @@
 - ansible.builtin.import_playbook: gitlab.yml
 - ansible.builtin.import_playbook: k3s-site.yml
 # - ansible.builtin.import_playbook: netbox.yml # NOTE: upstream role is broken
-# - ansible.builtin.import_playbook: deluge.yml # NOTE: upstream role is broken
+- ansible.builtin.import_playbook: gitlab-runners.yml
 - ansible.builtin.import_playbook: docker-runners.yml

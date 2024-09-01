@@ -13,6 +13,10 @@ collections:
   - vkhitrin.libguestfs
 
 roles:
+  - name: lae.proxmox
+    src: https://github.com/insanitywholesale/ansible-role-proxmox.git
+    scm: git
+    version: ce8810f8e0140bc2a822e277ff3b2c6e185c7718
   - elnappo.apt_cacher_ng
   - davidwittman.redis
   - geerlingguy.certbot
@@ -22,5 +26,5 @@ roles:
   - geerlingguy.docker
   - geerlingguy.pip
   - lae.netbox
-  - lae.proxmox
   - totaldebug.deluge
+  - riemers.gitlab-runner

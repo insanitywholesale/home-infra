@@ -47,16 +47,55 @@ all:
           ansible_host: 10.0.50.143
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          gitlab_runner_coordinator_url: https://gitlab.home.inherently.xyz
+          gitlab_runner_no_log_secrets: false
+          gitlab_runner_registration_token_type: authentication-token
+          gitlab_runner_runners:
+            - executor: shell
+              name: Example shell executor GitLab Runner
+              token: !vault |
+                $ANSIBLE_VAULT;1.1;AES256
+                30303034306434643332326263346565303436626562373465663438373635303561633966363033
+                6330623333316265373331396366643137326362313533310a363065373961393334303863396539
+                62313766663961643230396633326136663963316538383562333830386362636661393762383931
+                6632323936613561620a396139643462653538356161326566373531613363313563623138346337
+                34623630646232616138306639386330356663333365653461656632613034393966
           ntp_timezone: Europe/Athens
         gitlab-runner02:
           ansible_host: 10.0.50.144
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          gitlab_runner_coordinator_url: https://gitlab.home.inherently.xyz
+          gitlab_runner_no_log_secrets: false
+          gitlab_runner_registration_token_type: authentication-token
+          gitlab_runner_runners:
+            - executor: shell
+              name: Example shell executor GitLab Runner
+              token: !vault |
+                $ANSIBLE_VAULT;1.1;AES256
+                62373561396164313961636433353063363862626130363637393462613033643330663861636132
+                3661346639333062316231656232373833373265366236390a333435636531333765313838323437
+                35633836646261303037356535326536393937386131346166333938626264663933643662646165
+                3566353262366133350a626336656634306664313133343131666534346635326535653162633732
+                66366561323036343862376535643138383833333365356262363336346262353466
           ntp_timezone: Europe/Athens
         gitlab-runner03:
           ansible_host: 10.0.50.145
           ansible_user: debian
           apt_proxy: http://10.0.50.9:3142
+          gitlab_runner_coordinator_url: https://gitlab.home.inherently.xyz
+          gitlab_runner_no_log_secrets: false
+          gitlab_runner_registration_token_type: authentication-token
+          gitlab_runner_runners:
+            - executor: shell
+              name: Example shell executor GitLab Runner
+              token: !vault |
+                $ANSIBLE_VAULT;1.1;AES256
+                34313032633861393163386338386665323533666264323364373064363538646363366331623965
+                3765356361326238623935356163303661366335376532310a633639323133613331633962333335
+                65636663336632653563613730646561333433323261663663363862303738313362623132316162
+                3566666232383761310a636234636631306465366661643535353962396336313638343462386564
+                63633137663963333738653261363063356363653433376434323439646666313938
           ntp_timezone: Europe/Athens
     gitlab_servers:
       hosts:

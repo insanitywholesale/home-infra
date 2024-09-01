@@ -1,0 +1,6 @@
+---
+- name: Deploy gitlab runners
+  hosts: gitlab_runner_servers
+  become: true
+  roles:
+    - riemers.gitlab-runner
