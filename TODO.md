@@ -12,8 +12,6 @@ things to do
 - add SSL certs to deluge (move cert and key inside `{{ deluge_config_dir }}/ssl` and name them `daemon.cert` and `daemon.pkey`)
 - extend step-ca playbook to generate certs based on [this collection](https://github.com/maxhoesel-ansible/ansible-collection-smallstep)
 - add postgres backup using [pgbackrest](https://bun.uptrace.dev/postgres/pgbackrest-s3-backups.html)
-- continue work on powerdns playbook using [this role](https://github.com/PowerDNS/pdns-ansible) and [this role](https://github.com/PowerDNS/pdns_recursor-ansible)
-- add netbootxyz playbook based on [this role](https://github.com/netbootxyz/netboot.xyz/tree/2.0.77/roles/netbootxyz) that is already included and using vars files [endpoints.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/endpoints.yml) and [user\_overrides.yml](https://github.com/netbootxyz/netboot.xyz/blob/2.0.77/user_overrides.yml)
 - add graylog playbook based on [this role](https://github.com/Graylog2/graylog-ansible-role)
 - add nexus playbook based on [this role](https://github.com/ansible-ThoTeam/nexus3-oss)
 
