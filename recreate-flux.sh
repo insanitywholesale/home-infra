@@ -286,9 +286,10 @@ mkdir -p fluxcd/cluster01/core/local-path-provisioner/base    # For flux helmrep
 
 cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/local-path-provisioner/base/kustomization.yaml
 
+# NOTE: this is a 3rd part repo
 flux create source helm local-path-provisioner \
 	--interval=10m \
-	--url=https://charts.local-path-provisioner.io \
+	--url=https://charts.containeroo.ch \
 	--export > fluxcd/cluster01/core/local-path-provisioner/base/helmrepository.yaml
 
 flux create helmrelease local-path-provisioner \
