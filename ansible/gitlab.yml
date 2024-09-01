@@ -37,6 +37,8 @@
         state: present
       environment:
         EXTERNAL_URL: http://gitlab.home.inherently.xyz
+        GITLAB_ROOT_EMAIL: root@local
+        GITLAB_ROOT_PASSWORD: "{{ gitlab_root_password }}"
 
     - name: Ensure gitlab SSL dir exists
       ansible.builtin.file:

@@ -1,3 +1,4 @@
+---
 gitlab_runner_registration_token_type: authentication-token
 gitlab_runner_coordinator_url: https://gitlab.home.inherently.xyz
 gitlab_runner_no_log_secrets: false

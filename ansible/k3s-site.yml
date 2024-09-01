@@ -20,18 +20,6 @@
     - role: k3s.orchestration.airgap
     - role: k3s.orchestration.raspberrypi
 
-- name: Setup K3S server
-  hosts: server
-  become: true
-  roles:
-    - role: k3s.orchestration.k3s_server
-
-- name: Setup K3S agent
-  hosts: agent
-  become: true
-  roles:
-    - role: k3s.orchestration.k3s_agent
-
 - name: Install haproxy + keepalived on K3S masters
   hosts: server
   become: true
@@ -107,6 +95,18 @@
         name: haproxy
         enabled: true
         state: started
+
+- name: Setup K3S server
+  hosts: server
+  become: true
+  roles:
+    - role: k3s.orchestration.k3s_server
+
+- name: Setup K3S agent
+  hosts: agent
+  become: true
+  roles:
+    - role: k3s.orchestration.k3s_agent
 
 # TODO: fill this in
 # - name: Copy kubeconfig to ansible host and replace URL with VIP/FQDN
