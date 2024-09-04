@@ -11,7 +11,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_kafka" {
   cpu      = "SandyBridge"
   cores    = 2
   sockets  = 1
-  memory   = 2560
+  memory   = 2048
   scsihw   = "virtio-scsi-pci"
   bootdisk = "virtio0"
   agent    = 1
@@ -28,7 +28,7 @@ resource "proxmox_vm_qemu" "proxmox_vm_kafka" {
     virtio {
       virtio0 {
         disk {
-          size    = 30
+          size    = 35
           storage = "local-lvm"
         }
       }

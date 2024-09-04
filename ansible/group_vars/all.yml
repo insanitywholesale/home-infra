@@ -1,4 +1,3 @@
 ---
 ansible_user: debian
-apt_proxy: http://10.0.50.9:3142
 ntp_timezone: Europe/Athens

@@ -1,0 +1,48 @@
+admin_password: 0p3ns34rch_Sux
+kibanaserver_password: k1b4n4_Sux
+logstash_password: l0gst4sh_Sux
+os_cluster_name: inherent-searchcluster
+os_download_url: https://artifacts.opensearch.org/releases/bundle/opensearch
+os_version: "2.16.0"
+os_dashboards_version: "2.16.0"
+# Configure hostnames for opensearch nodes
+# It is required to configure SSL
+# Example es1.example.com, es2.example.com
+domain_name: home.inherently.xyz
+xms_value: 1
+xmx_value: 1
+cluster_type: multi-node
+os_user: opensearch
+os_dashboards_user: opensearch-dashboards
+# Number of days that certificates are valid
+cert_valid_days: 730
+# Auth type: 'internal' or 'oidc' (OpenID). Default: internal
+auth_type: internal
+# Overwrite demo configurations with your own
+copy_custom_security_configs: false
+# By default, if the /tmp/opensearch-nodecerts directory with certificates
+# exists on the server from which the playbook is launched, it is assumed
+# that the configuration has not changed and some settings are not copied
+# to the target servers.
+#
+# Conversely, if the /tmp/opensearch-nodecerts directory does not exist on
+# the server from which the playbook is launched, then new certificates and
+# settings are generated and they are copied to the target servers.
+#
+# If you use this repository not only for the initial deployment of the
+# cluster, but also for its automatic configuration via CI/CD, then new
+# certificates will be generated every time the pipeline is launched,
+# overwriting existing ones, which is not always necessary if the cluster is
+# already in production.
+#
+# When iac_enable enabling, and all the cluster servers have all the necessary
+# certificates, they will not be copied again. If at least on one server (for
+# example, when adding a new server to the cluster) if there is not at least one
+# certificate from the list, then all certificates on all cluster servers will
+# be updated
+#
+# Also, if the option is enabled, the settings files will be updated with each
+# execution (previously, the settings were updated only if the
+# /tmp/opensearch-nodecerts directory was missing on the server from which the
+# playbook was launched and new certificates were generated)
+iac_enable: true

@@ -1,0 +1,36 @@
+---
+- name: Install docker
+  hosts: kafka_servers
+  become: true
+  roles:
+    - geerlingguy.docker
+
+- name: Kafka-esque, according to some
+  hosts: kafka_servers
+  become: true
+  tasks:
+    - name: Ensure kafka docker container is running
+      community.docker.docker_container:
+        name: kafka
+        image: apache/kafka:3.8.0
+        state: started
+        env:
+          KAFKA_NODE_ID: "{{ kafka_broker_id | string }}"
+          KAFKA_PROCESS_ROLES: broker,controller
+          KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka01.home.inherently.xyz:9093,2@kafka02.home.inherently.xyz:9093,3@kafka03.home.inherently.xyz:9093
+          KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+          KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+          KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://:9092
+          KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+          KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+          CLUSTER_ID: BPqeMQUNQp-rEgtMJd-rsA
+          KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+          KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: "0"
+          KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: "1"
+          KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: "1"
+        ports:
+          - 9092:9092
+          - 9093:9093
+        mounts:
+          - source: kafka_data
+            target: /var/lib/kafka/data

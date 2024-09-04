@@ -2,6 +2,9 @@
 
 collections:
   - grafana.grafana
+  - name: 40521ecdedc312c39a3bae73394a633f361c5aee
+    type: git
+    source: git+https://github.com/insanitywholesale/ansible-role-opensearch.git
   - name: 3e0c982a95717b76b90a405d53a68a5a6a95d316 # 2024-08-23
     type: git
     source: git+https://github.com/k3s-io/k3s-ansible.git
