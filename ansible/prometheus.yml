@@ -60,18 +60,6 @@
       ansible.builtin.import_role:
         name: prometheus.prometheus.blackbox_exporter
 
-    - name: Install and configure Alertmanager
-      ansible.builtin.import_role:
-        name: prometheus.prometheus.alertmanager
-      vars:
-        alertmanager_receivers:
-          - name: pushoverreceiver
-            pushover_configs:
-              - user_key: uwniin3jk1963uw7w1nmmhpji9tss9
-                token: a31grho4qvd69bvn2k6mhhxaacbv3t
-        alertmanager_route:
-          receiver: pushoverreceiver
-
 - name: Install and configure additional Prometheus exporters
   hosts: all:!gitlab_servers:!desktops
   become: true
