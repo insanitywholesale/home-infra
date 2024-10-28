@@ -1,15 +1,5 @@
 ---
 
-- name: Configure NTP on proxmox
-  hosts: proxmox_servers
-  become: true
-  tasks:
-    - name: Install systemd-timesyncd
-      ansible.builtin.apt:
-        update_cache: true
-        name:
-          - systemd-timesyncd
-
 - name: Add syslog daemon to proxmox
   hosts: proxmox_servers
   become: true
