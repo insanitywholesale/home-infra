@@ -1,5 +1,26 @@
 ---
+
 - name: Configure NTP on proxmox
+  hosts: proxmox_servers
+  become: true
+  tasks:
+    - name: Install systemd-timesyncd
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - systemd-timesyncd
+
+- name: Add syslog daemon to proxmox
+  hosts: proxmox_servers
+  become: true
+  tasks:
+    - name: Install rsyslog
+      ansible.builtin.apt:
+        update_cache: true
+        name:
+          - rsyslog
+
+- name: Configure HAProxy on proxmox hosts
   hosts: proxmox_servers
   become: true
   tasks:
@@ -132,12 +153,6 @@
         enabled: true
         state: started
 
-- name: Configure NTP on proxmox
-  hosts: proxmox_servers
-  become: true
-  roles:
-    - role: geerlingguy.ntp
-
 - name: Set up proxmox cluster
   hosts: proxmox_servers
   become: true
@@ -165,35 +180,43 @@
           - libguestfs-tools
         state: present
 
-    # NOTE: Use https://docs.ansible.com/ansible/latest/collections/ansible/builtin/stat_module.html to avoid the following long task running
-    # Will need to move from /tmp to a permanent path
+    - name: Get debian image stats
+      ansible.builtin.stat:
+        path: /root/debian-12-amd64.qcow2
+        checksum_algorithm: sha512
+      register: deb_img_stat
 
     - name: Download Debian 12 genericcloud qcow2 image
       ansible.builtin.get_url:
-        url: https://cloud.debian.org/images/cloud/bookworm/20240717-1811/debian-12-genericcloud-amd64-20240717-1811.qcow2
-        dest: /tmp/debian-12-amd64.qcow2
-        checksum: sha512:0f0075d53749dba4c9825e606899360626bb20ac6bab3dbdeff40041b051d203eb1a56e68d377c9fac0187faa0aea77fd543ef4a883fff2304eac252cce01b44
+        url: https://cloud.debian.org/images/cloud/bookworm/20241004-1890/debian-12-genericcloud-amd64-20241004-1890.qcow2
+        dest: /root/debian-12-amd64.qcow2
+        checksum: sha512:da84d609d7ec5645dae1df503ea72037b2a831401d1b42ce2e7ec2a840b699f07ca8aea630853a3d5430839268c2bd337be45d89498264c36a9b5e12872c59ee
         mode: "0644"
         owner: root
         group: root
+      register: deb_img_new
+      when: (deb_img_stat.stat.isreg is not defined) or (deb_img_stat.stat.isreg is defined and not deb_img_stat.stat.isreg)
 
     - name: Add cron to Debian 12 image
       vkhitrin.libguestfs.guestfs_package:
-        image: /tmp/debian-12-amd64.qcow2
+        image: /root/debian-12-amd64.qcow2
         name: cron
         state: present
+      when: deb_img_new.changed
 
     - name: Add qemu-guest-agent to Debian 12 image
       vkhitrin.libguestfs.guestfs_package:
-        image: /tmp/debian-12-amd64.qcow2
+        image: /root/debian-12-amd64.qcow2
         name: qemu-guest-agent
         state: present
+      when: deb_img_new.changed
 
     - name: Remove unattended-upgrades from Debian 12
       vkhitrin.libguestfs.guestfs_package:
-        image: /tmp/debian-12-amd64.qcow2
+        image: /root/debian-12-amd64.qcow2
         name: unattended-upgrades
         state: absent
+      when: deb_img_new.changed
 
     - name: Copy /etc/network/interfaces config
       ansible.builtin.copy:
@@ -202,12 +225,14 @@
         owner: root
         group: root
         mode: "0644"
+      when: deb_img_new.changed
 
     - name: Change network interfaces config for Debian 12
       vkhitrin.libguestfs.guestfs_copy_in:
-        image: /tmp/debian-12-amd64.qcow2
+        image: /root/debian-12-amd64.qcow2
         src: /tmp/debinterfaces
         dest: /etc/network/interfaces
+      when: deb_img_new.changed
 
     - name: Create Debian 12 virtual machine
       community.general.proxmox_kvm:
@@ -240,6 +265,7 @@
         hotplug: disk,network,usb,memory,cpu
         tags: [debian, bookworm, debian12, template]
         state: present
+      when: deb_img_new.changed
 
     - name: Add root disk imported from qcow2 image to Debian 12 virtual machine
       community.general.proxmox_disk:
@@ -251,8 +277,9 @@
         name: deb12-tmpl
         disk: virtio0
         storage: local-lvm
-        import_from: /tmp/debian-12-amd64.qcow2
+        import_from: /root/debian-12-amd64.qcow2
         state: present
+      when: deb_img_new.changed
 
     - name: Convert Debian 12 virtual machine to template
       community.general.proxmox_kvm:
@@ -264,3 +291,4 @@
         vmid: "{{ template_vmid2 }}"
         name: deb12-tmpl
         state: template
+      when: deb_img_new.changed
