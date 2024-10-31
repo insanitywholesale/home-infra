@@ -5,7 +5,7 @@ collections:
   - name: 40521ecdedc312c39a3bae73394a633f361c5aee
     type: git
     source: git+https://github.com/insanitywholesale/ansible-role-opensearch.git
-  - name: 3e0c982a95717b76b90a405d53a68a5a6a95d316 # 2024-08-23
+  - name: 2d38507c70a4b6c52bb78e50de7b7f9d2dad422d # 2024-10-31
     type: git
     source: git+https://github.com/k3s-io/k3s-ansible.git
   - name: f2192670e79a8b614a484609ffe81f2f8f3b566f # 2024-08-27
