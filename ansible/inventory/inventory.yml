@@ -291,6 +291,77 @@ all:
           ansible_host: 10.0.50.112
           ansible_user: debian
           ntp_timezone: Europe/Athens
+    opensearch_servers:
+      hosts:
+        opensearch01:
+          admin_password: 0p3ns34rch_Sux
+          ansible_host: 10.0.50.27
+          ansible_user: debian
+          auth_type: internal
+          cert_valid_days: 730
+          cluster_type: multi-node
+          copy_custom_security_configs: false
+          domain_name: home.inherently.xyz
+          iac_enable: true
+          ip: 10.0.50.27
+          kibanaserver_password: k1b4n4_Sux
+          logstash_password: l0gst4sh_Sux
+          ntp_timezone: Europe/Athens
+          os_cluster_name: inherent-searchcluster
+          os_dashboards_user: opensearch-dashboards
+          os_dashboards_version: 2.16.0
+          os_download_url: https://artifacts.opensearch.org/releases/bundle/opensearch
+          os_user: opensearch
+          os_version: 2.16.0
+          populate_inventory_to_hosts_file: false
+          xms_value: 1
+          xmx_value: 1
+        opensearch02:
+          admin_password: 0p3ns34rch_Sux
+          ansible_host: 10.0.50.28
+          ansible_user: debian
+          auth_type: internal
+          cert_valid_days: 730
+          cluster_type: multi-node
+          copy_custom_security_configs: false
+          domain_name: home.inherently.xyz
+          iac_enable: true
+          ip: 10.0.50.28
+          kibanaserver_password: k1b4n4_Sux
+          logstash_password: l0gst4sh_Sux
+          ntp_timezone: Europe/Athens
+          os_cluster_name: inherent-searchcluster
+          os_dashboards_user: opensearch-dashboards
+          os_dashboards_version: 2.16.0
+          os_download_url: https://artifacts.opensearch.org/releases/bundle/opensearch
+          os_user: opensearch
+          os_version: 2.16.0
+          populate_inventory_to_hosts_file: false
+          xms_value: 1
+          xmx_value: 1
+        opensearch03:
+          admin_password: 0p3ns34rch_Sux
+          ansible_host: 10.0.50.29
+          ansible_user: debian
+          auth_type: internal
+          cert_valid_days: 730
+          cluster_type: multi-node
+          copy_custom_security_configs: false
+          domain_name: home.inherently.xyz
+          iac_enable: true
+          ip: 10.0.50.29
+          kibanaserver_password: k1b4n4_Sux
+          logstash_password: l0gst4sh_Sux
+          ntp_timezone: Europe/Athens
+          os_cluster_name: inherent-searchcluster
+          os_dashboards_user: opensearch-dashboards
+          os_dashboards_version: 2.16.0
+          os_download_url: https://artifacts.opensearch.org/releases/bundle/opensearch
+          os_user: opensearch
+          os_version: 2.16.0
+          populate_inventory_to_hosts_file: false
+          xms_value: 1
+          xmx_value: 1
     pihole_servers:
       hosts:
         pihole:

@@ -14,10 +14,12 @@ include:
 
 stages: [validate, build, deploy, cleanup]
 
-ansible_lint:
+default:
   tags: [local]
-  stage: validate
   image: debian:12-slim
+
+ansible_lint:
+  stage: validate
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
@@ -47,9 +49,7 @@ ansible_lint:
     - ansible-lint-junit ansible-lint.txt -o ansible-lint.xml
 
 ansible_syntax_check:
-  tags: [local]
   stage: validate
-  image: debian:12-slim
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
@@ -68,9 +68,7 @@ ansible_syntax_check:
     - ansible-playbook -i inventory/inventory.yml --syntax-check site.yml
 
 ansible_check_diff:
-  tags: [local]
   stage: validate
-  image: debian:12-slim
   variables:
     ANSIBLE_HOST_KEY_CHECKING: "False"
     ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
@@ -99,23 +97,17 @@ ansible_check_diff:
     - ansible-galaxy install -r requirements.yml
     - ansible-playbook --vault-password-file "$ANGLE_VAULT_PASS_FILE" -i inventory/inventory.yml --check --diff site.yml
 
-fmt:
-  tags: [local]
-validate:
-  tags: [local]
+
+# Override needs relationships for terraform jobs
+
 plan:
-  tags: [local]
   needs:
     - fmt
     - validate
 
 apply:
-  tags: [local]
   needs:
     - plan
 
 destroy:
-  tags: [local]
   needs: []
-delete-state:
-  tags: [local]

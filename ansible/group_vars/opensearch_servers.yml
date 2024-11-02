@@ -46,3 +46,4 @@ copy_custom_security_configs: false
 # /tmp/opensearch-nodecerts directory was missing on the server from which the
 # playbook was launched and new certificates were generated)
 iac_enable: true
+populate_inventory_to_hosts_file: false

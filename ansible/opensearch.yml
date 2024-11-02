@@ -1,5 +1,5 @@
 - name: Opensearch installation & configuration
-  hosts: os_cluster
+  hosts: opensearch_servers
   gather_facts: true
   become: true
   roles:
