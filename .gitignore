@@ -10,4 +10,5 @@ __pycache__
 ansible/roles/*
 # except requirements file and non-galaxy k3s role
 !ansible/roles/requirements.yml
-!ansible/roles/k3s_roles/*
+!ansible/roles/k3s_roles
+!ansible/roles/cloudflare_le_cert
