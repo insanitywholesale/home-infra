@@ -4,64 +4,26 @@
   hosts: prometheus_servers
   become: true
   tasks:
+    - name: Get Cloudflare LE cert
+      ansible.builtin.import_role:
+        name: cloudflare_le_cert
+      vars:
+        cloudflare_cert_domains:
+          - prometheus01.home.inherently.xyz
+          - prometheus.home.inherently.xyz
+        cloudflare_cert_file_dest: /etc/ssl/prometheus01.home.inherently.xyz.crt
+        cloudflare_key_file_dest: /etc/ssl/prometheus01.home.inherently.xyz.key
+
     - name: Install and configure Prometheus
       ansible.builtin.import_role:
         name: prometheus.prometheus.prometheus
-
-    - name: Install CloudFlare certbot plugin
-      ansible.builtin.apt:
-        name: python3-certbot-dns-cloudflare
-        update_cache: true
-        state: present
-
-    - name: Create cloudflare credentials file
-      ansible.builtin.template:
-        src: cloudflare.ini.j2
-        dest: /etc/ssl/cloudflare.ini
-        mode: "0600"
-        owner: prometheus
-        group: prometheus
-
-    - name: Get LetsEncrypt TLS certificates
-      ansible.builtin.import_role:
-        name: geerlingguy.certbot
-      vars:
-        certbot_install_method: package
-        certbot_create_if_missing: true
-        certbot_create_method: standalone
-        certbot_admin_email: pepitsizous@zoho.com
-        certbot_certs:
-          - domains:
-              - prometheus.home.inherently.xyz
-        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive --agree-tos --email
-          {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
-        certbot_create_standalone_stop_services: []
-        certbot_auto_renew_user: root
-
-    - name: Copy certificate into prometheus SSL directory
-      ansible.builtin.copy:
-        remote_src: true
-        src: /etc/letsencrypt/live/prometheus.home.inherently.xyz/fullchain.pem
-        dest: /etc/ssl/prometheus.home.inherently.xyz.crt
-        mode: "0644"
-        owner: prometheus
-        group: prometheus
-
-    - name: Copy private key into prometheus SSL directory
-      ansible.builtin.copy:
-        remote_src: true
-        src: /etc/letsencrypt/live/prometheus.home.inherently.xyz/privkey.pem
-        dest: /etc/ssl/prometheus.home.inherently.xyz.key
-        mode: "0644"
-        owner: prometheus
-        group: prometheus
 
     - name: Install and configure blackbox_exporter
       ansible.builtin.import_role:
         name: prometheus.prometheus.blackbox_exporter
 
 - name: Install and configure additional Prometheus exporters
-  hosts: all:!gitlab_servers:!desktops
+  hosts: all:!desktops
   become: true
   tasks:
     - name: Install and configure Node Exporter

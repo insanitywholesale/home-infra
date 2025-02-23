@@ -48,53 +48,15 @@
         mode: "0755"
         state: directory
 
-    - name: Install CloudFlare certbot plugin
-      ansible.builtin.apt:
-        name: python3-certbot-dns-cloudflare
-        update_cache: true
-        state: present
-
-    - name: Create cloudflare credentials file
-      ansible.builtin.template:
-        src: cloudflare.ini.j2
-        dest: /etc/ssl/cloudflare.ini
-        mode: "0600"
-        owner: root
-        group: root
-
-    - name: Get LetsEncrypt TLS certificates
+    - name: Get Cloudflare LE cert
       ansible.builtin.import_role:
-        name: geerlingguy.certbot
+        name: cloudflare_le_cert
       vars:
-        certbot_install_method: package
-        certbot_create_if_missing: true
-        certbot_create_method: standalone
-        certbot_admin_email: pepitsizous@zoho.com
-        certbot_certs:
-          - domains:
-              - gitlab.home.inherently.xyz
-        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive --agree-tos --email
-          {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
-        certbot_create_standalone_stop_services: []
-        certbot_auto_renew_user: root
-
-    - name: Copy certificate into gitlab SSL directory
-      ansible.builtin.copy:
-        remote_src: true
-        src: /etc/letsencrypt/live/gitlab.home.inherently.xyz/fullchain.pem
-        dest: /etc/gitlab/ssl/gitlab.home.inherently.xyz.crt
-        mode: "0644"
-        owner: root
-        group: root
-
-    - name: Copy private key into gitlab SSL directory
-      ansible.builtin.copy:
-        remote_src: true
-        src: /etc/letsencrypt/live/gitlab.home.inherently.xyz/privkey.pem
-        dest: /etc/gitlab/ssl/gitlab.home.inherently.xyz.key
-        mode: "0644"
-        owner: root
-        group: root
+        cloudflare_cert_domains:
+          - gitlab01.home.inherently.xyz
+          - gitlab.home.inherently.xyz
+        cloudflare_cert_file_dest: /etc/gitlab/ssl/gitlab.home.inherently.xyz.crt
+        cloudflare_key_file_dest: /etc/gitlab/ssl/gitlab.home.inherently.xyz.key
 
     - name: Disable LetsEncrypt integration
       ansible.builtin.lineinfile:

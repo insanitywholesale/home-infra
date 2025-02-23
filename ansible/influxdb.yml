@@ -60,60 +60,22 @@
     #     user_password: your_user_password
     #     state: present
 
-    - name: Install CloudFlare certbot plugin
-      ansible.builtin.apt:
-        name: python3-certbot-dns-cloudflare
-        update_cache: true
-        state: present
-
-    - name: Create cloudflare credentials file
-      ansible.builtin.template:
-        src: cloudflare.ini.j2
-        dest: /etc/ssl/cloudflare.ini
-        mode: "0600"
-        owner: root
-        group: root
-
-    - name: Get LetsEncrypt TLS certificates
+    - name: Get Cloudflare LE cert
       ansible.builtin.import_role:
-        name: geerlingguy.certbot
+        name: cloudflare_le_cert
       vars:
-        certbot_install_method: package
-        certbot_create_if_missing: true
-        certbot_create_method: standalone
-        certbot_admin_email: pepitsizous@zoho.com
-        certbot_certs:
-          - domains:
-              - influxdb.home.inherently.xyz
-        certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive --agree-tos --email
-          {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
-        certbot_create_standalone_stop_services: []
-        certbot_auto_renew_user: root
-
-    - name: Copy certificate into influxdb SSL directory
-      ansible.builtin.copy:
-        remote_src: true
-        src: /etc/letsencrypt/live/influxdb.home.inherently.xyz/fullchain.pem
-        dest: /etc/ssl/influxdb.home.inherently.xyz.crt
-        mode: "0644"
-        owner: root
-        group: root
-
-    - name: Copy private key into influxdb SSL directory
-      ansible.builtin.copy:
-        remote_src: true
-        src: /etc/letsencrypt/live/influxdb.home.inherently.xyz/privkey.pem
-        dest: /etc/ssl/influxdb.home.inherently.xyz.key
-        mode: "0644"
-        owner: root
-        group: root
+        cloudflare_cert_domains:
+          - influxdb01.home.inherently.xyz
+          - influxdb.home.inherently.xyz
+        cloudflare_cert_file_dest: /etc/ssl/influxdb01.home.inherently.xyz.crt
+        cloudflare_key_file_dest: /etc/ssl/influxdb01.home.inherently.xyz.key
 
     - name: Ensure tls-cert config option is set
       ansible.builtin.lineinfile:
         state: present
         create: true
         path: /etc/influxdb/config.toml
-        line: tls-cert = "/etc/ssl/influxdb.home.inherently.xyz.crt"
+        line: tls-cert = "/etc/ssl/influxdb01.home.inherently.xyz.crt"
         mode: "0644"
         owner: root
         group: root
@@ -124,7 +86,7 @@
         state: present
         create: true
         path: /etc/influxdb/config.toml
-        line: tls-key = "/etc/ssl/influxdb.home.inherently.xyz.key"
+        line: tls-key = "/etc/ssl/influxdb01.home.inherently.xyz.key"
         mode: "0644"
         owner: root
         group: root

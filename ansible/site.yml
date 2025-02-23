@@ -5,7 +5,7 @@
 - ansible.builtin.import_playbook: ntp-all.yml
 - ansible.builtin.import_playbook: upgrade-all.yml
 # Set up the rest of the hosts
-- ansible.builtin.import_playbook: pihole.yml
+#- ansible.builtin.import_playbook: pihole.yml
 - ansible.builtin.import_playbook: keycloak.yml
 # - ansible.builtin.import_playbook: stepca.yml # NOTE: fails due to upstream brokennes
 - ansible.builtin.import_playbook: postgres.yml
