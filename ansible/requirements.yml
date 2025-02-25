@@ -2,13 +2,13 @@
 
 collections:
   - grafana.grafana
-  - name: 40521ecdedc312c39a3bae73394a633f361c5aee
+  - name: d620a78c14f05d59c2d7b0c051e503d6400ea5f1 # 2024-12-05
     type: git
     source: git+https://github.com/insanitywholesale/ansible-role-opensearch.git
   - name: 2d38507c70a4b6c52bb78e50de7b7f9d2dad422d # 2024-10-31
     type: git
     source: git+https://github.com/k3s-io/k3s-ansible.git
-  - name: f2192670e79a8b614a484609ffe81f2f8f3b566f # 2024-08-27
+  - name: 928e49948830631f33f776ed72b900a159e12b8a # 2025-01-10
     type: git
     source: git+https://github.com/maxhoesel-ansible/ansible-collection-smallstep.git
   - middleware_automation.keycloak
