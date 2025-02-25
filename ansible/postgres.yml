@@ -3,58 +3,11 @@
   hosts: postgres
   become: true
   tasks:
+    # import_role tasks parsed at the beginning, include_role tasks parsed when they're going to run
+    # source: https://www.ansiblejunky.com/blog/ansible-101-include-vs-import/
     - name: Initial postgres install and setup
-      # import_role tasks parsed at the beginning, include_role tasks parsed when they're going to run
-      # source: https://www.ansiblejunky.com/blog/ansible-101-include-vs-import/
       ansible.builtin.import_role:
         name: geerlingguy.postgresql
-      vars:
-        postgresql_python_library: python3-psycopg2
-        postgresql_service_state: started
-        postgresql_service_enabled: true
-        postgresql_locales:
-          - en_US.UTF-8
-        postgresql_hba_entries:
-          # defaults
-          - type: local
-            database: all
-            user: postgres
-            auth_method: peer
-          - type: local
-            database: all
-            user: all
-            auth_method: peer
-          - type: hostssl
-            database: all
-            user: all
-            address: 127.0.0.1/32
-            auth_method: "{{ postgresql_auth_method }}"
-          - type: hostssl
-            database: all
-            user: all
-            address: ::1/128
-            auth_method: "{{ postgresql_auth_method }}"
-          # my addition
-          - type: hostssl
-            database: all
-            user: all
-            address: 10.0.0.0/8
-            auth_method: "{{ postgresql_auth_method }}"
-        postgresql_global_config_options:
-          # defaults
-          - option: unix_socket_directories
-            value: '{{ postgresql_unix_socket_directories | join(",") }}'
-          - option: log_directory
-            value: log
-          # my additions
-          - option: listen_addresses
-            value: "0.0.0.0, ::"
-        postgresql_users:
-          - name: testuser
-            password: testpassword
-        postgresql_databases:
-          - name: testdb
-            owner: testuser
 
     - name: Get Cloudflare LE cert
       ansible.builtin.import_role:

@@ -7,3 +7,14 @@ cloudflare_api_token: !vault |
   3361616432383137310a393836613461626363366565376532313034353331336434316364393566
   66666364633133643064383038636162336135363837656434633739313331653664346530393339
   3233373636333633346132396238363962623430383331646636
+mysql_root_password_update: false # set to true if root password here is changed
+mysql_root_username: root
+mysql_root_password: "*2304CA907AD20C629F898FCE11C167F21663318A"
+mysql_bind_address: 0.0.0.0
+mysql_databases:
+  - name: testmysqldb
+mysql_users:
+  - name: testmysqluser
+    host: "%"
+    password: "*CB03FF1A1F88F88B238BBC3AC17C11AC32E498E4"
+    priv: testmysqldb.*:ALL

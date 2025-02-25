@@ -6,18 +6,6 @@
     - name: Initial mysql install and setup
       ansible.builtin.import_role:
         name: geerlingguy.mysql
-      vars:
-        mysql_root_password_update: false # set to true if root password here is changed
-        mysql_root_username: root
-        mysql_root_password: "*2304CA907AD20C629F898FCE11C167F21663318A"
-        mysql_bind_address: 0.0.0.0
-        mysql_databases:
-          - name: testmysqldb
-        mysql_users:
-          - name: testmysqluser
-            host: "%"
-            password: "*CB03FF1A1F88F88B238BBC3AC17C11AC32E498E4"
-            priv: testmysqldb.*:ALL
 
     - name: Ensure mysql SSL dir exists
       ansible.builtin.file:
