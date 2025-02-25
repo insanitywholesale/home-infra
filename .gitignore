@@ -6,6 +6,8 @@ tf_init.sh
 k3s_venv
 # python cache when running ansible-lint
 __pycache__
+# ansible galaxy stuff
+ansible/.ansible
 # ansible roles
 ansible/roles/*
 # except requirements file and non-galaxy k3s role

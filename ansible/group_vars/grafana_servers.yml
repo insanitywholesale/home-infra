@@ -24,6 +24,6 @@ grafana_cap_net_bind_service: true
 grafana_server:
   protocol: https
   enforce_domain: true
-  cert_file: /etc/ssl/grafana.home.inherently.xyz.crt
-  cert_key: /etc/ssl/grafana.home.inherently.xyz.key
+  cert_file: /etc/ssl/grafana01.home.inherently.xyz.crt
+  cert_key: /etc/ssl/grafana01.home.inherently.xyz.key
   enable_gzip: true

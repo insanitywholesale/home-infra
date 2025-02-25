@@ -23,7 +23,7 @@
     certbot_admin_email: pepitsizous@zoho.com
     certbot_certs:
       - domains: "{{ cloudflare_cert_domains }}"
-    certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
+    certbot_create_command: "{{ certbot_script }} certonly --preferred-challenges dns --dns-cloudflare --dns-cloudflare-credentials /etc/ssl/cloudflare.ini --noninteractive --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }} --dns-cloudflare-propagation-seconds 39"
 
 - name: Copy certificate into target directory
   ansible.builtin.copy:

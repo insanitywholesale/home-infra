@@ -118,8 +118,8 @@ all:
             admin_user: admin
             disable_gravatar: true
           grafana_server:
-            cert_file: /etc/ssl/grafana.home.inherently.xyz.crt
-            cert_key: /etc/ssl/grafana.home.inherently.xyz.key
+            cert_file: /etc/ssl/grafana01.home.inherently.xyz.crt
+            cert_key: /etc/ssl/grafana01.home.inherently.xyz.key
             enable_gzip: true
             enforce_domain: true
             protocol: https
@@ -284,13 +284,44 @@ all:
             3361616432383137310a393836613461626363366565376532313034353331336434316364393566
             66666364633133643064383038636162336135363837656434633739313331653664346530393339
             3233373636333633346132396238363962623430383331646636
+          mysql_bind_address: 0.0.0.0
+          mysql_databases:
+            - name: testmysqldb
+          mysql_root_password: "*2304CA907AD20C629F898FCE11C167F21663318A"
+          mysql_root_password_update: false
+          mysql_root_username: root
+          mysql_users:
+            - host: "%"
+              name: testmysqluser
+              password: "*CB03FF1A1F88F88B238BBC3AC17C11AC32E498E4"
+              priv: testmysqldb.*:ALL
           ntp_timezone: Europe/Athens
     netbox_servers:
       hosts:
         netbox:
           ansible_host: 10.0.50.112
           ansible_user: debian
+          netbox_config:
+            ALLOWED_HOSTS:
+              - "{{ ansible_host }}"
+              - "{{ inventory_hostname }}"
+              - netbox.home.inherently.xyz
+            MEDIA_ROOT: "{{ netbox_shared_path }}/media"
+            REPORTS_ROOT: "{{ netbox_shared_path }}/reports"
+            SCRIPTS_ROOT: "{{ netbox_shared_path }}/scripts"
+          netbox_database_socket: "{{ postgresql_unix_socket_directories[0] }}"
+          netbox_keep_uwsgi_updated: false
+          netbox_metrics_enabled: true
+          netbox_socket: 0.0.0.0:80
+          netbox_stable: true
+          netbox_superuser_password: netbox
           ntp_timezone: Europe/Athens
+          postgresql_users:
+            - name: "{{ netbox_database_user }}"
+              role_attr_flags: CREATEDB,NOSUPERUSER
+          redis_bind: 127.0.0.1
+          redis_checksum: sha256:8d104c26a154b29fd67d6568b4f375212212ad41e0c2caa3d66480e78dbd3b59
+          redis_version: 7.2.4
     opensearch_servers:
       hosts:
         opensearch01:
@@ -390,6 +421,48 @@ all:
             37353133346630346361663539323565396237643139653034386234383364346237613432633332
             3030343138303130346362653664346337613539633663613936
           ntp_timezone: Europe/Athens
+          postgresql_databases:
+            - name: testdb
+              owner: testuser
+          postgresql_global_config_options:
+            - option: unix_socket_directories
+              value: '{{ postgresql_unix_socket_directories | join(",") }}'
+            - option: log_directory
+              value: log
+            - option: listen_addresses
+              value: "0.0.0.0, ::"
+          postgresql_hba_entries:
+            - auth_method: peer
+              database: all
+              type: local
+              user: postgres
+            - auth_method: peer
+              database: all
+              type: local
+              user: all
+            - address: 127.0.0.1/32
+              auth_method: "{{ postgresql_auth_method }}"
+              database: all
+              type: hostssl
+              user: all
+            - address: ::1/128
+              auth_method: "{{ postgresql_auth_method }}"
+              database: all
+              type: hostssl
+              user: all
+            - address: 10.0.0.0/8
+              auth_method: "{{ postgresql_auth_method }}"
+              database: all
+              type: hostssl
+              user: all
+          postgresql_locales:
+            - en_US.UTF-8
+          postgresql_python_library: python3-psycopg2
+          postgresql_service_enabled: true
+          postgresql_service_state: started
+          postgresql_users:
+            - name: testuser
+              password: testpassword
     prometheus_servers:
       hosts:
         prometheus:
@@ -418,8 +491,8 @@ all:
                 targets: "{{ groups['all'] | map('extract', hostvars, ['ansible_host']) | map('regex_replace', '$', ':9100') | list }}"
           prometheus_web_config:
             tls_server_config:
-              cert_file: /etc/ssl/prometheus.home.inherently.xyz.crt
-              key_file: /etc/ssl/prometheus.home.inherently.xyz.key
+              cert_file: /etc/ssl/prometheus01.home.inherently.xyz.crt
+              key_file: /etc/ssl/prometheus01.home.inherently.xyz.key
     proxmox_servers:
       hosts:
         pve01:
