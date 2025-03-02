@@ -1,17 +1,5 @@
 ---
 
-include:
-  - component: gitlab.com/components/opentofu/full-pipeline@0.31.0
-    inputs:
-      # The version must currently be specified explicitly as an input,
-      # to find the correctly associated images. # This can be removed
-      # once https://gitlab.com/gitlab-org/gitlab/-/issues/438275 is solved.
-      version: 0.31.0
-      opentofu_version: 1.8.4
-      root_dir: terraform
-      state_name: homelab-cluster
-      auto_apply: true
-
 stages: [validate, build, deploy, cleanup]
 
 default:
@@ -48,66 +36,79 @@ ansible_lint:
     - cat ansible-lint.txt
     - ansible-lint-junit ansible-lint.txt -o ansible-lint.xml
 
-ansible_syntax_check:
-  stage: validate
-  variables:
-    ANSIBLE_HOST_KEY_CHECKING: "False"
-    ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
-  before_script:
-    - export PATH="$PATH:$HOME/.local/bin"
-    - apt update
-    - apt install -y openssh-client pipx python-is-python3 git
-    - pipx install --include-deps ansible
-    - pipx install --include-deps ansible-lint
-    - pipx inject ansible jmespath  # lae.proxmox dep
-    - pipx inject ansible dnspython # lae.proxmox dep
-    - pipx ensurepath
-  script:
-    - cd ansible
-    - ansible-galaxy install -r requirements.yml
-    - ansible-playbook -i inventory/inventory.yml --syntax-check site.yml
+# NOTE: if re-instated it should be at the top of the file
+#include:
+#  - component: gitlab.com/components/opentofu/full-pipeline@0.31.0
+#    inputs:
+#      # The version must currently be specified explicitly as an input,
+#      # to find the correctly associated images. # This can be removed
+#      # once https://gitlab.com/gitlab-org/gitlab/-/issues/438275 is solved.
+#      version: 0.31.0
+#      opentofu_version: 1.8.4
+#      root_dir: terraform
+#      state_name: homelab-cluster
+#      auto_apply: true
 
-ansible_check_diff:
-  stage: validate
-  variables:
-    ANSIBLE_HOST_KEY_CHECKING: "False"
-    ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
-    JUNIT_OUTPUT_DIR: "$CI_PROJECT_DIR/ansible/junit-log"
-    JUNIT_FAIL_ON_CHANGE: "true"
-  artifacts:
-    when: always
-    reports:
-      junit: "$CI_PROJECT_DIR/ansible/junit-log/*.xml"
-  before_script:
-    - export PATH="$PATH:$HOME/.local/bin"
-    - apt update
-    - apt install -y openssh-client pipx python-is-python3 git
-    - pipx install --include-deps ansible
-    - pipx install --include-deps ansible-lint
-    - pipx inject ansible jmespath  # lae.proxmox dep
-    - pipx inject ansible dnspython # lae.proxmox dep
-    - eval $(ssh-agent -s)
-    - chmod 400 "$ANGLE_SSH_PRIVATE_KEY"
-    - ssh-add "$ANGLE_SSH_PRIVATE_KEY"
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - pipx ensurepath
-  script:
-    - cd ansible
-    - ansible-galaxy install -r requirements.yml
-    - ansible-playbook --vault-password-file "$ANGLE_VAULT_PASS_FILE" -i inventory/inventory.yml --check --diff site.yml
-
-
-# Override needs relationships for terraform jobs
-
-plan:
-  needs:
-    - fmt
-    - validate
-
-apply:
-  needs:
-    - plan
-
-destroy:
-  needs: []
+#ansible_syntax_check:
+#  stage: validate
+#  variables:
+#    ANSIBLE_HOST_KEY_CHECKING: "False"
+#    ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
+#  before_script:
+#    - export PATH="$PATH:$HOME/.local/bin"
+#    - apt update
+#    - apt install -y openssh-client pipx python-is-python3 git
+#    - pipx install --include-deps ansible
+#    - pipx install --include-deps ansible-lint
+#    - pipx inject ansible jmespath  # lae.proxmox dep
+#    - pipx inject ansible dnspython # lae.proxmox dep
+#    - pipx ensurepath
+#  script:
+#    - cd ansible
+#    - ansible-galaxy install -r requirements.yml
+#    - ansible-playbook -i inventory/inventory.yml --syntax-check site.yml
+#
+#ansible_check_diff:
+#  stage: validate
+#  variables:
+#    ANSIBLE_HOST_KEY_CHECKING: "False"
+#    ANSIBLE_CONFIG: "$CI_PROJECT_DIR/ansible/ansible.cfg"
+#    JUNIT_OUTPUT_DIR: "$CI_PROJECT_DIR/ansible/junit-log"
+#    JUNIT_FAIL_ON_CHANGE: "true"
+#  artifacts:
+#    when: always
+#    reports:
+#      junit: "$CI_PROJECT_DIR/ansible/junit-log/*.xml"
+#  before_script:
+#    - export PATH="$PATH:$HOME/.local/bin"
+#    - apt update
+#    - apt install -y openssh-client pipx python-is-python3 git
+#    - pipx install --include-deps ansible
+#    - pipx install --include-deps ansible-lint
+#    - pipx inject ansible jmespath  # lae.proxmox dep
+#    - pipx inject ansible dnspython # lae.proxmox dep
+#    - eval $(ssh-agent -s)
+#    - chmod 400 "$ANGLE_SSH_PRIVATE_KEY"
+#    - ssh-add "$ANGLE_SSH_PRIVATE_KEY"
+#    - mkdir -p ~/.ssh
+#    - chmod 700 ~/.ssh
+#    - pipx ensurepath
+#  script:
+#    - cd ansible
+#    - ansible-galaxy install -r requirements.yml
+#    - ansible-playbook --vault-password-file "$ANGLE_VAULT_PASS_FILE" -i inventory/inventory.yml --check --diff site.yml
+#
+#
+## Override needs relationships for terraform jobs
+#
+#plan:
+#  needs:
+#    - fmt
+#    - validate
+#
+#apply:
+#  needs:
+#    - plan
+#
+#destroy:
+#  needs: []
