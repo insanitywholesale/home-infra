@@ -5,5 +5,5 @@
 Run the following commands:
 ```bash
 $ export GITLAB_TOKEN=$(pass gitlab-all-access-pat)
-$ flux bootstrap gitlab --owner=insanitywholesale --repository=infra --private=false --personal --branch=master --path=fluxcd/cluster01/ --token-auth=false --read-write-key=true
+$ flux bootstrap gitlab --owner=insanitywholesale --repository=infra --visibility=public --personal --branch=master --path=fluxcd/cluster01/ --token-auth=false --read-write-key=true
 ```
