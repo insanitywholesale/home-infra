@@ -5,6 +5,4 @@ resources:
   - ./metallb/kustomization-fluxCRD.yaml
   - ./ingress-nginx/kustomization-fluxCRD.yaml
   - ./external-dns/kustomization-fluxCRD.yaml
-  # - ./longhorn/kustomization-fluxCRD.yaml
-  - ./local-path-provisioner/kustomization-fluxCRD.yaml
   - ./cert-manager/kustomization-fluxCRD.yaml
