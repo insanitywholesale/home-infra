@@ -42,5 +42,7 @@ spec:
             enabled: false
       etcd:
         clusterDomain: cluster.local
+      io_engine:
+        envcontext: iova-mode=pa
       localpv-provisioner:
         enabled: false

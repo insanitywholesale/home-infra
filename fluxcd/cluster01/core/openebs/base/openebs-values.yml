@@ -19,6 +19,9 @@ mayastor:
     enabled: false
   crds:
     enabled: false
+  # NOTE: https://github.com/openebs/mayastor/issues/1763
+  io_engine:
+    envcontext: "iova-mode=pa"
 
 engines:
   local:
