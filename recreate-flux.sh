@@ -2,17 +2,6 @@
 
 # Commands to re-create everything
 
-#export GITLAB_TOKEN=$(pass gitlab-all-access-pat)
-#flux bootstrap gitlab \
-#	--owner=insanitywholesale \
-#	--repository=infra \
-#	--private=false \
-#	--personal \
-#	--branch=master \
-#	--token-auth=false \
-#	--read-write-key=true \
-#	--path=fluxcd/cluster01
-
 mkdir -p fluxcd/cluster01/core/metallb/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 mkdir -p fluxcd/cluster01/core/metallb/config  # For things other than values of the upstream chart
 
@@ -281,6 +270,38 @@ flux create kustomization longhorn-base \
 	--decryption-provider=sops \
 	--decryption-secret=sops-age \
 	--export > fluxcd/cluster01/core/longhorn/kustomization-fluxCRD.yaml
+
+# https://raw.githubusercontent.com/openebs/openebs/e90fe9b35ea45ca03077317259e8eb530693ad33/charts/values.yaml
+
+mkdir -p fluxcd/cluster01/core/openebs/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+
+cp fluxcd/cluster01/templates/hrhr-kustomization.yaml fluxcd/cluster01/core/openebs/base/kustomization.yaml
+
+flux create source helm openebs \
+	--interval=10m \
+	--url=https://openebs.github.io/openebs \
+	--export > fluxcd/cluster01/core/openebs/base/helmrepository.yaml
+
+flux create helmrelease openebs \
+	--interval=10m \
+	--release-name openebs \
+	--target-namespace openebs \
+	--create-target-namespace \
+	--source=HelmRepository/openebs \
+	--chart=openebs \
+	--chart-version="4.1.3" \
+	--values=fluxcd/cluster01/core/openebs/base/openebs-values.yml \
+	--export > fluxcd/cluster01/core/openebs/base/helmrelease.yaml
+
+flux create kustomization openebs-base \
+	--interval=10m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/cluster01/core/openebs/base \
+	--prune \
+	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
+	--export > fluxcd/cluster01/core/openebs/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/cluster01/apps/cnpg/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
 

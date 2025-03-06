@@ -1,0 +1,31 @@
+# https://raw.githubusercontent.com/openebs/openebs/e90fe9b35ea45ca03077317259e8eb530693ad33/charts/values.yaml
+#
+iopenebs-crds:
+  csi:
+    volumeSnapshots:
+      enabled: true
+      keep: true
+
+# Refer to https://github.com/openebs/mayastor-extensions/blob/v2.7.3/chart/values.yaml for complete set of values.
+mayastor:
+  csi:
+    node:
+      initContainers:
+        enabled: false # NOTE: required by Talos
+  etcd:
+    # -- Kubernetes Cluster Domain
+    clusterDomain: cluster.local
+  localpv-provisioner:
+    enabled: false
+  crds:
+    enabled: false
+
+engines:
+  local:
+    lvm:
+      enabled: false
+    zfs:
+      enabled: false
+  replicated:
+    mayastor:
+      enabled: true

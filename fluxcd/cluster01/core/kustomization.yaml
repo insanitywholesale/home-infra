@@ -6,3 +6,4 @@ resources:
   - ./ingress-nginx/kustomization-fluxCRD.yaml
   - ./external-dns/kustomization-fluxCRD.yaml
   - ./cert-manager/kustomization-fluxCRD.yaml
+  - ./openebs/kustomization-fluxCRD.yaml
