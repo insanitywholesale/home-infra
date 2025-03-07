@@ -3,6 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./podinfo/kustomization-fluxCRD.yaml
-    #- ./lister/kustomization-fluxCRD.yaml
-    #- ./dashboard/kustomization-fluxCRD.yaml
-    #- ./cnpg/kustomization-fluxCRD.yaml
+  - ./lister/kustomization-fluxCRD.yaml
+  - ./cnpg/kustomization-fluxCRD.yaml
+  # TODO: replace kubernetes upstream dashboard with something less annoying to configure and run
+  #- ./dashboard/kustomization-fluxCRD.yaml

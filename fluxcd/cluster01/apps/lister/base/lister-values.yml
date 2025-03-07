@@ -6,13 +6,13 @@ ingress:
   enabled: true
   className: nginx
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: letsencrypt-production
   hosts:
     - host: lister.home.inherently.xyz
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: lister-staging-tls
+    - secretName: lister-tls
       hosts:
         - lister.home.inherently.xyz
