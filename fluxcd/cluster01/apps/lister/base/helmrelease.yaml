@@ -21,7 +21,7 @@ spec:
   values:
     ingress:
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-staging
+        cert-manager.io/cluster-issuer: letsencrypt-production
       className: nginx
       enabled: true
       hosts:
@@ -32,6 +32,6 @@ spec:
       tls:
       - hosts:
         - lister.home.inherently.xyz
-        secretName: lister-staging-tls
+        secretName: lister-tls
     serviceAccount:
       create: false

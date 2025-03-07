@@ -7,13 +7,13 @@ ui:
 ingress:
   enabled: true
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: letsencrypt-production
   hosts:
     - host: podinfo.home.inherently.xyz
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-  - secretName: podinfo-staging-tls
+  - secretName: podinfo-tls
     hosts:
       - podinfo.home.inherently.xyz

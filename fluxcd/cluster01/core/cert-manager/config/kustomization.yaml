@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - secret.sops.yaml
   - clusterissuerletsencryptstaging-certmanagerCRD.yaml
+  - clusterissuerletsencryptproduction-certmanagerCRD.yaml
