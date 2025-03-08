@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: openebs-base
+  name: cert-manager-base
   namespace: flux-system
 spec:
   decryption:
@@ -10,7 +10,7 @@ spec:
     secretRef:
       name: sops-age
   interval: 10m0s
-  path: ./fluxcd/cluster01/core/openebs/base
+  path: ./fluxcd/homecluster/core/cert-manager/base
   prune: true
   sourceRef:
     kind: GitRepository
@@ -21,7 +21,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: openebs-config
+  name: cert-manager-config
   namespace: flux-system
 spec:
   decryption:
@@ -29,9 +29,9 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-  - name: openebs-base
+  - name: cert-manager-base
   interval: 10m0s
-  path: ./fluxcd/cluster01/core/openebs/config
+  path: ./fluxcd/homecluster/core/cert-manager/config
   prune: true
   sourceRef:
     kind: GitRepository

@@ -2,17 +2,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: lister-base
+  name: longhorn-base
   namespace: flux-system
 spec:
   decryption:
     provider: sops
     secretRef:
       name: sops-age
-  dependsOn:
-  - name: ingress-nginx-base
   interval: 10m0s
-  path: ./fluxcd/cluster01/apps/lister/base
+  path: ./fluxcd/homecluster/core/longhorn/base
   prune: true
   sourceRef:
     kind: GitRepository

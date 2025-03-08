@@ -2,15 +2,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cnpg-base
+  name: dashboard-base
   namespace: flux-system
 spec:
   decryption:
     provider: sops
     secretRef:
       name: sops-age
+  dependsOn:
+  - name: ingress-nginx-base
   interval: 10m0s
-  path: ./fluxcd/cluster01/apps/cnpg/base
+  path: ./fluxcd/homecluster/apps/dashboard/base
   prune: true
   sourceRef:
     kind: GitRepository

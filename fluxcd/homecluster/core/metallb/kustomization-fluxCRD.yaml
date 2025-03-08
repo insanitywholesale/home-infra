@@ -10,7 +10,7 @@ spec:
     secretRef:
       name: sops-age
   interval: 10m0s
-  path: ./fluxcd/cluster01/core/metallb/base
+  path: ./fluxcd/homecluster/core/metallb/base
   prune: true
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ spec:
   dependsOn:
   - name: metallb-base
   interval: 10m0s
-  path: ./fluxcd/cluster01/core/metallb/config
+  path: ./fluxcd/homecluster/core/metallb/config
   prune: true
   sourceRef:
     kind: GitRepository
