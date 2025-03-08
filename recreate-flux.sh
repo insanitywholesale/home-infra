@@ -19,7 +19,7 @@ flux create helmrelease metallb \
 	--create-target-namespace \
 	--source=HelmRepository/metallb \
 	--chart=metallb \
-	--chart-version="0.14.8" \
+	--chart-version="0.14.9" \
 	--values=fluxcd/cluster01/core/metallb/base/metallb-values.yml \
 	--export > fluxcd/cluster01/core/metallb/base/helmrelease.yaml
 
@@ -61,7 +61,7 @@ flux create helmrelease cert-manager \
 	--create-target-namespace \
 	--source=HelmRepository/cert-manager \
 	--chart=cert-manager \
-	--chart-version="v1.15.3" \
+	--chart-version="v1.17.1" \
 	--values=fluxcd/cluster01/core/cert-manager/base/cert-manager-values.yml \
 	--export > fluxcd/cluster01/core/cert-manager/base/helmrelease.yaml
 
@@ -102,7 +102,7 @@ flux create helmrelease ingress-nginx \
 	--create-target-namespace \
 	--source=HelmRepository/ingress-nginx \
 	--chart=ingress-nginx \
-	--chart-version="4.11.1" \
+	--chart-version="4.12.0" \
 	--values=fluxcd/cluster01/core/ingress-nginx/base/ingress-nginx-values.yml \
 	--export > fluxcd/cluster01/core/ingress-nginx/base/helmrelease.yaml
 
@@ -301,7 +301,7 @@ flux create helmrelease cnpg \
 	--create-target-namespace \
 	--source=HelmRepository/cnpg \
 	--chart=cloudnative-pg \
-	--chart-version="0.22.0" \
+	--chart-version="0.23.2" \
 	--values=fluxcd/cluster01/apps/cnpg/base/cnpg-values.yml \
 	--export > fluxcd/cluster01/apps/cnpg/base/helmrelease.yaml
 

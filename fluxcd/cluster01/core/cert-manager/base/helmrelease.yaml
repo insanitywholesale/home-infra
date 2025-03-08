@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: cert-manager
-      version: v1.15.3
+      version: v1.17.1
   install:
     createNamespace: true
   interval: 10m0s
