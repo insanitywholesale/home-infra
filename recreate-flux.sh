@@ -286,6 +286,7 @@ flux create kustomization openebs-config \
 	--export >> fluxcd/homecluster/core/openebs/kustomization-fluxCRD.yaml
 
 mkdir -p fluxcd/homecluster/apps/cnpg/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+mkdir -p fluxcd/homecluster/apps/cnpg/config  # For things other than values of the upstream chart
 
 cp fluxcd/homecluster/templates/hrhr-kustomization.yaml fluxcd/homecluster/apps/cnpg/base/kustomization.yaml
 
@@ -309,8 +310,20 @@ flux create kustomization cnpg-base \
 	--interval=10m \
 	--source GitRepository/flux-system \
 	--path=fluxcd/homecluster/apps/cnpg/base \
+	--depends-on openebs-config \
 	--prune \
 	--wait \
 	--decryption-provider=sops \
 	--decryption-secret=sops-age \
 	--export > fluxcd/homecluster/apps/cnpg/kustomization-fluxCRD.yaml
+
+flux create kustomization cnpg-config \
+	--interval=10m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/homecluster/apps/cnpg/config \
+	--depends-on cnpg-base \
+	--prune \
+	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
+	--export >> fluxcd/homecluster/apps/cnpg/kustomization-fluxCRD.yaml

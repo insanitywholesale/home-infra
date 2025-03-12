@@ -1,0 +1,41 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: appdb
+  namespace: default
+spec:
+  instances: 2
+  storage:
+    size: 20Gi
+  managed:
+    services:
+      additional:
+        - selectorType: rw
+          serviceTemplate:
+            metadata:
+              name: "pg-rw"
+            spec:
+              type: LoadBalancer
+              loadBalancerIP: 10.0.50.160
+        - selectorType: ro
+          serviceTemplate:
+            metadata:
+              name: "pg-ro"
+            spec:
+              type: LoadBalancer
+              loadBalancerIP: 10.0.50.161
+    roles:
+      - name: angle
+        ensure: present
+        comment: personal admin user
+        login: true
+        superuser: true
+        passwordSecret:
+          name: appdb-angle
+      - name: test
+        ensure: present
+        comment: test user
+        login: true
+        createdb: true
+        passwordSecret:
+          name: appdb-test

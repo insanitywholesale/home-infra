@@ -1,0 +1,7 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - angle-secret.sops.yaml
+  - test-secret.sops.yaml
+  - cnpg-cluster.yaml
