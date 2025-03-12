@@ -29,13 +29,11 @@ spec:
         enabled: true
       replicaCount: 3
       service:
-        annotations:
-          metallb.universe.tf/address-pool: server-vlan-pool
-          metallb.universe.tf/loadBalancerIPs: 10.0.50.150
         enabled: true
         external:
           enabled: true
-        externalTrafficPolicy: Local
+        loadBalancerIP: 10.0.50.150
+        type: LoadBalancer
       terminationGracePeriodSeconds: 300
       updateStrategy:
         type: RollingUpdate
