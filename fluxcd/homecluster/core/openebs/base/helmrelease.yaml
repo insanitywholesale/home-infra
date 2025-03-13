@@ -28,11 +28,13 @@ spec:
       replicated:
         mayastor:
           enabled: true
-    iopenebs-crds:
-      csi:
-        volumeSnapshots:
-          enabled: true
-          keep: true
+    lvm-localpv:
+      crds:
+        csi:
+          volumeSnapshots:
+            enabled: false
+        lvmLocalPv:
+          enabled: false
     mayastor:
       crds:
         enabled: false
@@ -46,3 +48,24 @@ spec:
         envcontext: iova-mode=pa
       localpv-provisioner:
         enabled: false
+      loki-stack:
+        enabled: false
+        promtail:
+          enabled: false
+        rbac:
+          create: false
+      obs:
+        callhome:
+          enabled: false
+    openebs-crds:
+      csi:
+        volumeSnapshots:
+          enabled: true
+          keep: true
+    zfs-localpv:
+      crds:
+        csi:
+          volumeSnapshots:
+            enabled: false
+        zfsLocalPv:
+          enabled: false

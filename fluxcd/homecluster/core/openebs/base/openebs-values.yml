@@ -1,12 +1,4 @@
 # https://raw.githubusercontent.com/openebs/openebs/e90fe9b35ea45ca03077317259e8eb530693ad33/charts/values.yaml
-#
-iopenebs-crds:
-  csi:
-    volumeSnapshots:
-      enabled: true
-      keep: true
-
-# Refer to https://github.com/openebs/mayastor-extensions/blob/v2.7.3/chart/values.yaml for complete set of values.
 mayastor:
   csi:
     node:
@@ -19,6 +11,15 @@ mayastor:
     enabled: false
   crds:
     enabled: false
+  loki-stack:
+    enabled: false
+    promtail:
+      enabled: false
+    rbac:
+      create: false
+  obs:
+    callhome:
+      enabled: false
   # NOTE: https://github.com/openebs/mayastor/issues/1763
   io_engine:
     envcontext: "iova-mode=pa"
@@ -32,3 +33,25 @@ engines:
   replicated:
     mayastor:
       enabled: true
+
+openebs-crds:
+  csi:
+    volumeSnapshots:
+      enabled: true
+      keep: true
+
+lvm-localpv:
+  crds:
+    lvmLocalPv:
+      enabled: false
+    csi:
+      volumeSnapshots:
+        enabled: false
+
+zfs-localpv:
+  crds:
+    zfsLocalPv:
+      enabled: false
+    csi:
+      volumeSnapshots:
+        enabled: false
