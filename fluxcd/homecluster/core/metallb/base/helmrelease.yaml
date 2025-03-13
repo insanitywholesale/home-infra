@@ -33,3 +33,4 @@ spec:
       enabled: true
       frr:
         enabled: false
+      ignoreExcludeLB: true
