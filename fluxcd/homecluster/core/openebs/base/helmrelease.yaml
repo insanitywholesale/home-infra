@@ -28,6 +28,11 @@ spec:
       replicated:
         mayastor:
           enabled: true
+    localpv-provisioner:
+      hostpathClass:
+        enabled: false
+      rbac:
+        create: true
     lvm-localpv:
       crds:
         csi:
@@ -48,6 +53,8 @@ spec:
         envcontext: iova-mode=pa
       localpv-provisioner:
         enabled: false
+        hostpathClass:
+          enabled: false
       loki-stack:
         enabled: false
         promtail:
@@ -57,6 +64,9 @@ spec:
       obs:
         callhome:
           enabled: false
+      storageClass:
+        default: false
+        enabled: false
     openebs-crds:
       csi:
         volumeSnapshots:

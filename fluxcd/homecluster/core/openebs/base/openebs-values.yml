@@ -1,28 +1,10 @@
 # https://raw.githubusercontent.com/openebs/openebs/e90fe9b35ea45ca03077317259e8eb530693ad33/charts/values.yaml
-mayastor:
+
+openebs-crds:
   csi:
-    node:
-      initContainers:
-        enabled: false # NOTE: required by Talos
-  etcd:
-    # -- Kubernetes Cluster Domain
-    clusterDomain: cluster.local
-  localpv-provisioner:
-    enabled: false
-  crds:
-    enabled: false
-  loki-stack:
-    enabled: false
-    promtail:
-      enabled: false
-    rbac:
-      create: false
-  obs:
-    callhome:
-      enabled: false
-  # NOTE: https://github.com/openebs/mayastor/issues/1763
-  io_engine:
-    envcontext: "iova-mode=pa"
+    volumeSnapshots:
+      enabled: true
+      keep: true
 
 engines:
   local:
@@ -34,11 +16,41 @@ engines:
     mayastor:
       enabled: true
 
-openebs-crds:
+mayastor:
+  # NOTE: https://github.com/openebs/mayastor/issues/1763
+  io_engine:
+    envcontext: "iova-mode=pa"
   csi:
-    volumeSnapshots:
-      enabled: true
-      keep: true
+    node:
+      initContainers:
+        enabled: false # NOTE: required by Talos
+  storageClass:
+    enabled: false
+    default: false
+  etcd:
+    # -- Kubernetes Cluster Domain
+    clusterDomain: cluster.local
+  localpv-provisioner:
+    enabled: false
+    hostpathClass:
+      enabled: false
+  crds:
+    enabled: false
+  loki-stack:
+    enabled: false
+    promtail:
+      enabled: false
+    rbac:
+      create: false
+  obs:
+    callhome:
+      enabled: false
+
+localpv-provisioner:
+  hostpathClass:
+    enabled: false
+  rbac:
+    create: true
 
 lvm-localpv:
   crds:
