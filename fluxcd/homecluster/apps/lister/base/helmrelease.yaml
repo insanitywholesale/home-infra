@@ -12,13 +12,16 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: lister
-      version: 0.2.2
+      version: 0.3.1
   install:
     createNamespace: true
   interval: 10m0s
   releaseName: lister
   targetNamespace: lister
   values:
+    env:
+      variables:
+        PG_URL: postgresql://angle:fail@pg-rw.default.svc.cluster.local:5432/postgres?sslmode=disable
     ingress:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production

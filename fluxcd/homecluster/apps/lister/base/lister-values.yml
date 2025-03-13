@@ -16,3 +16,7 @@ ingress:
     - secretName: lister-tls
       hosts:
         - lister.home.inherently.xyz
+
+env:
+  variables:
+    PG_URL: postgresql://angle:fail@pg-rw.default.svc.cluster.local:5432/postgres?sslmode=disable

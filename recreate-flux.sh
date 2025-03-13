@@ -164,7 +164,7 @@ flux create helmrelease lister \
 	--create-target-namespace \
 	--source=HelmRepository/lister \
 	--chart=lister \
-	--chart-version="0.2.2" \
+	--chart-version="0.3.1" \
 	--values=fluxcd/homecluster/apps/lister/base/lister-values.yml \
 	--export > fluxcd/homecluster/apps/lister/base/helmrelease.yaml
 
