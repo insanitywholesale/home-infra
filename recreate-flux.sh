@@ -327,3 +327,34 @@ flux create kustomization cnpg-config \
 	--decryption-provider=sops \
 	--decryption-secret=sops-age \
 	--export >> fluxcd/homecluster/apps/cnpg/kustomization-fluxCRD.yaml
+
+mkdir -p fluxcd/homecluster/apps/gitlab-agent/base    # For flux helmrepository, upstream chart helm values and flux helmrelease with custom values
+mkdir -p fluxcd/homecluster/apps/gitlab-agent/config  # For things other than values of the upstream chart
+
+cp fluxcd/homecluster/templates/hrhr-kustomization.yaml fluxcd/homecluster/apps/gitlab-agent/base/kustomization.yaml
+
+flux create source helm gitlab \
+	--interval=10m \
+	--url=https://charts.gitlab.io \
+	--export > fluxcd/homecluster/apps/gitlab-agent/base/helmrepository.yaml
+
+flux create helmrelease gitlab-agent \
+	--interval=10m \
+	--release-name gitlab-agent \
+	--target-namespace gitlab-agent \
+	--create-target-namespace \
+	--source=HelmRepository/gitlab \
+	--chart=gitlab-agent \
+	--chart-version="2.12.2" \
+	--values=fluxcd/homecluster/apps/gitlab-agent/base/gitlab-agent-values.yml \
+	--export > fluxcd/homecluster/apps/gitlab-agent/base/helmrelease.yaml
+
+flux create kustomization gitlab-agent-base \
+	--interval=10m \
+	--source GitRepository/flux-system \
+	--path=fluxcd/homecluster/apps/gitlab-agent/base \
+	--prune \
+	--wait \
+	--decryption-provider=sops \
+	--decryption-secret=sops-age \
+	--export > fluxcd/homecluster/apps/gitlab-agent/kustomization-fluxCRD.yaml

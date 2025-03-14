@@ -1,0 +1,11 @@
+# https://gitlab.com/gitlab-org/charts/gitlab-agent/-/raw/8f409242a6f54f22cd121b4f8e3e7fd92e4013a5/values.yaml
+
+# -- configure the agent
+config:
+  # -- The user-facing URL for the in-cluster `agentk`
+  kasAddress: 'wss://kas.gitlab.com'
+  # -- name of the secret storing the token
+  secretName: gitlab-agent-token
+
+  observability:
+    enabled: false
