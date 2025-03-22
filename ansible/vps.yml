@@ -1,0 +1,13 @@
+---
+- name: Install and configure oracle VPS
+  hosts: vps_servers
+  become: true
+  tasks:
+    - name: Get Cloudflare LE cert
+      ansible.builtin.import_role:
+        name: cloudflare_le_cert
+      vars:
+        cloudflare_cert_domains:
+          - test3.inherently.xyz
+        cloudflare_cert_file_dest: /home/ubuntu/certs/test3.inherently.xyz.crt
+        cloudflare_key_file_dest: /home/ubuntu/certs/test3.inherently.xyz.key

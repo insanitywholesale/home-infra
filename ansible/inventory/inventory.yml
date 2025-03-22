@@ -567,3 +567,10 @@ all:
           cloudflare_api_token: *id001
           ntp_timezone: Europe/Athens
           step_ca_version: 0.27.2
+    vps_servers:
+      hosts:
+        vps:
+          ansible_host: 144.24.187.52
+          ansible_user: ubuntu
+          cloudflare_api_token: *id001
+          ntp_timezone: Europe/Athens
