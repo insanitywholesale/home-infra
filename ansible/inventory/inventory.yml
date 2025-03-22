@@ -6,22 +6,33 @@ all:
         arch_main:
           ansible_host: 10.0.20.50
           ansible_user: angle
+          cloudflare_api_token: &id001 !vault |
+            $ANSIBLE_VAULT;1.1;AES256
+            65626266663461316363313433306561663337363832386139386366623961393731336330376566
+            6234343437326333656235636261303133336263383937310a383936636565383931646664356661
+            31646663363664396535386136366161383765373232323437383837626533656530346234303237
+            3165313037363264610a333634353461643365626437333064343733623861383264663261326530
+            31393265613235373833656631303138366564343733393065313733363365633661633534356232
+            6530363265363137303830396236373461313937386565336236
           ntp_timezone: Europe/Athens
     docker_builder_servers:
       hosts:
         docker-builder01:
           ansible_host: 10.0.50.141
           ansible_user: debian
+          cloudflare_api_token: *id001
           ntp_timezone: Europe/Athens
         docker-builder02:
           ansible_host: 10.0.50.142
           ansible_user: debian
+          cloudflare_api_token: *id001
           ntp_timezone: Europe/Athens
     gitlab_runner_servers:
       hosts:
         gitlab-runner01:
           ansible_host: 10.0.50.143
           ansible_user: debian
+          cloudflare_api_token: *id001
           gitlab_runner_coordinator_url: https://gitlab.home.inherently.xyz
           gitlab_runner_no_log_secrets: false
           gitlab_runner_registration_token_type: authentication-token
@@ -39,6 +50,7 @@ all:
         gitlab-runner02:
           ansible_host: 10.0.50.144
           ansible_user: debian
+          cloudflare_api_token: *id001
           gitlab_runner_coordinator_url: https://gitlab.home.inherently.xyz
           gitlab_runner_no_log_secrets: false
           gitlab_runner_registration_token_type: authentication-token
@@ -56,6 +68,7 @@ all:
         gitlab-runner03:
           ansible_host: 10.0.50.145
           ansible_user: debian
+          cloudflare_api_token: *id001
           gitlab_runner_coordinator_url: https://gitlab.home.inherently.xyz
           gitlab_runner_no_log_secrets: false
           gitlab_runner_registration_token_type: authentication-token
@@ -75,14 +88,7 @@ all:
         gitlab:
           ansible_host: 10.0.50.45
           ansible_user: debian
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            37313863346536373662633439316335306631373162323262613039613435646633353935373730
-            6262643665343634336231393336653864313261353233630a643661373561323130613266333139
-            63373434313634613737333864376437316364393836613338383039616238303466653265303336
-            6130653565616565610a623861336666313435636132323835306534303337393565313862363161
-            30393337373539343830653830356330313161303435373461633234316434316538623835663562
-            3430363730393532333166643732623532323332623338343966
+          cloudflare_api_token: *id001
           gitlab_root_password: !vault |
             $ANSIBLE_VAULT;1.1;AES256
             66313938306366386330373661373564623733313064653837353435356666353936383232386232
@@ -96,14 +102,7 @@ all:
         grafana:
           ansible_host: 10.0.50.30
           ansible_user: debian
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            61653865353662616437653166343763396661646235363866653665636130373165613636643966
-            6132313662373866623265383434636662653362346338300a383734623234353237666663346137
-            39323566623331396533386431376234313839646536346635373761306536613033323734633334
-            6131343861313866310a643635303535313966666335353732663161396164313566636638366561
-            31356531393466633436353161326133653631353639653565623738383135323334383534646132
-            3636616132666462313130326534633662636333373664633866
+          cloudflare_api_token: *id001
           grafana_cap_net_bind_service: true
           grafana_domain: grafana.home.inherently.xyz
           grafana_port: 443
@@ -130,14 +129,7 @@ all:
         influxdb:
           ansible_host: 10.0.50.32
           ansible_user: debian
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            30663161323033636237316632356664303931643866633764313064346333323939316437613563
-            3362633131366238333939346230323561346232393764330a363363656631303631346562393434
-            33396661313836303662386536373431396236653562343330343761306239363433393563343832
-            3132366438396439610a656230613666646236666264303032373935623838656334376639323530
-            33633630346162633764663838303633626530366564666663376339316534356163306365626333
-            3333363537353435333663613431383463636332613366383036
+          cloudflare_api_token: *id001
           influxdb_operator_api_token: !vault |
             $ANSIBLE_VAULT;1.1;AES256
             34373363643833396263616435353933613131366666626431626430313638376130663633626135
@@ -158,11 +150,12 @@ all:
               ansible_host: 10.0.50.61
               ansible_user: debian
               api_endpoint: 10.0.50.50
+              cloudflare_api_token: *id001
               extra_agent_args: ""
               extra_server_args: --disable traefik --disable servicelb --disable local-storage --tls-san 10.0.50.50 --tls-san kubernetes.home.inherently.xyz
               k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
-              token: &id001 !vault |
+              token: &id002 !vault |
                 $ANSIBLE_VAULT;1.1;AES256
                 37633333626632356133363161656665633033616166363962623737393362376632356139396134
                 3762656639623239626362623466316263393263626162330a316534326632336633316135393337
@@ -178,21 +171,23 @@ all:
               ansible_host: 10.0.50.62
               ansible_user: debian
               api_endpoint: 10.0.50.50
+              cloudflare_api_token: *id001
               extra_agent_args: ""
               extra_server_args: --disable traefik --disable servicelb --disable local-storage --tls-san 10.0.50.50 --tls-san kubernetes.home.inherently.xyz
               k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
-              token: *id001
+              token: *id002
               user_kubectl: true
             k3s-w03-c01:
               ansible_host: 10.0.50.63
               ansible_user: debian
               api_endpoint: 10.0.50.50
+              cloudflare_api_token: *id001
               extra_agent_args: ""
               extra_server_args: --disable traefik --disable servicelb --disable local-storage --tls-san 10.0.50.50 --tls-san kubernetes.home.inherently.xyz
               k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
-              token: *id001
+              token: *id002
               user_kubectl: true
         server:
           hosts:
@@ -200,47 +195,53 @@ all:
               ansible_host: 10.0.50.51
               ansible_user: debian
               api_endpoint: 10.0.50.50
+              cloudflare_api_token: *id001
               extra_agent_args: ""
               extra_server_args: --disable traefik --disable servicelb --disable local-storage --tls-san 10.0.50.50 --tls-san kubernetes.home.inherently.xyz
               k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
-              token: *id001
+              token: *id002
               user_kubectl: true
             k3s-m02-c01:
               ansible_host: 10.0.50.52
               ansible_user: debian
               api_endpoint: 10.0.50.50
+              cloudflare_api_token: *id001
               extra_agent_args: ""
               extra_server_args: --disable traefik --disable servicelb --disable local-storage --tls-san 10.0.50.50 --tls-san kubernetes.home.inherently.xyz
               k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
-              token: *id001
+              token: *id002
               user_kubectl: true
             k3s-m03-c01:
               ansible_host: 10.0.50.53
               ansible_user: debian
               api_endpoint: 10.0.50.50
+              cloudflare_api_token: *id001
               extra_agent_args: ""
               extra_server_args: --disable traefik --disable servicelb --disable local-storage --tls-san 10.0.50.50 --tls-san kubernetes.home.inherently.xyz
               k3s_version: v1.30.3+k3s1
               ntp_timezone: Europe/Athens
-              token: *id001
+              token: *id002
               user_kubectl: true
     kafka_servers:
       hosts:
         kafka01:
           ansible_host: 10.0.50.24
           ansible_user: debian
+          cloudflare_api_token: *id001
           kafka_broker_id: 1
           ntp_timezone: Europe/Athens
         kafka02:
           ansible_host: 10.0.50.25
           ansible_user: debian
+          cloudflare_api_token: *id001
           kafka_broker_id: 2
           ntp_timezone: Europe/Athens
         kafka03:
           ansible_host: 10.0.50.26
           ansible_user: debian
+          cloudflare_api_token: *id001
           kafka_broker_id: 3
           ntp_timezone: Europe/Athens
     keycloak_servers:
@@ -248,14 +249,7 @@ all:
         keycloak:
           ansible_host: 10.0.50.15
           ansible_user: debian
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            61366239393938376366343035626663313162343561336535613237656562323336303635303232
-            3332323339633236376664613161356536356464353635660a313632323664656539363165396334
-            65653463643333366562323930356162376539343330303163333531306663333030356166303331
-            3831373231666434650a306236383966653639353538663564383932323532313230393930386133
-            33616166663266616530393133383439323739653331366537646637353666303661363139616138
-            3163666166346539373765633139623562613434323334373833
+          cloudflare_api_token: *id001
           keycloak_quarkus_admin_pass: !vault |
             $ANSIBLE_VAULT;1.1;AES256
             64653163623735653162356261356661663834323539323565346131366131303738616633326166
@@ -276,14 +270,7 @@ all:
         mysql:
           ansible_host: 10.0.50.23
           ansible_user: debian
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            39363862306237393535353738653836346464653337396166656338666530353666633838333164
-            3162633438303164383033326634343933616239303335350a633139643063653464386664326466
-            30303934303530303738353462653165313030643132376461333264313232353365386436666334
-            3361616432383137310a393836613461626363366565376532313034353331336434316364393566
-            66666364633133643064383038636162336135363837656434633739313331653664346530393339
-            3233373636333633346132396238363962623430383331646636
+          cloudflare_api_token: *id001
           mysql_bind_address: 0.0.0.0
           mysql_databases:
             - name: testmysqldb
@@ -301,6 +288,7 @@ all:
         netbox:
           ansible_host: 10.0.50.112
           ansible_user: debian
+          cloudflare_api_token: *id001
           netbox_config:
             ALLOWED_HOSTS:
               - "{{ ansible_host }}"
@@ -330,6 +318,7 @@ all:
           ansible_user: debian
           auth_type: internal
           cert_valid_days: 730
+          cloudflare_api_token: *id001
           cluster_type: multi-node
           copy_custom_security_configs: false
           domain_name: home.inherently.xyz
@@ -353,6 +342,7 @@ all:
           ansible_user: debian
           auth_type: internal
           cert_valid_days: 730
+          cloudflare_api_token: *id001
           cluster_type: multi-node
           copy_custom_security_configs: false
           domain_name: home.inherently.xyz
@@ -376,6 +366,7 @@ all:
           ansible_user: debian
           auth_type: internal
           cert_valid_days: 730
+          cloudflare_api_token: *id001
           cluster_type: multi-node
           copy_custom_security_configs: false
           domain_name: home.inherently.xyz
@@ -398,28 +389,14 @@ all:
         pihole:
           ansible_host: 10.0.50.2
           ansible_user: debian
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            63623562363764396163356466323565316338626463643935373662373932383438383833653739
-            3631636463663435643738313637366139333865396434370a656463636465643934386663666632
-            30616265383161663661613937333536356630386266323330623437363736353130656430396532
-            3061663734303032310a633462616662633539643262303665623739306537396136366664393430
-            62656561666638333862326239333062353339313064613730343531396537633532626537623037
-            3133313964303533343731663837353665353033323662353265
+          cloudflare_api_token: *id001
           ntp_timezone: Europe/Athens
     postgres_servers:
       hosts:
         postgres:
           ansible_host: 10.0.50.20
           ansible_user: debian
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            33663731643431393965336636656266326634366334623265383038383232393165393233643964
-            6462376130383233633864363131653638363563323962380a383236663630636234626465646362
-            33313132383531316239383766623561653430373664363061653263633639346365323331386232
-            3030383732333463620a303635636632643338363063643065333131373065653563353737336662
-            37353133346630346361663539323565396237643139653034386234383364346237613432633332
-            3030343138303130346362653664346337613539633663613936
+          cloudflare_api_token: *id001
           ntp_timezone: Europe/Athens
           postgresql_databases:
             - name: testdb
@@ -468,14 +445,7 @@ all:
         prometheus:
           ansible_host: 10.0.50.31
           ansible_user: debian
-          cloudflare_api_token: !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            64373638363563376534663233346535366566306634666539653565383135353339376464373232
-            6138396635646236616134646136316535333934393265660a363134323834353833643063663233
-            65363338373362326664306234393066393330353062326665376236663631643438336661646661
-            3062393733623338650a653839316663383336353839366431386566336231336164363536653263
-            61386531653261326230643732356235366634303261303265333463663537633464373733363536
-            6139623637313533326537386631356138376164316366616438
+          cloudflare_api_token: *id001
           ntp_timezone: Europe/Athens
           prometheus_config_flags_extra:
             web.enable-admin-api:
@@ -498,14 +468,7 @@ all:
         pve01:
           ansible_host: 10.0.50.71
           ansible_user: root
-          cloudflare_api_token: &id002 !vault |
-            $ANSIBLE_VAULT;1.1;AES256
-            38363438656234613230613632636136613962653538376434313065323837653734346263626138
-            3465393331363738343339393230643130613430306530310a386362613834343334306138303565
-            33333735363439303533386362343336623036633865623839343432393361323033343931386633
-            3366306564313730640a376331366335376334353435623365666164653766383930376562343762
-            66623239363231353534666330313665313338353339363130316237323936306464316365663066
-            6466326164353536356338646637666663613031306361396465
+          cloudflare_api_token: *id001
           keepalived_password: &id003 !vault |
             $ANSIBLE_VAULT;1.1;AES256
             62656632393864353833633732653238626366326238646361313861393664626261393332633532
@@ -563,7 +526,7 @@ all:
         pve02:
           ansible_host: 10.0.50.72
           ansible_user: root
-          cloudflare_api_token: *id002
+          cloudflare_api_token: *id001
           keepalived_password: *id003
           ntp_timezone: Europe/Athens
           pve_acls: *id004
@@ -581,7 +544,7 @@ all:
         pve03:
           ansible_host: 10.0.50.73
           ansible_user: root
-          cloudflare_api_token: *id002
+          cloudflare_api_token: *id001
           keepalived_password: *id003
           ntp_timezone: Europe/Athens
           pve_acls: *id004
@@ -601,5 +564,6 @@ all:
         step_ca:
           ansible_host: 10.0.50.19
           ansible_user: debian
+          cloudflare_api_token: *id001
           ntp_timezone: Europe/Athens
           step_ca_version: 0.27.2
