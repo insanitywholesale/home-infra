@@ -36,6 +36,11 @@ spec:
         ensure: present
         comment: test user
         login: true
-        createdb: true
         passwordSecret:
           name: appdb-test
+      - name: lister
+        ensure: present
+        comment: user for lister app
+        login: true
+        passwordSecret:
+          name: appdb-lister

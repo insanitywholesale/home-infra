@@ -40,3 +40,24 @@ spec:
     name: flux-system
   timeout: 2m0s
   wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cnpg-databases
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+  - name: cnpg-cluster
+  interval: 10m0s
+  path: ./fluxcd/homecluster/apps/cnpg/cluster
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  timeout: 2m0s
+  wait: true
