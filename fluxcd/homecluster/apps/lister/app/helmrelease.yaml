@@ -19,9 +19,6 @@ spec:
   releaseName: lister
   targetNamespace: lister
   values:
-    env:
-      variables:
-        PG_URL: postgresql://angle:fail@pg-rw.default.svc.cluster.local:5432/postgres?sslmode=disable
     ingress:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
