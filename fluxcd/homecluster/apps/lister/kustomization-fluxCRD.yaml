@@ -11,7 +11,7 @@ spec:
       name: sops-age
   dependsOn:
   - name: ingress-nginx
-  - name: cnpg-cluster
+  - name: cnpg-databases
   interval: 10m0s
   path: ./fluxcd/homecluster/apps/lister/app
   prune: true
