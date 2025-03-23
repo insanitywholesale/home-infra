@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: appdb-listerdb
+  namespace: database
+spec:
+  name: listerdb
+  owner: lister
+  cluster:
+    name: appdb

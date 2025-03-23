@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: ingress-nginx-base
+  name: ingress-nginx
   namespace: flux-system
 spec:
   decryption:
@@ -12,7 +12,7 @@ spec:
   dependsOn:
   - name: metallb-config
   interval: 10m0s
-  path: ./fluxcd/homecluster/apps/ingress-nginx/base
+  path: ./fluxcd/homecluster/apps/ingress-nginx/app
   prune: true
   sourceRef:
     kind: GitRepository

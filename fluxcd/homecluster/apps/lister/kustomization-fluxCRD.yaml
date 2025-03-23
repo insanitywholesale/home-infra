@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: lister-base
+  name: lister-app
   namespace: flux-system
 spec:
   decryption:
@@ -10,9 +10,10 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-  - name: ingress-nginx-base
+  - name: ingress-nginx
+  - name: cnpg-cluster
   interval: 10m0s
-  path: ./fluxcd/homecluster/apps/lister/base
+  path: ./fluxcd/homecluster/apps/lister/app
   prune: true
   sourceRef:
     kind: GitRepository
