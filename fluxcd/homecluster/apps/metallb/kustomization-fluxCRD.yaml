@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cert-manager-base
+  name: metallb-base
   namespace: flux-system
 spec:
   decryption:
@@ -10,7 +10,7 @@ spec:
     secretRef:
       name: sops-age
   interval: 10m0s
-  path: ./fluxcd/homecluster/core/cert-manager/base
+  path: ./fluxcd/homecluster/apps/metallb/base
   prune: true
   sourceRef:
     kind: GitRepository
@@ -21,7 +21,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cert-manager-config
+  name: metallb-config
   namespace: flux-system
 spec:
   decryption:
@@ -29,9 +29,9 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-  - name: cert-manager-base
+  - name: metallb-base
   interval: 10m0s
-  path: ./fluxcd/homecluster/core/cert-manager/config
+  path: ./fluxcd/homecluster/apps/metallb/config
   prune: true
   sourceRef:
     kind: GitRepository

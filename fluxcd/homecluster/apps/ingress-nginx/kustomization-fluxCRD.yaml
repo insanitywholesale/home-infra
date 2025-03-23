@@ -12,7 +12,7 @@ spec:
   dependsOn:
   - name: metallb-config
   interval: 10m0s
-  path: ./fluxcd/homecluster/core/ingress-nginx/base
+  path: ./fluxcd/homecluster/apps/ingress-nginx/base
   prune: true
   sourceRef:
     kind: GitRepository

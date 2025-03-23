@@ -2,9 +2,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  # Storage
+  - ./openebs/kustomization-fluxCRD.yaml
+  # Network
+  - ./metallb/kustomization-fluxCRD.yaml
+  - ./ingress-nginx/kustomization-fluxCRD.yaml
+  - ./cert-manager/kustomization-fluxCRD.yaml
+  # TODO: external-dns opnsense
   - ./podinfo/kustomization-fluxCRD.yaml
   - ./lister/kustomization-fluxCRD.yaml
   - ./cnpg/kustomization-fluxCRD.yaml
   - ./gitlab-agent/kustomization-fluxCRD.yaml
-  # TODO: replace kubernetes upstream dashboard with something less annoying to configure and run
-  #- ./dashboard/kustomization-fluxCRD.yaml
+  # TODO: homepage

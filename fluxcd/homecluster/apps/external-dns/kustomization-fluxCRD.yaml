@@ -2,15 +2,18 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: longhorn-base
+  name: external-dns-base
   namespace: flux-system
 spec:
   decryption:
     provider: sops
     secretRef:
       name: sops-age
+  dependsOn:
+  - name: metallb-base
+  - name: ingress-nginx-base
   interval: 10m0s
-  path: ./fluxcd/homecluster/core/longhorn/base
+  path: ./fluxcd/homecluster/apps/external-dns/base
   prune: true
   sourceRef:
     kind: GitRepository
