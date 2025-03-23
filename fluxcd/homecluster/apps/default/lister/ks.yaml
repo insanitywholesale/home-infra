@@ -1,0 +1,26 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app lister
+  namespace: &ns default
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  dependsOn:
+    - name: ingress-nginx
+      namespace: network
+    - name: cnpg-databases
+      namespace: database
+  interval: 10m
+  path: ./fluxcd/homecluster/apps/default/lister/app
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true

@@ -1,6 +1,0 @@
-# Permalink: https://raw.githubusercontent.com/cloudnative-pg/charts/45f52a09b45981cb25b4e60440ab5f492f194191/charts/cloudnative-pg/values.yaml
-
-rbac:
-  # -- Aggregate ClusterRoles to Kubernetes default user-facing roles.
-  # Ref: https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
-  aggregateClusterRoles: false
