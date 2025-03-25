@@ -2,22 +2,20 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: podinfo
-  namespace: flux-system
+  name: &app podinfo
+  namespace: &ns default
 spec:
   chart:
     spec:
-      chart: podinfo
+      chart: *app
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: podinfo
       version: 6.7.0
-  install:
-    createNamespace: true
-  interval: 10m0s
-  releaseName: podinfo
-  targetNamespace: podinfo
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
   values:
     ingress:
       annotations:
@@ -26,12 +24,12 @@ spec:
       hosts:
       - host: podinfo.home.inherently.xyz
         paths:
-        - path: /
-          pathType: ImplementationSpecific
+          - path: /
+            pathType: ImplementationSpecific
       tls:
-      - hosts:
-        - podinfo.home.inherently.xyz
-        secretName: podinfo-tls
+        - hosts:
+            - podinfo.home.inherently.xyz
+          secretName: podinfo-tls
     ui:
       color: '#440044'
       message: inherent podinfo

@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: lister
-  namespace: flux-system
+  namespace: default
 spec:
   interval: 10m0s
   url: https://gitlab.com/api/v4/projects/27255221/packages/helm/stable
