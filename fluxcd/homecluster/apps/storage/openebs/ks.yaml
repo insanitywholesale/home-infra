@@ -1,0 +1,37 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app openebs
+  namespace: &ns storage
+spec:
+  interval: 10m
+  path: ./fluxcd/homecluster/apps/storage/openebs/operator
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app openebs-diskpools
+  namespace: &ns storage
+spec:
+  dependsOn:
+    - name: openebs
+      namespace: *ns
+  interval: 10m
+  path: ./fluxcd/homecluster/apps/storage/openebs/diskpools
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true

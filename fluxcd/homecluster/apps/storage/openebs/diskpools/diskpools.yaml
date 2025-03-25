@@ -2,7 +2,7 @@ apiVersion: "openebs.io/v1beta2"
 kind: DiskPool
 metadata:
   name: pool-kube01
-  namespace: openebs
+  namespace: storage
 spec:
   node: kube01
   disks: ["aio:///dev/disk/by-id/ata-TOSHIBA_DT01ACA200_Z7B6Y1UAS"]
@@ -11,7 +11,7 @@ apiVersion: "openebs.io/v1beta2"
 kind: DiskPool
 metadata:
   name: pool-kube02
-  namespace: openebs
+  namespace: storage
 spec:
   node: kube02
   disks: ["aio:///dev/disk/by-id/ata-TOSHIBA_DT01ACA200_Z2JTRVVGS"]
@@ -20,7 +20,7 @@ apiVersion: "openebs.io/v1beta2"
 kind: DiskPool
 metadata:
   name: pool-kube03
-  namespace: openebs
+  namespace: storage
 spec:
   node: kube03
   disks: ["aio:///dev/disk/by-id/ata-TOSHIBA_DT01ACA200_Z7B6VNPAS"]

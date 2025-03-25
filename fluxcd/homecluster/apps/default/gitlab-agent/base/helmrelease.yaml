@@ -2,22 +2,20 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: gitlab-agent
-  namespace: flux-system
+  name: &app gitlab-agent
+  namespace: &ns default
 spec:
   chart:
     spec:
-      chart: gitlab-agent
+      chart: *app
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: gitlab
       version: 2.12.2
-  install:
-    createNamespace: true
-  interval: 10m0s
-  releaseName: gitlab-agent
-  targetNamespace: gitlab-agent
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
   values:
     config:
       kasAddress: wss://kas.gitlab.com
