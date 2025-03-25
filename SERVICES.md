@@ -10,7 +10,7 @@ NTP, DNS, PXE and such.
 .1
 
 ### Pi-hole
-10.0.50.2
+.2
 
 ### AdGuard Home
 .3
@@ -43,7 +43,7 @@ Authentication, authorization and secrets.
 .14
 
 ### Keycloak
-10.0.50.15
+.15
 
 ### Authelia
 .16
@@ -55,16 +55,16 @@ Authentication, authorization and secrets.
 .18
 
 ### Smallstep CA
-10.0.50.19
+.19
 
 ## Data places
 Databases, Kafka, Opensearch
 
 ### PostgreSQL
-10.0.50.20 (reserved up to .22 for cluster)
+.20 (reserved up to .22 for cluster)
 
 ### MySQL
-10.0.50.23
+.23
 
 ### Kafka
 .24-6
@@ -76,13 +76,13 @@ Databases, Kafka, Opensearch
 Tools for monitoring, logging, tracing and data visualization.
 
 ### Grafana
-10.0.50.30
+.30
 
 ### Prometheus + Alertmanager
-10.0.50.31
+.31
 
 ### InfluxDB
-10.0.50.32
+.32
 
 ### Graphite
 .33
@@ -115,7 +115,7 @@ Code analysis and git hosting plus container registry and helm repo.
 .42
 
 ### GitLab
-10.0.50.45
+.45
 
 ### Forgejo
 .46
@@ -129,29 +129,14 @@ Code analysis and git hosting plus container registry and helm repo.
 ### Codecov
 .49
 
-## Kubernetes
-Kubernetes nodes
-
-### k3s main cluster loadbalanced API server
-.50
-
-### k3s control plane nodes
-10.0.50.51-53
-
-### blank for now, potentially new ingress controller address
-.60
-
-### k3s worker nodes
-10.0.50.61-63
-
 ## Physical servers
 Bare-metal machines where most things run on
 
-### Proxmox loadbalanced endpoint
-10.0.50.70
+### Kubernetes LB API server endpoint
+10.0.50.69
 
-### Proxmox
-10.0.50.71-73 (leave space for up to .75)
+### Talos Linux nodes
+10.0.50.71-73
 
 ### TrueNAS
 10.0.50.100
@@ -196,16 +181,16 @@ Can't or don't want to run these on kubernetes.
 .140
 
 ### Docker buildx
-10.0.50.141-142
+.141-142
 
 ### Gitlab runners
-10.0.50.143-145
+.143-145
 
 ### k3s main cluster metallb pool
 10.0.50.150-199
 
 ### cloudflared
-10.0.50.201
+.201
 
 ### Tailscale
 .202
