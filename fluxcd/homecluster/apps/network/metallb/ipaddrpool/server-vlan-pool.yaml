@@ -3,7 +3,7 @@ apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: server-vlan-pool
-  namespace: metallb-system
+  namespace: network
 spec:
   addresses:
     - 10.0.50.150-10.0.50.199

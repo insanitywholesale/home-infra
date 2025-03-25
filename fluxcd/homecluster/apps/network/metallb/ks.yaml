@@ -1,0 +1,57 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app metallb
+  namespace: &ns network
+spec:
+  interval: 10m
+  path: ./fluxcd/homecluster/apps/network/metallb/operator
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app metallb-ipaddrpool
+  namespace: &ns network
+spec:
+  dependsOn:
+    - name: metallb
+      namespace: *ns
+  interval: 10m
+  path: ./fluxcd/homecluster/apps/network/metallb/ipaddrpool
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app metallb-l2advert
+  namespace: &ns network
+spec:
+  dependsOn:
+    - name: metallb-ipaddrpool
+      namespace: *ns
+  interval: 10m
+  path: ./fluxcd/homecluster/apps/network/metallb/l2advert
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true

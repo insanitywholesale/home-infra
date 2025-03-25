@@ -1,0 +1,37 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app cert-manager
+  namespace: &ns network
+spec:
+  interval: 10m
+  path: ./fluxcd/homecluster/apps/network/cert-manager/operator
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app cert-manager-issuers
+  namespace: &ns network
+spec:
+  dependsOn:
+    - name: cert-manager
+      namespace: *ns
+  interval: 10m
+  path: ./fluxcd/homecluster/apps/network/cert-manager/issuers
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true

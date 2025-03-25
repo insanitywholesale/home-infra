@@ -2,19 +2,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app podinfo
-  namespace: &ns default
+  name: &app ingress-nginx
+  namespace: &ns network
 spec:
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: *app
   dependsOn:
-    - name: ingress-nginx
-      namespace: network
+    - name: metallb-l2advert
+      namespace: *ns
   interval: 10m
-  path: ./fluxcd/homecluster/apps/default/podinfo/app
+  path: ./fluxcd/homecluster/apps/network/ingress-nginx/app
   prune: true
-  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system

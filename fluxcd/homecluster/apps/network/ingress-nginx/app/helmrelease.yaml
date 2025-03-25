@@ -2,12 +2,12 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: ingress-nginx
-  namespace: flux-system
+  name: &app ingress-nginx
+  namespace: &ns network
 spec:
   chart:
     spec:
-      chart: ingress-nginx
+      chart: *app
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
@@ -16,8 +16,8 @@ spec:
   install:
     createNamespace: true
   interval: 10m0s
-  releaseName: ingress-nginx
-  targetNamespace: ingress-nginx
+  releaseName: *app
+  targetNamespace: *ns
   values:
     controller:
       electionTTL: 15s
