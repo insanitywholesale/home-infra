@@ -1,0 +1,22 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app kube-prometheus-stack
+  namespace: &ns monitoring
+spec:
+  dependsOn:
+    - name: ingress-nginx
+      namespace: network
+    - name: openebs
+      namespace: storage
+  interval: 10m0s
+  path: ./fluxcd/homecluster/apps/monitoring/kube-prometheus-stack/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true

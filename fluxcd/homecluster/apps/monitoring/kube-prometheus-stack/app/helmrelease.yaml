@@ -1,0 +1,182 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app kube-prometheus-stack
+  namespace: &ns monitoring
+spec:
+  chart:
+    spec:
+      chart: *app
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: kube-prometheus-stack
+      version: 70.3.0
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
+  values:
+    alertmanager:
+      alertmanagerSpec:
+        externalUrl: https://alertmanager.home.inherently.xyz
+        persistentVolumeClaimRetentionPolicy:
+          whenDeleted: Retain
+          whenScaled: Retain
+        retention: 1500h
+        storage:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 50Gi
+              storageClassName: openebs-triple-replica
+      enabled: true
+      forceDeployDashboards: true
+      ingress:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        enabled: true
+        hosts:
+        - alertmanager.home.inherently.xyz
+        ingressClassName: nginx
+        pathType: ImplementationSpecific
+        paths:
+        - /
+        tls:
+        - hosts:
+          - alertmanager.home.inherently.xyz
+          secretName: alertmanager-tls
+    cleanPrometheusOperatorObjectNames: false
+    crds:
+      enabled: true
+      upgradeJob:
+        enabled: true
+        forceConflicts: true
+    global:
+      rbac:
+        create: true
+        createAggregateClusterRoles: false
+        pspAnnotations: {}
+        pspEnabled: false
+    grafana:
+      adminPassword: prom-operator
+      adminUser: admin
+      defaultDashboardsEditable: true
+      defaultDashboardsEnabled: true
+      defaultDashboardsTimezone: browser
+      enabled: true
+      forceDeployDashboards: true
+      forceDeployDatasources: true
+      ingress:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        enabled: true
+        hosts:
+        - grafana.home.inherently.xyz
+        ingressClassName: nginx
+        path: /
+        tls:
+        - hosts:
+          - grafana.home.inherently.xyz
+          secretName: grafana-tls
+      persistence:
+        accessModes:
+        - ReadWriteOnce
+        datasources:
+          alertmanager:
+            enabled: true
+            handleGrafanaManagedAlerts: true
+            implementation: prometheus
+            name: Alertmanager
+            uid: alertmanager
+          defaultDatasourceEnabled: true
+          enabled: true
+          isDefaultDatasource: true
+          name: Prometheus
+          uid: prometheus
+          url: https://prometheus.home.inherently.xyz/
+        enabled: true
+        finalizers:
+        - kubernetes.io/pvc-protection
+        size: 20Gi
+        storageClassName: openebs-triple-replica
+        type: sts
+    kube-state-metrics:
+      prometheusScrape: false
+    kubeApiServer:
+      enabled: true
+    kubeControllerManager:
+      enabled: false
+    kubeEtcd:
+      enabled: false
+    kubeProxy:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeStateMetrics:
+      enabled: true
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        https: true
+        insecureSkipVerify: true
+        kubelet: true
+    kubernetesServiceMonitors:
+      enabled: true
+    nodeExporter:
+      enabled: true
+      forceDeployDashboards: true
+      operatingSystems:
+        aix:
+          enabled: false
+        darwin:
+          enabled: false
+        linux:
+          enabled: true
+    prometheus:
+      enabled: true
+      ingress:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        enabled: true
+        hosts:
+        - prometheus.home.inherently.xyz
+        ingressClassName: nginx
+        pathType: ImplementationSpecific
+        paths:
+        - /
+        tls:
+        - hosts:
+          - prometheus.home.inherently.xyz
+          secretName: prometheus-tls
+      prometheusSpec:
+        enableAdminAPI: true
+        externalUrl: https://prometheus.home.inherently.xyz
+        persistentVolumeClaimRetentionPolicy:
+          whenDeleted: Retain
+          whenScaled: Retain
+        remoteWriteDashboards: true
+        retention: 150d
+        retentionSize: 50GB
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 70Gi
+              storageClassName: openebs-triple-replica
+        walCompression: true
+    prometheus-node-exporter:
+      extraArgs:
+      - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+      - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+      releaseLabel: true
+    prometheusOperator:
+      enabled: true
+      fullnameOverride: ""
