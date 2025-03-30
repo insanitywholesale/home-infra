@@ -5,5 +5,4 @@ namespace: storage
 components:
   - ../../components/common
 resources:
-  #- ./ns.yaml
   - ./openebs/ks.yaml

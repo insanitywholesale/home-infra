@@ -4,7 +4,6 @@ namespace: network
 components:
   - ../../components/common
 resources:
-  #- ./ns.yaml
   - ./cert-manager/ks.yaml
   - ./metallb/ks.yaml
   - ./ingress-nginx/ks.yaml
