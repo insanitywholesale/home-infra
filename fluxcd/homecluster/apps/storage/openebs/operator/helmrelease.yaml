@@ -48,6 +48,11 @@ spec:
       etcd:
         clusterDomain: cluster.local
       io_engine:
+        resources:
+          limits:
+            cpu: 1.0
+          requests:
+            cpu: 1.0
         envcontext: iova-mode=pa
       localpv-provisioner:
         enabled: false
