@@ -7,3 +7,4 @@ resources:
   - ./cert-manager/ks.yaml
   - ./metallb/ks.yaml
   - ./ingress-nginx/ks.yaml
+  - ./external-dns/ks.yaml

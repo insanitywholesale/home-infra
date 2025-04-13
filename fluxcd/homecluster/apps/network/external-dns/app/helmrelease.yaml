@@ -1,0 +1,49 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app external-dns
+  namespace: &ns network
+spec:
+  chart:
+    spec:
+      chart: *app
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: *app
+      version: 1.16.1
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
+  values:
+    logLevel: debug
+    provider:
+      name: webhook
+      webhook:
+        image:
+          repository: ghcr.io/crutonjohn/external-dns-opnsense-webhook
+          tag: v0.1.0
+        env:
+          - name: LOG_LEVEL
+            value: debug
+          - name: OPNSENSE_HOST
+            value: https://opnsense.home.inherently.xyz # replace with the address to your OPNsense router
+          - name: OPNSENSE_SKIP_TLS_VERIFY
+            value: "false"
+          - name: OPNSENSE_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: &secretname external-dns-opnsense-secret
+                key: api_key
+          - name: OPNSENSE_API_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: *secretname
+                key: api_secret
+    policy: upsert-only
+    registry: noop
+    sources: ["ingress", "service"]
+    domainFilters: ["home.inherently.xyz"]
+    extraArgs:
+      - --ignore-ingress-tls-spec
