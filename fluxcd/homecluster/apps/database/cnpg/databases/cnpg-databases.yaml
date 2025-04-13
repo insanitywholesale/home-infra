@@ -8,3 +8,14 @@ spec:
   owner: lister
   cluster:
     name: appdb
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: appdb-metabase
+  namespace: database
+spec:
+  name: metabaseappdb
+  owner: metabase
+  cluster:
+    name: appdb

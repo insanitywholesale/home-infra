@@ -44,3 +44,9 @@ spec:
         login: true
         passwordSecret:
           name: appdb-lister
+      - name: metabase
+        ensure: present
+        comment: user for metabase app
+        login: true
+        passwordSecret:
+          name: appdb-metabase
