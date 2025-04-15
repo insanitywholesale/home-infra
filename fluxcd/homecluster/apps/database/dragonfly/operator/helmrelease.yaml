@@ -1,0 +1,18 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app dragonfly
+  namespace: &ns database
+spec:
+  chart:
+    spec:
+      chart: dragonfly-operator
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: dragonfly-operator
+      version: v1.1.11
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns

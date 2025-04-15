@@ -1,0 +1,25 @@
+apiVersion: dragonflydb.io/v1alpha1
+kind: Dragonfly
+metadata:
+  name: dragonfly
+spec:
+  image: ghcr.io/dragonflydb/dragonfly:v1.28.1
+  replicas: 2
+  args:
+    - --proactor_threads=2
+    - --cluster_mode=emulated
+    - --lock_on_hashtags
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: "kubernetes.io/hostname"
+      whenUnsatisfiable: "DoNotSchedule"
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/part-of: dragonfly
