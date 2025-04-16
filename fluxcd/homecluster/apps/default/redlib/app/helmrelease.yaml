@@ -1,0 +1,54 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app redlib
+  namespace: &ns default
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-helm-charts
+      version: 3.7.3
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
+  values:
+    controllers:
+      redlib:
+        containers:
+          redlib:
+            image:
+              repository: quay.io/redlib/redlib
+              tag: "latest"
+              pullPolicy: IfNotPresent
+            # https://github.com/redlib-org/redlib?tab=readme-ov-file#Configuration
+            env:
+              THEME: "dark"
+    service:
+      redlib:
+        controller: redlib
+        ports:
+          http:
+            port: 8080
+    ingress:
+      redlib:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        className: nginx
+        enabled: true
+        hosts:
+          - host: reddit.home.inherently.xyz
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+                service:
+                  identifier: redlib
+                  port: http
+        tls:
+          - hosts:
+              - reddit.home.inherently.xyz
+            secretName: redlib-tls

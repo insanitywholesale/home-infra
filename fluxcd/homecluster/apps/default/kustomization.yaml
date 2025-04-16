@@ -7,4 +7,5 @@ components:
 resources:
   - ./lister/ks.yaml
   - ./podinfo/ks.yaml
+  - ./redlib/ks.yaml
   - ./metabase/ks.yaml
