@@ -10,7 +10,8 @@ spec:
       namespace: network
     - name: openebs
       namespace: storage
-  interval: 10m0s
+  interval: 10m
+  retryInterval: 10m
   path: ./fluxcd/homecluster/apps/monitoring/kube-prometheus-stack/app
   prune: true
   sourceRef:
