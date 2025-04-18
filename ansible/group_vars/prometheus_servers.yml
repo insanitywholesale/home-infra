@@ -1,6 +1,7 @@
 ---
 prometheus_config_flags_extra:
   web.enable-admin-api:
+# https://github.com/cloudalchemy/ansible-prometheus/issues/250#issuecomment-567867296
 prometheus_targets:
   node:
     - targets: "{{ groups['all'] | map('extract', hostvars, ['ansible_host']) | map('regex_replace', '$', ':9100') | list }}"
