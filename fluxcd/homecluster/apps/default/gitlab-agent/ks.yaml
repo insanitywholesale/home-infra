@@ -5,9 +5,17 @@ metadata:
   name: &app gitlab-agent
   namespace: &ns default
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   interval: 10m
   path: ./fluxcd/homecluster/apps/default/gitlab-agent/app
   prune: true
+  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system

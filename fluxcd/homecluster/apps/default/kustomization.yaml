@@ -5,6 +5,7 @@ namespace: default
 components:
   - ../../components/common
 resources:
+  - ./gitlab-agent/ks.yaml
   - ./lister/ks.yaml
   - ./podinfo/ks.yaml
   - ./redlib/ks.yaml
