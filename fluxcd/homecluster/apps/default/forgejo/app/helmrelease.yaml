@@ -22,6 +22,8 @@ spec:
     valuesKey: forgejo_helm_values
     optional: false
   values:
+    strategy:
+      type: Recreate
     image:
       rootless: true
     redis-cluster:
@@ -35,6 +37,7 @@ spec:
         type: LoadBalancer
         port: 2222
         annotations:
+          external-dns.alpha.kubernetes.io/hostname: git-ssh.home.inherently.xyz
           metallb.universe.tf/loadBalancerIPs: "10.0.50.192"
     ingress:
       annotations:
@@ -59,10 +62,15 @@ spec:
         APP_NAME: "forgehoe"
         APP_SLOGAN: "hosting it silly style"
         server:
+          DOMAIN: git.home.inherently.xyz
+          ROOT_URL: https://git.home.inherently.xyz
           SSH_PORT: 2222
           SSH_LISTEN_PORT: 2222
-        security:
-          SECRET_KEY: set_in_secret
+          SSH_DOMAIN: git-ssh.home.inherently.xyz
+          OFFLINE_MODE: true
+          ENABLE_PPROF: true
+        #security:
+        #  SECRET_KEY: SET_IN_SECRET
         database:
           DB_TYPE: postgres
           HOST: pg-rw.database.svc.cluster.local
@@ -74,3 +82,7 @@ spec:
           REQUIRE_SIGNIN_VIEW: true
           DISABLE_REGISTRATION: true
           ENABLE_NOTIFY_MAIL: false
+        metrics:
+          enabled: true
+          serviceMonitor:
+            enabled: true
