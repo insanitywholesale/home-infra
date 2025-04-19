@@ -23,20 +23,20 @@ spec:
           metabase:
             image:
               repository: metabase/metabase
-              tag: "v0.54.x"
+              tag: v0.54.x
               pullPolicy: IfNotPresent
             # https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker#production-installation
             env:
-              MB_DB_TYPE: "postgres"
-              MB_DB_USER: "metabase"
+              MB_DB_TYPE: postgres
+              MB_DB_USER: metabase
               MB_DB_PASS:
                 valueFrom:
                   secretKeyRef:
                     name: mb-secret
                     key: mb_db_pass
-              MB_DB_HOST: "pg-rw.database.svc.cluster.local"
-              MB_DB_PORT: "5432"
-              MB_DB_DBNAME: "metabaseappdb"
+              MB_DB_HOST: pg-rw.database.svc.cluster.local
+              MB_DB_PORT: 5432
+              MB_DB_DBNAME: metabasedb
     service:
       metabase:
         controller: metabase

@@ -14,7 +14,7 @@ kind: Database
 metadata:
   name: appdb-metabase
 spec:
-  name: metabaseappdb
+  name: metabasedb
   owner: metabase
   cluster:
     name: appdb
@@ -24,7 +24,7 @@ kind: Database
 metadata:
   name: appdb-forgejo
 spec:
-  name: forgejo
+  name: forgejodb
   owner: forgejo
   cluster:
     name: appdb

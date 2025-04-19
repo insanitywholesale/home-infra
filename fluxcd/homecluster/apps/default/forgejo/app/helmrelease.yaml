@@ -57,6 +57,7 @@ spec:
       # https://forgejo.org/docs/latest/admin/config-cheat-sheet/
       config:
         APP_NAME: "forgehoe"
+        APP_SLOGAN: "hosting it silly style"
         server:
           SSH_PORT: 2222
           SSH_LISTEN_PORT: 2222
