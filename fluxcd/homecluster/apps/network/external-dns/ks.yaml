@@ -5,6 +5,9 @@ metadata:
   name: &app external-dns
   namespace: &ns network
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   decryption:
     provider: sops
     secretRef:

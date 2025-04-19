@@ -5,6 +5,9 @@ metadata:
   name: &app ingress-nginx
   namespace: &ns network
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   dependsOn:
     - name: metallb-l2advert
       namespace: *ns

@@ -5,6 +5,9 @@ metadata:
   name: &app openebs
   namespace: &ns storage
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   interval: 10m
   path: ./fluxcd/homecluster/apps/storage/openebs/operator
   prune: true
@@ -22,6 +25,9 @@ metadata:
   name: &app openebs-diskpools
   namespace: &ns storage
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   dependsOn:
     - name: openebs
       namespace: *ns

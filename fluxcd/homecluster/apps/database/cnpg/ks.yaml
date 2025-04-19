@@ -5,6 +5,9 @@ metadata:
   name: &app cnpg
   namespace: &ns database
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   decryption:
     provider: sops
     secretRef:
@@ -29,6 +32,9 @@ metadata:
   name: &app cnpg-cluster
   namespace: &ns database
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   decryption:
     provider: sops
     secretRef:
@@ -53,6 +59,9 @@ metadata:
   name: &app cnpg-databases
   namespace: &ns database
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   dependsOn:
     - name: cnpg-cluster
       namespace: *ns

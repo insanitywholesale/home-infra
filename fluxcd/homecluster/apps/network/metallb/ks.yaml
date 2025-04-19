@@ -5,6 +5,9 @@ metadata:
   name: &app metallb
   namespace: &ns network
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   interval: 10m
   path: ./fluxcd/homecluster/apps/network/metallb/operator
   prune: true
@@ -22,6 +25,9 @@ metadata:
   name: &app metallb-ipaddrpool
   namespace: &ns network
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   dependsOn:
     - name: metallb
       namespace: *ns
@@ -42,6 +48,9 @@ metadata:
   name: &app metallb-l2advert
   namespace: &ns network
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   dependsOn:
     - name: metallb-ipaddrpool
       namespace: *ns

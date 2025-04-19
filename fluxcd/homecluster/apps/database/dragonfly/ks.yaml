@@ -5,6 +5,9 @@ metadata:
   name: &app dragonfly
   namespace: &ns database
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   decryption:
     provider: sops
     secretRef:
@@ -29,6 +32,9 @@ metadata:
   name: &app dragonfly-cluster
   namespace: &ns database
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   decryption:
     provider: sops
     secretRef:
