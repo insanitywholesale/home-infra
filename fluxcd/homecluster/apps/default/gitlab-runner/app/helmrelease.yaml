@@ -1,0 +1,57 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app gitlab-runner
+  namespace: &ns default
+spec:
+  chart:
+    spec:
+      chart: *app
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: gitlab
+      version: 0.75.1
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
+  valuesFrom:
+  - kind: Secret
+    name: gitlab-runner
+    valuesKey: gitlab_runner_helm_values
+    optional: false
+  values:
+    gitlabUrl: https://gitlab.com/
+    hostname: gitlab-runner
+    replicas: 2
+    rbac:
+      create: true
+    serviceAccount:
+      create: true
+    metrics:
+      enabled: true
+      port: 9252
+      portName: metrics
+      serviceMonitor:
+        enabled: true
+    runners:
+      config: |
+        [[runners]]
+          [runners.kubernetes]
+            namespace = "{{.Release.Namespace}}"
+            image = "alpine"
+      secret: gitlab-runner
+    unregisterRunners: true
+    terminationGracePeriodSeconds: 3600
+    livenessProbe:
+      failureThreshold: 3
+      initialDelaySeconds: 60
+      periodSeconds: 60
+      successThreshold: 1
+      terminationGracePeriodSeconds: 30
+    readinessProbe:
+      failureThreshold: 3
+      initialDelaySeconds: 60
+      periodSeconds: 60
+      successThreshold: 1
