@@ -1,0 +1,75 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app forgejo
+  namespace: &ns default
+spec:
+  chart:
+    spec:
+      chart: *app
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: forgejo
+      version: 12.0.0
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
+  valuesFrom:
+  - kind: Secret
+    name: forgejo
+    valuesKey: forgejo_helm_values
+    optional: false
+  values:
+    image:
+      rootless: true
+    redis-cluster:
+      enabled: false
+    postgresql-ha:
+      enabled: false
+    postgresql:
+      enabled: false
+    service:
+      ssh:
+        type: LoadBalancer
+        port: 2222
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "10.0.50.192"
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      className: nginx
+      enabled: true
+      hosts:
+        - host: git.home.inherently.xyz
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - git.home.inherently.xyz
+          secretName: forgejo-tls
+    gitea:
+      admin:
+        username: forgejo-admin
+        #password: SET_IN_SECRET
+      # https://forgejo.org/docs/latest/admin/config-cheat-sheet/
+      config:
+        APP_NAME: "forgehoe"
+        server:
+          SSH_PORT: 2222
+          SSH_LISTEN_PORT: 2222
+        security:
+          SECRET_KEY: set_in_secret
+        database:
+          DB_TYPE: postgres
+          HOST: pg-rw.database.svc.cluster.local
+          USER: forgejo
+          #PASSWD: SET_IN_SECRET
+          NAME: forgejodb
+          SSL_MODE: require
+        service:
+          REQUIRE_SIGNIN_VIEW: true
+          DISABLE_REGISTRATION: true
+          ENABLE_NOTIFY_MAIL: false

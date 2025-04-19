@@ -50,3 +50,9 @@ spec:
         login: true
         passwordSecret:
           name: appdb-metabase
+      - name: forgejo
+        ensure: present
+        comment: user for forgejo app
+        login: true
+        passwordSecret:
+          name: appdb-forgejo

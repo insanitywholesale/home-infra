@@ -5,8 +5,9 @@ namespace: default
 components:
   - ../../components/common
 resources:
+  - ./forgejo/ks.yaml
   - ./gitlab-agent/ks.yaml
   - ./lister/ks.yaml
+  - ./metabase/ks.yaml
   - ./podinfo/ks.yaml
   - ./redlib/ks.yaml
-  - ./metabase/ks.yaml

@@ -1,8 +1,8 @@
+---
 apiVersion: postgresql.cnpg.io/v1
 kind: Database
 metadata:
   name: appdb-listerdb
-  namespace: database
 spec:
   name: listerdb
   owner: lister
@@ -13,9 +13,18 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Database
 metadata:
   name: appdb-metabase
-  namespace: database
 spec:
   name: metabaseappdb
   owner: metabase
+  cluster:
+    name: appdb
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: appdb-forgejo
+spec:
+  name: forgejo
+  owner: forgejo
   cluster:
     name: appdb
