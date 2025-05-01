@@ -1,0 +1,11 @@
+---
+originRequest:
+  originServerName: "nginx.home.inherently.xyz"
+#  noTLSVerify: true
+
+ingress:
+  - hostname: "*.home.inherently.xyz"
+    service: &svc https://ingress-nginx-controller.network.svc.cluster.local:443
+  - hostname: "nginx.home.inherently.xyz"
+    service: *svc
+  - service: http_status:404

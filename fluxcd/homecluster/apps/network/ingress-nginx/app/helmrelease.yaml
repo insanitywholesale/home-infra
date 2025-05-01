@@ -20,15 +20,16 @@ spec:
   targetNamespace: *ns
   values:
     controller:
-      electionTTL: 15s
       ingressClassResource:
         default: true
         enabled: true
       maxUnavailable: 1
       publishService:
         enabled: true
-      replicaCount: 3
+      replicaCount: 1
       service:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: "nginx.home.inherently.xyz"
         enabled: true
         external:
           enabled: true
@@ -38,3 +39,5 @@ spec:
       updateStrategy:
         type: RollingUpdate
       watchIngressWithoutClass: true
+      extraArgs:
+        default-ssl-certificate: network/nginx-tls

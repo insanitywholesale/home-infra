@@ -1,0 +1,10 @@
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: cloudflared
+spec:
+  endpoints:
+    - dnsName: "nginx.home.inherently.xyz"
+      recordType: CNAME
+      targets: ["f7baa837-abd4-42fd-8f57-6360ee75aa15.cfargotunnel.com"]
