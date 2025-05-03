@@ -24,11 +24,11 @@ spec:
       className: nginx
       enabled: true
       hosts:
-        - host: lister.home.inherently.xyz
+        - host: lister.inherently.xyz
           paths:
             - path: /
               pathType: ImplementationSpecific
       tls:
         - hosts:
-            - lister.home.inherently.xyz
+            - lister.inherently.xyz
           secretName: lister-tls

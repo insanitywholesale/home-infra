@@ -29,7 +29,7 @@ spec:
       replicaCount: 1
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "nginx.home.inherently.xyz"
+          external-dns.alpha.kubernetes.io/hostname: "nginx.inherently.xyz"
         enabled: true
         external:
           enabled: true

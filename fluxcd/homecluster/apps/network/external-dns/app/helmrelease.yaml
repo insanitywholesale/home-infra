@@ -44,6 +44,6 @@ spec:
     policy: upsert-only
     registry: noop
     sources: ["ingress", "service"]
-    domainFilters: ["home.inherently.xyz"]
+    domainFilters: ["inherently.xyz"]
     extraArgs:
       - --ignore-ingress-tls-spec

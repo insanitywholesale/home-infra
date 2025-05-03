@@ -30,7 +30,7 @@ spec:
               # instance settings
               REDLIB_ROBOTS_DISABLE_INDEXING: "on"
               REDLIB_ENABLE_RSS: "on"
-              REDLIB_FULL_URL: "https://reddit.home.inherently.xyz"
+              REDLIB_FULL_URL: "https://reddit.inherently.xyz"
               # user settings
               REDLIB_DEFAULT_THEME: "rosebox"
               REDLIB_DEFAULT_LAYOUT: "card"
@@ -53,7 +53,7 @@ spec:
         className: nginx
         enabled: true
         hosts:
-          - host: reddit.home.inherently.xyz
+          - host: reddit.inherently.xyz
             paths:
               - path: /
                 pathType: ImplementationSpecific
@@ -62,5 +62,5 @@ spec:
                   port: http
         tls:
           - hosts:
-              - reddit.home.inherently.xyz
+              - reddit.inherently.xyz
             secretName: redlib-tls

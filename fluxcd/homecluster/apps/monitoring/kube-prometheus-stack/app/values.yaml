@@ -34,14 +34,14 @@ alertmanager:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-production
     hosts:
-      - alertmanager.home.inherently.xyz
+      - alertmanager.inherently.xyz
     paths:
       - /
     pathType: ImplementationSpecific
     tls:
       - secretName: alertmanager-tls
         hosts:
-          - alertmanager.home.inherently.xyz
+          - alertmanager.inherently.xyz
 
   ## Settings affecting alertmanagerSpec
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#alertmanagerspec
@@ -74,7 +74,7 @@ alertmanager:
               storage: 50Gi
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
     ##
-    externalUrl: https://alertmanager.home.inherently.xyz
+    externalUrl: https://alertmanager.inherently.xyz
 
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
@@ -111,12 +111,12 @@ grafana:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-production
     hosts:
-      - grafana.home.inherently.xyz
+      - grafana.inherently.xyz
     path: /
     tls:
       - secretName: grafana-tls
         hosts:
-          - grafana.home.inherently.xyz
+          - grafana.inherently.xyz
 
   # To make Grafana persistent (Using Statefulset)
   #
@@ -139,7 +139,7 @@ grafana:
 
       ## URL of prometheus datasource
       ##
-      url: https://prometheus.home.inherently.xyz/
+      url: https://prometheus.inherently.xyz/
 
       alertmanager:
         enabled: true
@@ -244,14 +244,14 @@ prometheus:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-production
     hosts:
-      - prometheus.home.inherently.xyz
+      - prometheus.inherently.xyz
     paths:
       - /
     pathType: ImplementationSpecific
     tls:
       - secretName: prometheus-tls
         hosts:
-          - prometheus.home.inherently.xyz
+          - prometheus.inherently.xyz
 
   ## Settings affecting prometheusSpec
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#prometheusspec
@@ -273,7 +273,7 @@ prometheus:
     enableAdminAPI: true
     ## External URL at which Prometheus will be reachable.
     ##
-    externalUrl: "https://prometheus.home.inherently.xyz"
+    externalUrl: "https://prometheus.inherently.xyz"
     ## How long to retain metrics
     ##
     retention: 150d

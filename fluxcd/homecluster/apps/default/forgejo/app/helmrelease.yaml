@@ -37,7 +37,7 @@ spec:
         type: LoadBalancer
         port: 2222
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: git-ssh.home.inherently.xyz
+          external-dns.alpha.kubernetes.io/hostname: git-ssh.inherently.xyz
           metallb.universe.tf/loadBalancerIPs: "10.0.50.192"
     ingress:
       annotations:
@@ -45,13 +45,13 @@ spec:
       className: nginx
       enabled: true
       hosts:
-        - host: git.home.inherently.xyz
+        - host: git.inherently.xyz
           paths:
             - path: /
               pathType: ImplementationSpecific
       tls:
         - hosts:
-            - git.home.inherently.xyz
+            - git.inherently.xyz
           secretName: forgejo-tls
     gitea:
       admin:
@@ -62,11 +62,11 @@ spec:
         APP_NAME: "forgehoe"
         APP_SLOGAN: "hosting it silly style"
         server:
-          DOMAIN: git.home.inherently.xyz
-          ROOT_URL: https://git.home.inherently.xyz
+          DOMAIN: git.inherently.xyz
+          ROOT_URL: https://git.inherently.xyz
           SSH_PORT: 2222
           SSH_LISTEN_PORT: 2222
-          SSH_DOMAIN: git-ssh.home.inherently.xyz
+          SSH_DOMAIN: git-ssh.inherently.xyz
           OFFLINE_MODE: true
           ENABLE_PPROF: true
         #security:

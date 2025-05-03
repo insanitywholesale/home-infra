@@ -19,7 +19,7 @@ spec:
   values:
     alertmanager:
       alertmanagerSpec:
-        externalUrl: https://alertmanager.home.inherently.xyz
+        externalUrl: https://alertmanager.inherently.xyz
         persistentVolumeClaimRetentionPolicy:
           whenDeleted: Retain
           whenScaled: Retain
@@ -40,14 +40,14 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
         enabled: true
         hosts:
-        - alertmanager.home.inherently.xyz
+        - alertmanager.inherently.xyz
         ingressClassName: nginx
         pathType: ImplementationSpecific
         paths:
         - /
         tls:
         - hosts:
-          - alertmanager.home.inherently.xyz
+          - alertmanager.inherently.xyz
           secretName: alertmanager-tls
     cleanPrometheusOperatorObjectNames: false
     crds:
@@ -75,12 +75,12 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
         enabled: true
         hosts:
-        - grafana.home.inherently.xyz
+        - grafana.inherently.xyz
         ingressClassName: nginx
         path: /
         tls:
         - hosts:
-          - grafana.home.inherently.xyz
+          - grafana.inherently.xyz
           secretName: grafana-tls
       persistence:
         accessModes:
@@ -97,7 +97,7 @@ spec:
           isDefaultDatasource: true
           name: Prometheus
           uid: prometheus
-          url: https://prometheus.home.inherently.xyz/
+          url: https://prometheus.inherently.xyz/
         enabled: true
         finalizers:
         - kubernetes.io/pvc-protection
@@ -144,18 +144,18 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
         enabled: true
         hosts:
-        - prometheus.home.inherently.xyz
+        - prometheus.inherently.xyz
         ingressClassName: nginx
         pathType: ImplementationSpecific
         paths:
         - /
         tls:
         - hosts:
-          - prometheus.home.inherently.xyz
+          - prometheus.inherently.xyz
           secretName: prometheus-tls
       prometheusSpec:
         enableAdminAPI: true
-        externalUrl: https://prometheus.home.inherently.xyz
+        externalUrl: https://prometheus.inherently.xyz
         persistentVolumeClaimRetentionPolicy:
           whenDeleted: Retain
           whenScaled: Retain

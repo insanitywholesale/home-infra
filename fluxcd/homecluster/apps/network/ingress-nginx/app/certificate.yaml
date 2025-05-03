@@ -8,5 +8,5 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "home.inherently.xyz"
-  dnsNames: ["home.inherently.xyz", "*.home.inherently.xyz"]
+  commonName: "inherently.xyz"
+  dnsNames: ["inherently.xyz", "*.inherently.xyz"]
