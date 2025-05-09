@@ -7,3 +7,4 @@ components:
 resources:
   - ./cnpg/ks.yaml
   - ./dragonfly/ks.yaml
+  - ./pgadmin/ks.yaml

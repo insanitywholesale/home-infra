@@ -1,0 +1,58 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app pgadmin
+  namespace: &ns database
+spec:
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  chart:
+    spec:
+      chart: pgadmin4
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: runix
+      version: 1.42.1
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
+  values:
+    nameOverride: *app
+    env:
+      email: "me@inherently.xyz"
+    existingSecret: pgadmin
+    secretKeys:
+      pgadminPasswordKey: pgadmin_password
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      className: nginx
+      hosts:
+        - host: pgadmin.inherently.xyz
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - pgadmin.inherently.xyz
+          secretName: pgadmin-tls
+    networkPolicy:
+      enabled: false
+    persistentVolume:
+      enabled: true
+    resources:
+      requests:
+        cpu: 20m
+        memory: 200Mi
+      limits:
+        cpu: 100m
+        memory: 600Mi
