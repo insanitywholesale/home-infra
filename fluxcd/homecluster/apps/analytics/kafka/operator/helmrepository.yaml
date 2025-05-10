@@ -1,0 +1,9 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: strimzi
+spec:
+  interval: 10m0s
+  type: oci
+  url: oci://quay.io/strimzi-helm/
