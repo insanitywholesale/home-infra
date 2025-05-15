@@ -13,3 +13,4 @@ resources:
   - ./podinfo/ks.yaml
   - ./redlib/ks.yaml
   - ./kubecraft-proxy/ks.yaml
+  #- ./minecraft/ks.yaml
