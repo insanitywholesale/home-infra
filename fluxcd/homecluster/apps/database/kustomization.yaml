@@ -8,4 +8,4 @@ resources:
   - ./cnpg/ks.yaml
   - ./dragonfly/ks.yaml
   - ./druid/ks.yaml
-  - ./pgadmin/ks.yaml
+  #- ./pgadmin/ks.yaml
