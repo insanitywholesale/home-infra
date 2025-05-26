@@ -1,0 +1,23 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app volsync
+  namespace: &ns storage
+spec:
+  chart:
+    spec:
+      chart: *app
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: backube
+      version: 0.12.1
+  interval: 10m
+  releaseName: *app
+  targetNamespace: *ns
+  values:
+    manageCRDs: true
+    metrics:
+      disableAuth: true
+    replicaCount: 2
