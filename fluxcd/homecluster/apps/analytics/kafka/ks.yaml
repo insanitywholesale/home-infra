@@ -8,15 +8,38 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
   dependsOn:
     - name: openebs
       namespace: storage
   interval: 10m0s
   path: ./fluxcd/homecluster/apps/analytics/kafka/operator
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  timeout: 5m
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app strimzi-cluster
+  namespace: &ns analytics
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: strimzi
+      namespace: analytics
+  interval: 10m0s
+  path: ./fluxcd/homecluster/apps/analytics/kafka/cluster
   prune: true
   sourceRef:
     kind: GitRepository

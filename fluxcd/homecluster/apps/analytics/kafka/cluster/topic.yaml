@@ -1,0 +1,12 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: klorp
+  labels:
+    strimzi.io/cluster: kfc
+spec:
+  partitions: 1
+  replicas: 1
+  config:
+    retention.ms:  53136000000  # 615 days
+    segment.bytes: 1073741824   # 1Gib

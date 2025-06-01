@@ -1,0 +1,24 @@
+#---
+#apiVersion: kafka.strimzi.io/v1beta2
+#kind: KafkaUser
+#metadata:
+#  name: my-klorp-user
+#  labels:
+#    strimzi.io/cluster: kfc
+#spec:
+#  authentication:
+#    type: tls
+#  authorization:
+#    type: simple
+#    acls:
+#      # Example read and write for everyone on topic klorp
+#      - resource:
+#          type: topic
+#          name: klorp
+#          patternType: literal
+#        operations:
+#          - Create
+#          - Describe
+#          - Read
+#          - Write
+#        host: "*"
