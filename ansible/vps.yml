@@ -8,6 +8,6 @@
         name: cloudflare_le_cert
       vars:
         cloudflare_cert_domains:
-          - home.inherently.xyz
-        cloudflare_cert_file_dest: /home/ubuntu/certs/home.inherently.xyz.crt
-        cloudflare_key_file_dest: /home/ubuntu/certs/home.inherently.xyz.key
+          - vps.inherently.xyz
+        cloudflare_cert_file_dest: /home/ubuntu/certs/vps.inherently.xyz.crt
+        cloudflare_key_file_dest:  /home/ubuntu/certs/vps.inherently.xyz.key
